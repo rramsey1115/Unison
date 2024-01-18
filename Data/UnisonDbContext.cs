@@ -8,6 +8,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
     public DbSet<UserProfile> UserProfiles { get; set; }
+    
 
     public UnisonDbContext(DbContextOptions<UnisonDbContext> context, IConfiguration config) : base(context)
     {
@@ -38,6 +39,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
             UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
         });
+
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile
         {
             Id = 1,
@@ -46,6 +48,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             LastName = "Strator",
             Address = "101 Main Street",
         });
+
+        
 
     }
 }
