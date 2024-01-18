@@ -1,7 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace BiancasBikes.Models.DTOs;
+namespace Unison.Models.DTOs;
 
 public class UserProfileDTO
 {

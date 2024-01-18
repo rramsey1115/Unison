@@ -1,4 +1,4 @@
-namespace BiancasBikes.Models.DTOs;
+namespace Unison.Models.DTOs;
 
 public class RegistrationDTO
 {
