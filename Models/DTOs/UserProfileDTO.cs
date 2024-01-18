@@ -1,8 +1,9 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace Unison.Models;
+namespace BiancasBikes.Models.DTOs;
 
-public class UserProfile
+public class UserProfileDTO
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
@@ -12,5 +13,5 @@ public class UserProfile
     public string UserName { get; set; }
     public List<string> Roles { get; set; }
     public string IdentityUserId { get; set; }
-    public IdentityUser IdentityUser { get; set; } 
+    public IdentityUser IdentityUser { get; set; }
 }
