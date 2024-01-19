@@ -194,7 +194,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new IdentityUserRole<string>
             {
                 RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
-                UserId = ""
+                UserId = "91a84af5-48ef-4bce-aa4e-7271d83d4d8c"
             }
         );
 
@@ -767,7 +767,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 Id = 4,
                 Name = "Clarke Studies",
                 Details = "Studies out of the Clarke method book, not intended to be played as fast as possible for long tone warm up",
-                CategoryI = 1
+                CategoryId = 1
             },
             new
             {
