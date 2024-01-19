@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { tryGetLoggedInUser } from "./managers/authManager";
 import { Spinner } from "reactstrap";
-import NavBar from "./components/NavBar";
+import NavBar from "./Components/navbar/NavBar";
 import ApplicationViews from "./Components/ApplicationViews";
+import { tryGetLoggedInUser } from "./Managers/authManger";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState();

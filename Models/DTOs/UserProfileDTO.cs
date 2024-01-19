@@ -13,4 +13,6 @@ public class UserProfileDTO
     public List<string> Roles { get; set; }
     public string IdentityUserId { get; set; }
     public IdentityUser IdentityUser { get; set; }
+    public int? TeacherId { get; set; }
+    public UserProfileDTO Teacher { get; set; }
 }

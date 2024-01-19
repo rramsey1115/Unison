@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { register } from "../../managers/authManager";
+import { register } from "../../Managers/authManger";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 

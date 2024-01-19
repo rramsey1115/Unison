@@ -37,8 +37,14 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new IdentityRole
             {
                 Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                Name = "Admin",
-                NormalizedName = "admin"
+                Name = "Teacher",
+                NormalizedName = "teacher"
+            },
+            new IdentityRole
+            {
+                Id = "a171f807-e85e-46a5-ae04-f287122ede55",
+                Name = "Musician",
+                NormalizedName = "musician"
             }
         );
 
@@ -49,6 +55,83 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 UserName = "Administrator",
                 Email = "admina@strator.comx",
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "e9fd3bbc-17a0-4ba7-857e-e6d695698548",
+                UserName = "Teacher2",
+                Email = "teacher1@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "4342d71c-3d92-49ea-9f84-8f3412b65679",
+                UserName = "TestStudent1",
+                Email = "teststudent1@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05",
+                UserName = "TestStudent2",
+                Email = "teststudent2@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "b6d8aa7f-ae65-4feb-95ab-377d810bc270",
+                UserName = "TestStudent3",
+                Email = "teststudent3@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "7c8b955a-c256-4505-bf0f-468489633f5f",
+                UserName = "TestStudent4",
+                Email = "teststudent4@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "ad6fe687-1ebf-4ef4-9e10-4e23b483140c",
+                UserName = "TestStudent5",
+                Email = "teststudent5@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "b1df4873-5564-479b-94c0-172f799e820b",
+                UserName = "TestStudent6",
+                Email = "teststudent6@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "7e60e6dc-579e-43af-9b2a-b4fe5bb42407",
+                UserName = "TestStudent7",
+                Email = "teststudent7@test.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "a03371b3-edeb-4184-8917-14fa66adb89f",
+                UserName = "TestStudent8",
+                Email = "teststudent8@test.com",
+                PasswordHash =new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "a541cf62-3506-462f-8901-eee6d9d5145f",
+                UserName = "TestStudent9",
+                Email = "teststudent9@test.com",
+                PasswordHash =new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "91a84af5-48ef-4bce-aa4e-7271d83d4d8c",
+                UserName = "TestStudent10",
+                Email = "teststudent10@test.com",
+                PasswordHash =new PasswordHasher<IdentityUser>().HashPassword(null,  _configuration["AdminPassword"])
             }
         );
 
@@ -57,6 +140,61 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             {
                 RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
                 UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                UserId = "e9fd3bbc-17a0-4ba7-857e-e6d695698548"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "4342d71c-3d92-49ea-9f84-8f3412b65679"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "b6d8aa7f-ae65-4feb-95ab-377d810bc270"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "7c8b955a-c256-4505-bf0f-468489633f5f"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "ad6fe687-1ebf-4ef4-9e10-4e23b483140c"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "b1df4873-5564-479b-94c0-172f799e820b"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "7e60e6dc-579e-43af-9b2a-b4fe5bb42407"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "a03371b3-edeb-4184-8917-14fa66adb89f"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = "a541cf62-3506-462f-8901-eee6d9d5145f"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "a171f807-e85e-46a5-ae04-f287122ede55",
+                UserId = ""
             }
         );
 
@@ -67,7 +205,95 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                 FirstName = "Admina",
                 LastName = "Strator",
-                Address = "101 Main Street",
+                Address = "101 Main St.",
+            },
+            new UserProfile
+            {
+                Id = 2,
+                IdentityUserId = "e9fd3bbc-17a0-4ba7-857e-e6d695698548",
+                FirstName = "Teacher 2",
+                LastName = "Test",
+                Address = "5531 Broad St."
+            },
+            new UserProfile
+            {
+                Id = 3,
+                IdentityUserId = "4342d71c-3d92-49ea-9f84-8f3412b65679",
+                FirstName = "Suzy",
+                LastName = "Bumpkin",
+                Address = "900 Willow Ave."
+            },
+            new UserProfile
+            {
+                Id = 4,
+                IdentityUserId = "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05",
+                FirstName = "Billy",
+                LastName = "Mack",
+                Address = "133 W Elm St."
+            },
+            new UserProfile
+            {
+                Id = 5,
+                IdentityUserId = "b6d8aa7f-ae65-4feb-95ab-377d810bc270",
+                FirstName = "Lizzie",
+                LastName = "McGuire",
+                Address = "6161 Maple St."
+            },
+            new UserProfile
+            {
+                Id = 6,
+                IdentityUserId = "7c8b955a-c256-4505-bf0f-468489633f5f",
+                FirstName = "Macy",
+                LastName = "Greene",
+                Address = "775 N Spruce St."
+            },
+            new UserProfile
+            {
+                Id = 7,
+                IdentityUserId = "ad6fe687-1ebf-4ef4-9e10-4e23b483140c",
+                FirstName = "Tracy",
+                LastName = "Moore",
+                Address = "202 SW Poplar Rd."
+            },
+            new UserProfile
+            {
+                Id = 8,
+                IdentityUserId = "b1df4873-5564-479b-94c0-172f799e820b",
+                FirstName = "Eric",
+                LastName = "Linn",
+                Address = "801 Pine St."
+            },
+            new UserProfile
+            {
+                Id = 9,
+                IdentityUserId = "7e60e6dc-579e-43af-9b2a-b4fe5bb42407",
+                FirstName = "Blake",
+                LastName = "White",
+                Address = "454 Elm St."
+            },
+            new UserProfile
+            {
+                Id = 10,
+                IdentityUserId = "a03371b3-edeb-4184-8917-14fa66adb89f",
+                FirstName = "Kyle",
+                LastName = "Vance",
+                Address = "303 Beech St."
+            },
+            new UserProfile
+            {
+                Id = 11,
+                IdentityUserId = "a541cf62-3506-462f-8901-eee6d9d5145f",
+                FirstName = "Walter",
+                LastName = "White",
+                Address = "754 N. Walnut St."
+            },
+            new UserProfile
+            {
+                Id = 12,
+                IdentityUserId = "91a84af5-48ef-4bce-aa4e-7271d83d4d8c",
+                FirstName = "Corey",
+                LastName = "Graves",
+                Address = "900 S. Walnut St."
             }
         );
 
@@ -97,14 +323,14 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             {
                 Id = 4,
                 SessionId = 8,
-                TeacherId = 1,
+                TeacherId = 2,
                 Body = "Comment about music, saying very useful and meaningful things. Things a student could never think of on their own."
             },
             new
             {
                 Id = 5,
                 SessionId = 9,
-                TeacherId = 1,
+                TeacherId = 2,
                 Body = "Comment about music, saying very useful and meaningful things. Things a student could never think of on their own."
             }
         );
@@ -128,68 +354,68 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new
             {
                 Id = 1,
-                MusicianId = 2,
+                MusicianId = 5,
                 DateCompleted = new DateTime(2024, 01, 03, 13, 11, 00),
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 2,
-                MusicianId = 2,
+                MusicianId = 3,
                 DateCompleted = new DateTime(2024, 01, 09, 13, 11, 00),
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 3,
-                MusicianId = 2,
+                MusicianId = 4,
                 DateCompleted = new DateTime(2024, 01, 12, 13, 11, 00),
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 4,
-                MusicianId = 2,
+                MusicianId = 5,
                 DateCompleted = new DateTime(2024, 01, 14, 13, 11, 00),
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 5,
-                MusicianId = 2,
+                MusicianId = 4,
                 DateCompleted = new DateTime(2024, 01, 15, 13, 11, 00),
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 6,
-                MusicianId = 2,
+                MusicianId = 3,
                 DateCompleted = new DateTime(2024, 01, 17, 13, 11, 00),
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 7,
-                MusicianId = 2,
+                MusicianId = 7,
                 DateCompleted = new DateTime(2024, 01, 18, 13, 11, 00),
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 8,
-                MusicianId = 2,
+                MusicianId = 7,
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 9,
-                MusicianId = 2,
+                MusicianId = 10,
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             },
             new
             {
                 Id = 10,
-                MusicianId = 2,
+                MusicianId = 8,
                 Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
             }
         );
@@ -469,7 +695,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new
             {
                 Id = 1,
-                MusicianId = 2,
+                MusicianId = 3,
                 TeacherId = 1,
                 SessionId = 6,
                 DueDate = new DateTime(2024, 02, 01, 17, 00, 00),
@@ -478,7 +704,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new
             {
                 Id = 2,
-                MusicianId = 2,
+                MusicianId = 4,
                 TeacherId = 1,
                 SessionId = 7,
                 DueDate = new DateTime(2024, 02, 10, 17, 00, 00),
@@ -487,7 +713,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new
             {
                 Id = 3,
-                MusicianId = 2,
+                MusicianId = 4,
                 TeacherId = 1,
                 SessionId = 8,
                 DueDate = new DateTime(2024, 02, 17, 17, 00, 00),
@@ -496,8 +722,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new
             {
                 Id = 4,
-                MusicianId = 2,
-                TeacherId = 1,
+                MusicianId = 8,
+                TeacherId = 2,
                 SessionId = 9,
                 DueDate = new DateTime(2024, 02, 22, 17, 00, 00),
                 Complete = false
@@ -505,8 +731,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new
             {
                 Id = 5,
-                MusicianId = 2,
-                TeacherId = 1,
+                MusicianId = 9,
+                TeacherId = 2,
                 SessionId = 10,
                 DueDate = new DateTime(2024, 03, 01, 17, 00, 00),
                 Complete = false
