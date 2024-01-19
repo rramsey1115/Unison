@@ -48,4 +48,40 @@ public class CommentController : ControllerBase
         }
     }
 
+    [HttpGet("{id}")]
+    // [Authorize]
+    public IActionResult GetById(int id)
+    {
+        try
+        {
+            Comment c = _dbContext.Comments
+            .Include(c => c.Teacher)
+            .SingleOrDefault(c => c.Id == id);
+
+            if (c == null)
+            {
+                return NotFound("No activity matches given ActivityId");
+            }
+
+            return Ok(new CommentDTO
+            {
+                Id = c.Id,
+                SessionId = c.SessionId,
+                TeacherId = c.TeacherId,
+                Teacher = new UserProfileDTO
+                {
+                    Id = c.Teacher.Id,
+                    FirstName = c.Teacher.FirstName,
+                    LastName = c.Teacher.LastName
+                },
+                Body = c.Body
+            });
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"{ex}");
+        }
+    }
+
 }

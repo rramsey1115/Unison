@@ -38,4 +38,31 @@ public class CategoryController : ControllerBase
         }
     }
 
+
+        [HttpGet("{id}")]
+    // [Authorize]
+    public IActionResult GetById(int id)
+    {
+        try
+        {
+            Category c = _dbContext.Categories.SingleOrDefault(c => c.Id == id);
+
+            if (c == null)
+            {
+                return NotFound("No activity matches given ActivityId");
+            }
+
+            return Ok(new Category
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Details = c.Details
+            });
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"{ex}");
+        }
+    }
 }
