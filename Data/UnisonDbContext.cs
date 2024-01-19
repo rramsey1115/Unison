@@ -19,35 +19,486 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
-        {
-            Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-            Name = "Admin",
-            NormalizedName = "admin"
-        });
+        modelBuilder.Entity<IdentityRole>().HasData(
+            new IdentityRole
+            {
+                Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                Name = "Admin",
+                NormalizedName = "admin"
+            }
+        );
 
-        modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
-        {
-            Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-            UserName = "Administrator",
-            Email = "admina@strator.comx",
-            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
-        });
+        modelBuilder.Entity<IdentityUser>().HasData(
+            new IdentityUser
+            {
+                Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
+                UserName = "Administrator",
+                Email = "admina@strator.comx",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            }
+        );
 
-        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-        {
-            RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-            UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
-        });
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>
+            {
+                RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
+            }
+        );
 
-        modelBuilder.Entity<UserProfile>().HasData(new UserProfile
-        {
-            Id = 1,
-            IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-            FirstName = "Admina",
-            LastName = "Strator",
-            Address = "101 Main Street",
-        });
+        modelBuilder.Entity<UserProfile>().HasData(
+            new UserProfile
+            {
+                Id = 1,
+                IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
+                FirstName = "Admina",
+                LastName = "Strator",
+                Address = "101 Main Street",
+            }
+        );
+
+        modelBuilder.Entity<Comment>().HasData(
+            new
+            {
+                Id = 1,
+                SessionId = 1,
+                TeacherId = 1,
+                Body = "Comment about music, saying very useful and meaningful things. Things a student could never think of on their own."
+            },
+            new
+            {
+                Id = 2,
+                SessionId = 3,
+                TeacherId = 1,
+                Body = "Comment about music, saying very useful and meaningful things. Things a student could never think of on their own."
+            },
+            new
+            {
+                Id = 3,
+                SessionId = 5,
+                TeacherId = 1,
+                Body = "Comment about music, saying very useful and meaningful things. Things a student could never think of on their own."
+            },
+            new
+            {
+                Id = 4,
+                SessionId = 8,
+                TeacherId = 1,
+                Body = "Comment about music, saying very useful and meaningful things. Things a student could never think of on their own."
+            },
+            new
+            {
+                Id = 5,
+                SessionId = 9,
+                TeacherId = 1,
+                Body = "Comment about music, saying very useful and meaningful things. Things a student could never think of on their own."
+            }
+        );
+
+        modelBuilder.Entity<FavoriteSession>().HasData( 
+            new
+            {
+                Id = 1,
+                SessionId = 1,
+                MusicianId = 2,
+            },
+            new
+            {
+                Id = 2,
+                SessionId = 2,
+                MusicianId = 2,
+            }
+        );
+
+        modelBuilder.Entity<Session>().HasData(
+            new
+            {
+                Id = 1,
+                MusicianId = 2,
+                DateCompleted = new DateTime(2024, 01, 03, 13, 11, 00),
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 2,
+                MusicianId = 2,
+                DateCompleted = new DateTime(2024, 01, 09, 13, 11, 00),
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 3,
+                MusicianId = 2,
+                DateCompleted = new DateTime(2024, 01, 12, 13, 11, 00),
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 4,
+                MusicianId = 2,
+                DateCompleted = new DateTime(2024, 01, 14, 13, 11, 00),
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 5,
+                MusicianId = 2,
+                DateCompleted = new DateTime(2024, 01, 15, 13, 11, 00),
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 6,
+                MusicianId = 2,
+                DateCompleted = new DateTime(2024, 01, 17, 13, 11, 00),
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 7,
+                MusicianId = 2,
+                DateCompleted = new DateTime(2024, 01, 18, 13, 11, 00),
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 8,
+                MusicianId = 2,
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 9,
+                MusicianId = 2,
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            },
+            new
+            {
+                Id = 10,
+                MusicianId = 2,
+                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+            }
+        );
+
+        modelBuilder.Entity<SessionActivity>().HasData(
+            new
+            {
+                Id = 1,
+                SessionId = 1,
+                ActivityId = 9,
+                Duration = 20
+            },
+            new
+            {
+                Id = 2,
+                SessionId = 1,
+                ActivityId = 49,
+                Duration = 15
+            },
+            new
+            {
+                Id = 3,
+                SessionId = 1,
+                ActivityId = 57,
+                Duration = 15
+            },
+            new
+            {
+                Id = 4,
+                SessionId = 1,
+                ActivityId = 40,
+                Duration = 30
+            },
+            new
+            {
+                Id = 5,
+                SessionId = 2,
+                ActivityId = 30,
+                Duration = 10
+            },
+            new
+            {
+                Id = 6,
+                SessionId = 2,
+                ActivityId = 20,
+                Duration = 30
+            },
+            new
+            {
+                Id = 7,
+                SessionId = 2,
+                ActivityId = 46,
+                Duration = 40
+            },
+            new
+            {
+                Id = 8,
+                SessionId = 3,
+                ActivityId = 10,
+                Duration = 25
+            },
+            new
+            {
+                Id = 9,
+                SessionId = 3,
+                ActivityId = 6,
+                Duration = 10
+            },
+            new
+            {
+                Id = 10,
+                SessionId = 3,
+                ActivityId = 20,
+                Duration = 15
+            },
+            new
+            {
+                Id = 11,
+                SessionId = 4,
+                ActivityId = 38,
+                Duration = 20
+            },
+            new
+            {
+                Id = 12,
+                SessionId = 4,
+                ActivityId = 55,
+                Duration = 20
+            },
+            new
+            {
+                Id = 13,
+                SessionId = 5,
+                ActivityId = 2,
+                Duration = 10
+            },
+            new
+            {
+                Id = 14,
+                SessionId = 5,
+                ActivityId = 33,
+                Duration = 20
+            },
+            new
+            {
+                Id = 15,
+                SessionId = 5,
+                ActivityId = 13,
+                Duration = 15
+            },
+            new
+            {
+                Id = 16,
+                SessionId = 6,
+                ActivityId = 19,
+                Duration = 20
+            },
+            new
+            {
+                Id = 17,
+                SessionId = 6,
+                ActivityId = 40,
+                Duration = 30
+            },
+            new
+            {
+                Id = 18,
+                SessionId = 6,
+                ActivityId = 5,
+                Duration = 15
+            },
+            new
+            {
+                Id = 19,
+                SessionId = 7,
+                ActivityId = 3,
+                Duration = 10
+            },
+            new
+            {
+                Id = 20,
+                SessionId = 7,
+                ActivityId = 11,
+                Duration = 40
+            },
+            new
+            {
+                Id = 21,
+                SessionId = 7,
+                ActivityId = 49,
+                Duration = 20
+            },
+            new
+            {
+                Id = 22,
+                SessionId = 8,
+                ActivityId = 22,
+                Duration = 30
+            },
+            new
+            {
+                Id = 23,
+                SessionId = 9,
+                ActivityId = 16,
+                Duration = 15
+            },
+            new
+            {
+                Id = 24,
+                SessionId = 10,
+                ActivityId = 51,
+                Duration = 25
+            },
+            new
+            {
+                Id = 25,
+                SessionId = 10,
+                ActivityId = 44,
+                Duration = 30
+            }
+        );
+
+        modelBuilder.Entity<Category>().HasData(
+            new
+            {
+                Id = 1,
+                Name = "Tonal Warm-Ups",
+                Details = "Start a session with solid tonal development, can also be used as a warm-down"
+            },
+            new
+            {
+                Id = 2,
+                Name = "Technical Warm-Ups",
+                Details = "Start a session getting technically warmed up, vocal chords, fingers, etc."
+            },
+            new
+            {
+                Id = 3,
+                Name = "Scales",
+                Details = "Fundamentals of musical development, scales in multiple forms, modes, ranges"
+            },
+            new 
+            {
+                Id = 4,
+                Name = "Chords/Arpeggios",
+                Details = "Isolated chords, arpeggios, voicings, etc."
+            },
+            new 
+            {
+                Id = 5,
+                Name = "Extended Techniques",
+                Details = "Any techniques not tradtionally taught for producing sound on your instrument or voice"
+            },
+            new 
+            {
+                Id = 6,
+                Name = "Improvisation",
+                Details = "Any activity to develop jazz, rock, pop, etc. improvisation"
+            },
+            new 
+            {
+                Id = 7,
+                Name = "Tune/Song Learning",
+                Details = "Learn class jazz tunes, or songs needed for commercial gigs"
+            },
+            new 
+            {
+                Id = 8,
+                Name = "Solo Repertoire",
+                Details = "Sonatas, Concertos, Solos, etc. for your specific instrument or voice"
+            },
+            new 
+            {
+                Id = 9,
+                Name = "Chamber Music Repertoire",
+                Details = "Learn or pratice any chamber music pieces for upcoming gigs, recitals, etc."
+            },
+            new 
+            {
+                Id = 10,
+                Name = "Etudes",
+                Details = "Essential for developing musicianship, technique, and musical literacy"
+            },
+            new 
+            {
+                Id = 11,
+                Name = "Sight-Reading",
+                Details = "Any variety of music you read down on the first try"
+            },
+            new 
+            {
+                Id = 12,
+                Name = "Orchestral Excerpts",
+                Details = "Specific well-known excerpts for you instrument from the symphonic repertoire"
+            },
+            new 
+            {
+                Id = 13,
+                Name = "Large Ensemble Repertoire",
+                Details = "Learning full-length large ensemle pieces for upcoming concerts"
+            },
+            new 
+            {
+                Id = 14,
+                Name = "Fun",
+                Details = "Whatever keeps you playing!"
+            },
+            new 
+            {
+                Id = 15,
+                Name = "Other",
+                Details = "Anything which doesn't fit securely into a previous category"
+            }
+        );
+
+        modelBuilder.Entity<Assignment>().HasData(
+            new
+            {
+                Id = 1,
+                MusicianId = 2,
+                TeacherId = 1,
+                SessionId = 6,
+                DueDate = new DateTime(2024, 02, 01, 17, 00, 00),
+                Complete = true
+            },
+            new
+            {
+                Id = 2,
+                MusicianId = 2,
+                TeacherId = 1,
+                SessionId = 7,
+                DueDate = new DateTime(2024, 02, 10, 17, 00, 00),
+                Complete = true
+            },
+            new
+            {
+                Id = 3,
+                MusicianId = 2,
+                TeacherId = 1,
+                SessionId = 8,
+                DueDate = new DateTime(2024, 02, 17, 17, 00, 00),
+                Complete = false
+            },
+            new
+            {
+                Id = 4,
+                MusicianId = 2,
+                TeacherId = 1,
+                SessionId = 9,
+                DueDate = new DateTime(2024, 02, 22, 17, 00, 00),
+                Complete = false
+            },
+            new
+            {
+                Id = 5,
+                MusicianId = 2,
+                TeacherId = 1,
+                SessionId = 10,
+                DueDate = new DateTime(2024, 03, 01, 17, 00, 00),
+                Complete = false
+            }
+        );
+
 
         modelBuilder.Entity<Activity>().HasData(
             new
@@ -471,139 +922,5 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 CategoryId = 15
             }
         );
-
-        modelBuilder.Entity<Category>().HasData(
-            new
-            {
-                Id = 1,
-                Name = "Tonal Warm-Ups",
-                Details = "Start a session with solid tonal development, can also be used as a warm-down"
-            },
-            new
-            {
-                Id = 2,
-                Name = "Technical Warm-Ups",
-                Details = "Start a session getting technically warmed up, vocal chords, fingers, etc."
-            },
-            new
-            {
-                Id = 3,
-                Name = "Scales",
-                Details = "Fundamentals of musical development, scales in multiple forms, modes, ranges"
-            },
-            new 
-            {
-                Id = 4,
-                Name = "Chords/Arpeggios",
-                Details = "Isolated chords, arpeggios, voicings, etc."
-            },
-            new 
-            {
-                Id = 5,
-                Name = "Extended Techniques",
-                Details = "Any techniques not tradtionally taught for producing sound on your instrument or voice"
-            },
-            new 
-            {
-                Id = 6,
-                Name = "Improvisation",
-                Details = "Any activity to develop jazz, rock, pop, etc. improvisation"
-            },
-            new 
-            {
-                Id = 7,
-                Name = "Tune/Song Learning",
-                Details = "Learn class jazz tunes, or songs needed for commercial gigs"
-            },
-            new 
-            {
-                Id = 8,
-                Name = "Solo Repertoire",
-                Details = "Sonatas, Concertos, Solos, etc. for your specific instrument or voice"
-            },
-            new 
-            {
-                Id = 9,
-                Name = "Chamber Music Repertoire",
-                Details = "Learn or pratice any chamber music pieces for upcoming gigs, recitals, etc."
-            },
-            new 
-            {
-                Id = 10,
-                Name = "Etudes",
-                Details = "Essential for developing musicianship, technique, and musical literacy"
-            },
-            new 
-            {
-                Id = 11,
-                Name = "Sight-Reading",
-                Details = "Any variety of music you read down on the first try"
-            },
-            new 
-            {
-                Id = 12,
-                Name = "Orchestral Excerpts",
-                Details = "Specific well-known excerpts for you instrument from the symphonic repertoire"
-            },
-            new 
-            {
-                Id = 13,
-                Name = "Large Ensemble Repertoire",
-                Details = "Learning full-length large ensemle pieces for upcoming concerts"
-            },
-            new 
-            {
-                Id = 14,
-                Name = "Fun",
-                Details = "Whatever keeps you playing!"
-            },
-            new 
-            {
-                Id = 15,
-                Name = "Other",
-                Details = "Anything which doesn't fit securely into a previous category"
-            }
-        );
-
-        modelBuilder.Entity<Comment>().HasData(
-            new
-            {
-                Id = 1,
-                MusicianId = 1,
-                TeacherId = 1,
-                SessionId = 5,
-                DueDate = new DateTime(2024, 02, 15, 17, 00, 00),
-                Complete = false
-            }
-        );
-
-        modelBuilder.Entity<Assignment>().HasData(
-            new
-            {
-
-            }
-        );
-
-        modelBuilder.Entity<FavoriteSession>().HasData( 
-            new
-            {
-
-            }
-        );
-
-        modelBuilder.Entity<Session>().HasData(
-            new
-            {
-
-            }
-        );
-
-        modelBuilder.Entity<SessionActivity>().HasData(
-            new
-            {
-
-            }
-        );
-
     }
 }
