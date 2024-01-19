@@ -11,7 +11,7 @@ public class SessionDTO
     public int MusicianId { get; set; }
 
     [ForeignKey("MusicianId")]
-    public UserProfile Musician { get; set; }
+    public UserProfileDTO Musician { get; set; }
 
     public DateTime? DateCompleted { get; set; }
 

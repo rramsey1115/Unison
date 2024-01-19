@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Unison.Models;
 using Microsoft.AspNetCore.Identity;
+using Unison.Models.DTOs;
 
 namespace Unison.Data;
 public class UnisonDbContext : IdentityDbContext<IdentityUser>
@@ -9,7 +10,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
     private readonly IConfiguration _configuration;
     public DbSet<UserProfile> UserProfiles { get; set; }
 
-    public DbSet<Activity> Activities { get; set; }
+    public DbSet<ActivityObj> Activities { get; set; }
 
     public DbSet<Assignment> Assignments { get; set; }
 
@@ -513,7 +514,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
         );
 
 
-        modelBuilder.Entity<Activity>().HasData(
+        modelBuilder.Entity<ActivityObj>().HasData(
             new
             {
                 Id = 1,

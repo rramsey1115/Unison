@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace Unison.Models.DTOs;
 
-public class ActivityDTO 
+public class ActivityObjDTO 
 {
     public int Id { get; set; }
 

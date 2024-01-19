@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace Unison.Models;
 
-public class Activity 
+public class ActivityObj 
 {
     public int Id { get; set; }
 
@@ -15,5 +15,4 @@ public class Activity
     public int CategoryId { get; set; }
 
     public Category Category { get; set; }
-
 }
