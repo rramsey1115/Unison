@@ -8,7 +8,20 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
     public DbSet<UserProfile> UserProfiles { get; set; }
-    
+
+    public DbSet<Activity> Activities { get; set; }
+
+    public DbSet<Assignment> Assignments { get; set; }
+
+    public DbSet<Category> Categories { get; set; }
+
+    public DbSet<Comment> Comments { get; set; }
+
+    public DbSet<FavoriteSession> FavoriteSessions { get; set; }
+
+    public DbSet<Session> Sessions { get; set; }
+
+    public DbSet<SessionActivity> SessionActivities { get; set; }
 
     public UnisonDbContext(DbContextOptions<UnisonDbContext> context, IConfiguration config) : base(context)
     {
