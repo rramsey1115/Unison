@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Unison.Models.DTOs;
 
 public class ActivityObjDTO 
@@ -14,6 +15,7 @@ public class ActivityObjDTO
     [Required]
     public int CategoryId { get; set; }
 
+    [ForeignKey("CategoryId")]      
     public CategoryDTO Category { get; set; }
 
 }
