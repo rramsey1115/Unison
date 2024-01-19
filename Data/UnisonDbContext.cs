@@ -413,20 +413,17 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             new
             {
                 Id = 8,
-                MusicianId = 7,
-                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+                MusicianId = 7
             },
             new
             {
                 Id = 9,
-                MusicianId = 10,
-                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+                MusicianId = 10
             },
             new
             {
                 Id = 10,
-                MusicianId = 8,
-                Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+                MusicianId = 8
             }
         );
 

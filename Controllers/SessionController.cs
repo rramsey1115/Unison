@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ public class SessionController : ControllerBase
         try
         {
             return Ok(_dbContext.Sessions
-            .Include(s => s.Musician)
+            .Include(s => s.Musician).ThenInclude(m => m.Teacher)
             .Include(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(act => act.Category)
             .OrderByDescending(s => s.Id)
             .Select(s => new SessionDTO
@@ -36,6 +37,9 @@ public class SessionController : ControllerBase
                     Id = s.Musician.Id,
                     FirstName = s.Musician.FirstName,
                     LastName = s.Musician.LastName,
+                    Email = s.Musician.IdentityUser.Email,
+                    Address = s.Musician.Address,
+                    TeacherId = s.Musician.TeacherId,
                     IdentityUserId = s.Musician.IdentityUserId
                 },
                 DateCompleted = s.DateCompleted,
@@ -44,6 +48,7 @@ public class SessionController : ControllerBase
                 {
                     Id = sa.Id,
                     SessionId = sa.SessionId,
+                    Duration = sa.Duration,
                     ActivityId = sa.ActivityId,
                     Activity = new ActivityObjDTO
                     {

@@ -16,7 +16,7 @@ public class Session
 
     public string? Notes { get; set; }
 
-    public List<SessionActivity>? SessionActivities { get; set; }
+    public List<SessionActivity> SessionActivities { get; set; }
 
     public int Duration { 
         get {

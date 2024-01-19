@@ -345,14 +345,14 @@ namespace Unison.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "c996f026-ec11-480b-b528-d60d93576c7b",
+                            ConcurrencyStamp = "ddae787f-b2dd-447a-be6e-a3382bf2abb4",
                             Name = "Teacher",
                             NormalizedName = "teacher"
                         },
                         new
                         {
                             Id = "a171f807-e85e-46a5-ae04-f287122ede55",
-                            ConcurrencyStamp = "a8cde0b2-5d6c-4ebd-a721-dfcb6cb72ee6",
+                            ConcurrencyStamp = "04453e7d-cce1-42eb-a2b3-5c6999198f77",
                             Name = "Musician",
                             NormalizedName = "musician"
                         });
@@ -451,13 +451,13 @@ namespace Unison.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae243d15-c379-4e47-8bf8-cc90e3ae7797",
+                            ConcurrencyStamp = "d58dd188-5e28-437b-8fae-14ce825845bb",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEIECYDDEpWh3+jD3YgBhbPosSvgP1D13N2v3dnfP2gShsj+S9puiFZZGaUye09+P9A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO0/hURkhGMI2zOUpFpZwXc+tW5TwNfhpupIe9HmPOKQf8ohYYZ0k+nmHIE8IdfYoA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e25bc5eb-ce77-47a3-95e1-77a9dd15b03c",
+                            SecurityStamp = "6bced8a0-a867-4b28-ac2d-bcba83ba0807",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -465,13 +465,13 @@ namespace Unison.Migrations
                         {
                             Id = "e9fd3bbc-17a0-4ba7-857e-e6d695698548",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "287e18c6-70ec-4d05-b28e-24e67a3bba3c",
+                            ConcurrencyStamp = "0273c690-0585-4a83-aa6c-f4ebf45b2eab",
                             Email = "teacher1@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEAGPGiatHgcwZtbKZcuVT5W1pkGKCCFHRVsV2xutrjS/cE8aRBHiD5l7IS4nNPQUXQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPzvzswv8NG5oaNkRHVR4GEkZSnl5CmtUpaaXth5RdDq8vFw/biaOch5RjkvnEof+w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3fb1ebfd-a06b-4dc5-a8f5-e08e1821ab84",
+                            SecurityStamp = "4d7c45bb-cf2a-4ac0-9cee-14f5e67f9675",
                             TwoFactorEnabled = false,
                             UserName = "Teacher2"
                         },
@@ -479,13 +479,13 @@ namespace Unison.Migrations
                         {
                             Id = "4342d71c-3d92-49ea-9f84-8f3412b65679",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4a5ecc43-53cc-43cc-80bd-56ff0111969e",
+                            ConcurrencyStamp = "ad9939f3-cee9-4945-a95e-3bfec92aaca2",
                             Email = "teststudent1@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEN9eyz4Jf1ETBJXhxeMTBGlHMXOguodVHhGGj8Vsk6ZlA4olhhHabBACW2Rz8xrhMg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBv4facNIF4w4Q+oM1hOreRfjvh9M5UDiIDkB4luy5m2bhOjDjmphUQbhaxoG9EqUQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8910f0a5-9675-4334-bb50-cb47aea57124",
+                            SecurityStamp = "4566bd36-c80b-4ab9-9764-ae101a633b6c",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent1"
                         },
@@ -493,13 +493,13 @@ namespace Unison.Migrations
                         {
                             Id = "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bcbb3116-e15e-47d2-9d60-7e7e47fe96d6",
+                            ConcurrencyStamp = "6d82fc8a-b924-4205-82a5-938f9e22bb46",
                             Email = "teststudent2@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEE5mOxvMkwGmVqtPcm2W84mRT0vsaE53wXeKyAPpQzXB832OvNLe5T/mty9cQSwTTg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELfwqNQIAOk9eHz3ljLH9tDvVABVXfmqkKGjQJLjn3Kai/Y5BVNT7ku288fVFqwNLA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4f1a1b92-f270-4876-b6e5-81f2a8fcd0f2",
+                            SecurityStamp = "4d77be98-6fca-4881-b251-effbd5912b01",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent2"
                         },
@@ -507,13 +507,13 @@ namespace Unison.Migrations
                         {
                             Id = "b6d8aa7f-ae65-4feb-95ab-377d810bc270",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "01080f95-b3f4-4c45-abd7-80ae54b9213f",
+                            ConcurrencyStamp = "b0d3418d-390c-4722-8b06-9b5a4c3db01a",
                             Email = "teststudent3@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAELVx6sUXhN065syE2+AR4NujKAyAjuK+IXh0cEhYbIhbDVnd8QHYWmwOgg1lB6pCcA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ9/UbUa4m7l8LadmCW0JXN6XFCCPUsWrqfvlk/PbSV3ak/TTmyOJcqdbQAndx73Sw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1fccc81a-d352-482b-876f-acf9dcd5e75f",
+                            SecurityStamp = "0d80d811-0b82-4485-8960-3b2058670dd1",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent3"
                         },
@@ -521,13 +521,13 @@ namespace Unison.Migrations
                         {
                             Id = "7c8b955a-c256-4505-bf0f-468489633f5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3cc9c3de-d671-45ab-87fb-59f5d99d8d24",
+                            ConcurrencyStamp = "c0a37954-fa69-4f4a-ad80-555553d1eb42",
                             Email = "teststudent4@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEEPoykr8ANvVisduWe5EoZmpPblwSvzPAagPQ4zO58P6e7Khqk66z4GRBo3AZRw4iQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDjVntBpbbbKLmVT4Y2gzup6O+yw2QeL0ii0mamhZHE27hWPeqsiOivraCviz1G1pA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ca7bd168-fac1-40bc-b80c-13dd5ccc3bbb",
+                            SecurityStamp = "14391210-8e41-4464-ac1d-18b1f066e852",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent4"
                         },
@@ -535,13 +535,13 @@ namespace Unison.Migrations
                         {
                             Id = "ad6fe687-1ebf-4ef4-9e10-4e23b483140c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1e25ada-00eb-40b5-974d-2e6cf4557db1",
+                            ConcurrencyStamp = "cc0e35f2-96c6-4800-b187-a1912d12ccdc",
                             Email = "teststudent5@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAECd8KqKy3Lq514cq2lMMY09Jlp8vi7mpcU9m9KDIPGrCiRSHnBFeOc1hM519UKOoGA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIGy6UAvNLi3Kc7XFJOaDr+6n4kUf7KhnOBDuNHATh6U6Fv/aom0NasNbuiYN17dEA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "30663dec-4ea8-4f09-a1c2-1ca033271053",
+                            SecurityStamp = "910df77b-d36a-49fb-8e71-fa0cc1b9a99d",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent5"
                         },
@@ -549,13 +549,13 @@ namespace Unison.Migrations
                         {
                             Id = "b1df4873-5564-479b-94c0-172f799e820b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3d57d8fb-1899-4696-863b-1298cae9fe67",
+                            ConcurrencyStamp = "5c82b11f-d156-4557-9d2d-c5abefd6e4d7",
                             Email = "teststudent6@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAECZ4ta8NPOlyuWXYpDy5I+JGPeUXNF9RNZomBmxkofscH5TlHx4URCa4cFMI9gRtQw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEWsPwFBwFHjBV+XwcbmfqHTeY5uuhydDAHY1kc6gqad3qcN5HqdirXZ2gXB2g2wjg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c9d0259a-b0c4-4daa-a3cd-82d743b8a22a",
+                            SecurityStamp = "bdb87573-f5c9-4942-97b1-ac81781c84a6",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent6"
                         },
@@ -563,13 +563,13 @@ namespace Unison.Migrations
                         {
                             Id = "7e60e6dc-579e-43af-9b2a-b4fe5bb42407",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "abf5a6da-56ad-4f9b-b887-09d76311c1e2",
+                            ConcurrencyStamp = "c1f6c321-68df-44fc-9630-cbad6f4a5614",
                             Email = "teststudent7@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEI8q7280FYjAq6OPY0+2YbpRVJLAklBo8+0n2Vj1J+S3d0FyGPqoD5JHL54phd/Erg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEwdbBSrtmuzFI8Z0iFtwo8o9FM+b9GZ1yCd+loKD8r+takGdBomyc/WVOrUnsgCeA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d17e2f96-ea35-4b22-bee4-4f7ff4172fff",
+                            SecurityStamp = "810b2348-df64-4a67-bca4-d3b92453455a",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent7"
                         },
@@ -577,13 +577,13 @@ namespace Unison.Migrations
                         {
                             Id = "a03371b3-edeb-4184-8917-14fa66adb89f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d63fa97c-48c3-4b96-b540-640e5d68a5e2",
+                            ConcurrencyStamp = "15bd488d-aae4-4b7e-94b6-c11385467432",
                             Email = "teststudent8@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEAKgWQx83X0YKMJdQZUEwl08PMde/zYSQnRJlq1DB5/g8SUdwP80TLC9DpizBJFMFg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENWY7f15KR60IGc1Wcccm+x4BfiClmrAFCCLya7LXrM/O/eG7bVFLchZKBSeX2hs3A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "689d7a5e-82cc-4a56-9811-46294a20e96f",
+                            SecurityStamp = "337897ed-c1f4-48b3-b6d9-4241da7dcf83",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent8"
                         },
@@ -591,13 +591,13 @@ namespace Unison.Migrations
                         {
                             Id = "a541cf62-3506-462f-8901-eee6d9d5145f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "568e3a0a-07ba-4735-9355-ab536f2292fa",
+                            ConcurrencyStamp = "4039f1c0-536b-4e14-ba71-d758cf106407",
                             Email = "teststudent9@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEL0y3QvI/DppkJrPxFeQWla7y61O+2vheJBfOMRDnYf2LljfLjKXTYsNojqhLPTjXw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMyb3Iu08KMK48K2Osa0oeMmniIte5TGvraOhDIdg0N1Ze81Q5lxuSMyAi12KFDujg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c7bb75bc-b8fd-4482-a63f-91120b992bf9",
+                            SecurityStamp = "180dffde-ef2d-40fd-b2a3-03c25b39e9a7",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent9"
                         },
@@ -605,13 +605,13 @@ namespace Unison.Migrations
                         {
                             Id = "91a84af5-48ef-4bce-aa4e-7271d83d4d8c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "49747bd9-8448-43cb-b322-c523f2c1b61b",
+                            ConcurrencyStamp = "81780e70-2c4f-4e0d-b97c-df43a568b76b",
                             Email = "teststudent10@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEG4SYSwunRKaqyslEFvrHXht3OHBr9M0zsnMRkb+MuRZTGJWEe68cs6nJcsh+QOmnw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBzU5HQ45pYE+RgpCAWkpFiOqXN+2MJ4mgkwj9onu2l4urdYiQsHhfIXIqxk1jT5+w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9724f7a4-2296-4fa1-8813-3569446c82ff",
+                            SecurityStamp = "1a7ffe23-41c4-4507-a7c0-2057460fc927",
                             TwoFactorEnabled = false,
                             UserName = "TestStudent10"
                         });
@@ -836,20 +836,17 @@ namespace Unison.Migrations
                         new
                         {
                             Id = 8,
-                            MusicianId = 7,
-                            Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+                            MusicianId = 7
                         },
                         new
                         {
                             Id = 9,
-                            MusicianId = 10,
-                            Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+                            MusicianId = 10
                         },
                         new
                         {
                             Id = 10,
-                            MusicianId = 8,
-                            Notes = "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197"
+                            MusicianId = 8
                         });
                 });
 
@@ -1571,7 +1568,8 @@ namespace Unison.Migrations
                             Address = "900 Willow Ave.",
                             FirstName = "Suzy",
                             IdentityUserId = "4342d71c-3d92-49ea-9f84-8f3412b65679",
-                            LastName = "Bumpkin"
+                            LastName = "Bumpkin",
+                            TeacherId = 1
                         },
                         new
                         {
@@ -1579,7 +1577,8 @@ namespace Unison.Migrations
                             Address = "133 W Elm St.",
                             FirstName = "Billy",
                             IdentityUserId = "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05",
-                            LastName = "Mack"
+                            LastName = "Mack",
+                            TeacherId = 1
                         },
                         new
                         {
@@ -1587,7 +1586,8 @@ namespace Unison.Migrations
                             Address = "6161 Maple St.",
                             FirstName = "Lizzie",
                             IdentityUserId = "b6d8aa7f-ae65-4feb-95ab-377d810bc270",
-                            LastName = "McGuire"
+                            LastName = "McGuire",
+                            TeacherId = 1
                         },
                         new
                         {
@@ -1595,7 +1595,8 @@ namespace Unison.Migrations
                             Address = "775 N Spruce St.",
                             FirstName = "Macy",
                             IdentityUserId = "7c8b955a-c256-4505-bf0f-468489633f5f",
-                            LastName = "Greene"
+                            LastName = "Greene",
+                            TeacherId = 1
                         },
                         new
                         {
@@ -1603,7 +1604,8 @@ namespace Unison.Migrations
                             Address = "202 SW Poplar Rd.",
                             FirstName = "Tracy",
                             IdentityUserId = "ad6fe687-1ebf-4ef4-9e10-4e23b483140c",
-                            LastName = "Moore"
+                            LastName = "Moore",
+                            TeacherId = 2
                         },
                         new
                         {
@@ -1611,7 +1613,8 @@ namespace Unison.Migrations
                             Address = "801 Pine St.",
                             FirstName = "Eric",
                             IdentityUserId = "b1df4873-5564-479b-94c0-172f799e820b",
-                            LastName = "Linn"
+                            LastName = "Linn",
+                            TeacherId = 2
                         },
                         new
                         {
@@ -1619,7 +1622,8 @@ namespace Unison.Migrations
                             Address = "454 Elm St.",
                             FirstName = "Blake",
                             IdentityUserId = "7e60e6dc-579e-43af-9b2a-b4fe5bb42407",
-                            LastName = "White"
+                            LastName = "White",
+                            TeacherId = 2
                         },
                         new
                         {
@@ -1627,7 +1631,8 @@ namespace Unison.Migrations
                             Address = "303 Beech St.",
                             FirstName = "Kyle",
                             IdentityUserId = "a03371b3-edeb-4184-8917-14fa66adb89f",
-                            LastName = "Vance"
+                            LastName = "Vance",
+                            TeacherId = 2
                         },
                         new
                         {
@@ -1635,7 +1640,8 @@ namespace Unison.Migrations
                             Address = "754 N. Walnut St.",
                             FirstName = "Walter",
                             IdentityUserId = "a541cf62-3506-462f-8901-eee6d9d5145f",
-                            LastName = "White"
+                            LastName = "White",
+                            TeacherId = 2
                         },
                         new
                         {
@@ -1643,7 +1649,8 @@ namespace Unison.Migrations
                             Address = "900 S. Walnut St.",
                             FirstName = "Corey",
                             IdentityUserId = "91a84af5-48ef-4bce-aa4e-7271d83d4d8c",
-                            LastName = "Graves"
+                            LastName = "Graves",
+                            TeacherId = 2
                         });
                 });
 

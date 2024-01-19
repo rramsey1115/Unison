@@ -17,7 +17,7 @@ public class SessionDTO
 
     public string? Notes { get; set; }
 
-    public List<SessionActivityDTO>? SessionActivities { get; set; }
+    public List<SessionActivityDTO> SessionActivities { get; set; }
 
     public int Duration { 
         get {

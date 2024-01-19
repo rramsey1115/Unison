@@ -357,8 +357,8 @@ namespace Unison.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a171f807-e85e-46a5-ae04-f287122ede55", "a8cde0b2-5d6c-4ebd-a721-dfcb6cb72ee6", "Musician", "musician" },
-                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "c996f026-ec11-480b-b528-d60d93576c7b", "Teacher", "teacher" }
+                    { "a171f807-e85e-46a5-ae04-f287122ede55", "04453e7d-cce1-42eb-a2b3-5c6999198f77", "Musician", "musician" },
+                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "ddae787f-b2dd-447a-be6e-a3382bf2abb4", "Teacher", "teacher" }
                 });
 
             migrationBuilder.InsertData(
@@ -366,18 +366,18 @@ namespace Unison.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05", 0, "bcbb3116-e15e-47d2-9d60-7e7e47fe96d6", "teststudent2@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEE5mOxvMkwGmVqtPcm2W84mRT0vsaE53wXeKyAPpQzXB832OvNLe5T/mty9cQSwTTg==", null, false, "4f1a1b92-f270-4876-b6e5-81f2a8fcd0f2", false, "TestStudent2" },
-                    { "4342d71c-3d92-49ea-9f84-8f3412b65679", 0, "4a5ecc43-53cc-43cc-80bd-56ff0111969e", "teststudent1@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEN9eyz4Jf1ETBJXhxeMTBGlHMXOguodVHhGGj8Vsk6ZlA4olhhHabBACW2Rz8xrhMg==", null, false, "8910f0a5-9675-4334-bb50-cb47aea57124", false, "TestStudent1" },
-                    { "7c8b955a-c256-4505-bf0f-468489633f5f", 0, "3cc9c3de-d671-45ab-87fb-59f5d99d8d24", "teststudent4@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEEPoykr8ANvVisduWe5EoZmpPblwSvzPAagPQ4zO58P6e7Khqk66z4GRBo3AZRw4iQ==", null, false, "ca7bd168-fac1-40bc-b80c-13dd5ccc3bbb", false, "TestStudent4" },
-                    { "7e60e6dc-579e-43af-9b2a-b4fe5bb42407", 0, "abf5a6da-56ad-4f9b-b887-09d76311c1e2", "teststudent7@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEI8q7280FYjAq6OPY0+2YbpRVJLAklBo8+0n2Vj1J+S3d0FyGPqoD5JHL54phd/Erg==", null, false, "d17e2f96-ea35-4b22-bee4-4f7ff4172fff", false, "TestStudent7" },
-                    { "91a84af5-48ef-4bce-aa4e-7271d83d4d8c", 0, "49747bd9-8448-43cb-b322-c523f2c1b61b", "teststudent10@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEG4SYSwunRKaqyslEFvrHXht3OHBr9M0zsnMRkb+MuRZTGJWEe68cs6nJcsh+QOmnw==", null, false, "9724f7a4-2296-4fa1-8813-3569446c82ff", false, "TestStudent10" },
-                    { "a03371b3-edeb-4184-8917-14fa66adb89f", 0, "d63fa97c-48c3-4b96-b540-640e5d68a5e2", "teststudent8@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEAKgWQx83X0YKMJdQZUEwl08PMde/zYSQnRJlq1DB5/g8SUdwP80TLC9DpizBJFMFg==", null, false, "689d7a5e-82cc-4a56-9811-46294a20e96f", false, "TestStudent8" },
-                    { "a541cf62-3506-462f-8901-eee6d9d5145f", 0, "568e3a0a-07ba-4735-9355-ab536f2292fa", "teststudent9@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEL0y3QvI/DppkJrPxFeQWla7y61O+2vheJBfOMRDnYf2LljfLjKXTYsNojqhLPTjXw==", null, false, "c7bb75bc-b8fd-4482-a63f-91120b992bf9", false, "TestStudent9" },
-                    { "ad6fe687-1ebf-4ef4-9e10-4e23b483140c", 0, "b1e25ada-00eb-40b5-974d-2e6cf4557db1", "teststudent5@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAECd8KqKy3Lq514cq2lMMY09Jlp8vi7mpcU9m9KDIPGrCiRSHnBFeOc1hM519UKOoGA==", null, false, "30663dec-4ea8-4f09-a1c2-1ca033271053", false, "TestStudent5" },
-                    { "b1df4873-5564-479b-94c0-172f799e820b", 0, "3d57d8fb-1899-4696-863b-1298cae9fe67", "teststudent6@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAECZ4ta8NPOlyuWXYpDy5I+JGPeUXNF9RNZomBmxkofscH5TlHx4URCa4cFMI9gRtQw==", null, false, "c9d0259a-b0c4-4daa-a3cd-82d743b8a22a", false, "TestStudent6" },
-                    { "b6d8aa7f-ae65-4feb-95ab-377d810bc270", 0, "01080f95-b3f4-4c45-abd7-80ae54b9213f", "teststudent3@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAELVx6sUXhN065syE2+AR4NujKAyAjuK+IXh0cEhYbIhbDVnd8QHYWmwOgg1lB6pCcA==", null, false, "1fccc81a-d352-482b-876f-acf9dcd5e75f", false, "TestStudent3" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "ae243d15-c379-4e47-8bf8-cc90e3ae7797", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEIECYDDEpWh3+jD3YgBhbPosSvgP1D13N2v3dnfP2gShsj+S9puiFZZGaUye09+P9A==", null, false, "e25bc5eb-ce77-47a3-95e1-77a9dd15b03c", false, "Administrator" },
-                    { "e9fd3bbc-17a0-4ba7-857e-e6d695698548", 0, "287e18c6-70ec-4d05-b28e-24e67a3bba3c", "teacher1@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEAGPGiatHgcwZtbKZcuVT5W1pkGKCCFHRVsV2xutrjS/cE8aRBHiD5l7IS4nNPQUXQ==", null, false, "3fb1ebfd-a06b-4dc5-a8f5-e08e1821ab84", false, "Teacher2" }
+                    { "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05", 0, "6d82fc8a-b924-4205-82a5-938f9e22bb46", "teststudent2@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAELfwqNQIAOk9eHz3ljLH9tDvVABVXfmqkKGjQJLjn3Kai/Y5BVNT7ku288fVFqwNLA==", null, false, "4d77be98-6fca-4881-b251-effbd5912b01", false, "TestStudent2" },
+                    { "4342d71c-3d92-49ea-9f84-8f3412b65679", 0, "ad9939f3-cee9-4945-a95e-3bfec92aaca2", "teststudent1@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEBv4facNIF4w4Q+oM1hOreRfjvh9M5UDiIDkB4luy5m2bhOjDjmphUQbhaxoG9EqUQ==", null, false, "4566bd36-c80b-4ab9-9764-ae101a633b6c", false, "TestStudent1" },
+                    { "7c8b955a-c256-4505-bf0f-468489633f5f", 0, "c0a37954-fa69-4f4a-ad80-555553d1eb42", "teststudent4@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEDjVntBpbbbKLmVT4Y2gzup6O+yw2QeL0ii0mamhZHE27hWPeqsiOivraCviz1G1pA==", null, false, "14391210-8e41-4464-ac1d-18b1f066e852", false, "TestStudent4" },
+                    { "7e60e6dc-579e-43af-9b2a-b4fe5bb42407", 0, "c1f6c321-68df-44fc-9630-cbad6f4a5614", "teststudent7@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEEwdbBSrtmuzFI8Z0iFtwo8o9FM+b9GZ1yCd+loKD8r+takGdBomyc/WVOrUnsgCeA==", null, false, "810b2348-df64-4a67-bca4-d3b92453455a", false, "TestStudent7" },
+                    { "91a84af5-48ef-4bce-aa4e-7271d83d4d8c", 0, "81780e70-2c4f-4e0d-b97c-df43a568b76b", "teststudent10@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEBzU5HQ45pYE+RgpCAWkpFiOqXN+2MJ4mgkwj9onu2l4urdYiQsHhfIXIqxk1jT5+w==", null, false, "1a7ffe23-41c4-4507-a7c0-2057460fc927", false, "TestStudent10" },
+                    { "a03371b3-edeb-4184-8917-14fa66adb89f", 0, "15bd488d-aae4-4b7e-94b6-c11385467432", "teststudent8@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAENWY7f15KR60IGc1Wcccm+x4BfiClmrAFCCLya7LXrM/O/eG7bVFLchZKBSeX2hs3A==", null, false, "337897ed-c1f4-48b3-b6d9-4241da7dcf83", false, "TestStudent8" },
+                    { "a541cf62-3506-462f-8901-eee6d9d5145f", 0, "4039f1c0-536b-4e14-ba71-d758cf106407", "teststudent9@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEMyb3Iu08KMK48K2Osa0oeMmniIte5TGvraOhDIdg0N1Ze81Q5lxuSMyAi12KFDujg==", null, false, "180dffde-ef2d-40fd-b2a3-03c25b39e9a7", false, "TestStudent9" },
+                    { "ad6fe687-1ebf-4ef4-9e10-4e23b483140c", 0, "cc0e35f2-96c6-4800-b187-a1912d12ccdc", "teststudent5@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEIGy6UAvNLi3Kc7XFJOaDr+6n4kUf7KhnOBDuNHATh6U6Fv/aom0NasNbuiYN17dEA==", null, false, "910df77b-d36a-49fb-8e71-fa0cc1b9a99d", false, "TestStudent5" },
+                    { "b1df4873-5564-479b-94c0-172f799e820b", 0, "5c82b11f-d156-4557-9d2d-c5abefd6e4d7", "teststudent6@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEEWsPwFBwFHjBV+XwcbmfqHTeY5uuhydDAHY1kc6gqad3qcN5HqdirXZ2gXB2g2wjg==", null, false, "bdb87573-f5c9-4942-97b1-ac81781c84a6", false, "TestStudent6" },
+                    { "b6d8aa7f-ae65-4feb-95ab-377d810bc270", 0, "b0d3418d-390c-4722-8b06-9b5a4c3db01a", "teststudent3@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEJ9/UbUa4m7l8LadmCW0JXN6XFCCPUsWrqfvlk/PbSV3ak/TTmyOJcqdbQAndx73Sw==", null, false, "0d80d811-0b82-4485-8960-3b2058670dd1", false, "TestStudent3" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "d58dd188-5e28-437b-8fae-14ce825845bb", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEO0/hURkhGMI2zOUpFpZwXc+tW5TwNfhpupIe9HmPOKQf8ohYYZ0k+nmHIE8IdfYoA==", null, false, "6bced8a0-a867-4b28-ac2d-bcba83ba0807", false, "Administrator" },
+                    { "e9fd3bbc-17a0-4ba7-857e-e6d695698548", 0, "0273c690-0585-4a83-aa6c-f4ebf45b2eab", "teacher1@test.com", false, false, null, null, null, "AQAAAAEAACcQAAAAEPzvzswv8NG5oaNkRHVR4GEkZSnl5CmtUpaaXth5RdDq8vFw/biaOch5RjkvnEof+w==", null, false, "4d7c45bb-cf2a-4ac0-9cee-14f5e67f9675", false, "Teacher2" }
                 });
 
             migrationBuilder.InsertData(
@@ -494,17 +494,7 @@ namespace Unison.Migrations
                 values: new object[,]
                 {
                     { 1, "101 Main St.", null, "Admina", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Strator", null, null, null },
-                    { 2, "5531 Broad St.", null, "Teacher 2", "e9fd3bbc-17a0-4ba7-857e-e6d695698548", "Test", null, null, null },
-                    { 3, "900 Willow Ave.", null, "Suzy", "4342d71c-3d92-49ea-9f84-8f3412b65679", "Bumpkin", null, null, null },
-                    { 4, "133 W Elm St.", null, "Billy", "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05", "Mack", null, null, null },
-                    { 5, "6161 Maple St.", null, "Lizzie", "b6d8aa7f-ae65-4feb-95ab-377d810bc270", "McGuire", null, null, null },
-                    { 6, "775 N Spruce St.", null, "Macy", "7c8b955a-c256-4505-bf0f-468489633f5f", "Greene", null, null, null },
-                    { 7, "202 SW Poplar Rd.", null, "Tracy", "ad6fe687-1ebf-4ef4-9e10-4e23b483140c", "Moore", null, null, null },
-                    { 8, "801 Pine St.", null, "Eric", "b1df4873-5564-479b-94c0-172f799e820b", "Linn", null, null, null },
-                    { 9, "454 Elm St.", null, "Blake", "7e60e6dc-579e-43af-9b2a-b4fe5bb42407", "White", null, null, null },
-                    { 10, "303 Beech St.", null, "Kyle", "a03371b3-edeb-4184-8917-14fa66adb89f", "Vance", null, null, null },
-                    { 11, "754 N. Walnut St.", null, "Walter", "a541cf62-3506-462f-8901-eee6d9d5145f", "White", null, null, null },
-                    { 12, "900 S. Walnut St.", null, "Corey", "91a84af5-48ef-4bce-aa4e-7271d83d4d8c", "Graves", null, null, null }
+                    { 2, "5531 Broad St.", null, "Teacher 2", "e9fd3bbc-17a0-4ba7-857e-e6d695698548", "Test", null, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -520,6 +510,23 @@ namespace Unison.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "UserProfiles",
+                columns: new[] { "Id", "Address", "Email", "FirstName", "IdentityUserId", "LastName", "Roles", "TeacherId", "UserName" },
+                values: new object[,]
+                {
+                    { 3, "900 Willow Ave.", null, "Suzy", "4342d71c-3d92-49ea-9f84-8f3412b65679", "Bumpkin", null, 1, null },
+                    { 4, "133 W Elm St.", null, "Billy", "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05", "Mack", null, 1, null },
+                    { 5, "6161 Maple St.", null, "Lizzie", "b6d8aa7f-ae65-4feb-95ab-377d810bc270", "McGuire", null, 1, null },
+                    { 6, "775 N Spruce St.", null, "Macy", "7c8b955a-c256-4505-bf0f-468489633f5f", "Greene", null, 1, null },
+                    { 7, "202 SW Poplar Rd.", null, "Tracy", "ad6fe687-1ebf-4ef4-9e10-4e23b483140c", "Moore", null, 2, null },
+                    { 8, "801 Pine St.", null, "Eric", "b1df4873-5564-479b-94c0-172f799e820b", "Linn", null, 2, null },
+                    { 9, "454 Elm St.", null, "Blake", "7e60e6dc-579e-43af-9b2a-b4fe5bb42407", "White", null, 2, null },
+                    { 10, "303 Beech St.", null, "Kyle", "a03371b3-edeb-4184-8917-14fa66adb89f", "Vance", null, 2, null },
+                    { 11, "754 N. Walnut St.", null, "Walter", "a541cf62-3506-462f-8901-eee6d9d5145f", "White", null, 2, null },
+                    { 12, "900 S. Walnut St.", null, "Corey", "91a84af5-48ef-4bce-aa4e-7271d83d4d8c", "Graves", null, 2, null }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Sessions",
                 columns: new[] { "Id", "DateCompleted", "MusicianId", "Notes" },
                 values: new object[,]
@@ -531,9 +538,9 @@ namespace Unison.Migrations
                     { 5, new DateTime(2024, 1, 15, 13, 11, 0, 0, DateTimeKind.Unspecified), 4, "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197" },
                     { 6, new DateTime(2024, 1, 17, 13, 11, 0, 0, DateTimeKind.Unspecified), 3, "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197" },
                     { 7, new DateTime(2024, 1, 18, 13, 11, 0, 0, DateTimeKind.Unspecified), 7, "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197" },
-                    { 8, null, 7, "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197" },
-                    { 9, null, 10, "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197" },
-                    { 10, null, 8, "Need to work on C# minor and m. 17-32 of my etudes. Did not have a good warm-up. Repertoire learned measures 122-197" }
+                    { 8, null, 7, null },
+                    { 9, null, 10, null },
+                    { 10, null, 8, null }
                 });
 
             migrationBuilder.InsertData(
