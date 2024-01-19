@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Unison.Models;
 using Microsoft.AspNetCore.Identity;
-using Unison.Models.DTOs;
 
 namespace Unison.Data;
 public class UnisonDbContext : IdentityDbContext<IdentityUser>
