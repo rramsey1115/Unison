@@ -22,7 +22,7 @@ public class AssignmentDTO
     public int SessionId { get; set; }
 
     [ForeignKey("SessionId")]
-    public Session Session { get; set; }
+    public SessionDTO Session { get; set; }
 
     [Required]
     public DateTime DueDate { get; set; }
