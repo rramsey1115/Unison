@@ -18,7 +18,7 @@ public class SessionController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    // [Authorize]
     public IActionResult Get()
     {
         try
@@ -26,7 +26,7 @@ public class SessionController : ControllerBase
             return Ok(_dbContext.Sessions
             .Include(s => s.Musician)
             .Include(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(act => act.Category)
-            .OrderByDescending(s => s.DateCompleted)
+            .OrderByDescending(s => s.Id)
             .Select(s => new SessionDTO
             {
                 Id = s.Id,
@@ -36,10 +36,7 @@ public class SessionController : ControllerBase
                     Id = s.Musician.Id,
                     FirstName = s.Musician.FirstName,
                     LastName = s.Musician.LastName,
-                    Address = s.Musician.Address,
-                    Email = s.Musician.Email,
-                    UserName = s.Musician.UserName,
-                    Roles = s.Musician.Roles
+                    IdentityUserId = s.Musician.IdentityUserId
                 },
                 DateCompleted = s.DateCompleted,
                 Notes = s.Notes,

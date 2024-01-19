@@ -205,7 +205,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                 FirstName = "Admina",
                 LastName = "Strator",
-                Address = "101 Main St.",
+                Address = "101 Main St."
             },
             new UserProfile
             {
@@ -221,7 +221,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "4342d71c-3d92-49ea-9f84-8f3412b65679",
                 FirstName = "Suzy",
                 LastName = "Bumpkin",
-                Address = "900 Willow Ave."
+                Address = "900 Willow Ave.",
+                TeacherId = 1
             },
             new UserProfile
             {
@@ -229,7 +230,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "33ab14e6-cca3-4fb4-84d7-99d45b1c9b05",
                 FirstName = "Billy",
                 LastName = "Mack",
-                Address = "133 W Elm St."
+                Address = "133 W Elm St.",
+                TeacherId = 1
             },
             new UserProfile
             {
@@ -237,7 +239,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "b6d8aa7f-ae65-4feb-95ab-377d810bc270",
                 FirstName = "Lizzie",
                 LastName = "McGuire",
-                Address = "6161 Maple St."
+                Address = "6161 Maple St.",
+                TeacherId = 1
             },
             new UserProfile
             {
@@ -245,7 +248,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "7c8b955a-c256-4505-bf0f-468489633f5f",
                 FirstName = "Macy",
                 LastName = "Greene",
-                Address = "775 N Spruce St."
+                Address = "775 N Spruce St.",
+                TeacherId = 1
             },
             new UserProfile
             {
@@ -253,7 +257,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "ad6fe687-1ebf-4ef4-9e10-4e23b483140c",
                 FirstName = "Tracy",
                 LastName = "Moore",
-                Address = "202 SW Poplar Rd."
+                Address = "202 SW Poplar Rd.",
+                TeacherId = 2
             },
             new UserProfile
             {
@@ -261,7 +266,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "b1df4873-5564-479b-94c0-172f799e820b",
                 FirstName = "Eric",
                 LastName = "Linn",
-                Address = "801 Pine St."
+                Address = "801 Pine St.",
+                TeacherId = 2
             },
             new UserProfile
             {
@@ -269,7 +275,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "7e60e6dc-579e-43af-9b2a-b4fe5bb42407",
                 FirstName = "Blake",
                 LastName = "White",
-                Address = "454 Elm St."
+                Address = "454 Elm St.",
+                TeacherId = 2
             },
             new UserProfile
             {
@@ -277,7 +284,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "a03371b3-edeb-4184-8917-14fa66adb89f",
                 FirstName = "Kyle",
                 LastName = "Vance",
-                Address = "303 Beech St."
+                Address = "303 Beech St.",
+                TeacherId = 2
             },
             new UserProfile
             {
@@ -285,7 +293,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "a541cf62-3506-462f-8901-eee6d9d5145f",
                 FirstName = "Walter",
                 LastName = "White",
-                Address = "754 N. Walnut St."
+                Address = "754 N. Walnut St.",
+                TeacherId = 2
             },
             new UserProfile
             {
@@ -293,7 +302,8 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "91a84af5-48ef-4bce-aa4e-7271d83d4d8c",
                 FirstName = "Corey",
                 LastName = "Graves",
-                Address = "900 S. Walnut St."
+                Address = "900 S. Walnut St.",
+                TeacherId = 2
             }
         );
 
