@@ -44,7 +44,7 @@ public class SessionController : ControllerBase
                 },
                 DateCompleted = s.DateCompleted,
                 Notes = s.Notes,
-                SessionActivities = s.SessionActivities.Count > 0 ? s.SessionActivities.Select(sa => new SessionActivityDTO
+                SessionActivities = s.SessionActivities.Select(sa => new SessionActivityDTO
                 {
                     Id = sa.Id,
                     SessionId = sa.SessionId,
@@ -63,7 +63,7 @@ public class SessionController : ControllerBase
                             Details = sa.Activity.Category.Details
                         }
                     }
-                }).ToList() : null
+                }).ToList()
             }).ToList()
             );
         }
@@ -74,14 +74,61 @@ public class SessionController : ControllerBase
     }
 
 
-    [HttpGet]
+    [HttpGet("{id}")]
     // [Authorize]
-    public IActionResult GetById()
+    public IActionResult GetById(int id)
     {
         try
         {
-            return Ok();
+            var s = _dbContext.Sessions
+            .Include(s => s.Musician)
+            .Include(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(a => a.Category)
+            .SingleOrDefault(s => s.Id == id);
+
+            if (s == null)
+            {
+                return NotFound("No session with matching SessionId");
+            }
+
+            return Ok(new SessionDTO 
+            {
+                Id = s.Id,
+                MusicianId = s.MusicianId,
+                Musician = new UserProfileDTO
+                {
+                    Id = s.Musician.Id,
+                    FirstName = s.Musician.FirstName,
+                    LastName = s.Musician.LastName,
+                    Address = s.Musician.Address,
+                    TeacherId = s.Musician.TeacherId,
+                    IdentityUserId = s.Musician.IdentityUserId
+                },
+                DateCompleted = s.DateCompleted,
+                Notes = s.Notes,
+                SessionActivities = s.SessionActivities.Select(sa => new SessionActivityDTO
+                {
+                    Id = sa.Id,
+                    SessionId = sa.SessionId,
+                    Duration = sa.Duration,
+                    ActivityId = sa.ActivityId,
+                    Activity = new ActivityObjDTO
+                    {
+                        Id = sa.Activity.Id,
+                        Name = sa.Activity.Name,
+                        Details = sa.Activity.Details,
+                        CategoryId = sa.Activity.CategoryId,
+                        Category = new CategoryDTO
+                        {
+                            Id = sa.Activity.Category.Id,
+                            Name = sa.Activity.Category.Name,
+                            Details = sa.Activity.Category.Details
+                        }
+                    }
+                }).ToList()
+            }
+            );
         }
+
         catch (Exception ex)
         {
             return BadRequest($"{ex}");
