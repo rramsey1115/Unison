@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+namespace Unison.Models.DTOs;
 
 public class CategoryDTO
 {

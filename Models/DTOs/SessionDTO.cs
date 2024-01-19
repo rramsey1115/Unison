@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Unison.Models;
 using Unison.Models.DTOs;
 
 public class SessionDTO
