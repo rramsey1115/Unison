@@ -13,7 +13,7 @@ public class SessionDTO
     [ForeignKey("MusicianId")]
     public UserProfile Musician { get; set; }
 
-    public DateTime Date { get; set; }
+    public DateTime? DateCompleted { get; set; }
 
     public string? Notes { get; set; }
 

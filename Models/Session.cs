@@ -12,7 +12,7 @@ public class Session
     [ForeignKey("MusicianId")]
     public UserProfile Musician { get; set; }
 
-    public DateTime Date { get; set; }
+    public DateTime? DateCompleted { get; set; }
 
     public string? Notes { get; set; }
 
@@ -22,7 +22,7 @@ public class Session
         get {
 
             int res = 0;
-            
+
             if(SessionActivities != null)
             {
                 foreach(SessionActivity sa in SessionActivities)

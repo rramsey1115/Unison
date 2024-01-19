@@ -73,402 +73,535 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
             },
             new
             {
-                id = 4,
+                Id = 4,
                 Name = "Clarke Studies",
                 Details = "Studies out of the Clarke method book, not intended to be played as fast as possible for long tone warm up",
-                CategoryId = 1
+                CategoryI = 1
             },
             new
             {
-                id = 5,
+                Id = 5,
                 Name = "Scale Patterns",
                 Details = "Choose a pattern and play in all keys",
                 CategoryId = 2
             },
             new
             {
-                id = 6,
+                Id = 6,
                 Name = "Hanon Patterns",
                 Details = "Patterns from the Hanon book",
                 CategoryId = 2
             },
             new
             {
-                id = 7,
+                Id = 7,
                 Name = "Fret Fingering Pattern",
                 Details = "Slowly build speed on using first three fingers on first three frets",
                 CategoryId = 2
             },
             new
             {
-                id = 8,
+                Id = 8,
                 Name = "No Thumb - Left Hand",
                 Details = "String instruments exercising left hand fingers without support of back thumb",
                 CategoryId = 2
             },
             new
             {
-                id = 9,
+                Id = 9,
                 Name = "Major",
                 Details = "Major Scales - full range of instrument",
                 CategoryId = 3
             },
             new
             {
-                id = 10,
+                Id = 10,
                 Name = "Harmonic Minor",
                 Details = "Harmonic Minor - full range of instrument",
                 CategoryId = 3
             },
             new
             {
-                id = 11,
+                Id = 11,
                 Name = "Melodic Minor",
                 Details = "Melodic Minor - full range of instrument",
                 CategoryId = 3
             },
             new
             {
-                id = 12,
+                Id = 12,
                 Name = "Natural Minor",
                 Details = "Natural Minor - full range of instrument",
                 CategoryId = 3
             },
             new
             {
-                id = 13,
+                Id = 13,
                 Name = "Major",
-                Details = "Major Chords - all keys",
+                Details = "Major Chords/Arpeggios - all keys",
                 CategoryId = 4
             },
             new
             {
-                id = 14,
-                Name = "",
-                Details = "",
+                Id = 15,
+                Name = "Dominant",
+                Details = "Dominant Chords/Arpeggios - all keys",
                 CategoryId = 4
             },
             new
             {
-                id = 15,
-                Name = "",
-                Details = "",
+                Id = 14,
+                Name = "Minor",
+                Details = "Minor Chords/Arpeggios - all keys",
                 CategoryId = 4
             },
             new
             {
-                id = 16,
-                Name = "",
-                Details = "",
+                Id = 16,
+                Name = "Half-Diminised",
+                Details = "Half-Diminished - all keys",
                 CategoryId = 4
             },
             new
             {
-                id = 17,
-                Name = "",
-                Details = "",
+                Id = 17,
+                Name = "Subtone",
+                Details = "Practice and/or listen to subtone examples",
                 CategoryId = 5
             },
             new
             {
-                id = 18,
-                Name = "",
-                Details = "",
+                Id = 18,
+                Name = "Slap Tongue",
+                Details = "Pratice slow isolated slap tongues and build speed",
                 CategoryId = 5
             },
             new
             {
-                id = 19,
-                Name = "",
-                Details = "",
+                Id = 19,
+                Name = "Flutter Tongue",
+                Details = "Practice isolated flutter tongue on one pitch, then add scales, etc.",
                 CategoryId = 5
             },
             new
             {
-                id = 20,
-                Name = "",
-                Details = "",
+                Id = 20,
+                Name = "Alternate Fingerings",
+                Details = "Testing alternate fingerings for tricky passages or tonal effects/intonation",
                 CategoryId = 5
             },
             new
             {
-                id = 21,
-                Name = "",
-                Details = "",
+                Id = 21,
+                Name = "2-5-1 Patterns",
+                Details = "Pick a 2-5-1 pattern and apply to all keys",
                 CategoryId = 6
             },
             new
             {
-                id = 22,
-                Name = "",
-                Details = "",
+                Id = 22,
+                Name = "Walk Bass Line",
+                Details = "Pick a set of changes or tune and walk a bass line over them",
                 CategoryId = 6
             },
             new
             {
-                id = 23,
-                Name = "",
-                Details = "",
+                Id = 23,
+                Name = "Improvise",
+                Details = "Pick a set of changes or tune to improvise over freely",
                 CategoryId = 6
             },
             new
             {
-                id = 24,
-                Name = "",
-                Details = "",
+                Id = 24,
+                Name = "Listen",
+                Details = "Listen and mimic high-quality recordings",
                 CategoryId = 6
             },
             new
             {
-                id = 25,
-                Name = "",
-                Details = "",
+                Id = 25,
+                Name = "Donna Lee",
+                Details = "Learn changes, form, melody, lyrics, etc.",
                 CategoryId = 7
             },
             new
             {
-                id = 26,
-                Name = "",
-                Details = "",
+                Id = 26,
+                Name = "Misty",
+                Details = "Learn changes, form, melody, lyric, etc.",
                 CategoryId = 7
             },
             new
             {
-                id = 27,
-                Name = "",
-                Details = "",
+                Id = 27,
+                Name = "Wonderwall",
+                Details = "You can't play guitar unless you play Wonderwall",
                 CategoryId = 7
             },
             new
             {
-                id = 28,
-                Name = "",
-                Details = "",
+                Id = 28,
+                Name = "Careless Whisper",
+                Details = "That one George Michael Song",
                 CategoryId = 7
             },
             new
             {
-                id = 29,
-                Name = "",
-                Details = "",
+                Id = 29,
+                Name = "Hummel Concerto",
+                Details = "Hummel Concerto for Trumpet",
                 CategoryId = 8
             },
             new
             {
-                id = 30,
-                Name = "",
-                Details = "",
+                Id = 30,
+                Name = "Bach Partita in D minor",
+                Details = "Partita for solo vionlin",
                 CategoryId = 8
             },
             new
             {
-                id = 31,
-                Name = "",
-                Details = "",
+                Id = 31,
+                Name = "Cage 4'33\"",
+                Details = "John Cage -4'33\" for piano",
                 CategoryId = 8
             },
             new
             {
-                id = 32,
-                Name = "",
-                Details = "",
+                Id = 32,
+                Name = "Berio Sequenza III",
+                Details = "Berio - Sequnza III for solo voice",
                 CategoryId = 8
             },
             new
             {
-                id = 33,
-                Name = "",
-                Details = "",
+                Id = 33,
+                Name = "Mozart String Quartet No. 15",
+                Details = "Mozart String Quartet No. 15",
                 CategoryId = 9
             },
             new
             {
-                id = 34,
-                Name = "",
-                Details = "",
+                Id = 34,
+                Name = "Ciudades for Saxophone Quartet",
+                Details = "Ciudades for saxophone quartet - movement II",
                 CategoryId = 9
             },
             new
             {
-                id = 35,
-                Name = "",
-                Details = "",
+                Id = 35,
+                Name = "Poulenc Sonata for four hands",
+                Details = "Poulenc Sonata for four hands",
                 CategoryId = 9
             },
             new
             {
-                id = 36,
-                Name = "",
-                Details = "",
+                Id = 36,
+                Name = "Six Bagatelles",
+                Details = "Six Bagatelles - Ligeti - for Woodwind quintet",
                 CategoryId = 9
             },
             new
             {
-                id = 37,
-                Name = "",
-                Details = "",
+                Id = 37,
+                Name = "Ferling Etude No. 14",
+                Details = "Ferling 48 Famous Studies Etudes for oboe",
                 CategoryId = 10
             },
             new
             {
-                id = 38,
-                Name = "",
-                Details = "",
+                Id = 38,
+                Name = "Voxman Etude No. 2",
+                Details = "From the saxophone Voxman Selected Studies book",
                 CategoryId = 10
             },
             new
             {
-                id = 39,
-                Name = "",
-                Details = "",
+                Id = 39,
+                Name = "Milde Concert Study 3",
+                Details = "Milde Concert studies for piano - No. 3",
                 CategoryId = 10
             },
             new
             {
-                id = 40,
-                Name = "",
-                Details = "",
+                Id = 40,
+                Name = "Chopin Etude No. 3",
+                Details = "Chopin Etude No. 3 for piano",
                 CategoryId = 10
             },
             new
             {
-                id = 41,
-                Name = "",
-                Details = "",
+                Id = 41,
+                Name = "Sight Reading Factory",
+                Details = "Custom exercises on SRF website",
                 CategoryId = 11
             },
             new
             {
-                id = 42,
-                Name = "",
-                Details = "",
+                Id = 42,
+                Name = "Intermediate Method",
+                Details = "Sight read lines from easier method book",
                 CategoryId = 11
             },
             new
             {
-                id = 43,
-                Name = "",
-                Details = "",
+                Id = 43,
+                Name = "New Pieces for band",
+                Details = "Sight read new pieces for band class",
                 CategoryId = 11
             },
             new
             {
-                id = 44,
-                Name = "",
-                Details = "",
+                Id = 44,
+                Name = "Googled Random tuba pieces",
+                Details = "Googled sight-reading excerpts for free online",
                 CategoryId = 11
             },
             new
             {
-                id = 45,
-                Name = "",
-                Details = "",
+                Id = 45,
+                Name = "Mahler 5 opening",
+                Details = "Trumpet opening to Mahler Symphony No. 5",
                 CategoryId = 12
             },
             new
             {
-                id = 46,
-                Name = "",
-                Details = "",
+                Id = 46,
+                Name = "Pictures - Promenade",
+                Details = "Trumpet opening to Promenade from Pictures at an Exhibition by Mussorgsky",
                 CategoryId = 12
             },
             new
             {
-                id = 47,
-                Name = "",
-                Details = "",
+                Id = 47,
+                Name = "Symphonie Fantastique",
+                Details = "Just find something hard in this piece and get better at it",
                 CategoryId = 12
             },
             new
             {
-                id = 48,
-                Name = "",
-                Details = "",
+                Id = 48,
+                Name = "Strauss - Don Juan",
+                Details = "Don Juan by Strauss - practiced the horn part",
                 CategoryId = 12
             },
             new
             {
-                id = 49,
-                Name = "",
-                Details = "",
+                Id = 49,
+                Name = "Maslanka 4",
+                Details = "Maslanka Symphony No. 4 for band concert coming up",
                 CategoryId = 13
             },
             new
             {
-                id = 50,
-                Name = "",
-                Details = "",
+                Id = 50,
+                Name = "Palestrina",
+                Details = "Missa Papae Marcelli - by Palestrina for upcoming gig",
                 CategoryId = 13
             },
             new
             {
-                id = 51,
-                Name = "",
-                Details = "",
+                Id = 51,
+                Name = "Beethoven 7",
+                Details = "Practice violin 1 part for upcoming concert in Chattanooga",
                 CategoryId = 13
             },
             new
             {
-                id = 52,
-                Name = "",
-                Details = "",
+                Id = 52,
+                Name = "Gymnopedie for guitar ensemble",
+                Details = "Practiced my part for our guitar ensemble recital",
                 CategoryId = 13
             },
             new
             {
-                id = 53,
-                Name = "",
-                Details = "",
+                Id = 53,
+                Name = "Learn Pink Panther",
+                Details = "Learned the Pink Panther theme on kazoo",
                 CategoryId = 14
             },
             new
             {
-                id = 54,
-                Name = "",
-                Details = "",
+                Id = 54,
+                Name = "Learn Mandalorian",
+                Details = "Learn Mandalorian theme on alto flute",
                 CategoryId = 14
             },
             new
             {
-                id = 55,
-                Name = "",
-                Details = "",
+                Id = 55,
+                Name = "Learn the Rick-Roll song",
+                Details = "Never gonna give you up",
                 CategoryId = 14
             },
             new
             {
-                id = 56,
-                Name = "",
-                Details = "",
+                Id = 56,
+                Name = "Scream Into the Mirror",
+                Details = "It helps",
                 CategoryId = 14
             },
             new
             {
-                id = 57,
-                Name = "",
-                Details = "",
+                Id = 57,
+                Name = "Take a break",
+                Details = "Walk, breathe, rest your eyes, whatever you need!",
                 CategoryId = 15
             },
             new
             {
-                id = 58,
-                Name = "",
-                Details = "",
+                Id = 58,
+                Name = "Stretch",
+                Details = "Stretch to prevent repetitive motion injuries",
                 CategoryId = 15
             },
             new
             {
-                id = 59,
-                Name = "",
-                Details = "",
+                Id = 59,
+                Name = "Deep-Breathing",
+                Details = "As a pre-warm up or warm-down, or if you get frustrated",
                 CategoryId = 15
             },
             new
             {
-                id = 60,
-                Name = "",
-                Details = "",
+                Id = 60,
+                Name = "Rick-Roll mom",
+                Details = "I did it on Bassoon, pick your poison",
                 CategoryId = 15
+            }
+        );
+
+        modelBuilder.Entity<Category>().HasData(
+            new
+            {
+                Id = 1,
+                Name = "Tonal Warm-Ups",
+                Details = "Start a session with solid tonal development, can also be used as a warm-down"
+            },
+            new
+            {
+                Id = 2,
+                Name = "Technical Warm-Ups",
+                Details = "Start a session getting technically warmed up, vocal chords, fingers, etc."
+            },
+            new
+            {
+                Id = 3,
+                Name = "Scales",
+                Details = "Fundamentals of musical development, scales in multiple forms, modes, ranges"
+            },
+            new 
+            {
+                Id = 4,
+                Name = "Chords/Arpeggios",
+                Details = "Isolated chords, arpeggios, voicings, etc."
+            },
+            new 
+            {
+                Id = 5,
+                Name = "Extended Techniques",
+                Details = "Any techniques not tradtionally taught for producing sound on your instrument or voice"
+            },
+            new 
+            {
+                Id = 6,
+                Name = "Improvisation",
+                Details = "Any activity to develop jazz, rock, pop, etc. improvisation"
+            },
+            new 
+            {
+                Id = 7,
+                Name = "Tune/Song Learning",
+                Details = "Learn class jazz tunes, or songs needed for commercial gigs"
+            },
+            new 
+            {
+                Id = 8,
+                Name = "Solo Repertoire",
+                Details = "Sonatas, Concertos, Solos, etc. for your specific instrument or voice"
+            },
+            new 
+            {
+                Id = 9,
+                Name = "Chamber Music Repertoire",
+                Details = "Learn or pratice any chamber music pieces for upcoming gigs, recitals, etc."
+            },
+            new 
+            {
+                Id = 10,
+                Name = "Etudes",
+                Details = "Essential for developing musicianship, technique, and musical literacy"
+            },
+            new 
+            {
+                Id = 11,
+                Name = "Sight-Reading",
+                Details = "Any variety of music you read down on the first try"
+            },
+            new 
+            {
+                Id = 12,
+                Name = "Orchestral Excerpts",
+                Details = "Specific well-known excerpts for you instrument from the symphonic repertoire"
+            },
+            new 
+            {
+                Id = 13,
+                Name = "Large Ensemble Repertoire",
+                Details = "Learning full-length large ensemle pieces for upcoming concerts"
+            },
+            new 
+            {
+                Id = 14,
+                Name = "Fun",
+                Details = "Whatever keeps you playing!"
+            },
+            new 
+            {
+                Id = 15,
+                Name = "Other",
+                Details = "Anything which doesn't fit securely into a previous category"
+            }
+        );
+
+        modelBuilder.Entity<Comment>().HasData(
+            new
+            {
+                Id = 1,
+                MusicianId = 1,
+                TeacherId = 1,
+                SessionId = 5,
+                DueDate = new DateTime(2024, 02, 15, 17, 00, 00),
+                Complete = false
+            }
+        );
+
+        modelBuilder.Entity<Assignment>().HasData(
+            new
+            {
+
+            }
+        );
+
+        modelBuilder.Entity<FavoriteSession>().HasData( 
+            new
+            {
+
+            }
+        );
+
+        modelBuilder.Entity<Session>().HasData(
+            new
+            {
+
+            }
+        );
+
+        modelBuilder.Entity<SessionActivity>().HasData(
+            new
+            {
+
             }
         );
 
