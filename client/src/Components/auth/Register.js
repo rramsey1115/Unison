@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { register } from "../../Managers/authManger";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import { getUsersWithRoles } from "../../Managers/profileManager";
 
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState("");
@@ -11,11 +12,24 @@ export default function Register({ setLoggedInUser }) {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [teacherId, setTeacherId] = useState("");
+  const [signUpWithTeacher, setSignUpWithTeacher] = useState(false);
+
+  const [teachers, setTeachers] = useState([]);
 
   const [passwordMismatch, setPasswordMismatch] = useState();
   const [registrationFailure, setRegistrationFailure] = useState(false);
 
+  useEffect(() => { getAndSetTeachers() }, [])
+
   const navigate = useNavigate();
+
+  const getAndSetTeachers = () => {
+    getUsersWithRoles().then(data => {
+      var filteredArr = data.filter(d => d.roles[0] == "Teacher");
+      setTeachers(filteredArr);
+    });
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +44,9 @@ export default function Register({ setLoggedInUser }) {
         email,
         address,
         password,
+        teacherId
       };
+      console.log('newUser', newUser);
       register(newUser).then((user) => {
         if (user) {
           setLoggedInUser(user);
@@ -42,6 +58,8 @@ export default function Register({ setLoggedInUser }) {
     }
   };
 
+
+  
   return (
     <div className="container" style={{ maxWidth: "500px" }}>
       <h3>Sign Up</h3>
@@ -95,6 +113,46 @@ export default function Register({ setLoggedInUser }) {
           }}
         />
       </FormGroup>
+      <FormGroup>
+        <Label>Sign Up With Teacher?</Label><br/>
+          <Input 
+            required
+            id="teacher-checkbox-yes" 
+            className="radio-input" 
+            type="radio"
+            name="teacher"
+            onClick={(e) => setSignUpWithTeacher(true)}
+            />Yes
+          <Input 
+            required
+            defaultChecked
+            id="teacher-checkbox-no" 
+            className="radio-input" 
+            type="radio"
+            name="teacher"
+            onClick={(e) => setSignUpWithTeacher(false)}
+            />No
+      </FormGroup>
+      {signUpWithTeacher == false ? null : 
+      <FormGroup>
+        <Label>Teacher</Label>
+        <select
+          required
+          name="teacher"
+          className="register-select"
+          onChange={(e) => {
+            setTeacherId(e.target.value*1);
+          }}>
+          <option value={0} name="teacher">Teachers</option>
+          {teachers.map(t => {
+            return (
+              <option key={t.id} value={t.id} name="teacher">
+                {`${t.firstName} ${t.lastName}`}
+              </option>
+            )
+          })}
+        </select>
+      </FormGroup>}
       <FormGroup>
         <Label>Password</Label>
         <Input
