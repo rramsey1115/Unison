@@ -73,4 +73,18 @@ public class SessionController : ControllerBase
         }
     }
 
+
+    [HttpGet]
+    // [Authorize]
+    public IActionResult GetById()
+    {
+        try
+        {
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"{ex}");
+        }
+    }
 }
