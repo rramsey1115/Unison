@@ -19,18 +19,44 @@ const toggleNavbar = () => setOpen(!open);
 
 return (
     <div>
-    <Navbar color="light" light fixed="true" expand="lg">
+    <Navbar color="info" light fixed="true" expand="lg">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-        Unison
+            Unison
         </NavbarBrand>
         {loggedInUser ? (
         <>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
-            <Nav navbar></Nav>
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/session">
+                            Sessions
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="">
+                            Stats
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/favorite">
+                            Favorites
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="">
+                            Assignments
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/browse/category">
+                            Browse
+                        </NavLink>
+                    </NavItem>
+                </Nav>
             </Collapse>
             <Button
-            color="primary"
+            color="secondary"
             onClick={(e) => {
                 e.preventDefault();
                 setOpen(false);
@@ -46,9 +72,9 @@ return (
         ) : (
         <Nav navbar>
             <NavItem>
-            <NavLink tag={RRNavLink} to="/login">
-                <Button color="primary">Login</Button>
-            </NavLink>
+                <NavLink tag={RRNavLink} to="/login">
+                    <Button color="primary">Login</Button>
+                </NavLink>
             </NavItem>
         </Nav>
         )}
