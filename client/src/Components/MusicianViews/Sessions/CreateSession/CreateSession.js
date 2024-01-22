@@ -3,6 +3,8 @@ import "./CreateSession.css";
 import startIcon from "../../../../images/start.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
 import { getActivityById } from "../../../../Managers/activityManager";
+import { createNewSession } from "../../../../Managers/sessionManager";
+import { useNavigate } from "react-router-dom";
 
 export const CreateSession = ({loggedInUser}) => {
     const [totalTime, setTotalTime] = useState(0);
@@ -24,6 +26,23 @@ export const CreateSession = ({loggedInUser}) => {
         setTotalTime(total);
     }, [newSession])
 
+    const handleStartSession = (e) => {
+        const copy = {
+            musicianId: loggedInUser.id,
+            sessionActivities: []
+        }
+        newSession.sessionActivities.map(sa => copy.sessionActivities.push(
+            {
+            activityId: sa.activityId,
+            activity: {id: sa.activityId, name: sa.activity.name, details:sa.activity.details , categoryId: sa.activity.categoryId},
+            duration: sa.duration
+            }
+        ))
+        console.log(copy);
+        createNewSession(copy).then(() => navigate('/session/active'))
+    }
+    const navigate = useNavigate();
+
     return (
         <div className="create-session-container">
 
@@ -38,9 +57,9 @@ export const CreateSession = ({loggedInUser}) => {
                 </header>
                 
                 {newSession.sessionActivities?.length > 0 
-                ?newSession.sessionActivities?.map(sa => {
+                ?newSession.sessionActivities.map(sa => {
                         return (
-                            <fieldset key={sa.id} className="sessionActivities">
+                            <fieldset key={sa.activityId} className="sessionActivities">
                                 <h4>{sa.activity.category?.name}</h4>
                                 <h4>{sa.activity.name}</h4>
                                 <h4>{sa.duration} minutes</h4>
@@ -54,9 +73,17 @@ export const CreateSession = ({loggedInUser}) => {
                     <SessionActivitySelect setNewSession={setNewSession} newSession={newSession}/>
                 </fieldset>
 
-                <fieldset id="button-fieldset" className="session-form-fieldset">
-                    <img id="session-start-btn" alt="start" src={startIcon}/>
+
+                {newSession.musicianId &&
+                newSession.sessionActivities.length > 0 
+                ? <fieldset id="button-fieldset" className="session-form-fieldset">
+                    <img 
+                        id="session-start-btn" 
+                        alt="start" 
+                        src={startIcon}
+                        onClick={(e) => handleStartSession(e)}/>
                 </fieldset>
+                : null}
 
             </section>
 

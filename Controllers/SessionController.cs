@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Unison.Data;
@@ -132,4 +133,26 @@ public class SessionController : ControllerBase
             return BadRequest($"{ex}");
         }
     }
+
+    [HttpPost]
+    [Authorize]
+    public IActionResult PostNewSession(Session session)
+    {
+        try
+        {
+            int newId = _dbContext.Sessions.Count() + 1;
+            session.Id = newId;
+            session.SessionActivities.Select(sa => sa.SessionId = newId);
+            _dbContext.Sessions.Add(session);
+            _dbContext.SaveChanges();
+            return Ok();
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
+
+
 }

@@ -16,5 +16,5 @@ public class ActivityObj
     public int CategoryId { get; set; }
 
     [ForeignKey("CategoryId")]
-    public Category Category { get; set; }
+    public Category? Category { get; set; }
 }
