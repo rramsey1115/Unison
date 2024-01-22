@@ -42,7 +42,7 @@ export const MySessions = ({ loggedInUser }) => {
 
     return (
         <section className="sessions-container">
-            
+
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
             </header>
@@ -66,7 +66,7 @@ export const MySessions = ({ loggedInUser }) => {
                         
                         {s.sessionActivities.map(a => {
                             return ( 
-                            <div className="session-div-activities" key={a.id}>
+                            <div id="session-div-activities" className="session-card" key={a.id}>
                                 <h5 >{a.activity.category.name}</h5>
                                 <p>{a.activity.name}</p>
                             </div>)}
