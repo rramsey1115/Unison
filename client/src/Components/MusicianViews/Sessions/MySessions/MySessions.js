@@ -47,11 +47,13 @@ export const MySessions = ({ loggedInUser }) => {
                 {sessions.map(s => {
                     return( 
                     <div key={s.id} className="session-div">
-                        <div className="session-div-remove">
+                        <div className="session-div-header">
+                            <h4 id="session-div-header-date">{getFormattedDate(s.dateCompleted)}</h4>
                             <img id="remove-icon" className="remove-icon" alt="remove icon" src={removeIcon}/>
                         </div>
-                        <h4>{getFormattedDate(s.dateCompleted)}</h4>
+                        
                         <h5>{s.duration} Minutes</h5>
+                        
                         {s.sessionActivities.map(a => {
                             return ( 
                             <div className="session-div-activities" key={a.id}>
@@ -59,11 +61,14 @@ export const MySessions = ({ loggedInUser }) => {
                                 <p>{a.activity.name}</p>
                             </div>)}
                         )}
-                        <h5>Notes</h5>
-                        <p>{s.notes}</p>
+                        <div className="session-div-notes">
+                            <h5>Notes</h5>
+                            <p>{s.notes}</p>
+                        </div>
+                        
                     </div> 
                 )})}
-                
+
             </section>
 
         </section>

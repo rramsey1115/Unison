@@ -14,37 +14,64 @@
     flex-wrap: wrap;
     /* overflow-x: scroll; */
     height: fit-content;
+    align-items: flex-start;
 }
 
 /* individual completed session cards */
 .session-div {
-    width: 25vw;
-    min-width: 280px;
+    width: 30%;
+    max-width: 380px;
+    min-width: 340px;
     height: 500px;
+    margin: 20px 4px 4px 24px;
     /* overflow-y: scroll; */
-    margin: 20px 16px 4px 16px;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid black;
     border-radius: 40px;
     background-color: var(--blueGray);
     box-shadow: 1px 1px 4px var(--brightBlue);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     transition: ease-in-out 0.25s;
 }
 
+.session-div-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.session-div-header > h4 {
+    margin: 0;
+}
+
 #remove-icon {
-    width: 25px;
-    height: 25px;
+    opacity: .5;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+#remove-icon:hover {
+    opacity: 1.0;
+    padding: 1px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: ease-in-out .3s;
 }
 
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
-    width: 20vw;
-    min-width: 280px;
+    width: 28%;
+    max-width: 360px;
+    min-width: 340px;
     height: 500px;
-    margin: 20px 16px 4px 16px;
+    margin: 20px 4px 4px 24px;
+    padding: 12px;
     border-radius: 40px;
     background-color: var(--blueGray);
     /* background-color: transparent; */
