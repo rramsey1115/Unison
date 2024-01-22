@@ -51,20 +51,20 @@ public class ActivityController : ControllerBase
 
     [HttpGet("{id}")]
     // [Authorize]
-    public IActionResult GetById(int id)
+    public IActionResult GetByCategoryId(int id)
     {
         try
         {
-            ActivityObj a = _dbContext.Activities
+            var array = _dbContext.Activities
             .Include(a => a.Category)
-            .SingleOrDefault(a => a.Id == id);
+            .Where(a => a.CategoryId == id).ToList();
 
-            if (a == null)
+            if (array == null)
             {
                 return NotFound("No activity matches given ActivityId");
             }
 
-            return Ok(new ActivityObjDTO
+            return Ok(array.Select(a => new ActivityObjDTO
             {
                 Id = a.Id,
                 Name = a.Name,
@@ -76,7 +76,8 @@ public class ActivityController : ControllerBase
                     Name = a.Category.Name,
                     Details = a.Category.Details
                 }
-            });
+            }).ToList()
+            );
         }
 
         catch (Exception ex)

@@ -1,0 +1,41 @@
+.create-session-container {
+    width: 95vw;
+    min-width: 380px;
+    margin: 10px auto;
+}
+
+.create-session-form {
+    width: 70%;
+    min-width: 340px;
+    margin: 10px auto;
+    padding: 12px 6px;
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: var(--blueGray);
+}
+
+.session-form-fieldset {
+
+}
+
+#button-fieldset {
+   display: flex;
+   justify-content: center; 
+}
+
+#session-start-btn {
+    margin: 10px auto;
+    width: 70px;
+    height: 60px;
+    padding: 2px;
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
+#session-start-btn:hover {
+    width: 70px;
+    height: 60px;
+    padding: 0px;
+    transition: ease-in-out .2s;
+}
