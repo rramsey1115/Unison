@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./CreateSession.css";
 import startIcon from "../../../../images/start.png";
-import { TimeSelect } from "./TimeSelect";
 import { SessionActivitySelect } from "./SessionActivitySelect";
+import { getActivityById } from "../../../../Managers/activityManager";
 
 export const CreateSession = ({loggedInUser}) => {
     const [totalTime, setTotalTime] = useState(0);
@@ -18,6 +18,12 @@ export const CreateSession = ({loggedInUser}) => {
         }
     }, [loggedInUser])
 
+    useEffect(() => {
+        var total = 0;
+        newSession.sessionActivities?.map(sa => total += sa.duration )
+        setTotalTime(total);
+    }, [newSession])
+
     return (
         <div className="create-session-container">
 
@@ -31,16 +37,17 @@ export const CreateSession = ({loggedInUser}) => {
                     <h3>Total Time: {totalTime} Minutes</h3>
                 </header>
                 
-                {newSession.sessionActivities?.length > 0 ??
-                    newSession.sessionActivities?.map(activity => {
+                {newSession.sessionActivities?.length > 0 
+                ?newSession.sessionActivities?.map(sa => {
                         return (
-                            <fieldset className="activity">
-                                <h4>{activity.name}</h4>
-                                <h4>{activity.category.name}</h4>
-                                <h4>{activity.duration} minutes</h4>
+                            <fieldset key={sa.id} className="sessionActivities">
+                                <h4>{sa.activity.category?.name}</h4>
+                                <h4>{sa.activity.name}</h4>
+                                <h4>{sa.duration} minutes</h4>
                             </fieldset>
                         )
                     })
+                :null
                 }
 
                 <fieldset id="activity-fieldset" className="session-form-fieldset">

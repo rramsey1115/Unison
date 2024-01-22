@@ -7,7 +7,6 @@ public class SessionActivityDTO
 {
     public int Id { get; set; }
 
-    [Required]
     public int SessionId { get; set; }
 
     [Required]

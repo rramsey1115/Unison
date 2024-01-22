@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Unison.Data;
 using Unison.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
-using Unison.Models;
 namespace Unison.Controllers;
 
 [ApiController]
@@ -49,7 +48,7 @@ public class ActivityController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("category/{id}")]
     // [Authorize]
     public IActionResult GetByCategoryId(int id)
     {
@@ -80,6 +79,40 @@ public class ActivityController : ControllerBase
             );
         }
 
+        catch (Exception ex)
+        {
+            return BadRequest($"{ex}");
+        }
+    }
+
+    [HttpGet("{id}")]
+    // [Authorize]
+
+    public IActionResult GetById(int id)
+    {
+        try
+        {
+            var f = _dbContext.Activities.Include(a => a.Category).SingleOrDefault(a => a.Id == id);
+
+            if(f == null)
+            {
+                return NotFound("No activity found with given id");
+            }
+
+            return Ok(new ActivityObjDTO
+            {
+                Id = f.Id,
+                Name = f.Name,
+                Details = f.Details,
+                CategoryId = f.CategoryId,
+                Category = new CategoryDTO
+                {
+                    Id = f.Category.Id,
+                    Name = f.Category.Name,
+                    Details = f.Category.Details
+                }
+            });
+        }
         catch (Exception ex)
         {
             return BadRequest($"{ex}");
