@@ -25,7 +25,7 @@ public class SessionController : ControllerBase
             return Ok(_dbContext.Sessions
             .Include(s => s.Musician).ThenInclude(m => m.Teacher)
             .Include(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(act => act.Category)
-            .OrderByDescending(s => s.Id)
+            .OrderByDescending(s => s.DateCompleted)
             .Select(s => new SessionDTO
             {
                 Id = s.Id,

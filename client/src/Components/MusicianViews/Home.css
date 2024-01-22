@@ -1,5 +1,6 @@
 .home-container {
     width: 95vw;
+    min-width: 330px;
     margin: 10px auto;
 }
 

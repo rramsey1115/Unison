@@ -1,0 +1,71 @@
+/* main body of page layout styling */
+.sessions-container {
+    width: 95vw;
+    min-width: 330px;
+    margin: 10px auto;
+}
+
+.sessions-header {
+
+}
+
+.sessions-body {
+    display:flex;
+    flex-wrap: wrap;
+    /* overflow-x: scroll; */
+    height: fit-content;
+}
+
+/* individual completed session cards */
+.session-div {
+    width: 25vw;
+    min-width: 280px;
+    height: 500px;
+    /* overflow-y: scroll; */
+    margin: 20px 16px 4px 16px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 40px;
+    background-color: var(--blueGray);
+    box-shadow: 1px 1px 4px var(--brightBlue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: ease-in-out 0.25s;
+}
+
+#remove-icon {
+    width: 25px;
+    height: 25px;
+}
+
+/* empty div for creating new session - whole div clickable */
+#create-session-div {
+    width: 20vw;
+    min-width: 280px;
+    height: 500px;
+    margin: 20px 16px 4px 16px;
+    border-radius: 40px;
+    background-color: var(--blueGray);
+    /* background-color: transparent; */
+    opacity: .33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: ease-in-out 0.25s;
+}
+
+#create-session-div:hover {
+    transition: ease-in-out 0.25s;
+    opacity: 0.5;
+}
+
+#create-session-div:active {
+    opacity: 1.0;
+}
+
+.plus-icon {
+    width: 60px;
+    height: 60px;
+}
