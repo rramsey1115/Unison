@@ -9,21 +9,24 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: none;
+    flex-basis: 3;
 }
 
 .home-card {
     width: 250px;
     height: 150px;
-    margin: 20px 0px;
+    margin: 30px 30px;
     background-color: white;
     border: 1px solid black;
     box-shadow: 1px 1px 4px 0px var(--lightBlue);
     transition: ease-in-out .2s;
+    cursor: pointer;
 }
 
 .home-card:hover {
     background-color: var(--brightBlue);
     transition: ease-in-out .2s;
+    cursor: pointer;
 }
 
 .home-card:active {
