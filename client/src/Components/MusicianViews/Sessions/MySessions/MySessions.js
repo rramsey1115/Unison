@@ -44,6 +44,7 @@ export const MySessions = ({ loggedInUser }) => {
         <section className="sessions-container">
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
+                {console.log(userId)}
             </header>
 
             <section className="sessions-cards">
@@ -76,7 +77,17 @@ export const MySessions = ({ loggedInUser }) => {
                         </div>
 
                         <div className="session-div-btns">
-                            <img id="favorite-icon" className="favorite-icon" alt="favorite icon" src={filledFav}/>
+                            {favoriteSessions?.map(fs => {
+                                if(s.id === fs.sessionId )
+                                {
+                                    return <img key={s.id} id="favorite-icon" className="favorite-icon" alt="favorite icon" src={filledFav}/>
+                                }
+                                else
+                                {
+                                    return <img key={s.id} id="favorite-icon" className="favorite-icon" alt="favorite icon" src={emptyFav}/>
+                                }
+                            })}
+                            
                             <img id="repeat-icon" className="repeat-icon" alt="repeat icon" src={repeatIcon}/>
                             <img id="delete-icon" className="delete-icon" alt="delete icon" src={deleteIcon}/>
                         </div>
