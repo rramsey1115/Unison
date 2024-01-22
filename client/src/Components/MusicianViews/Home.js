@@ -1,6 +1,5 @@
-import { Card, CardBody, CardDeck, CardFooter, CardHeader, CardImg, CardImgOverlay, CardText, CardTitle } from "reactstrap"
+import { Card } from "reactstrap"
 import "./Home.css";
-import create from "../../images/create.gif";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
