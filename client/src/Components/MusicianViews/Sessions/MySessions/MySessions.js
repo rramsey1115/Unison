@@ -1,14 +1,19 @@
 import "./MySessions.css";
 import plusIcon from "../../../../images/plus-icon.png";
-import removeIcon from "../../../../images/remove-icon.png";
+import filledFav from "../../../../images/filled-favorite.png"
+import deleteIcon from "../../../../images/delete.png";
+import repeatIcon from "../../../../images/start.png";
+import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
 import { getAllSessions } from "../../../../Managers/sessionManager";
+import { getFavoritesByMusicianId } from "../../../../Managers/favoriteSessionsManager";
 
 export const MySessions = ({ loggedInUser }) => {
+    const [favoriteSessions, setFavoriteSessions] = useState([]);
     const [sessions, setSessions] = useState([]);
     const userId = loggedInUser.id;
 
-    useEffect(() => { getAndSetSessions() }, [userId])
+    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId) }, [userId])
 
     const getAndSetSessions = () => {
         getAllSessions().then((data) => {
@@ -18,6 +23,10 @@ export const MySessions = ({ loggedInUser }) => {
               });
             setSessions(filtered);
         });
+    }
+
+    const getAndSetFavoriteSessions = () => {
+        getFavoritesByMusicianId(userId).then(data =>setFavoriteSessions(data));
     }
 
     const getFormattedDate = (dateString) => {
@@ -37,7 +46,7 @@ export const MySessions = ({ loggedInUser }) => {
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
             </header>
 
-            <section className="sessions-body">
+            <section className="sessions-cards">
 
                 <div id="create-session-div">
                     <img id="plus-icon" className="plus-icon" alt="plus icon" src={plusIcon}/>
@@ -49,7 +58,7 @@ export const MySessions = ({ loggedInUser }) => {
                     <div key={s.id} className="session-div">
                         <div className="session-div-header">
                             <h4 id="session-div-header-date">{getFormattedDate(s.dateCompleted)}</h4>
-                            <img id="remove-icon" className="remove-icon" alt="remove icon" src={removeIcon}/>
+  
                         </div>
                         
                         <h5>{s.duration} Minutes</h5>
@@ -64,6 +73,12 @@ export const MySessions = ({ loggedInUser }) => {
                         <div className="session-div-notes">
                             <h5>Notes</h5>
                             <p>{s.notes}</p>
+                        </div>
+
+                        <div className="session-div-btns">
+                            <img id="favorite-icon" className="favorite-icon" alt="favorite icon" src={filledFav}/>
+                            <img id="repeat-icon" className="repeat-icon" alt="repeat icon" src={repeatIcon}/>
+                            <img id="delete-icon" className="delete-icon" alt="delete icon" src={deleteIcon}/>
                         </div>
                         
                     </div> 

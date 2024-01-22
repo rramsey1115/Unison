@@ -1,7 +1,7 @@
 /* main body of page layout styling */
 .sessions-container {
     width: 95vw;
-    min-width: 330px;
+    min-width: 380px;
     margin: 10px auto;
 }
 
@@ -9,23 +9,19 @@
 
 }
 
-.sessions-body {
+.sessions-cards {
     display:flex;
     flex-wrap: wrap;
-    /* overflow-x: scroll; */
     height: fit-content;
-    align-items: flex-start;
 }
 
 /* individual completed session cards */
 .session-div {
-    width: 30%;
-    max-width: 380px;
-    min-width: 340px;
+    width: 340px;
     height: 500px;
-    margin: 20px 4px 4px 24px;
+    margin: 10px 4px 4px 10px;
     /* overflow-y: scroll; */
-    padding: 12px;
+    padding: 20px 10px;
     border: 1px solid black;
     border-radius: 40px;
     background-color: var(--blueGray);
@@ -46,31 +42,32 @@
     margin: 0;
 }
 
-#remove-icon {
-    opacity: .5;
-    width: 30px;
-    height: 30px;
-    padding: 2px;
-    cursor: pointer;
-    transition: ease-in-out .3s;
+.session-div-btns {
+    display: flex;
+    
 }
 
-#remove-icon:hover {
-    opacity: 1.0;
-    padding: 1px;
-    width: 30px;
-    height: 30px;
+.session-div-btns > img {
+    width: 50px;
+    height: 50px;
+    padding: 2px;
     cursor: pointer;
-    transition: ease-in-out .3s;
+    transition: ease-in-out .2s;
+}
+
+.session-div-btns > img:hover {
+    padding: 2px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: ease-in-out .2s;
 }
 
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
-    width: 28%;
-    max-width: 360px;
-    min-width: 340px;
+    width: 330px;
     height: 500px;
-    margin: 20px 4px 4px 24px;
+    margin: 10px 4px 4px 10px;
     padding: 12px;
     border-radius: 40px;
     background-color: var(--blueGray);
