@@ -31,7 +31,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
       <Route path="session">
           <Route index loggedInUser={loggedInUser} element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <MySessions />
+              <MySessions loggedInUser={loggedInUser}/>
             </AuthorizedRoute>} 
           />
           <Route path=":id" loggedInUser={loggedInUser} element={
