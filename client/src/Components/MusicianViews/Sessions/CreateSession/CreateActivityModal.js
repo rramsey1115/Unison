@@ -26,7 +26,7 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities}) => {
         e.preventDefault();
         await postNewActivity(newActivity)
         await getAndSetActivities(categoryId)
-        toggle(); 
+        toggle();
     }
 
     return (
@@ -37,7 +37,7 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities}) => {
       <Modal isOpen={modal} toggle={toggle} style={{color:'black'}} backdrop="static">
         <ModalHeader toggle={toggle}>
             <h5>Add to category:</h5>
-            <h5>{category.name}</h5>
+            {category.name}
         </ModalHeader>
         <ModalBody className='modal-body'>
             

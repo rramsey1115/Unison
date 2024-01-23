@@ -56,25 +56,28 @@ export const MySessions = ({ loggedInUser }) => {
                 {/* returns card for each session */}
                 {sessions.map(s => {
                     return( 
-                    <div key={s.id} className="session-div">
-                        <div className="session-div-header">
-                            <h4 id="session-div-header-date">{getFormattedDate(s.dateCompleted)}</h4>
-  
-                        </div>
-                        
-                        <h5>{s.duration} Minutes</h5>
-                        
-                        {s.sessionActivities.map(a => {
-                            return ( 
-                            <div id="session-div-activities" className="session-card" key={a.id}>
-                                <h5 >{a.activity.category.name}</h5>
-                                <p>{a.activity.name}</p>
-                            </div>)}
-                        )}
-                        <div className="session-div-notes">
-                            <h5>Notes</h5>
-                            <p>{s.notes}</p>
-                        </div>
+                    <div className="session">
+                        <div key={s.id} className="session-div">
+
+                            <div className="session-div-header">
+                                <h4 id="session-div-header-date">{getFormattedDate(s.dateCompleted)}</h4>
+                            </div>
+                            
+                            <h5>{s.duration} Minutes</h5>
+                            
+                            {s.sessionActivities.map(a => {
+                                return ( 
+                                <div id="session-div-activities" className="session-card" key={a.id}>
+                                    <h5 >{a.activity.category.name}</h5>
+                                    <p>{a.activity.name}</p>
+                                </div>)}
+                            )}
+
+                            <div className="session-div-notes">
+                                <h5>Notes</h5>
+                                <p>{s.notes}</p>
+                            </div>
+                        </div> 
 
                         <div className="session-div-btns">
                             {favoriteSessions?.map(fs => {
@@ -99,11 +102,12 @@ export const MySessions = ({ loggedInUser }) => {
                                     />
                                 }
                             })}
+
                             <img id="repeat-icon" className="repeat-icon" alt="repeat icon" src={repeatIcon}/>
                             <img id="delete-icon" className="delete-icon" alt="delete icon" src={deleteIcon}/>
+
                         </div>
-                        
-                    </div> 
+                    </div>
                 )})}
 
             </section>

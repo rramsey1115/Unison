@@ -1,5 +1,93 @@
+/* active session view */
 .active-container {
     width: 95vw;
     min-width: 380px;
     margin: 10px auto;
+}
+
+.active-container-form {
+    width: 70%;
+    min-width: 340px;
+    margin: 30px auto 60px auto;
+    padding: 12px 12px;
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: var(--blueGray);
+}
+
+.active-container-header {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.active-activity {
+    width: 96%;
+    padding: 4px;
+    margin: 2px auto;
+    border-top: thin solid var(--lightBlue);
+}
+
+.active-activity:last-child {
+    border-bottom: thin solid var(--lightBlue);
+}
+
+.active-activity > p {
+    padding: 0px 0px 0px 12px;
+    margin: 4px auto;
+}
+
+.active-activity > h4 {
+    margin: 6px auto;
+}
+
+.active-notes {
+    margin: 10px auto;
+    text-align: center;
+}
+
+#active-notes-textarea {
+    width: 90%;
+    min-width: 300px;
+    height: 150px;
+    min-height: 150px;
+    border: thin solid var(--lightBlue);
+    border-radius: 10px;
+    padding: 6px;
+    font-size: 16px;
+}
+
+#active-notes-textarea:focus-visible {
+    outline: 1px solid var(--brightBlue);
+    outline-offset: 2px;
+}
+
+.active-btn-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.active-btn {
+    width: 100px;
+    box-shadow: 1px 1px 2px var(--lightBlue);
+}
+
+#active-btn-complete {
+    background-color:  var(--brightBlue);
+    transition: ease-in-out .2s;
+}
+
+#active-btn-complete:hover {
+    transition: ease-in-out .2s;
+    filter: brightness(.75);
+}
+
+#active-btn-exit {
+    background-color: var(--lightBlue);
+    transition: ease-in-out .2s;
+}
+
+#active-btn-exit:hover {
+    transition: ease-in-out .2s;
+    filter: brightness(.75);
 }
