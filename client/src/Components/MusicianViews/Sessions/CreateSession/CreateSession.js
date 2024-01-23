@@ -58,13 +58,13 @@ export const CreateSession = ({loggedInUser}) => {
                 {newSession.sessionActivities?.length > 0 
                 ?newSession.sessionActivities.map(sa => {
                         return (
-                            <fieldset key={sa.activityId} className="session-form-fieldset">
-                                <div className="sesstionActivities-info">
+                            <fieldset key={sa.activityId} id="session-activities" className="session-form-fieldset">
+                                <div className="sesstion-activities-info">
                                     <h4>{sa.activity.category?.name}</h4>
                                     <h4>{sa.activity.name}</h4>
                                     <h4>{sa.duration} minutes</h4>
                                 </div>
-                                <div className="sessionActivities-icon">
+                                <div className="session-activities-icon">
                                     <img 
                                         id="remove-activity-icon" 
                                         className="remove-icon" 
