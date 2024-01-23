@@ -43,8 +43,7 @@ export const CreateSession = ({loggedInUser}) => {
 
     const handleRemoveActivity = (index) => {
         console.log(index);
-        const copy = newSession.sessionActivities.splice(index, 1);
-        // setNewSession(copy);
+        console.log(newSession.sessionActivities.splice(index, 1));
     }
 
     const navigate = useNavigate();
@@ -77,8 +76,8 @@ export const CreateSession = ({loggedInUser}) => {
                                     className="session-activities-btn"
                                     value={count}
                                     onClick={(e) => {
-                                        console.log('target', parseInt(e.target.value) - 1)
-                                        handleRemoveActivity(e.target.value*1 - 1);
+                                        console.log('target', parseInt(e.currentTarget.value) - 1)
+                                        handleRemoveActivity(e.currentTarget.value*1 - 1);
                                     }}
                                 >
                                     <img 
