@@ -21,3 +21,12 @@ export const createNewSession = (obj) => {
         body: JSON.stringify(obj)
     }).then(res => res.json());
 }
+
+// edit session - used to add notes at end of active session
+export const completeSession = (obj) => {
+    return fetch(`/api/session/${obj.id}/complete`, {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(obj)
+    });
+}

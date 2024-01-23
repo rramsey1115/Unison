@@ -154,5 +154,31 @@ public class SessionController : ControllerBase
         }
     }
 
+    [HttpPut("{id}/complete")]
+    [Authorize]
+    public IActionResult EditSession(Session session)
+    {
 
+        try
+        {
+            var found = _dbContext.Sessions.SingleOrDefault(s => s.Id == session.Id);
+            if(found == null)
+            {
+                return NotFound("No session matches the given session.Id");
+            }
+
+            found.Notes = session.Notes;
+            _dbContext.SaveChanges();
+            
+            found.DateCompleted = DateTime.Now;
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
 }
