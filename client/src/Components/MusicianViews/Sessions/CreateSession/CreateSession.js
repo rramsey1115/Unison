@@ -40,7 +40,15 @@ export const CreateSession = ({loggedInUser}) => {
         console.log(copy);
         createNewSession(copy).then((data) => navigate(`/session/${data.id}`))
     }
+
+    const handleRemoveActivity = (index) => {
+        console.log(index);
+        const copy = newSession.sessionActivities.splice(index, 1);
+        // setNewSession(copy);
+    }
+
     const navigate = useNavigate();
+    let count = 0;
 
     return (
         <div className="create-session-container">
@@ -57,21 +65,29 @@ export const CreateSession = ({loggedInUser}) => {
                 
                 {newSession.sessionActivities?.length > 0 
                 ?newSession.sessionActivities.map(sa => {
+                        count++;
                         return (
                             <fieldset key={sa.activityId} id="session-activities" className="session-form-fieldset">
                                 <div className="sesstion-activities-info">
-                                    <h4>{sa.activity.category?.name}</h4>
-                                    <h4>{sa.activity.name}</h4>
-                                    <h4>{sa.duration} minutes</h4>
+                                    <h3>{sa.activity.category?.name}</h3>
+                                    <h5>{sa.activity.name}</h5>
+                                    <h5>{sa.duration} minutes</h5>
                                 </div>
-                                <div className="session-activities-icon">
+                                <button 
+                                    className="session-activities-btn"
+                                    value={count}
+                                    onClick={(e) => {
+                                        console.log('target', parseInt(e.target.value) - 1)
+                                        handleRemoveActivity(e.target.value*1 - 1);
+                                    }}
+                                >
                                     <img 
                                         id="remove-activity-icon" 
                                         className="remove-icon" 
                                         src={removeIcon} 
                                         alt="remove icon" 
                                     />
-                                </div>
+                                </button>
                             </fieldset>
                         )
                     })

@@ -32,12 +32,14 @@
    justify-content: center; 
 }
 
-.session-activities-icon {
+.session-activities-btn {
     text-align: center;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding: 2px;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
 
 #remove-activity-icon:hover {
