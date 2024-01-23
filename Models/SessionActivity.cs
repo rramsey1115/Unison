@@ -13,7 +13,7 @@ public class SessionActivity
     public int ActivityId { get; set; }
 
     [ForeignKey("ActivityId")]
-    public ActivityObj Activity { get; set; }
+    public ActivityObj? Activity { get; set; }
 
     [Required]
     public int Duration { get; set; }

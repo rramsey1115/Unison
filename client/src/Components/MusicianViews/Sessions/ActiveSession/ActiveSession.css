@@ -1,0 +1,5 @@
+.active-container {
+    width: 95vw;
+    min-width: 380px;
+    margin: 10px auto;
+}

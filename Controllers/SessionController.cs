@@ -145,7 +145,7 @@ public class SessionController : ControllerBase
             session.SessionActivities.Select(sa => sa.SessionId = newId);
             _dbContext.Sessions.Add(session);
             _dbContext.SaveChanges();
-            return Ok();
+            return Created($"/api/session/{session.Id}", session);
         }
 
         catch (Exception ex)

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./CreateSession.css";
 import startIcon from "../../../../images/start.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
-import { getActivityById } from "../../../../Managers/activityManager";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
 
@@ -34,12 +33,11 @@ export const CreateSession = ({loggedInUser}) => {
         newSession.sessionActivities.map(sa => copy.sessionActivities.push(
             {
             activityId: sa.activityId,
-            activity: {id: sa.activityId, name: sa.activity.name, details:sa.activity.details , categoryId: sa.activity.categoryId},
             duration: sa.duration
             }
         ))
         console.log(copy);
-        createNewSession(copy).then(() => navigate('/session/active'))
+        createNewSession(copy).then((data) => navigate(`/session/${data.id}`))
     }
     const navigate = useNavigate();
 
