@@ -12,7 +12,7 @@ export default function Register({ setLoggedInUser }) {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [teacherId, setTeacherId] = useState("");
+  const [teacherId, setTeacherId] = useState(null);
   const [signUpWithTeacher, setSignUpWithTeacher] = useState(false);
 
   const [teachers, setTeachers] = useState([]);
@@ -34,18 +34,31 @@ export default function Register({ setLoggedInUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
+    if (password !== confirmPassword) 
+    {
       setPasswordMismatch(true);
-    } else {
+    } 
+    else 
+    {
       const newUser = {
         firstName,
         lastName,
         userName,
         email,
         address,
-        password,
-        teacherId
-      };
+        password
+      }
+      if(teacherId) {
+        newUser = {
+          firstName,
+          lastName,
+          userName,
+          email,
+          address,
+          password,
+          teacherId
+        }
+      }
       console.log('newUser', newUser);
       register(newUser).then((user) => {
         if (user) {

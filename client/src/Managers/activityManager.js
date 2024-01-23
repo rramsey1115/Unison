@@ -12,3 +12,12 @@ export const getActivityByCategoryId = (id) => {
 export const getActivityById = (id) => {
     return fetch(`/api/activity/${id}`).then(res => res.json());
 }
+
+// post new activity
+export const postNewActivity = (obj) => {
+    return fetch(`/api/activity`, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(obj)
+    }).then(res => res.json());
+}

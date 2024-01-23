@@ -74,3 +74,25 @@
     padding: 0px;
     transition: ease-in-out .2s;
 }
+
+/*  add a new activity modal/popup window */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: fit-content;
+}
+
+#activity-name-input {
+    width: 70%;
+    min-width: 250px;
+    margin: 10px auto;
+}
+
+#activity-details-input {
+    width: 70%;
+    min-width: 250px;
+    height: 200px;
+    margin: 10px auto;
+}

@@ -10,6 +10,7 @@ export const CreateSession = ({loggedInUser}) => {
     const [totalTime, setTotalTime] = useState(0);
     const [newSession, setNewSession] = useState({});
 
+
     useEffect(() => {
         if(loggedInUser.id)
         {
@@ -26,6 +27,8 @@ export const CreateSession = ({loggedInUser}) => {
         setTotalTime(total);
     }, [newSession])
 
+
+
     const handleStartSession = (e) => {
         const copy = {
             musicianId: loggedInUser.id,
@@ -37,7 +40,6 @@ export const CreateSession = ({loggedInUser}) => {
             duration: sa.duration
             }
         ))
-        console.log(copy);
         createNewSession(copy).then((data) => navigate(`/session/${data.id}`))
     }
 
@@ -50,10 +52,13 @@ export const CreateSession = ({loggedInUser}) => {
     }
 
     const navigate = useNavigate();
-    let count = 0;
+
+
 
     return (
         <div className="create-session-container">
+
+
 
             <header className="create-session-header">
                 <h1>Create Session</h1>
@@ -67,7 +72,6 @@ export const CreateSession = ({loggedInUser}) => {
                 
                 {newSession.sessionActivities?.length > 0 
                 ?newSession.sessionActivities.map(sa => {
-                        count++;
                         return (
                             <fieldset key={sa.activityId} id="session-activities" className="session-form-fieldset">
                                 <div className="sesstion-activities-info">

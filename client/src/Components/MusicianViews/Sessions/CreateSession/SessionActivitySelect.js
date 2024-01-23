@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { getAllCategories } from "../../../../Managers/categoryManager";
 import { getActivityByCategoryId, getActivityById } from "../../../../Managers/activityManager";
+import "./CreateSession.css";
+import { CreateActivityModal } from "./CreateActivityModal";
 
 export const SessionActivitySelect = ({newSession, setNewSession}) => {
     const [categories, setCategories] = useState([]);
@@ -9,6 +11,7 @@ export const SessionActivitySelect = ({newSession, setNewSession}) => {
     const [duration, setDuration] = useState(0)
     const [buttonHidden, setButtonHidden] = useState(true);
     const [activities, setActivities] = useState([]);
+    const [modal, setModal] = useState(true);
 
     useEffect(() => { getAndSetCategories() }, []);
 
@@ -43,11 +46,21 @@ export const SessionActivitySelect = ({newSession, setNewSession}) => {
             duration: duration,
         });
         setNewSession(copy);
+        setButtonHidden(true);
+        setCategoryId(0);
+        setActivityId(0);
+        setDuration(0);
+    }
+
+    const toggleModal = () => {
+        setModal(!modal);
     }
 
     return (
     <>
+
         <select 
+            value={categoryId}
             onChange={(e)=> {
                 handleCategoryChange(e)
             }}>
@@ -66,19 +79,24 @@ export const SessionActivitySelect = ({newSession, setNewSession}) => {
 <br/>
 
         {categoryId > 0 
-        ? <select
-            onChange={(e) => setActivityId(e.target.value*1)}>
-            <option>Activities</option>
-            {activities?.map(a => {
-                return ( 
-                <option 
-                    key={a.id}
-                    value={a.id}
-                >
-                    {a.name}
-                </option>)
-            })}
-        </select>
+        ? <>
+            <select
+                onChange={(e) => setActivityId(e.target.value*1)}>
+                <option>Activities</option>
+                {activities?.map(a => {
+                    return ( 
+                    <option 
+                        key={a.id}
+                        value={a.id}
+                    >
+                        {a.name}
+                    </option>)
+                })}
+            </select>
+ 
+            <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivities}/>
+            
+        </>
         : null
         }
 

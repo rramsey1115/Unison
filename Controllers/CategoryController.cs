@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Unison.Data;
+using Unison.Models;
 using Unison.Models.DTOs;
 namespace Unison.Controllers;
 
@@ -39,7 +41,7 @@ public class CategoryController : ControllerBase
     }
 
 
-        [HttpGet("{id}")]
+    [HttpGet("{id}")]
     // [Authorize]
     public IActionResult GetById(int id)
     {
@@ -65,4 +67,6 @@ public class CategoryController : ControllerBase
             return BadRequest($"{ex}");
         }
     }
+
+
 }
