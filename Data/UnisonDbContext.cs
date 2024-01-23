@@ -7,6 +7,7 @@ namespace Unison.Data;
 public class UnisonDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
+
     public DbSet<UserProfile> UserProfiles { get; set; }
 
     public DbSet<ActivityObj> Activities { get; set; }

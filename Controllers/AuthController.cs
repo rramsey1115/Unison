@@ -140,7 +140,7 @@ public class AuthController : ControllerBase
                 LastName = registration.LastName,
                 Address = registration.Address,
                 IdentityUserId = user.Id,
-                TeacherId = registration.TeacherId
+                TeacherId = registration.TeacherId > 0 ? registration.TeacherId : null
             });
             _dbContext.SaveChanges();
 
