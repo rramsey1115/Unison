@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import "./ActiveSession.css";
 import { getSessionById } from "../../../../Managers/sessionManager";
 import { useEffect, useState } from "react";
+import { Button } from "reactstrap";
 
 export const ActiveSession = ({loggedInUser}) => {
     const sessionId = useParams().id;
@@ -44,6 +45,21 @@ export const ActiveSession = ({loggedInUser}) => {
                             placeholder="Session Notes"
 
                         />
+                    </div>
+
+                    <div className="active-btn-container">
+                        <Button 
+                            id="active-btn-complete" 
+                            className="active-btn" 
+                        >
+                            Complete
+                        </Button>
+                        <Button 
+                            id="active-btn-exit" 
+                            className="active-btn"
+                        >
+                            Exit
+                        </Button>
                     </div>
                 </section>
 
