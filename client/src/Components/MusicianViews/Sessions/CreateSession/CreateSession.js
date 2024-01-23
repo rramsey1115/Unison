@@ -41,9 +41,12 @@ export const CreateSession = ({loggedInUser}) => {
         createNewSession(copy).then((data) => navigate(`/session/${data.id}`))
     }
 
-    const handleRemoveActivity = (index) => {
-        console.log(index);
-        console.log(newSession.sessionActivities.splice(index, 1));
+    const handleRemoveActivity = (id) => {
+        console.log(id);
+        const copy = {...newSession};
+        var arr = newSession.sessionActivities.filter( a => a.activityId !== id);
+        copy.sessionActivities = arr;
+        setNewSession(copy);
     }
 
     const navigate = useNavigate();
@@ -74,10 +77,10 @@ export const CreateSession = ({loggedInUser}) => {
                                 </div>
                                 <button 
                                     className="session-activities-btn"
-                                    value={count}
+                                    value={sa.activityId}
                                     onClick={(e) => {
-                                        console.log('target', parseInt(e.currentTarget.value) - 1)
-                                        handleRemoveActivity(e.currentTarget.value*1 - 1);
+                                        console.log('target', e.currentTarget.value * 1)
+                                        handleRemoveActivity(e.currentTarget.value * 1)
                                     }}
                                 >
                                     <img 
