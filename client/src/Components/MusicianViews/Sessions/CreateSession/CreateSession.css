@@ -16,7 +16,8 @@
 }
 
 .session-form-fieldset {
-
+    margin: 5px auto;
+    padding: 4px 0px;
 }
 
 #button-fieldset {

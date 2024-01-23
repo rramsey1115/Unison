@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./CreateSession.css";
 import startIcon from "../../../../images/start.png";
+import removeIcon from "../../../../images/delete.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
@@ -57,10 +58,20 @@ export const CreateSession = ({loggedInUser}) => {
                 {newSession.sessionActivities?.length > 0 
                 ?newSession.sessionActivities.map(sa => {
                         return (
-                            <fieldset key={sa.activityId} className="sessionActivities">
-                                <h4>{sa.activity.category?.name}</h4>
-                                <h4>{sa.activity.name}</h4>
-                                <h4>{sa.duration} minutes</h4>
+                            <fieldset key={sa.activityId} className="session-form-fieldset">
+                                <div className="sesstionActivities-info">
+                                    <h4>{sa.activity.category?.name}</h4>
+                                    <h4>{sa.activity.name}</h4>
+                                    <h4>{sa.duration} minutes</h4>
+                                </div>
+                                <div className="sessionActivities-icon">
+                                    <img 
+                                        id="remove-activity-icon" 
+                                        className="remove-icon" 
+                                        src={removeIcon} 
+                                        alt="remove icon" 
+                                    />
+                                </div>
                             </fieldset>
                         )
                     })
