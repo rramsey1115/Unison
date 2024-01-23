@@ -26,7 +26,7 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities}) => {
         e.preventDefault();
         await postNewActivity(newActivity)
         await getAndSetActivities(categoryId)
-        toggle(); 
+        toggle();
     }
 
     return (
