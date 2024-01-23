@@ -4,6 +4,7 @@ using Unison.Data;
 using Unison.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Unison.Models;
 namespace Unison.Controllers;
 
 [ApiController]
@@ -117,6 +118,24 @@ public class ActivityController : ControllerBase
         catch (Exception ex)
         {
             return BadRequest($"{ex}");
+        }
+    }
+
+
+    
+    [HttpPost]
+    // [Authorize]
+    public IActionResult PostNewActivity(ActivityObj newActivity)
+    {
+        try
+        {
+            _dbContext.Activities.Add(newActivity);
+            _dbContext.SaveChanges();
+            return Created($"/api/activities/{newActivity.Id}", newActivity);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad Data: {ex}");
         }
     }
 }
