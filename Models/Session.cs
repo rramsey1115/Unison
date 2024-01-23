@@ -10,7 +10,7 @@ public class Session
     public int MusicianId { get; set; }
 
     [ForeignKey("MusicianId")]
-    public UserProfile Musician { get; set; }
+    public UserProfile? Musician { get; set; }
 
     public DateTime? DateCompleted { get; set; }
 
