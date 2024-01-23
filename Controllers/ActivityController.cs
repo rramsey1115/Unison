@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Unison.Data;
 using Unison.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 namespace Unison.Controllers;
 
 [ApiController]
@@ -18,7 +19,7 @@ public class ActivityController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult Get()
     {
 
@@ -49,7 +50,7 @@ public class ActivityController : ControllerBase
     }
 
     [HttpGet("category/{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetByCategoryId(int id)
     {
         try
@@ -86,7 +87,7 @@ public class ActivityController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    // [Authorize]
+    [Authorize]
 
     public IActionResult GetById(int id)
     {
@@ -118,5 +119,4 @@ public class ActivityController : ControllerBase
             return BadRequest($"{ex}");
         }
     }
-
 }

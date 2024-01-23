@@ -43,11 +43,16 @@ export const SessionActivitySelect = ({newSession, setNewSession}) => {
             duration: duration,
         });
         setNewSession(copy);
+        setButtonHidden(true);
+        setCategoryId(0);
+        setActivityId(0);
+        setDuration(0);
     }
 
     return (
     <>
         <select 
+            value={categoryId}
             onChange={(e)=> {
                 handleCategoryChange(e)
             }}>
