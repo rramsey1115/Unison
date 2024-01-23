@@ -16,13 +16,47 @@
 }
 
 .session-form-fieldset {
-    margin: 5px auto;
-    padding: 4px 0px;
+    margin: 16px auto;
+    padding: 8px 8px;
+    border-top: 1px solid gray;
+}
+
+#session-activities {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #button-fieldset {
    display: flex;
    justify-content: center; 
+}
+
+.session-activities-btn {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+#remove-activity-icon:hover {
+    width: 100%;
+    height: 100%;
+    transition: ease-in-out .2s;
+}
+
+#remove-activity-icon {
+    width: 96%;
+    height: 96%;
+    transition: ease-in-out .2s;
+}
+
+.session-activities-info {
+    width: 200px;
+    margin: 5px auto;
 }
 
 #session-start-btn {

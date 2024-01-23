@@ -40,7 +40,17 @@ export const CreateSession = ({loggedInUser}) => {
         console.log(copy);
         createNewSession(copy).then((data) => navigate(`/session/${data.id}`))
     }
+
+    const handleRemoveActivity = (id) => {
+        console.log(id);
+        const copy = {...newSession};
+        var arr = newSession.sessionActivities.filter( a => a.activityId !== id);
+        copy.sessionActivities = arr;
+        setNewSession(copy);
+    }
+
     const navigate = useNavigate();
+    let count = 0;
 
     return (
         <div className="create-session-container">
@@ -57,21 +67,29 @@ export const CreateSession = ({loggedInUser}) => {
                 
                 {newSession.sessionActivities?.length > 0 
                 ?newSession.sessionActivities.map(sa => {
+                        count++;
                         return (
-                            <fieldset key={sa.activityId} className="session-form-fieldset">
-                                <div className="sesstionActivities-info">
-                                    <h4>{sa.activity.category?.name}</h4>
-                                    <h4>{sa.activity.name}</h4>
-                                    <h4>{sa.duration} minutes</h4>
+                            <fieldset key={sa.activityId} id="session-activities" className="session-form-fieldset">
+                                <div className="sesstion-activities-info">
+                                    <h3>{sa.activity.category?.name}</h3>
+                                    <h5>{sa.activity.name}</h5>
+                                    <h5>{sa.duration} minutes</h5>
                                 </div>
-                                <div className="sessionActivities-icon">
+                                <button 
+                                    className="session-activities-btn"
+                                    value={sa.activityId}
+                                    onClick={(e) => {
+                                        console.log('target', e.currentTarget.value * 1)
+                                        handleRemoveActivity(e.currentTarget.value * 1)
+                                    }}
+                                >
                                     <img 
                                         id="remove-activity-icon" 
                                         className="remove-icon" 
                                         src={removeIcon} 
                                         alt="remove icon" 
                                     />
-                                </div>
+                                </button>
                             </fieldset>
                         )
                     })
