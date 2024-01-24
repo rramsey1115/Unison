@@ -20,7 +20,6 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
 
     const getAndSetActivities = (id) => {
         getActivityByCategoryId(id).then(setActivities);
-        console.log(activities)
     };
 
     const handleCategoryChange = (e) => {

@@ -1,49 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { getcategoryById } from '../../../../Managers/categoryManager';
-import { postNewActivity } from '../../../../Managers/activityManager';
+import "../../Browse/Browse.css";
+import { getActivityById, updateActivity } from '../../../../Managers/activityManager';
 
-export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUser}) => {
-    const [modal, setModal] = useState(false);
-    const [category, setCategory] = useState({});
-    const [newActivity, setNewActivity] = useState({
-        name:"",
-        details: "",
-        categoryId: categoryId,
-        creatorId: loggedInUser.id
+export const EditSessionActivityModal = ({activityId, setNewSession, newSession}) => {
+  const [modal, setModal] = useState(false);
+  const [activity, setActivity] = useState({});
+  const [newActivity, setNewActivity] = useState({});
+
+  useEffect(() => { getAndSetActivity(activityId) }, [activityId]);
+
+  useEffect(() => {
+    if(activity) { setNewActivity({
+        id: activityId,
+        name:activity.name,
+        details: activity.details})}
+  }, [activity]);
+
+  const getAndSetActivity = () => {
+    getActivityById(activityId).then(setActivity);
+  }
+
+  const toggleModal = () => {
+    setModal(!modal)
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await updateActivity(newActivity);
+    const copy = {...newSession}
+    copy.sessionActivites.map(sa => {
+      if(sa.activityId === newActivity.id)
+      { sa.name = newActivity.name; 
+        sa.details=newActivity.details
+      }
     });
+    setNewSession(copy);
+    toggleModal();
+  }
 
-    useEffect(() => { getAndSetCategory(categoryId) }, [categoryId]);
-
-    const toggleModal = () => {
-        setModal(!modal)
-    };
-
-    const getAndSetCategory = (categoryId) => {
-        getcategoryById(categoryId).then(setCategory);
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await postNewActivity(newActivity)
-        await getAndSetActivities(categoryId)
-        setNewActivity({
-          name:"",
-          details: "",
-          categoryId: categoryId,
-          creatorId: loggedInUser?.id
-        })
-        toggleModal();
-    }
-
-    return (
+  return (
     <div>
-      <Button id="create-activity-btn" className="create-btn" color='info' size='md' onClick={toggleModal}>
-        Create Activity
+      <Button id="edit-category-btn" className="create-btn" color='info' size='sm' onClick={toggleModal}>
+        Edit
       </Button>
       <Modal isOpen={modal} toggle={toggleModal} style={{color:'black'}} backdrop="static">
         <ModalHeader toggle={toggleModal}>
-            Add to category:{" "}{category.name}
+            Edit Activity:{" "}
+            {newActivity.name}
         </ModalHeader>
         <ModalBody className='modal-body'>
             
@@ -74,7 +78,7 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={(e) => handleSubmit(e)}>
-            Create Activity
+            Save
           </Button>
         </ModalFooter>
       </Modal>
