@@ -11,7 +11,6 @@ export const SessionActivitySelect = ({newSession, setNewSession}) => {
     const [duration, setDuration] = useState(0)
     const [buttonHidden, setButtonHidden] = useState(true);
     const [activities, setActivities] = useState([]);
-    const [modal, setModal] = useState(true);
 
     useEffect(() => { getAndSetCategories() }, []);
 
@@ -50,10 +49,6 @@ export const SessionActivitySelect = ({newSession, setNewSession}) => {
         setCategoryId(0);
         setActivityId(0);
         setDuration(0);
-    }
-
-    const toggleModal = () => {
-        setModal(!modal);
     }
 
     return (

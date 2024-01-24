@@ -1,66 +1,72 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { getcategoryById } from '../../../../Managers/categoryManager';
-import { postNewActivity } from '../../../../Managers/activityManager';
+import { getcategoryById, updateCategory } from '../../../Managers/categoryManager';
+import "./Browse.css";
 
-export const CreateActivityModal = ({categoryId, getAndSetActivities}) => {
+export const EditCategoryModal = ({categoryId, getAndSetAllCategories}) => {
     const [modal, setModal] = useState(false);
     const [category, setCategory] = useState({});
-    const [newActivity, setNewActivity] = useState({
-        name:"",
-        details: "",
-        categoryId: categoryId
+    const [newCategory, setNewCategory] = useState({
+        
     });
 
     useEffect(() => { getAndSetCategory(categoryId) }, [categoryId]);
+
+    useEffect(() => {
+        if(category) { setNewCategory({id: categoryId,
+            name:category.name,
+            details: category.details,})}
+    }, [category]);
+
+    const getAndSetCategory = () => {
+        getcategoryById(categoryId).then(setCategory);
+    }
 
     const toggleModal = () => {
         setModal(!modal)
     };
 
-    const getAndSetCategory = (categoryId) => {
-        getcategoryById(categoryId).then(setCategory);
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await postNewActivity(newActivity)
-        await getAndSetActivities(categoryId)
+        console.log("newCategory", newCategory);
+        await updateCategory(newCategory);
+        await getAndSetAllCategories();
         toggleModal();
     }
 
     return (
     <div>
-      <Button id="create-activity-btn" className="create-btn" color='info' size='md' onClick={toggleModal}>
-        Create Activity
+      <Button id="edit-category-btn" className="create-btn" color='info' size='sm' onClick={toggleModal}>
+        Edit
       </Button>
       <Modal isOpen={modal} toggle={toggleModal} style={{color:'black'}} backdrop="static">
         <ModalHeader toggle={toggleModal}>
-            Add to category:{" "}{category.name}
+            Edit Category:{" "}
+            {newCategory.name}
         </ModalHeader>
         <ModalBody className='modal-body'>
             
             <input
                 id='activity-name-input'
-                value={newActivity.name}
+                value={newCategory.name}
                 type='text'
                 placeholder='Activity Name'
                 onChange={(e) => {
-                    const copy = {...newActivity};
+                    const copy = {...newCategory};
                     copy.name = e.target.value;
-                    setNewActivity(copy);
+                    setNewCategory(copy);
                 }}
             />
 
             <textarea
                 id='activity-details-input'
-                value={newActivity.details}
+                value={newCategory.details}
                 type='text'
                 placeholder='Activity Description'
                 onChange={(e) => {
-                    const copy = {...newActivity};
+                    const copy = {...newCategory};
                     copy.details = e.target.value;
-                    setNewActivity(copy);
+                    setNewCategory(copy);
                 }}
             />
 

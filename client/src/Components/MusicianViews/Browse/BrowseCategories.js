@@ -3,11 +3,12 @@ import { getAllCategories } from "../../../Managers/categoryManager";
 import "./Browse.css";
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
+import { EditCategoryModal } from "./EditCategoryModal";
 
 
 export const BrowseCategories = ({loggedInUser}) => {
     const [categories, setCategories] = useState([]);
-    const [open, setOpen] = useState('');
+    const [open, setOpen] = useState('0');
 
     useEffect(() => {
         getAndSetAllCategories();
@@ -18,11 +19,13 @@ export const BrowseCategories = ({loggedInUser}) => {
     }
 
     const toggle = (id) => {
-        if (open === id) { setOpen() } 
+        if (open === id) { setOpen('0') } 
         else { setOpen(id) }
     };
 
     const navigate = useNavigate();
+
+    console.log(loggedInUser);
 
     return (
         <div className="browse-container">
@@ -33,19 +36,23 @@ export const BrowseCategories = ({loggedInUser}) => {
                 <Accordion open={open} toggle={toggle}>
                     {categories.map(c => {
                         return (
-                        <AccordionItem>
-                            <AccordionHeader targetId={c.id}><h5>{c.name}</h5></AccordionHeader>
-                            <AccordionBody accordionId={c.id}>
-                                <div className="accordian-details">
-                                    <h5>{c.details}</h5>
+                        <AccordionItem key={c.id}>
+                            <AccordionHeader targetId={`${c.id}`}><h5>{c.name}</h5></AccordionHeader>
+                            <AccordionBody accordionId={`${c.id}`}>
+                                <p>{c.details}</p>
+                                <div className="accordion-btns">
                                     <Button
                                         id="explore-category-btn" 
                                         className="explore-btn"
                                         color="info"
+                                        size="sm"
                                         value={c.id}
                                         onClick={(e) => navigate(`${e.target.value}`) }
                                     >Explore
                                     </Button>
+                                    {loggedInUser.roles[0] !== "Teacher" 
+                                    ? null 
+                                    : <EditCategoryModal categoryId={c.id} getAndSetAllCategories={getAndSetAllCategories}/>}
                                 </div>
                             </AccordionBody>
                         </AccordionItem>)

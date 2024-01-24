@@ -12,6 +12,8 @@ public class ActivityObjDTO
     [Required]
     public string Details { get; set; }
 
+    public int? CreatorId { get; set; }
+
     [Required]
     public int CategoryId { get; set; }
 

@@ -3,12 +3,13 @@ import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from
 import { getActivityByCategoryId } from "../../../Managers/activityManager";
 import { getcategoryById } from "../../../Managers/categoryManager";
 import { useNavigate, useParams } from "react-router-dom";
+import { CreateActivityModal } from "../Sessions/CreateSession/CreateActivityModal";
 
-export const BrowseActivities = () => {
+export const BrowseActivities = ({loggedInUser}) => {
     const categoryId = useParams().id;
     const [category, setCategory] = useState({});
     const [activities, setActivities] = useState([]);
-    const [open, setOpen] = useState('');
+    const [open, setOpen] = useState('0');
 
     useEffect(() => {
         getAndSetActivitiesByCategoryId(categoryId);
@@ -24,21 +25,23 @@ export const BrowseActivities = () => {
     }
 
     const toggle = (id) => {
-        if (open === id) { setOpen() } 
+        if (open === id) { setOpen('0') } 
         else { setOpen(id) }
     };
-
-    const navigate = useNavigate();
-
-    console.log(activities);
 
     return (
         <div className="browse-container">
             <header className="browse-header">
-                <h1>{category.name}</h1>
+                <div className="header-div">
+                    <h1>{category.name}</h1>
+                    <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId}/>
+                </div>
                 <h5>{category.details}</h5>
             </header>
             <section className="browse-body">
+
+                
+
                 <Accordion open={open} toggle={toggle}>
                     {activities?.map(a => {
                         return (

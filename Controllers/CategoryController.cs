@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ public class CategoryController : ControllerBase
 
         try
         {
-            return Ok(_dbContext.Categories.Select(c => new CategoryDTO
+            return Ok(_dbContext.Categories.OrderBy(c => c.Id).Select(c => new CategoryDTO
             {
                 Id = c.Id,
                 Name = c.Name,
@@ -65,6 +66,38 @@ public class CategoryController : ControllerBase
         catch (Exception ex)
         {
             return BadRequest($"{ex}");
+        }
+    }
+
+    [HttpPut("{id}")]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult Update(int id, Category newCategory)
+    {
+        try
+        {
+            if(id != newCategory.Id)
+            {
+                return BadRequest("bad data sent; Ids do not match");
+            }
+
+            var found = _dbContext.Categories.SingleOrDefault(c => c.Id == newCategory.Id);
+            if(found == null)
+            {
+                return NotFound("No category found with given category.id");
+            }
+
+            found.Name = newCategory.Name;
+            _dbContext.SaveChanges();
+
+            found.Details = newCategory.Details;
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad Request: {ex}");
         }
     }
 

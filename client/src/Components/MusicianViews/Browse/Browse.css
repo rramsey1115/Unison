@@ -7,9 +7,33 @@
 .browse-body {
     width: 70%;
     min-width: 350px;
-    margin: 40px auto;
+    margin: 20px auto;
 }
 
 .browse-header {
+    width:70%;
+    min-width: 350px;
     margin: 20px auto;
+}
+
+.header-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.accordion-btns {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+#explore-category-btn {
+    width: 90px;
+}
+
+#edit-category-btn {
+    width: 90px;
+    margin: 0px 20px;
 }
