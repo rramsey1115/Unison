@@ -34,6 +34,7 @@ public class ActivityController : ControllerBase
                 Name = a.Name,
                 Details = a.Details,
                 CategoryId = a.CategoryId,
+                CreatorId = a.CreatorId,
                 Category = new CategoryDTO
                 {
                     Id = a.Category.Id,
@@ -71,6 +72,7 @@ public class ActivityController : ControllerBase
                 Name = a.Name,
                 Details = a.Details,
                 CategoryId = a.CategoryId,
+                CreatorId = a.CreatorId,
                 Category = new CategoryDTO
                 {
                     Id = a.Category.Id,
@@ -89,7 +91,6 @@ public class ActivityController : ControllerBase
 
     [HttpGet("{id}")]
     [Authorize]
-
     public IActionResult GetById(int id)
     {
         try
@@ -107,6 +108,7 @@ public class ActivityController : ControllerBase
                 Name = f.Name,
                 Details = f.Details,
                 CategoryId = f.CategoryId,
+                CreatorId = f.CreatorId,
                 Category = new CategoryDTO
                 {
                     Id = f.Category.Id,
@@ -121,8 +123,6 @@ public class ActivityController : ControllerBase
         }
     }
 
-
-    
     [HttpPost]
     // [Authorize]
     public IActionResult PostNewActivity(ActivityObj newActivity)
@@ -138,4 +138,61 @@ public class ActivityController : ControllerBase
             return BadRequest($"Bad Data: {ex}");
         }
     }
+
+    [HttpDelete("{id}")]
+    // [Authorize]
+    public IActionResult DeleteActivity(int id)
+    {
+        try
+        {
+            var found = _dbContext.Activities.SingleOrDefault(a => a.Id == id);
+            if(found == null)
+            {
+                return NotFound("No activity found with matching id");
+            }
+
+            _dbContext.Activities.Remove(found);
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data: {ex}");
+        }
+    }
+
+    [HttpPut("{id}")]
+    // [Authorize]
+    public IActionResult UpdateActivity(int id, ActivityObj activity)
+    {
+        try
+        {
+            if(id != activity.Id)
+            {
+                return BadRequest($"Object Id does not match url params");
+            }
+
+            var found = _dbContext.Activities.SingleOrDefault(a => a.Id == activity.Id);
+
+            if(found == null)
+            {
+                return NotFound("Activity with given id not found");
+            }
+
+            found.Name = activity.Name;
+            _dbContext.SaveChanges();
+
+            found.Details = activity.Details;
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
+
 }

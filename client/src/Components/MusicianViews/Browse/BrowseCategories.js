@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { getAllCategories } from "../../../Managers/categoryManager";
+import { deleteCategoryById, getAllCategories } from "../../../Managers/categoryManager";
 import "./Browse.css";
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
 import { EditCategoryModal } from "./EditCategoryModal";
+import { CreateCategoryModal } from "./CreateCategoryModal";
 
 
 export const BrowseCategories = ({loggedInUser}) => {
@@ -23,18 +24,23 @@ export const BrowseCategories = ({loggedInUser}) => {
         else { setOpen(id) }
     };
 
-    const navigate = useNavigate();
+    const handleDeleteCategory = (e) => {
+        e.preventDefault();
+        deleteCategoryById(e.target.value*1).then(() => getAndSetAllCategories());
+    }
 
-    console.log(loggedInUser);
+    const navigate = useNavigate();
 
     return (
         <div className="browse-container">
-            <header className="browse-header">
+            <div id="browse-category-header" className="browse-header">
                 <h1>Browse Categories</h1>
-            </header>
+                {loggedInUser.roles[0]!=="Teacher" ? null
+                :<CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/> }
+            </div>
             <section className="browse-body">
                 <Accordion open={open} toggle={toggle}>
-                    {categories.map(c => {
+                    {categories?.map(c => {
                         return (
                         <AccordionItem key={c.id}>
                             <AccordionHeader targetId={`${c.id}`}><h5>{c.name}</h5></AccordionHeader>
@@ -52,7 +58,19 @@ export const BrowseCategories = ({loggedInUser}) => {
                                     </Button>
                                     {loggedInUser.roles[0] !== "Teacher" 
                                     ? null 
-                                    : <EditCategoryModal categoryId={c.id} getAndSetAllCategories={getAndSetAllCategories}/>}
+                                    :<EditCategoryModal categoryId={c.id} getAndSetAllCategories={getAndSetAllCategories}/>
+                                    }
+                                    {loggedInUser.roles[0] !== "Teacher" 
+                                    ? null 
+                                    :<Button
+                                        id="delete-category-btn"
+                                        className="delete-btn"
+                                        color="secondary"
+                                        size="sm"
+                                        value={c.id}
+                                        onClick={(e) => handleDeleteCategory(e)}
+                                    >Delete
+                                    </Button>}
                                 </div>
                             </AccordionBody>
                         </AccordionItem>)

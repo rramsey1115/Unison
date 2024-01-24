@@ -55,6 +55,7 @@ public class SessionController : ControllerBase
                         Name = sa.Activity.Name,
                         Details = sa.Activity.Details,
                         CategoryId = sa.Activity.CategoryId,
+                        CreatorId = sa.Activity.CreatorId,
                         Category = new CategoryDTO
                         {
                             Id = sa.Activity.Category.Id,
@@ -71,7 +72,6 @@ public class SessionController : ControllerBase
             return BadRequest($"{ex}");
         }
     }
-
 
     [HttpGet("{id}")]
     // [Authorize]
@@ -116,6 +116,7 @@ public class SessionController : ControllerBase
                         Name = sa.Activity.Name,
                         Details = sa.Activity.Details,
                         CategoryId = sa.Activity.CategoryId,
+                        CreatorId = sa.Activity.CreatorId,
                         Category = new CategoryDTO
                         {
                             Id = sa.Activity.Category.Id,

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from "reactstrap"
-import { getActivityByCategoryId } from "../../../Managers/activityManager";
+import { deleteActivityById, getActivityByCategoryId } from "../../../Managers/activityManager";
 import { getcategoryById } from "../../../Managers/categoryManager";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { CreateActivityModal } from "../Sessions/CreateSession/CreateActivityModal";
+import { EditActivityModal } from "./EditActivityModal";
 
 export const BrowseActivities = ({loggedInUser}) => {
     const categoryId = useParams().id;
@@ -29,18 +30,22 @@ export const BrowseActivities = ({loggedInUser}) => {
         else { setOpen(id) }
     };
 
+    const handleDeleteActivity = (e) => {
+        e.preventDefault();
+        deleteActivityById(e.target.value*1).then(() => getAndSetActivitiesByCategoryId(categoryId))
+    }
+
+
     return (
         <div className="browse-container">
             <header className="browse-header">
                 <div className="header-div">
                     <h1>{category.name}</h1>
-                    <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId}/>
+                    <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>
                 </div>
                 <h5>{category.details}</h5>
             </header>
             <section className="browse-body">
-
-                
 
                 <Accordion open={open} toggle={toggle}>
                     {activities?.map(a => {
@@ -48,8 +53,22 @@ export const BrowseActivities = ({loggedInUser}) => {
                         <AccordionItem key={a.id}>
                             <AccordionHeader targetId={`${a.id}`}><h5>{a.name}</h5></AccordionHeader>
                             <AccordionBody accordionId={`${a.id}`}>
-                                <div className="accordian-details">
-                                    <p>{a.details}</p>
+                                <p>{a.details}</p>
+                                <div className="accordian-btns">
+                                    {loggedInUser.roles[0] === "Teacher" || loggedInUser.id === a.creatorId 
+                                    ?<Button
+                                        id="delete-activity-btn"
+                                        className="delete-btn"
+                                        size="sm"
+                                        color="secondary"
+                                        value={a.id}
+                                        onClick={(e) => handleDeleteActivity(e)}
+                                    >Delete
+                                    </Button>
+                                    : null}
+                                    {loggedInUser.roles[0] === "Teacher" || loggedInUser.id === a.creatorId 
+                                    ?<EditActivityModal activityId={a.id} categoryId={categoryId} getAndSetActivitiesByCategoryId={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>
+                                    : null}
                                 </div>
                             </AccordionBody>
                         </AccordionItem>)

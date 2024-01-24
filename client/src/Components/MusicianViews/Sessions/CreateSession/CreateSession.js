@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./CreateSession.css";
 import startIcon from "../../../../images/start.png";
 import removeIcon from "../../../../images/delete.png";
+import editIcon from "../../../../images/edit.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 export const CreateSession = ({loggedInUser}) => {
     const [totalTime, setTotalTime] = useState(0);
     const [newSession, setNewSession] = useState({});
-
 
     useEffect(() => {
         if(loggedInUser.id)
@@ -27,8 +27,6 @@ export const CreateSession = ({loggedInUser}) => {
         setTotalTime(total);
     }, [newSession])
 
-
-
     const handleStartSession = (e) => {
         const copy = {
             musicianId: loggedInUser.id,
@@ -44,7 +42,6 @@ export const CreateSession = ({loggedInUser}) => {
     }
 
     const handleRemoveActivity = (id) => {
-        console.log(id);
         const copy = {...newSession};
         var arr = newSession.sessionActivities.filter( a => a.activityId !== id);
         copy.sessionActivities = arr;
@@ -53,12 +50,8 @@ export const CreateSession = ({loggedInUser}) => {
 
     const navigate = useNavigate();
 
-
-
     return (
         <div className="create-session-container">
-
-
 
             <header className="create-session-header">
                 <h1>Create Session</h1>
@@ -74,26 +67,38 @@ export const CreateSession = ({loggedInUser}) => {
                 ?newSession.sessionActivities.map(sa => {
                         return (
                             <fieldset key={sa.activityId} id="session-activities" className="session-form-fieldset">
-                                <div className="sesstion-activities-info">
+                                <div className="session-activities-info"> 
                                     <h3>{sa.activity.category?.name}</h3>
                                     <h5>{sa.activity.name}</h5>
                                     <h5>{sa.duration} minutes</h5>
                                 </div>
-                                <button 
-                                    className="session-activities-btn"
-                                    value={sa.activityId}
-                                    onClick={(e) => {
-                                        console.log('target', e.currentTarget.value * 1)
-                                        handleRemoveActivity(e.currentTarget.value * 1)
-                                    }}
-                                >
-                                    <img 
-                                        id="remove-activity-icon" 
-                                        className="remove-icon" 
-                                        src={removeIcon} 
-                                        alt="remove icon" 
-                                    />
-                                </button>
+                                <div id="session-activities-btns">
+                                    <button 
+                                        className="session-activities-btn"
+                                        value={sa.activityId}
+                                        onClick={(e) => handleRemoveActivity(e.currentTarget.value * 1)}
+                                    >
+                                        <img 
+                                            id="remove-activity-icon" 
+                                            className="remove-icon" 
+                                            src={removeIcon} 
+                                            alt="remove icon" 
+                                        />
+                                    </button>
+
+                                    <button
+                                        className="session-activities-btn"
+                                        value={sa.activityId}
+                                    >
+                                        <img 
+                                            id="edit-activity-icon" 
+                                            className="edit-icon" 
+                                            src={editIcon} 
+                                            alt="edit icon" 
+                                        />
+                                    </button>
+
+                                </div>
                             </fieldset>
                         )
                     })
@@ -101,7 +106,7 @@ export const CreateSession = ({loggedInUser}) => {
                 }
 
                 <fieldset id="activity-fieldset" className="session-form-fieldset">
-                    <SessionActivitySelect setNewSession={setNewSession} newSession={newSession}/>
+                    <SessionActivitySelect setNewSession={setNewSession} newSession={newSession} loggedInUser={loggedInUser}/>
                 </fieldset>
 
 

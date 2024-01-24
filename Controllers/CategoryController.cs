@@ -101,5 +101,47 @@ public class CategoryController : ControllerBase
         }
     }
 
+    [HttpPost]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult Create(Category category)
+    {
+        try
+        {
+            _dbContext.Categories.Add(category);
+            _dbContext.SaveChanges();
+            
+            return Ok();
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"{ex}");
+        }
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult Delete(int Id)
+    {
+        try
+        {
+            var found = _dbContext.Categories.SingleOrDefault(c => c.Id == Id);
+
+            if(found==null)
+            {
+                return NotFound("No category found with given Id");
+            }
+
+            _dbContext.Categories.Remove(found);
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad Data: {ex}");
+        }
+    }
+
 
 }
