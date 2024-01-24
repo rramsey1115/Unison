@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./CreateSession.css";
 import startIcon from "../../../../images/start.png";
 import removeIcon from "../../../../images/delete.png";
+import editIcon from "../../../../images/edit.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
@@ -66,22 +67,16 @@ export const CreateSession = ({loggedInUser}) => {
                 ?newSession.sessionActivities.map(sa => {
                         return (
                             <fieldset key={sa.activityId} id="session-activities" className="session-form-fieldset">
-                                <div className="sesstion-activities-info">
+                                <div className="session-activities-info"> 
                                     <h3>{sa.activity.category?.name}</h3>
                                     <h5>{sa.activity.name}</h5>
                                     <h5>{sa.duration} minutes</h5>
                                 </div>
-                                <div>
-                                    <button>
-                                        Edit
-                                    </button> 
+                                <div id="session-activities-btns">
                                     <button 
                                         className="session-activities-btn"
                                         value={sa.activityId}
-                                        onClick={(e) => {
-                                            console.log('target', e.currentTarget.value * 1)
-                                            handleRemoveActivity(e.currentTarget.value * 1)
-                                        }}
+                                        onClick={(e) => handleRemoveActivity(e.currentTarget.value * 1)}
                                     >
                                         <img 
                                             id="remove-activity-icon" 
@@ -90,6 +85,19 @@ export const CreateSession = ({loggedInUser}) => {
                                             alt="remove icon" 
                                         />
                                     </button>
+
+                                    <button
+                                        className="session-activities-btn"
+                                        value={sa.activityId}
+                                    >
+                                        <img 
+                                            id="edit-activity-icon" 
+                                            className="edit-icon" 
+                                            src={editIcon} 
+                                            alt="edit icon" 
+                                        />
+                                    </button>
+
                                 </div>
                             </fieldset>
                         )
