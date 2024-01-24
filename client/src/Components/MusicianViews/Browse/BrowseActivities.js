@@ -4,6 +4,7 @@ import { deleteActivityById, getActivityByCategoryId } from "../../../Managers/a
 import { getcategoryById } from "../../../Managers/categoryManager";
 import { useParams } from "react-router-dom";
 import { CreateActivityModal } from "../Sessions/CreateSession/CreateActivityModal";
+import { EditActivityModal } from "./EditActivityModal";
 
 export const BrowseActivities = ({loggedInUser}) => {
     const categoryId = useParams().id;
@@ -46,16 +47,14 @@ export const BrowseActivities = ({loggedInUser}) => {
             </header>
             <section className="browse-body">
 
-                
-
                 <Accordion open={open} toggle={toggle}>
                     {activities?.map(a => {
                         return (
                         <AccordionItem key={a.id}>
                             <AccordionHeader targetId={`${a.id}`}><h5>{a.name}</h5></AccordionHeader>
                             <AccordionBody accordionId={`${a.id}`}>
-                                <div className="accordian-details">
-                                    <p>{a.details}</p>
+                                <p>{a.details}</p>
+                                <div className="accordian-btns">
                                     {loggedInUser.roles[0] === "Teacher" || loggedInUser.id === a.creatorId 
                                     ?<Button
                                         id="delete-activity-btn"
@@ -66,6 +65,9 @@ export const BrowseActivities = ({loggedInUser}) => {
                                         onClick={(e) => handleDeleteActivity(e)}
                                     >Delete
                                     </Button>
+                                    : null}
+                                    {loggedInUser.roles[0] === "Teacher" || loggedInUser.id === a.creatorId 
+                                    ?<EditActivityModal activityId={a.id} categoryId={categoryId} getAndSetActivitiesByCategoryId={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>
                                     : null}
                                 </div>
                             </AccordionBody>

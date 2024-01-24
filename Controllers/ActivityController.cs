@@ -164,4 +164,38 @@ public class ActivityController : ControllerBase
             return BadRequest($"Bad data: {ex}");
         }
     }
+
+    [HttpPut("{id}")]
+    // [Authorize]
+    public IActionResult UpdateActivity(int id, ActivityObj activity)
+    {
+        try
+        {
+            if(id != activity.Id)
+            {
+                return BadRequest($"Object Id does not match url params");
+            }
+
+            var found = _dbContext.Activities.SingleOrDefault(a => a.Id == activity.Id);
+
+            if(found == null)
+            {
+                return NotFound("Activity with given id not found");
+            }
+
+            found.Name = activity.Name;
+            _dbContext.SaveChanges();
+
+            found.Details = activity.Details;
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
+
+
 }

@@ -22,6 +22,15 @@ export const postNewActivity = (obj) => {
     }).then(res => res.json());
 }
 
+// update/edi activity
+export const updateActivity = (obj) => {
+    return fetch(`/api/activity/${obj.id}`, {
+        method: "PUT",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(obj)
+    });
+}
+
 // delete activity by id
 export const deleteActivityById = (id) => {
     return fetch(`/api/activity/${id}`, {
