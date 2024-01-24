@@ -3,13 +3,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { getcategoryById } from '../../../../Managers/categoryManager';
 import { postNewActivity } from '../../../../Managers/activityManager';
 
-export const CreateActivityModal = ({categoryId, getAndSetActivities}) => {
+export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUser}) => {
     const [modal, setModal] = useState(false);
     const [category, setCategory] = useState({});
     const [newActivity, setNewActivity] = useState({
         name:"",
         details: "",
-        categoryId: categoryId
+        categoryId: categoryId,
+        creatorId: loggedInUser.id
     });
 
     useEffect(() => { getAndSetCategory(categoryId) }, [categoryId]);

@@ -4,7 +4,7 @@ import { getActivityByCategoryId, getActivityById } from "../../../../Managers/a
 import "./CreateSession.css";
 import { CreateActivityModal } from "./CreateActivityModal";
 
-export const SessionActivitySelect = ({newSession, setNewSession}) => {
+export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser}) => {
     const [categories, setCategories] = useState([]);
     const [categoryId, setCategoryId] = useState(0);
     const [activityId, setActivityId] = useState(0);
@@ -89,7 +89,7 @@ export const SessionActivitySelect = ({newSession, setNewSession}) => {
                 })}
             </select>
  
-            <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivities}/>
+            <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivities} loggedInUser={loggedInUser}/>
             
         </>
         : null
