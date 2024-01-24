@@ -5,7 +5,6 @@ import removeIcon from "../../../../images/delete.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
-import { EditSessionActivityModal } from "./EditSessionActivityModal";
 
 export const CreateSession = ({loggedInUser}) => {
     const [totalTime, setTotalTime] = useState(0);
@@ -73,9 +72,9 @@ export const CreateSession = ({loggedInUser}) => {
                                     <h5>{sa.duration} minutes</h5>
                                 </div>
                                 <div>
-                                    {sa.activity?.creatorId === loggedInUser.id ?? 
-                                        <EditSessionActivityModal newSession={newSession} setNewSession={setNewSession} activityId={sa.activityId}/> 
-                                    }
+                                    <button>
+                                        Edit
+                                    </button> 
                                     <button 
                                         className="session-activities-btn"
                                         value={sa.activityId}
