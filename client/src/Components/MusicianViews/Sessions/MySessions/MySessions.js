@@ -1,4 +1,5 @@
 import "./MySessions.css";
+import { useNavigate } from "react-router-dom";
 import plusIcon from "../../../../images/plus-icon.png";
 import filledFav from "../../../../images/filled-favorite.png"
 import deleteIcon from "../../../../images/delete.png";
@@ -40,6 +41,9 @@ export const MySessions = ({ loggedInUser }) => {
         return formatted;
     };
 
+    const navigate = useNavigate();
+
+
     return (
         <section className="sessions-container">
 
@@ -49,7 +53,7 @@ export const MySessions = ({ loggedInUser }) => {
 
             <section className="sessions-cards">
 
-                <div id="create-session-div">
+                <div id="create-session-div" onClick={(e) => navigate('create')}>
                     <img id="plus-icon" className="plus-icon" alt="plus icon" src={plusIcon}/>
                 </div>
 
