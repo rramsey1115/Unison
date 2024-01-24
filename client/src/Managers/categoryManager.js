@@ -20,7 +20,7 @@ export const updateCategory = (obj) => {
 // create new category
 export const createCategory = (obj) => {
     return fetch(`/api/category`, {
-        method:"PUT",
+        method:"POST",
         headers: { "Content-Type":"application/json" },
         body: JSON.stringify(obj)
     });

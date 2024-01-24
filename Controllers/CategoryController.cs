@@ -103,16 +103,16 @@ public class CategoryController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "Teacher")]
-    public IActionResult Create(ActivityObj activity)
+    public IActionResult Create(Category category)
     {
         try
         {
-            _dbContext.Activities.Add(activity);
+            _dbContext.Categories.Add(category);
             _dbContext.SaveChanges();
             
             return Ok();
         }
-        
+
         catch (Exception ex)
         {
             return BadRequest($"{ex}");
