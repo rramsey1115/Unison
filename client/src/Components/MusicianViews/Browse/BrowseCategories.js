@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export const BrowseCategories = ({loggedInUser}) => {
     const [categories, setCategories] = useState([]);
-    const [open, setOpen] = useState('1');
+    const [open, setOpen] = useState('');
 
     useEffect(() => {
         getAndSetAllCategories();
@@ -44,7 +44,8 @@ export const BrowseCategories = ({loggedInUser}) => {
                                         color="info"
                                         value={c.id}
                                         onClick={(e) => navigate(`${e.target.value}`) }
-                                    >Explore</Button>
+                                    >Explore
+                                    </Button>
                                 </div>
                             </AccordionBody>
                         </AccordionItem>)
