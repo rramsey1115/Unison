@@ -16,3 +16,12 @@ export const updateCategory = (obj) => {
         body: JSON.stringify(obj)
     });
 }
+
+// create new category
+export const createCategory = (obj) => {
+    return fetch(`/api/category`, {
+        method:"PUT",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(obj)
+    });
+}

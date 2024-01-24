@@ -19,7 +19,7 @@ const toggleNavbar = () => setOpen(!open);
 
 return (
     <div>
-    <Navbar color="info" light fixed="true" expand="lg">
+    <Navbar color="info" light fixed="true" expand="sm">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
             Unison
         </NavbarBrand>

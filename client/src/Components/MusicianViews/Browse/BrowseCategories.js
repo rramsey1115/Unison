@@ -4,6 +4,7 @@ import "./Browse.css";
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
 import { EditCategoryModal } from "./EditCategoryModal";
+import { CreateCategoryModal } from "./CreateCategoryModal";
 
 
 export const BrowseCategories = ({loggedInUser}) => {
@@ -25,16 +26,15 @@ export const BrowseCategories = ({loggedInUser}) => {
 
     const navigate = useNavigate();
 
-    console.log(loggedInUser);
-
     return (
         <div className="browse-container">
-            <header className="browse-header">
+            <header id="browse-category-header" className="browse-header">
                 <h1>Browse Categories</h1>
+                <CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/>
             </header>
             <section className="browse-body">
                 <Accordion open={open} toggle={toggle}>
-                    {categories.map(c => {
+                    {categories?.map(c => {
                         return (
                         <AccordionItem key={c.id}>
                             <AccordionHeader targetId={`${c.id}`}><h5>{c.name}</h5></AccordionHeader>

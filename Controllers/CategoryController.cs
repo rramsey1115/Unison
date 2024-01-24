@@ -101,5 +101,23 @@ public class CategoryController : ControllerBase
         }
     }
 
+    [HttpPost]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult Create(ActivityObj activity)
+    {
+        try
+        {
+            _dbContext.Activities.Add(activity);
+            _dbContext.SaveChanges();
+            
+            return Ok();
+        }
+        
+        catch (Exception ex)
+        {
+            return BadRequest($"{ex}");
+        }
+    }
+
 
 }

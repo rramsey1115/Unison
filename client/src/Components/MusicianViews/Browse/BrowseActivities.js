@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from "reactstrap"
 import { getActivityByCategoryId } from "../../../Managers/activityManager";
 import { getcategoryById } from "../../../Managers/categoryManager";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { CreateActivityModal } from "../Sessions/CreateSession/CreateActivityModal";
 
 export const BrowseActivities = ({loggedInUser}) => {
@@ -34,7 +34,7 @@ export const BrowseActivities = ({loggedInUser}) => {
             <header className="browse-header">
                 <div className="header-div">
                     <h1>{category.name}</h1>
-                    <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId}/>
+                    <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>
                 </div>
                 <h5>{category.details}</h5>
             </header>
