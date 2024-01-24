@@ -109,6 +109,7 @@ public class ActivityController : ControllerBase
                 Name = f.Name,
                 Details = f.Details,
                 CategoryId = f.CategoryId,
+                CreatorId = f.CreatorId,
                 Category = new CategoryDTO
                 {
                     Id = f.Category.Id,
@@ -124,7 +125,6 @@ public class ActivityController : ControllerBase
     }
 
 
-    
     [HttpPost]
     // [Authorize]
     public IActionResult PostNewActivity(ActivityObj newActivity)

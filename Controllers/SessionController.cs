@@ -73,7 +73,6 @@ public class SessionController : ControllerBase
         }
     }
 
-
     [HttpGet("{id}")]
     // [Authorize]
     public IActionResult GetById(int id)
