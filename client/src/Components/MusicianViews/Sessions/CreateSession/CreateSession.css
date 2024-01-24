@@ -16,8 +16,8 @@
 }
 
 .session-form-fieldset {
-    margin: 16px auto 0px auto;
-    padding: 12px 12px 0px 12px;
+    margin: 8px auto 0px auto;
+    padding: 16px 12px 0px 12px;
     border-top: 1px solid gray;
 }
 
@@ -37,12 +37,16 @@
     margin-top: 0px;
 }
 
+.session-activities-info > h5 {
+    margin: 12px 0px;
+}
+
 .session-activities-btn {
     text-align: center;
     width: 50px;
     height: 50px;
     padding: 2px;
-    margin: 0px 0px 20px 0px;
+    margin: 0px 0px 0px 0px;
     cursor: pointer;
     border: none;
     background-color: transparent;
