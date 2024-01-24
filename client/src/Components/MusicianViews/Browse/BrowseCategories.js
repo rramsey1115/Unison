@@ -33,11 +33,11 @@ export const BrowseCategories = ({loggedInUser}) => {
 
     return (
         <div className="browse-container">
-            <header id="browse-category-header" className="browse-header">
+            <div id="browse-category-header" className="browse-header">
                 <h1>Browse Categories</h1>
                 {loggedInUser.roles[0]!=="Teacher" ? null
                 :<CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/> }
-            </header>
+            </div>
             <section className="browse-body">
                 <Accordion open={open} toggle={toggle}>
                     {categories?.map(c => {
