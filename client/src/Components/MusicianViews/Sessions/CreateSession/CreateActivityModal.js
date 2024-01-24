@@ -27,6 +27,12 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
         e.preventDefault();
         await postNewActivity(newActivity)
         await getAndSetActivities(categoryId)
+        setNewActivity({
+          name:"",
+          details: "",
+          categoryId: categoryId,
+          creatorId: loggedInUser.id
+        })
         toggleModal();
     }
 

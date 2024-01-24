@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from "reactstrap"
-import { getActivityByCategoryId } from "../../../Managers/activityManager";
+import { deleteActivityById, getActivityByCategoryId } from "../../../Managers/activityManager";
 import { getcategoryById } from "../../../Managers/categoryManager";
 import { useParams } from "react-router-dom";
 import { CreateActivityModal } from "../Sessions/CreateSession/CreateActivityModal";
@@ -29,6 +29,12 @@ export const BrowseActivities = ({loggedInUser}) => {
         else { setOpen(id) }
     };
 
+    const handleDeleteActivity = (e) => {
+        e.preventDefault();
+        deleteActivityById(e.target.value*1).then(() => getAndSetActivitiesByCategoryId(categoryId))
+    }
+
+
     return (
         <div className="browse-container">
             <header className="browse-header">
@@ -50,6 +56,17 @@ export const BrowseActivities = ({loggedInUser}) => {
                             <AccordionBody accordionId={`${a.id}`}>
                                 <div className="accordian-details">
                                     <p>{a.details}</p>
+                                    {loggedInUser.roles[0] === "Teacher" || loggedInUser.id === a.creatorId 
+                                    ?<Button
+                                        id="delete-activity-btn"
+                                        className="delete-btn"
+                                        size="sm"
+                                        color="secondary"
+                                        value={a.id}
+                                        onClick={(e) => handleDeleteActivity(e)}
+                                    >Delete
+                                    </Button>
+                                    : null}
                                 </div>
                             </AccordionBody>
                         </AccordionItem>)

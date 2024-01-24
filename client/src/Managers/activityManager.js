@@ -21,3 +21,10 @@ export const postNewActivity = (obj) => {
         body: JSON.stringify(obj)
     }).then(res => res.json());
 }
+
+// delete activity by id
+export const deleteActivityById = (id) => {
+    return fetch(`/api/activity/${id}`, {
+        method: "DELETE"
+    });
+}

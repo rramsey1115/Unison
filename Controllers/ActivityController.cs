@@ -34,6 +34,7 @@ public class ActivityController : ControllerBase
                 Name = a.Name,
                 Details = a.Details,
                 CategoryId = a.CategoryId,
+                CreatorId = a.CreatorId,
                 Category = new CategoryDTO
                 {
                     Id = a.Category.Id,
@@ -71,6 +72,7 @@ public class ActivityController : ControllerBase
                 Name = a.Name,
                 Details = a.Details,
                 CategoryId = a.CategoryId,
+                CreatorId = a.CreatorId,
                 Category = new CategoryDTO
                 {
                     Id = a.Category.Id,
@@ -136,6 +138,30 @@ public class ActivityController : ControllerBase
         catch (Exception ex)
         {
             return BadRequest($"Bad Data: {ex}");
+        }
+    }
+
+    [HttpDelete("{id}")]
+    // [Authorize]
+    public IActionResult DeleteActivity(int id)
+    {
+        try
+        {
+            var found = _dbContext.Activities.SingleOrDefault(a => a.Id == id);
+            if(found == null)
+            {
+                return NotFound("No activity found with matching id");
+            }
+
+            _dbContext.Activities.Remove(found);
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data: {ex}");
         }
     }
 }
