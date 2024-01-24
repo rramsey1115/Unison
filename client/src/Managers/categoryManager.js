@@ -25,3 +25,10 @@ export const createCategory = (obj) => {
         body: JSON.stringify(obj)
     });
 }
+
+// delete category by id
+export const deleteCategoryById = (id) => {
+    return fetch(`/api/category/${id}`, {
+        method: "DELETE"
+    });
+}

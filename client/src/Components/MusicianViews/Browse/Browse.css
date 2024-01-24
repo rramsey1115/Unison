@@ -37,15 +37,17 @@
 
 #explore-category-btn {
     width: 90px;
+    margin: 0px 10px;
 }
 
 #edit-category-btn {
     width: 90px;
-    margin: 0px 20px;
+    margin: 0px 10px;
 }
 
-#create-category-btn {
-
+#delete-category-btn {
+    width: 90px;
+    margin: 0px 10px;
 }
 
 

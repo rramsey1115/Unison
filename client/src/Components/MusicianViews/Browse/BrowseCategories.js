@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllCategories } from "../../../Managers/categoryManager";
+import { deleteCategoryById, getAllCategories } from "../../../Managers/categoryManager";
 import "./Browse.css";
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
@@ -23,6 +23,11 @@ export const BrowseCategories = ({loggedInUser}) => {
         if (open === id) { setOpen('0') } 
         else { setOpen(id) }
     };
+
+    const handleDeleteCategory = (e) => {
+        e.preventDefault();
+        deleteCategoryById(e.target.value*1).then(() => getAndSetAllCategories());
+    }
 
     const navigate = useNavigate();
 
@@ -52,7 +57,19 @@ export const BrowseCategories = ({loggedInUser}) => {
                                     </Button>
                                     {loggedInUser.roles[0] !== "Teacher" 
                                     ? null 
-                                    : <EditCategoryModal categoryId={c.id} getAndSetAllCategories={getAndSetAllCategories}/>}
+                                    :<EditCategoryModal categoryId={c.id} getAndSetAllCategories={getAndSetAllCategories}/>
+                                    }
+                                    {loggedInUser.roles[0] !== "Teacher" 
+                                    ? null 
+                                    :<Button
+                                        id="delete-category-btn"
+                                        className="delete-btn"
+                                        color="secondary"
+                                        size="sm"
+                                        value={c.id}
+                                        onClick={(e) => handleDeleteCategory(e)}
+                                    >Delete
+                                    </Button>}
                                 </div>
                             </AccordionBody>
                         </AccordionItem>)
