@@ -91,7 +91,6 @@ public class ActivityController : ControllerBase
 
     [HttpGet("{id}")]
     [Authorize]
-
     public IActionResult GetById(int id)
     {
         try
@@ -123,7 +122,6 @@ public class ActivityController : ControllerBase
             return BadRequest($"{ex}");
         }
     }
-
 
     [HttpPost]
     // [Authorize]
@@ -196,6 +194,5 @@ public class ActivityController : ControllerBase
             return BadRequest($"Bad data sent: {ex}");
         }
     }
-
 
 }
