@@ -43,7 +43,6 @@ export const MySessions = ({ loggedInUser }) => {
 
     const navigate = useNavigate();
 
-
     return (
         <section className="sessions-container">
 
@@ -61,6 +60,7 @@ export const MySessions = ({ loggedInUser }) => {
                 {sessions.map(s => {
                     return( 
                     <div className="session">
+
                         <div key={s.id} className="session-div">
 
                             <div className="session-div-header">
@@ -81,6 +81,7 @@ export const MySessions = ({ loggedInUser }) => {
                                 <h5>Notes</h5>
                                 <p>{s.notes}</p>
                             </div>
+
                         </div> 
 
                         <div className="session-div-btns">
@@ -111,6 +112,7 @@ export const MySessions = ({ loggedInUser }) => {
                             <img id="delete-icon" className="delete-icon" alt="delete icon" src={deleteIcon}/>
 
                         </div>
+
                     </div>
                 )})}
 

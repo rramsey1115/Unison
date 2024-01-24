@@ -1,0 +1,10 @@
+.browse-container {
+    width: 95vw;
+    min-width: 380px;
+    margin: 10px auto;
+}
+
+.browse-body {
+    width: 80%;
+    margin: 30px auto;
+}
