@@ -12,3 +12,9 @@ export const getUsersWithRoles = () => {
 export const getTeacherStudents = (teacherId) => {
     return fetch(`/api/userprofile/teacher/${teacherId}`).then(res => res.json());
 }
+
+export const removeTeacherIdFromStudent = (studentId) => {
+    return fetch(`/api/userprofile/remove/${studentId}`, {
+        method: "POST"
+    }).then(res => res.json)
+}
