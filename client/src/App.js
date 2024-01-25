@@ -6,7 +6,7 @@ import { tryGetLoggedInUser } from "./Managers/authManger";
 import { TeacherViews } from "./Components/TeacherViews.js";
 import { MusicianViews } from "./Components/MusicianViews.js";
 
-function App() {
+export const App = () => {
   const [loggedInUser, setLoggedInUser] = useState();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
   }
 
   return (
-    loggedInUser.roles[0] == "Teacher" 
+    loggedInUser?.roles?.includes("Teacher")
     ?<>
       <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <TeacherViews loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
@@ -34,11 +34,3 @@ function App() {
     </>
   );
 }
-
-export default App;
-
-{/* {console.log(loggedInUser)}
-{loggedInUser.roles[0] = "Teacher" 
-? <TeacherViews loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
-
-{/* :  */}

@@ -19,7 +19,6 @@ const toggleNavbar = () => setOpen(!open);
 
 return (
     <div>
-    {console.log('loggedInUser', loggedInUser)}
     <Navbar color="info" light fixed="true" expand="sm">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
             Unison
@@ -27,7 +26,7 @@ return (
         
         {loggedInUser 
         ?
-            loggedInUser.roles[0] === "Teacher" 
+        loggedInUser?.roles?.includes("Teacher") 
             ?<>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>

@@ -34,7 +34,7 @@ export const Students = ({loggedInUser}) => {
                         <tbody>
                             {students.map(s => {
                                 return(
-                                    <tr>
+                                    <tr key={s.id}>
                                         <td>{s.id}</td>
                                         <td>{`${s.firstName} ${s.lastName}`}</td>
                                         <td>{s.email}</td>
