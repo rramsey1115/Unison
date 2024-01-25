@@ -6,7 +6,7 @@ import deleteIcon from "../../../../images/delete.png";
 import repeatIcon from "../../../../images/start.png";
 import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
-import { getAllSessions } from "../../../../Managers/sessionManager";
+import { deleteSessionById, getAllSessions } from "../../../../Managers/sessionManager";
 import { getFavoritesByMusicianId } from "../../../../Managers/favoriteSessionsManager";
 
 export const MySessions = ({ loggedInUser }) => {
@@ -43,47 +43,40 @@ export const MySessions = ({ loggedInUser }) => {
 
     const navigate = useNavigate();
 
+    const handleDeleteSession = (id) => {
+        deleteSessionById(id).then(() => getAndSetSessions()).then(() => getAndSetFavoriteSessions());
+    }
+
     return (
         <section className="sessions-container">
-
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
             </header>
-
             <section className="sessions-cards">
-
                 <div id="create-session-div" onClick={(e) => navigate('create')}>
                     <img id="plus-icon" className="plus-icon" alt="plus icon" src={plusIcon}/>
                 </div>
-
                 {/* returns card for each session */}
                 {sessions.map(s => {
                     return( 
-                    <div className="session">
-
+                    <div key={s.id} className="session">
                         <div key={s.id} className="session-div">
-
                             <div className="session-div-header">
                                 <h4 id="session-div-header-date">{getFormattedDate(s.dateCompleted)}</h4>
                             </div>
-                            
                             <h5>{s.duration} Minutes</h5>
-                            
                             {s.sessionActivities.map(a => {
-                                return ( 
+                                return (
                                 <div id="session-div-activities" className="session-card" key={a.id}>
                                     <h5 >{a.activity.category.name}</h5>
                                     <p>{a.activity.name}</p>
                                 </div>)}
                             )}
-
                             <div className="session-div-notes">
                                 <h5>Notes</h5>
                                 <p>{s.notes}</p>
                             </div>
-
                         </div> 
-
                         <div className="session-div-btns">
                             {favoriteSessions?.map(fs => {
                                 if(s.id === fs.sessionId )
@@ -107,17 +100,29 @@ export const MySessions = ({ loggedInUser }) => {
                                     />
                                 }
                             })}
+                            <img 
+                                id="repeat-icon" 
+                                className="repeat-icon" 
+                                alt="repeat icon" 
+                                src={repeatIcon}
+                            />
 
-                            <img id="repeat-icon" className="repeat-icon" alt="repeat icon" src={repeatIcon}/>
-                            <img id="delete-icon" className="delete-icon" alt="delete icon" src={deleteIcon}/>
-
+                            <button 
+                                className="session-activities-btn"
+                                value={s.id}
+                                onClick={(e) => handleDeleteSession(e.currentTarget.value * 1)}
+                            >
+                                <img 
+                                    id="remove-activity-icon" 
+                                    className="remove-icon" 
+                                    src={deleteIcon} 
+                                    alt="remove icon" 
+                                />
+                            </button>
                         </div>
-
                     </div>
                 )})}
-
             </section>
-
         </section>
     )
 }

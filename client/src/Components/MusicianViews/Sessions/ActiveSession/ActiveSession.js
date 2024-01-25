@@ -21,12 +21,9 @@ export const ActiveSession = ({loggedInUser}) => {
 
     const handleComplete = async (e) => {
         e.preventDefault();
-        console.log('updated', updated);
         await completeSession(updated);
         navigate('/session');
     }
-
-    console.log('session',session);
 
     return (
         <div className="active-container">
@@ -55,7 +52,7 @@ export const ActiveSession = ({loggedInUser}) => {
                             className="text-input"
                             type="text"
                             placeholder="Session Notes"
-                            value={updated.notes}
+                            value={updated?.notes}
                             onChange={(e) => {
                                 const copy = {...updated};
                                 copy.notes = e.target.value;

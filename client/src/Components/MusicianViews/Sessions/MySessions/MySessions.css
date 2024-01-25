@@ -69,6 +69,8 @@
     transition: ease-in-out .2s;
 }
 
+
+
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
     width: 330px;
@@ -77,7 +79,6 @@
     padding: 12px;
     border-radius: 40px;
     background-color: var(--blueGray);
-    /* background-color: transparent; */
     opacity: .33;
     display: flex;
     justify-content: center;
