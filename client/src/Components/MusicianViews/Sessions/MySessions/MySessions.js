@@ -9,13 +9,15 @@ import { useEffect, useState } from "react";
 import { deleteSessionById, getAllSessions } from "../../../../Managers/sessionManager";
 import { getFavoritesByMusicianId } from "../../../../Managers/favoriteSessionsManager";
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
+import { getAllComments } from "../../../../Managers/commentManager";
 
 export const MySessions = ({ loggedInUser }) => {
     const [favoriteSessions, setFavoriteSessions] = useState([]);
     const [sessions, setSessions] = useState([]);
+    const [comments, setComments] = useState([]);
     const userId = loggedInUser.id;
 
-    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId) }, [userId])
+    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId); getAndSetComments(); }, [userId]);
 
     const getAndSetSessions = () => {
         getAllSessions().then((data) => {
@@ -25,10 +27,14 @@ export const MySessions = ({ loggedInUser }) => {
               });
             setSessions(filtered);
         });
-    }
+    };
 
     const getAndSetFavoriteSessions = () => {
         getFavoritesByMusicianId(userId).then(data =>setFavoriteSessions(data));
+    };
+
+    const getAndSetComments = () => {
+        getAllComments().then(setComments);
     }
 
     const getFormattedDate = (dateString) => {
@@ -46,7 +52,7 @@ export const MySessions = ({ loggedInUser }) => {
 
     const handleDeleteSession = (id) => {
         deleteSessionById(id).then(() => getAndSetSessions()).then(() => getAndSetFavoriteSessions());
-    }
+    };
 
     return (
         <section className="sessions-container">
@@ -59,6 +65,9 @@ export const MySessions = ({ loggedInUser }) => {
                 </div>
                 {/* returns card for each session */}
                 {sessions.map(s => {
+                    // sets comments for this session - if null handled below
+                    var arr = comments.filter(c => c.sessionId === s.id);
+
                     return( 
                     <div key={s.id} className="session">
                         <div key={s.id} className="session-div">
@@ -74,10 +83,21 @@ export const MySessions = ({ loggedInUser }) => {
                                 </div>)}
                             )}
                             <div className="session-div-notes">
-                                <h5>Notes</h5>
+                                <h5>My Notes</h5>
                                 <p>{s.notes}</p>
                             </div>
-                        </div> 
+                                
+
+                            <div className="session-div-comments">
+                                <h5>Teacher Comments</h5>
+                                {arr.length > 0 
+                                ? arr.map(a => {
+                                    return (
+                                        <p key={a.id}>From: {a.teacher.lastName}<br/>{a.body}</p>
+                                    )})
+                                : <p>None at this time</p>}
+                            </div>
+                        </div>
                         <div className="session-div-btns">
                             {favoriteSessions.length > 0 ? favoriteSessions?.map(fs => {
                                 if(s.id === fs.sessionId )
@@ -124,5 +144,5 @@ export const MySessions = ({ loggedInUser }) => {
                 )})}
             </section>
         </section>
-    )
+    );
 }
