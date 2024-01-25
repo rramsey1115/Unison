@@ -47,6 +47,8 @@ export const MySessions = ({ loggedInUser }) => {
         deleteSessionById(id).then(() => getAndSetSessions()).then(() => getAndSetFavoriteSessions());
     }
 
+    {console.log(favoriteSessions)}
+
     return (
         <section className="sessions-container">
             <header className="sessions-header">
@@ -78,8 +80,8 @@ export const MySessions = ({ loggedInUser }) => {
                             </div>
                         </div> 
                         <div className="session-div-btns">
-                            {favoriteSessions?.map(fs => {
-                                console.log(favoriteSessions)
+                            {favoriteSessions.length > 0 ? favoriteSessions?.map(fs => {
+                                console.log(fs)
                                 if(s.id === fs.sessionId )
                                 {
                                     return <img 
@@ -100,7 +102,15 @@ export const MySessions = ({ loggedInUser }) => {
                                         src={emptyFav}
                                     />
                                 }
-                            })}
+                            })
+                            : <img 
+                                key={s.id} 
+                                id="favorite-icon" 
+                                className="favorite-icon" 
+                                alt="favorite icon" 
+                                src={emptyFav}
+                            />
+                            }
 
                             <img 
                                 id="repeat-icon" 
