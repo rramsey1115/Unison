@@ -2,12 +2,13 @@ import "./MySessions.css";
 import { useNavigate } from "react-router-dom";
 import plusIcon from "../../../../images/plus-icon.png";
 import filledFav from "../../../../images/filled-favorite.png"
-import deleteIcon from "../../../../images/delete.png";
+
 import repeatIcon from "../../../../images/start.png";
 import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
 import { deleteSessionById, getAllSessions } from "../../../../Managers/sessionManager";
 import { getFavoritesByMusicianId } from "../../../../Managers/favoriteSessionsManager";
+import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 
 export const MySessions = ({ loggedInUser }) => {
     const [favoriteSessions, setFavoriteSessions] = useState([]);
@@ -79,7 +80,6 @@ export const MySessions = ({ loggedInUser }) => {
                         </div> 
                         <div className="session-div-btns">
                             {favoriteSessions.length > 0 ? favoriteSessions?.map(fs => {
-                                console.log(fs)
                                 if(s.id === fs.sessionId )
                                 {
                                     return <img 
@@ -117,18 +117,8 @@ export const MySessions = ({ loggedInUser }) => {
                                 src={repeatIcon}
                             />
 
-                            <button 
-                                className="session-activities-btn"
-                                value={s.id}
-                                onClick={(e) => handleDeleteSession(e.currentTarget.value * 1)}
-                            >
-                                <img 
-                                    id="remove-activity-icon" 
-                                    className="remove-icon" 
-                                    src={deleteIcon} 
-                                    alt="remove icon" 
-                                />
-                            </button>
+                            <ConfirmDeleteModal session={s} handleDeleteSession={handleDeleteSession} getFormattedDate={getFormattedDate}/>
+                            
                         </div>
                     </div>
                 )})}
