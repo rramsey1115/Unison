@@ -79,7 +79,6 @@ export const MySessions = ({ loggedInUser }) => {
                         </div> 
                         <div className="session-div-btns">
                             {favoriteSessions.length > 0 ? favoriteSessions?.map(fs => {
-                                console.log(fs)
                                 if(s.id === fs.sessionId )
                                 {
                                     return <img 
