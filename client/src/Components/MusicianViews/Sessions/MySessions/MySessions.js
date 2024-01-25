@@ -47,8 +47,6 @@ export const MySessions = ({ loggedInUser }) => {
         deleteSessionById(id).then(() => getAndSetSessions()).then(() => getAndSetFavoriteSessions());
     }
 
-    {console.log(favoriteSessions)}
-
     return (
         <section className="sessions-container">
             <header className="sessions-header">
