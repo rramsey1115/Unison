@@ -182,4 +182,27 @@ public class SessionController : ControllerBase
             return BadRequest($"Bad data sent: {ex}");
         }
     }
+
+    [HttpDelete("{id}/delete")]
+    [Authorize]
+    public IActionResult Delete(int id)
+    {
+        try
+        {
+            var found = _dbContext.Sessions.SingleOrDefault(s => s.Id == id);
+            if(found == null)
+            {
+                return NotFound("No session found with given id");
+            }
+
+            _dbContext.Sessions.Remove(found);
+            _dbContext.SaveChanges();
+            
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad Data: {ex}");
+        }
+    }
 }
