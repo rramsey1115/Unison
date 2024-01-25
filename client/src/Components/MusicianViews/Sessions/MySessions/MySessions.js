@@ -79,6 +79,7 @@ export const MySessions = ({ loggedInUser }) => {
                         </div> 
                         <div className="session-div-btns">
                             {favoriteSessions?.map(fs => {
+                                console.log(favoriteSessions)
                                 if(s.id === fs.sessionId )
                                 {
                                     return <img 
@@ -100,6 +101,7 @@ export const MySessions = ({ loggedInUser }) => {
                                     />
                                 }
                             })}
+
                             <img 
                                 id="repeat-icon" 
                                 className="repeat-icon" 
