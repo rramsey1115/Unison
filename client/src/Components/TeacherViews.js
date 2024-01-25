@@ -6,8 +6,8 @@ import { BrowseCategories } from "./MusicianViews/Browse/BrowseCategories";
 import { BrowseActivities } from "./MusicianViews/Browse/BrowseActivities";
 import { FavoriteActivities } from "./MusicianViews/Browse/FavoriteActivities";
 import { TeacherHome } from "./TeacherViews/TeacherHome";
-import { MyStudents } from "./TeacherViews/MyStudents/MyStudents";
 import { StudentSessions } from "./TeacherViews/Sessions/StudentSessions";
+import { Students } from "./TeacherViews/MyStudents/Students";
 
 
 export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
@@ -21,18 +21,18 @@ export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
                 </AuthorizedRoute>}
             />
 
-            <Route path="mystudents">   
+            <Route path="students">   
                 <Route index element={
                     <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
-                        <MyStudents loggedInUser={loggedInUser}/>
+                        <Students loggedInUser={loggedInUser}/>
                     </AuthorizedRoute>} 
-            />
+                />
 
-            <Route path="sessions/:id" element={
-                <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
-                    <StudentSessions loggedInUser={loggedInUser}/>
-                </AuthorizedRoute>}
-            />
+                <Route path="sessions/:id" element={
+                    <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
+                        <StudentSessions loggedInUser={loggedInUser}/>
+                    </AuthorizedRoute>}
+                />
             </Route>
       
             <Route path="browse">

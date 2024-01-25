@@ -1,0 +1,15 @@
+.students-container {
+    width: 90vw;
+    min-width: 350px;
+    margin: 10px auto;
+}
+
+.students-body {
+    min-width: 350px;
+    margin: 20px auto;
+}
+
+.students-header {
+    min-width: 350px;
+    margin: 20px auto;
+}
