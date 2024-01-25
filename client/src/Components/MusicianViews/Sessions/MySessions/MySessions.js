@@ -121,21 +121,24 @@ export const MySessions = ({ loggedInUser }) => {
                                     />
                                 }
                             })
-                            : <img 
+                            : 
+                            <img 
                                 key={s.id} 
                                 id="favorite-icon" 
                                 className="favorite-icon" 
                                 alt="favorite icon" 
                                 src={emptyFav}
                             />
+                            
                             }
-
-                            <img 
+                            
+                            {/* Comment this back in once I have functionality to redo a session */}
+                            {/* <img 
                                 id="repeat-icon" 
                                 className="repeat-icon" 
                                 alt="repeat icon" 
                                 src={repeatIcon}
-                            />
+                            /> */}
 
                             <ConfirmDeleteModal session={s} handleDeleteSession={handleDeleteSession} getFormattedDate={getFormattedDate}/>
                             
