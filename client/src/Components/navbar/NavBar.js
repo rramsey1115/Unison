@@ -19,11 +19,54 @@ const toggleNavbar = () => setOpen(!open);
 
 return (
     <div>
+    {console.log('loggedInUser', loggedInUser)}
     <Navbar color="info" light fixed="true" expand="sm">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
             Unison
         </NavbarBrand>
-        {loggedInUser ? (
+        
+        {loggedInUser 
+        ?
+            loggedInUser.roles[0] === "Teacher" 
+            ?<>
+            <NavbarToggler onClick={toggleNavbar} />
+            <Collapse isOpen={open} navbar>
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/students">
+                            My Students
+                        </NavLink>
+                    </NavItem>
+     
+                    {/* <NavItem>
+                        <NavLink tag={RRNavLink} to="">
+                            Assignments
+                        </NavLink>
+                    </NavItem> */}
+    
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/browse/category">
+                            Browse
+                        </NavLink>
+                    </NavItem>
+    
+                </Nav>
+            </Collapse>
+            <Button
+                color="secondary"
+                onClick={(e) => {
+                    e.preventDefault();
+                    setOpen(false);
+                    logout().then(() => {
+                    setLoggedInUser(null);
+                    setOpen(false);
+                    });
+                }}
+            >
+            Logout
+            </Button>
+        </>
+        :
         <>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
@@ -56,29 +99,26 @@ return (
                 </Nav>
             </Collapse>
             <Button
-            color="secondary"
-            onClick={(e) => {
-                e.preventDefault();
-                setOpen(false);
-                logout().then(() => {
-                setLoggedInUser(null);
-                setOpen(false);
-                });
-            }}
+                color="secondary"
+                onClick={(e) => {
+                    e.preventDefault();
+                    setOpen(false);
+                    logout().then(() => {
+                    setLoggedInUser(null);
+                    setOpen(false);
+                    });
+                }}
             >
             Logout
             </Button>
         </>
-        ) : (
-        <Nav navbar>
-            <NavItem>
-                <NavLink tag={RRNavLink} to="/login">
-                    <Button color="primary">Login</Button>
-                </NavLink>
-            </NavItem>
-        </Nav>
-        )}
+            :  <Nav navbar>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/login">
+                            <Button color="primary">Login</Button>
+                        </NavLink>
+                    </NavItem>
+                </Nav>
+        }
     </Navbar>
-    </div>
-);
-}
+</div>);}

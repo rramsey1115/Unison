@@ -14,7 +14,7 @@ import { MyStudents } from "./TeacherViews/MyStudents/MyStudents";
 import { StudentSessions } from "./TeacherViews/Sessions/StudentSessions";
 
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
   return (
     <Routes>
       <Route path="/">
