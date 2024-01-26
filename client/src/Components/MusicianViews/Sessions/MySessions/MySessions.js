@@ -2,7 +2,6 @@ import "./MySessions.css";
 import { useNavigate } from "react-router-dom";
 import plusIcon from "../../../../images/plus-icon.png";
 import filledFav from "../../../../images/filled-favorite.png"
-
 import repeatIcon from "../../../../images/start.png";
 import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
@@ -35,7 +34,7 @@ export const MySessions = ({ loggedInUser }) => {
 
     const getAndSetComments = () => {
         getAllComments().then(setComments);
-    }
+    };
 
     const getFormattedDate = (dateString) => {
         const date = new Date(dateString); // {object Date}
@@ -131,7 +130,7 @@ export const MySessions = ({ loggedInUser }) => {
                             />
                             
                             }
-                            
+
                             {/* Comment this back in once I have functionality to redo a session */}
                             {/* <img 
                                 id="repeat-icon" 

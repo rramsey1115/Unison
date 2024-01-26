@@ -9,12 +9,8 @@ import { ActiveSession } from "./MusicianViews/Sessions/ActiveSession/ActiveSess
 import { BrowseCategories } from "./MusicianViews/Browse/BrowseCategories";
 import { BrowseActivities } from "./MusicianViews/Browse/BrowseActivities";
 import { FavoriteActivities } from "./MusicianViews/Browse/FavoriteActivities";
-import { TeacherHome } from "./TeacherViews/TeacherHome";
-import { MyStudents } from "./TeacherViews/MyStudents/MyStudents";
-import { StudentSessions } from "./TeacherViews/Sessions/StudentSessions";
 
-
-export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
   return (
     <Routes>
       <Route path="/">
@@ -65,26 +61,6 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             <FavoriteActivities loggedInUser={loggedInUser} />
           </AuthorizedRoute>}
         />
-      </Route>
-
-      <Route path="teacher">
-        <Route index element={
-          <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
-            <TeacherHome loggedInUser={loggedInUser}/>
-          </AuthorizedRoute>}
-        />
-        <Route path="mystudents"> 
-          <Route index element={
-            <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
-              <MyStudents loggedInUser={loggedInUser}/>
-            </AuthorizedRoute>} 
-          />
-          <Route path="sessions/:id" element={
-            <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
-              <StudentSessions loggedInUser={loggedInUser}/>
-            </AuthorizedRoute>}
-          />
-        </Route>
       </Route>
 
       <Route

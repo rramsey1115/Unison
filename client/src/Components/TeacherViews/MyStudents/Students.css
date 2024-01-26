@@ -1,0 +1,45 @@
+.students-container {
+    width: 85vw;
+    min-width: 350px;
+    margin: 10px auto;
+}
+
+.students-body {
+    min-width: 350px;
+    margin: 20px auto;
+}
+
+.students-header {
+    min-width: 350px;
+    margin: 20px auto;
+}
+
+/* students table  */
+.table {
+    border: 2px solid var(--blueGray) !important;
+}
+
+.students-table-btn {
+    width: 80px;
+}
+
+/*  add comment modal */
+.comment-modal {
+    color: black;
+}
+
+.comment-btn {
+    margin: 4px;
+}
+
+.comment-textarea {
+    width: 80%;
+    min-width: 250px;
+    height: 150px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.delete-comment-btn {
+    margin-left: 6px;
+}

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Unison.Data;
+using Unison.Models;
 using Unison.Models.DTOs;
 
 namespace GuiseppeJoes.Controllers;
@@ -36,11 +37,12 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("withroles")]
-    // [Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     public IActionResult GetWithRoles()
     {
         return Ok(_dbContext.UserProfiles
         .Include(up => up.IdentityUser)
+        .OrderBy(up => up.Id)
         .Select(up => new UserProfileDTO
         {
             Id = up.Id,
@@ -49,6 +51,7 @@ public class UserProfileController : ControllerBase
             Address = up.Address,
             Email = up.IdentityUser.Email,
             UserName = up.IdentityUser.UserName,
+            TeacherId = up.TeacherId,
             IdentityUserId = up.IdentityUserId,
             Roles = _dbContext.UserRoles
             .Where(ur => ur.UserId == up.IdentityUserId)
@@ -77,6 +80,7 @@ public class UserProfileController : ControllerBase
             FirstName = up.FirstName,
             LastName = up.LastName,
             Address = up.Address,
+            TeacherId = up.TeacherId,
             IdentityUserId = up.IdentityUserId,
             Email = up.IdentityUser.Email,
             UserName = up.IdentityUser.UserName
@@ -85,4 +89,35 @@ public class UserProfileController : ControllerBase
         );
     }
 
+    [HttpGet("teacher/{id}")]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult GetTeacherStudents(int id)
+    {
+        try
+        {
+            List<UserProfile> found = _dbContext.UserProfiles
+            .Include(u => u.IdentityUser)
+            .Where(u => u.TeacherId == id).ToList();
+
+            return Ok(found.Select(f => new UserProfileDTO
+            {
+                Id = f.Id,
+                FirstName = f.FirstName,
+                LastName = f.LastName,
+                Address = f.Address,
+                Email = f.IdentityUser.Email,
+                UserName = f.IdentityUser.UserName,
+                TeacherId = f.TeacherId,
+                IdentityUserId = f.IdentityUserId,
+                Roles = _dbContext.UserRoles
+                    .Where(ur => ur.UserId == f.IdentityUserId)
+                    .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
+                    .ToList()
+            }).ToList());
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data: {ex}");
+        }
+    }
 }
