@@ -4,6 +4,11 @@
     margin: 10px auto;
 }
 
+.create-session-header {
+    width: 70%;
+    margin: 20px auto;
+}
+
 .create-session-form {
     width: 70%;
     min-width: 340px;

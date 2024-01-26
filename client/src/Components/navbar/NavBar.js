@@ -75,21 +75,21 @@ return (
                             Sessions
                         </NavLink>
                     </NavItem>
-                    <NavItem>
+                    {/* <NavItem>
                         <NavLink tag={RRNavLink} to="">
                             Stats
                         </NavLink>
-                    </NavItem>
-                    <NavItem>
+                    </NavItem> */}
+                    {/* <NavItem>
                         <NavLink tag={RRNavLink} to="/favorite">
                             Favorites
                         </NavLink>
-                    </NavItem>
-                    <NavItem>
+                    </NavItem> */}
+                    {/* <NavItem>
                         <NavLink tag={RRNavLink} to="">
                             Assignments
                         </NavLink>
-                    </NavItem>
+                    </NavItem> */}
                     <NavItem>
                         <NavLink tag={RRNavLink} to="/browse/category">
                             Browse

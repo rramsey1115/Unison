@@ -86,7 +86,7 @@ export const CreateSession = ({loggedInUser}) => {
                                         />
                                     </button>
 
-                                    <button
+                                    {/* <button
                                         className="session-activities-btn"
                                         value={sa.activityId}
                                     >
@@ -96,7 +96,7 @@ export const CreateSession = ({loggedInUser}) => {
                                             src={editIcon} 
                                             alt="edit icon" 
                                         />
-                                    </button>
+                                    </button> */}
 
                                 </div>
                             </fieldset>
