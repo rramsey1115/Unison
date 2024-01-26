@@ -2,7 +2,7 @@ import "../../../Components/MusicianViews/Sessions/MySessions/MySessions.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllSessions } from "../../../Managers/sessionManager";
-import { getAllComments } from "../../../Managers/commentManager";
+import { deleteComment, getAllComments } from "../../../Managers/commentManager";
 import plusIcon from "../../../images/plus-icon.png";
 import { getUserById } from "../../../Managers/profileManager";
 import { Button, Spinner } from "reactstrap";
@@ -49,6 +49,13 @@ export const StudentSessions = ({ loggedInUser }) => {
 
     const navigate = useNavigate();
 
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        await deleteComment(e.target.value);
+        getAndSetComments();
+        getAndSetSessions();
+    }
+
     return (
     !student.firstName ? <Spinner/>
     :
@@ -61,7 +68,6 @@ export const StudentSessions = ({ loggedInUser }) => {
                 {sessions.map(s => {
                     // sets comments for this session - if null handled below
                     var arr = comments.filter(c => c.sessionId === s.id);
-
                     return( 
                     <div key={s.id} className="session">
                         <div key={s.id} className="session-div">
@@ -71,7 +77,7 @@ export const StudentSessions = ({ loggedInUser }) => {
                             <h5>{s.duration} Minutes</h5>
                             {s.sessionActivities.map(a => {
                                 return (
-                                <div id="session-div-activities" className="session-card" key={a.id}>
+                                <div key={a.id} id="session-div-activities" className="session-card">
                                     <h5 >{a.activity.category.name}</h5>
                                     <p>{a.activity.name}</p>
                                 </div>)}
@@ -85,13 +91,29 @@ export const StudentSessions = ({ loggedInUser }) => {
                                 {arr.length > 0 
                                 ? arr.map(a => {
                                     return (
-                                        <p key={a.id}>From: {a.teacher.lastName}<br/>{a.body}</p>
+                                        <p key={a.id}>
+                                            From: {a.teacher.lastName}
+                                            {(userId*1) === (a.teacherId*1) &&
+                                            <Button
+                                                className="delete-comment-btn"
+                                                color="secondary"
+                                                size="sm"
+                                                value={a.id}
+                                                onClick={(e) => handleDelete(e)}
+                                            >Delete
+                                            </Button>}
+                                        <br/>{a.body}</p>
                                     )})
                                 : <p>None at this time</p>}
                             </div>
                         </div>
                         <div className="session-div-btns">
-                            <CommentModal getAndSetSessions={getAndSetSessions} getAndSetComments={getAndSetComments} session={s} student={student} teacherId={userId}/>                 
+                            <CommentModal 
+                                getAndSetSessions={getAndSetSessions} 
+                                getAndSetComments={getAndSetComments} 
+                                session={s} student={student} 
+                                teacherId={userId}
+                            />                 
                         </div>
                     </div>
                 )})}

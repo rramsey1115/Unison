@@ -16,3 +16,10 @@ export const postNewComment = (obj) => {
         body: JSON.stringify(obj)
     }).then(res => res.json());
 }
+
+// delete comment by id
+export const deleteComment = (id) => {
+    return fetch(`/api/comment/${id}`, {
+        method: "DELETE"
+    });
+}

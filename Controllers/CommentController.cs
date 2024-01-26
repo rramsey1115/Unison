@@ -100,4 +100,25 @@ public class CommentController : ControllerBase
             return BadRequest($"Bad data sent: {ex}");
         }
     }
+
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult Delete(int id)
+    {
+        try
+        {
+            var found = _dbContext.Comments.SingleOrDefault(c => c.Id == id);
+            if(found == null) 
+            { 
+                return NotFound("No comment found with given Id");
+            }
+            _dbContext.Comments.Remove(found);
+            _dbContext.SaveChanges();
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
 }
