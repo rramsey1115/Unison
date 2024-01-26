@@ -114,7 +114,7 @@ return (
             :  <Nav navbar>
                     <NavItem>
                         <NavLink tag={RRNavLink} to="/login">
-                            <Button color="primary">Login</Button>
+                            <Button color="secondary">Login</Button>
                         </NavLink>
                     </NavItem>
                 </Nav>

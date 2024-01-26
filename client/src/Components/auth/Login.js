@@ -50,7 +50,7 @@ export default function Login({ setLoggedInUser }) {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button color="primary" onClick={handleSubmit}>
+      <Button color="info" onClick={handleSubmit}>
         Login
       </Button>
       <p>
