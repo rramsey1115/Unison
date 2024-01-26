@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { getAllSessions } from "../../../Managers/sessionManager";
-import { Spinner } from "reactstrap";
 
 export const LastSession = ({studentId}) => {
     const[lastSession, setLastSession] = useState([]);
@@ -19,7 +18,7 @@ export const LastSession = ({studentId}) => {
 
     return(
     lastSession.length === 0 
-    ? <Spinner color="info"/> 
-    : <p>{new Date(lastSession.dateCompleted).toLocaleDateString()}</p>
+    ? <>{"--/--/----"}</> 
+    : <>{new Date(lastSession.dateCompleted).toLocaleDateString()}</>
     );
 }
