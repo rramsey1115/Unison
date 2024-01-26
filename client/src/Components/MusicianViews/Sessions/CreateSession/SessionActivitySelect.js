@@ -3,6 +3,7 @@ import { getAllCategories } from "../../../../Managers/categoryManager";
 import { getActivityByCategoryId, getActivityById } from "../../../../Managers/activityManager";
 import "./CreateSession.css";
 import { CreateActivityModal } from "./CreateActivityModal";
+import { Button } from "reactstrap";
 
 export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser}) => {
     const [categories, setCategories] = useState([]);
@@ -12,24 +13,31 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
     const [buttonHidden, setButtonHidden] = useState(true);
     const [activities, setActivities] = useState([]);
 
-    useEffect(() => { getAndSetCategories() }, []);
+    useEffect(() => {getAndSetCategories() }, [categoryId]);
 
     const getAndSetCategories = () => {
         getAllCategories().then(setCategories);
     };
 
     const getAndSetActivities = (id) => {
-        getActivityByCategoryId(id).then(setActivities);
+        if(id > 0) {getActivityByCategoryId(id).then(setActivities);}
     };
 
     const handleCategoryChange = (e) => {
         setCategoryId(e.target.value*1);
-        if(e.target.value > 0) { getAndSetActivities(e.target.value*1) }
+        if(e.target.value*1 > 0) { getAndSetActivities(e.target.value*1); }
     }
 
     const handleDurationChange = (e) => {
         setDuration(e.target.value*1);
-        setButtonHidden(false);
+        if(e.target.value*1 > 0)
+        {
+            setButtonHidden(false);
+        }
+        if(e.target.value*1 === 0)
+        {
+            setButtonHidden(true);
+        }
     }
 
     const handleAdd =async (e) => {
@@ -51,14 +59,13 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
     }
 
     return (
-    <>
-
+    <div>
         <select 
             value={categoryId}
             onChange={(e)=> {
                 handleCategoryChange(e)
             }}>
-            <option>Categories</option>
+            <option value={0}>Categories</option>
             {categories.map(c => {
                 return ( 
                 <option 
@@ -69,14 +76,11 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
                 </option>)
             })}
         </select>
-
-<br/>
-
+   
         {categoryId > 0 
-        ? <>
-            <select
+        ? <select
                 onChange={(e) => setActivityId(e.target.value*1)}>
-                <option>Activities</option>
+                <option value={0}>Activities</option>
                 {activities?.map(a => {
                     return ( 
                     <option 
@@ -87,19 +91,15 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
                     </option>)
                 })}
             </select>
- 
-            <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivities} loggedInUser={loggedInUser}/>
-            
-        </>
         : null
         }
 
-<br/>
+        <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivities} loggedInUser={loggedInUser}/>
 
         {categoryId > 0 && activityId > 0 
         ? <select
             onChange={(e) => handleDurationChange(e)}>
-            <option>Minutes</option>
+            <option value={0}>Minutes</option>
             {Array.from({ length: 60 }, (_, index) => (
                 <option 
                     key={index+1} 
@@ -111,13 +111,10 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
         : null
         }
 
-<br/>
-
         {buttonHidden === true 
         ? null 
-        :<button onClick={(e) => handleAdd(e)}>Add Activity</button>
+        :<Button size="sm" color="info" onClick={(e) => handleAdd(e)}>Add Activity</Button>
         }
 
-
-    </>)
+    </div>)
 }

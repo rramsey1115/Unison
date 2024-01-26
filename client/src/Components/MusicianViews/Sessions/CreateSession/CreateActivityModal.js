@@ -13,7 +13,7 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
         creatorId: loggedInUser.id
     });
 
-    useEffect(() => { getAndSetCategory(categoryId) }, [categoryId]);
+    useEffect(() => {if(categoryId > 0) {getAndSetCategory(categoryId)} }, [categoryId]);
 
     const toggleModal = () => {
         setModal(!modal)
@@ -38,8 +38,8 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
 
     return (
     <div>
-      <Button id="create-activity-btn" className="create-btn" color='info' size='md' onClick={toggleModal}>
-        Create Activity
+      <Button id="create-activity-btn" className="create-btn" color='info' size='sm' onClick={toggleModal}>
+        Create New Activity
       </Button>
       <Modal isOpen={modal} toggle={toggleModal} style={{color:'black'}} backdrop="static">
         <ModalHeader toggle={toggleModal}>

@@ -6,6 +6,7 @@ import editIcon from "../../../../images/edit.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
 
 export const CreateSession = ({loggedInUser}) => {
     const [totalTime, setTotalTime] = useState(0);
@@ -73,7 +74,7 @@ export const CreateSession = ({loggedInUser}) => {
                                     <h5>{sa.duration} minutes</h5>
                                 </div>
                                 <div id="session-activities-btns">
-                                    <button 
+                                    <button
                                         className="session-activities-btn"
                                         value={sa.activityId}
                                         onClick={(e) => handleRemoveActivity(e.currentTarget.value * 1)}
