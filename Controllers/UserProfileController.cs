@@ -80,6 +80,7 @@ public class UserProfileController : ControllerBase
             FirstName = up.FirstName,
             LastName = up.LastName,
             Address = up.Address,
+            TeacherId = up.TeacherId,
             IdentityUserId = up.IdentityUserId,
             Email = up.IdentityUser.Email,
             UserName = up.IdentityUser.UserName

@@ -4,17 +4,18 @@ import { useEffect, useState } from "react";
 import { getAllSessions } from "../../../Managers/sessionManager";
 import { getAllComments } from "../../../Managers/commentManager";
 import plusIcon from "../../../images/plus-icon.png";
+import { getUserById } from "../../../Managers/profileManager";
+import { Spinner } from "reactstrap";
 
 export const StudentSessions = ({ loggedInUser }) => {
     const [sessions, setSessions] = useState([]);
     const [comments, setComments] = useState([]);
+    const [student, setStudent] = useState({});
     const studentId = useParams().id*1;
     const userId = loggedInUser.id*1;
 
-    console.log('studentId', studentId);
-    console.log('userId', userId);
-
-    useEffect(() => { getAndSetSessions(); getAndSetComments(); }, [userId]);
+    useEffect(() => { getAndSetSessions(); getAndSetComments(); }, [studentId]);
+    useEffect(() => { if(studentId)getAndSetStudentById(studentId)}, [studentId]);
 
     const getAndSetSessions = () => {
         getAllSessions().then((data) => {
@@ -25,6 +26,10 @@ export const StudentSessions = ({ loggedInUser }) => {
             setSessions(filtered);
         });
     };
+
+    const getAndSetStudentById = (studentId) => {
+        {getUserById(studentId).then(setStudent)}
+    }
 
     const getAndSetComments = () => {
         getAllComments().then(setComments);
@@ -43,10 +48,14 @@ export const StudentSessions = ({ loggedInUser }) => {
 
     const navigate = useNavigate();
 
+    console.log('student', student);
+
     return (
+    !student.firstName ? <Spinner/>
+    :
         <section className="sessions-container">
             <header className="sessions-header">
-                <h1>{loggedInUser.firstName}'s Sessions</h1>
+                <h1>{student.firstName}'s Sessions</h1>
             </header>
             <section className="sessions-cards">
                 <div id="create-session-div" onClick={(e) => navigate('create')}>

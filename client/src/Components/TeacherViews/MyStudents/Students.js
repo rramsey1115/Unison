@@ -3,6 +3,7 @@ import "./Students.css";
 import { useEffect, useState } from "react";
 import { getTeacherStudents } from "../../../Managers/profileManager";
 import { LastSession } from "./LastSession";
+import { useNavigate } from "react-router-dom";
 
 export const Students = ({loggedInUser}) => {
     const [students, setStudents] = useState([]);
@@ -12,6 +13,8 @@ export const Students = ({loggedInUser}) => {
     const getAndSetStudents = () => {
         getTeacherStudents(loggedInUser.id).then(setStudents);
     }
+
+    const navigate = useNavigate();
 
     return (
         <div className="students-container">
@@ -45,7 +48,8 @@ export const Students = ({loggedInUser}) => {
                                                 color="info" 
                                                 size="sm" 
                                                 className="students-table-btn"
-                                                onClick={(e) => {}}
+                                                value={s.id}
+                                                onClick={(e) => {navigate(`sessions/${e.target.value}`)}}
                                             >Sessions
                                             </Button>
                                         </td>
