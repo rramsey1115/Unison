@@ -34,7 +34,7 @@ export const MySessions = ({ loggedInUser }) => {
 
     const getAndSetComments = () => {
         getAllComments().then(setComments);
-    }
+    };
 
     const getFormattedDate = (dateString) => {
         const date = new Date(dateString); // {object Date}

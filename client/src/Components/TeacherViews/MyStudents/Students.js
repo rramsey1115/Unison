@@ -19,29 +19,59 @@ export const Students = ({loggedInUser}) => {
                 <h1>My Students</h1>
             </div>
             <div className="students-body">
-                <Table className="table" id="student-table" hover striped color="secondary">
+                <Table className="table" id="student-table" hover responsive>
                         <thead>
-                            <tr>
+                            <tr className="table-secondary">
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Last Session</th>
+                                <th>Sessions</th>
                                 <th>Stats</th>
-                                <th>Assign</th>
+                                <th>Assignment</th>
                                 {/* <th>Remove</th> */}
                             </tr>
                         </thead>
                         <tbody>
                             {students.map(s => {
                                 return(
-                                    <tr key={s.id}>
+                                    <tr key={s.id} style={{padding:20}}>
                                         <td>{s.id}</td>
                                         <td>{`${s.firstName} ${s.lastName}`}</td>
                                         <td>{s.email}</td>
                                         <td><LastSession studentId={s.id}/></td>
-                                        <td><Button color="info" size="sm" className="students-table-btn">Stats</Button></td>
-                                        <td><Button color="info" size="sm" className="students-table-btn">Assign</Button></td>
-                                        {/* <td><Button color="secondary" size="sm" className="students-table-btn">Remove</Button></td> */}
+                                        <td>
+                                            <Button 
+                                                color="info" 
+                                                size="sm" 
+                                                className="students-table-btn"
+                                            >Sessions
+                                            </Button>
+                                        </td>
+                                        <td>
+                                            <Button 
+                                                color="info" 
+                                                size="sm" 
+                                                className="students-table-btn"
+                                            >Stats
+                                            </Button>
+                                        </td>
+                                        <td>
+                                            <Button 
+                                                color="info" 
+                                                size="sm" 
+                                                className="students-table-btn"
+                                            >Create
+                                            </Button>
+                                        </td>
+                                        {/* <td>
+                                            <Button 
+                                                color="secondary" 
+                                                size="sm" 
+                                                className="students-table-btn"
+                                            >Remove
+                                            </Button>
+                                        </td> */}
                                     </tr>
                                 )
                             })}

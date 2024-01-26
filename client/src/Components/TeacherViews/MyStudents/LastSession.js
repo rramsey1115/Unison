@@ -17,8 +17,8 @@ export const LastSession = ({studentId}) => {
     };
 
     return(
-    lastSession.length === 0 
-    ? <>{"--/--/----"}</> 
-    : <>{new Date(lastSession.dateCompleted).toLocaleDateString()}</>
+        lastSession.length === 0 
+        ? <>{"--/--/----"}</> 
+        : <>{new Date(lastSession.dateCompleted).toLocaleDateString()}</>
     );
 }

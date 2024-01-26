@@ -13,3 +13,12 @@
     min-width: 350px;
     margin: 20px auto;
 }
+
+/* students table  */
+.table {
+    border: 2px solid var(--blueGray) !important;
+}
+
+.students-table-btn {
+    width: 80px;
+}
