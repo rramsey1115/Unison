@@ -11,7 +11,7 @@ public class ActivityObj
 
     [Required]
     public string Details { get; set; }
-
+    
     public int? CreatorId { get; set; }
 
     [Required]
