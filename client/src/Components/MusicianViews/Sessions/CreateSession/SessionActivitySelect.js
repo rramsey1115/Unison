@@ -59,7 +59,7 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
     }
 
     return (
-    <div>
+    <div className="create-session-div">
         <label><span style={{fontSize:20}}>Choose Category</span>
             <select 
                 className="create-session-dropdown"
@@ -102,13 +102,11 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
 
         {categoryId > 0 && activityId === 0 
         ? <>
-            <br/>
-            <span style={{fontSize:20, margin:20}}>OR</span>
+            <span style={{fontSize:20, marginLeft:30}}>OR</span>
             <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivities} loggedInUser={loggedInUser}/>
         </>
         : null}
         
-            <br/>
         {categoryId > 0 && activityId > 0 
         ? <label><span style={{fontSize:20}}>Duration</span>
             <select
@@ -128,7 +126,7 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
 
         {buttonHidden === true 
         ? null 
-        :<Button size="sm" color="info" onClick={(e) => handleAdd(e)}>Add Activity</Button>
+        :<Button id="add-activity-btn" size="sm" color="info" onClick={(e) => handleAdd(e)}>Add Activity</Button>
         }
 
     </div>)

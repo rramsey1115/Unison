@@ -26,6 +26,10 @@
     border-top: 1px solid gray;
 }
 
+.create-session-div {
+    display: flex;
+    flex-direction: column;
+}
 
 .create-session-dropdown {
     width: fit-content;
@@ -63,6 +67,11 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
+}
+
+#add-activity-btn {
+    width: 50%;
+    margin: 10px auto;
 }
 
 #remove-activity-icon:hover {
@@ -133,4 +142,8 @@
     min-width: 250px;
     height: 200px;
     margin: 10px auto;
+}
+
+#create-activity-btn {
+    margin-top:10px;
 }

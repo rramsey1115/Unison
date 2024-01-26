@@ -12,12 +12,15 @@ export const LastSession = ({studentId}) => {
             filtered ?? filtered.sessionActivities.sort(function(a, b) { 
                 return a.activity.dateCompleted - b.activity.dateCompleted
               });
-            setLastSession(filtered[0]);
+              if(filtered.length > 0)
+              {
+                setLastSession(filtered[0]);
+              }
         });
     };
 
     return(
-        lastSession.length === 0 
+        lastSession?.length === 0 
         ? <>{"--/--/----"}</> 
         : <>{new Date(lastSession.dateCompleted).toLocaleDateString()}</>
     );
