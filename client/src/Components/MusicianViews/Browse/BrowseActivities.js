@@ -54,7 +54,7 @@ export const BrowseActivities = ({loggedInUser}) => {
                             <AccordionHeader targetId={`${a.id}`}><h5>{a.name}</h5></AccordionHeader>
                             <AccordionBody accordionId={`${a.id}`}>
                                 <p>{a.details}</p>
-                                <div className="accordian-btns">
+                                <div className="accordion-btns">
                                     {loggedInUser.roles[0] === "Teacher" || loggedInUser.id === a.creatorId 
                                     ?<Button
                                         id="delete-activity-btn"

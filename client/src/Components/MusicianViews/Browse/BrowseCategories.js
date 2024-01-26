@@ -5,6 +5,7 @@ import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from
 import { useNavigate } from "react-router-dom";
 import { EditCategoryModal } from "./EditCategoryModal";
 import { CreateCategoryModal } from "./CreateCategoryModal";
+import { ConfirmDeleteCatModal } from "./ConfirmDeleteCatModal";
 
 
 export const BrowseCategories = ({loggedInUser}) => {
@@ -25,7 +26,6 @@ export const BrowseCategories = ({loggedInUser}) => {
     };
 
     const handleDeleteCategory = (e) => {
-        e.preventDefault();
         deleteCategoryById(e.target.value*1).then(() => getAndSetAllCategories());
     }
 
@@ -62,15 +62,9 @@ export const BrowseCategories = ({loggedInUser}) => {
                                     }
                                     {loggedInUser.roles[0] !== "Teacher" 
                                     ? null 
-                                    :<Button
-                                        id="delete-category-btn"
-                                        className="delete-btn"
-                                        color="secondary"
-                                        size="sm"
-                                        value={c.id}
-                                        onClick={(e) => handleDeleteCategory(e)}
-                                    >Delete
-                                    </Button>}
+                                    :<ConfirmDeleteCatModal category={c} handleDeleteCategory={handleDeleteCategory}/>
+                                    
+                                    }
                                 </div>
                             </AccordionBody>
                         </AccordionItem>)
