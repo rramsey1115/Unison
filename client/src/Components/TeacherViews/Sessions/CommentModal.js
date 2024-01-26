@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { postNewComment } from '../../../Managers/commentManager';
 
-export const CommentModal = ({session, student, teacherId}) => {
+export const CommentModal = ({session, student, teacherId, getAndSetSessions, getAndSetComments}) => {
   const [modal, setModal] = useState(false);
   const [comment, setComment] = useState({
     teacherId: teacherId,
@@ -16,6 +16,8 @@ export const CommentModal = ({session, student, teacherId}) => {
     e.preventDefault();
     await postNewComment(comment);
     setComment({teacherId:teacherId, sessionId:session.id, body:""});
+    getAndSetSessions();
+    getAndSetComments();
     toggle();
   }
 

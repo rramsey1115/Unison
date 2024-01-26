@@ -57,9 +57,6 @@ export const StudentSessions = ({ loggedInUser }) => {
                 <h1>{student.firstName}'s Sessions</h1>
             </header>
             <section className="sessions-cards">
-                <div id="create-session-div" onClick={(e) => navigate('create')}>
-                    <img id="plus-icon" className="plus-icon" alt="plus icon" src={plusIcon}/>
-                </div>
                 {/* returns card for each session */}
                 {sessions.map(s => {
                     // sets comments for this session - if null handled below
@@ -94,7 +91,7 @@ export const StudentSessions = ({ loggedInUser }) => {
                             </div>
                         </div>
                         <div className="session-div-btns">
-                            <CommentModal session={s} student={student} teacherId={userId}/>                 
+                            <CommentModal getAndSetSessions={getAndSetSessions} getAndSetComments={getAndSetComments} session={s} student={student} teacherId={userId}/>                 
                         </div>
                     </div>
                 )})}
