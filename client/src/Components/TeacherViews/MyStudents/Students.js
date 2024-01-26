@@ -45,6 +45,7 @@ export const Students = ({loggedInUser}) => {
                                                 color="info" 
                                                 size="sm" 
                                                 className="students-table-btn"
+                                                onClick={(e) => {}}
                                             >Sessions
                                             </Button>
                                         </td>
