@@ -26,6 +26,14 @@
     border-top: 1px solid gray;
 }
 
+
+.create-session-dropdown {
+    width: fit-content;
+    height: 30px;
+    border-radius: 6px;
+    margin: 10px 10px;
+}
+
 #session-activities {
     display: flex;
     flex-direction: row;
