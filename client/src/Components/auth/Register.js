@@ -40,7 +40,7 @@ export default function Register({ setLoggedInUser }) {
     } 
     else 
     {
-      const newUser = {
+      var newUser = {
         firstName,
         lastName,
         userName,
