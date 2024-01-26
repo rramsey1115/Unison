@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Unison.Data;
 using Unison.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 namespace Unison.Controllers;
 
 [ApiController]
@@ -84,4 +85,19 @@ public class CommentController : ControllerBase
         }
     }
 
+    [HttpPost]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult Post(Comment comment)
+    {
+        try
+        {
+           _dbContext.Comments.Add(comment);
+           _dbContext.SaveChanges();
+           return Created($"/api/comment/{comment.Id}", comment);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
 }

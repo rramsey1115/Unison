@@ -5,7 +5,8 @@ import { getAllSessions } from "../../../Managers/sessionManager";
 import { getAllComments } from "../../../Managers/commentManager";
 import plusIcon from "../../../images/plus-icon.png";
 import { getUserById } from "../../../Managers/profileManager";
-import { Spinner } from "reactstrap";
+import { Button, Spinner } from "reactstrap";
+import { CommentModal } from "./CommentModal";
 
 export const StudentSessions = ({ loggedInUser }) => {
     const [sessions, setSessions] = useState([]);
@@ -48,8 +49,6 @@ export const StudentSessions = ({ loggedInUser }) => {
 
     const navigate = useNavigate();
 
-    console.log('student', student);
-
     return (
     !student.firstName ? <Spinner/>
     :
@@ -84,8 +83,6 @@ export const StudentSessions = ({ loggedInUser }) => {
                                 <h5>My Notes</h5>
                                 <p>{s.notes}</p>
                             </div>
-                                
-
                             <div className="session-div-comments">
                                 <h5>Teacher Comments</h5>
                                 {arr.length > 0 
@@ -97,7 +94,7 @@ export const StudentSessions = ({ loggedInUser }) => {
                             </div>
                         </div>
                         <div className="session-div-btns">
-                            
+                            <CommentModal session={s} student={student} teacherId={userId}/>                 
                         </div>
                     </div>
                 )})}

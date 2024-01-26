@@ -25,13 +25,12 @@ export const Students = ({loggedInUser}) => {
                 <Table className="table" id="student-table" hover responsive>
                         <thead>
                             <tr className="table-secondary">
-                                <th>Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Last Session</th>
                                 <th>Sessions</th>
-                                <th>Stats</th>
-                                <th>Assignment</th>
+                                {/* <th>Stats</th> */}
+                                {/* <th>Assignment</th> */}
                                 {/* <th>Remove</th> */}
                             </tr>
                         </thead>
@@ -39,7 +38,6 @@ export const Students = ({loggedInUser}) => {
                             {students.map(s => {
                                 return(
                                     <tr key={s.id} style={{padding:20}}>
-                                        <td>{s.id}</td>
                                         <td>{`${s.firstName} ${s.lastName}`}</td>
                                         <td>{s.email}</td>
                                         <td><LastSession studentId={s.id}/></td>
@@ -53,7 +51,7 @@ export const Students = ({loggedInUser}) => {
                                             >Sessions
                                             </Button>
                                         </td>
-                                        <td>
+                                        {/* <td>
                                             <Button 
                                                 color="info" 
                                                 size="sm" 
@@ -69,7 +67,7 @@ export const Students = ({loggedInUser}) => {
                                             >Create
                                             </Button>
                                         </td>
-                                        {/* <td>
+                                        <td>
                                             <Button 
                                                 color="secondary" 
                                                 size="sm" 

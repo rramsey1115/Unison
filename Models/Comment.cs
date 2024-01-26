@@ -13,7 +13,7 @@ public class Comment
     public int TeacherId { get; set; }
 
     [ForeignKey("TeacherId")]
-    public UserProfile Teacher { get; set; }
+    public UserProfile? Teacher { get; set; }
 
     [Required]
     public string Body { get; set; }

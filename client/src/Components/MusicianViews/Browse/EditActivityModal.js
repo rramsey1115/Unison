@@ -27,7 +27,6 @@ export const EditActivityModal = ({activityId, categoryId, getAndSetActivitiesBy
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("newActivity", newActivity);
         await updateActivity(newActivity);
         await getAndSetActivitiesByCategoryId(categoryId);
         toggleModal();
