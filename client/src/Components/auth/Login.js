@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../Managers/authManger";
-import { Button, FormFeedback, FormGroup, Input, InputGroup, InputGroupText } from "reactstrap";
+import { FormFeedback, FormGroup, Input, InputGroup, InputGroupText } from "reactstrap";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdAlternateEmail } from "react-icons/md";
 import "./auth.css";
@@ -25,7 +25,7 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div className="login-container" style={{ maxWidth: "350px" }}>
+    <div className="login-container">
       <div className="login-header">
         <h1>Login</h1>
       </div>
@@ -35,37 +35,38 @@ export default function Login({ setLoggedInUser }) {
             <MdAlternateEmail />
           </InputGroupText>
           <Input
-          invalid={failedLogin}
-          type="text"
-          value={email}
-          placeholder="email"
-          onChange={(e) => {
-            setFailedLogin(false);
-            setEmail(e.target.value);
-          }}
-        />
+            invalid={failedLogin}
+            type="text"
+            value={email}
+            placeholder="email"
+            onChange={(e) => {
+              setFailedLogin(false);
+              setEmail(e.target.value);
+            }}
+          />
         </InputGroup>
       </FormGroup>
+
       <FormGroup>
         <InputGroup size="md">
           <InputGroupText>
             <RiLockPasswordFill />
           </InputGroupText>
           <Input
-          invalid={failedLogin}
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => {
-            setFailedLogin(false);
-            setPassword(e.target.value);
-          }}
-        />
+            invalid={failedLogin}
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => {
+              setFailedLogin(false);
+              setPassword(e.target.value);
+            }}
+          />
         </InputGroup>
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <button class="animated-btn" onClick={handleSubmit}>
+      <button className="animated-btn" onClick={handleSubmit}>
         LOGIN
       </button>
 
