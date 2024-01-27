@@ -3,7 +3,7 @@ import { NavLink as RRNavLink } from "react-router-dom";
 import { Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
 import { logout } from "../../Managers/authManger";
 import icon from "../../images/icon.png"
-import "../../index.css";
+import "./NavBar.css";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
 const [open, setOpen] = useState(false);
