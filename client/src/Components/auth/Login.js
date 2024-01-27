@@ -67,7 +67,7 @@ export default function Login({ setLoggedInUser }) {
       </FormGroup>
 
       <button className="animated-btn" onClick={handleSubmit}>
-        LOGIN
+        Login
       </button>
 
       <p style={{margin:0}}>or</p>
