@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../Managers/authManger";
-import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import { Button, FormFeedback, FormGroup, Input, InputGroup, InputGroupText } from "reactstrap";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { MdAlternateEmail } from "react-icons/md";
+import "./auth.css";
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
@@ -22,40 +25,54 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "350px" }}>
-      <h3>Login</h3>
+    <div className="login-container" style={{ maxWidth: "350px" }}>
+      <div className="login-header">
+        <h1>Login</h1>
+      </div>
       <FormGroup>
-        <Label>Email</Label>
-        <Input
+        <InputGroup size="md">
+          <InputGroupText>
+            <MdAlternateEmail />
+          </InputGroupText>
+          <Input
           invalid={failedLogin}
           type="text"
           value={email}
+          placeholder="email"
           onChange={(e) => {
             setFailedLogin(false);
             setEmail(e.target.value);
           }}
         />
+        </InputGroup>
       </FormGroup>
       <FormGroup>
-        <Label>Password</Label>
-        <Input
+        <InputGroup size="md">
+          <InputGroupText>
+            <RiLockPasswordFill />
+          </InputGroupText>
+          <Input
           invalid={failedLogin}
           type="password"
+          placeholder="password"
           value={password}
           onChange={(e) => {
             setFailedLogin(false);
             setPassword(e.target.value);
           }}
         />
+        </InputGroup>
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button className="blue-btn" color="info" onClick={handleSubmit}>
-        Login
-      </Button>
-      <p>
-        Not signed up? Register <Link to="/register">here</Link>
-      </p>
+      <button class="animated-btn" onClick={handleSubmit}>
+        LOGIN
+      </button>
+
+      <p style={{margin:0}}>or</p>
+        
+      <Link to="/register">Create Account</Link>
+    
     </div>
   );
 }
