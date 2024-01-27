@@ -11,6 +11,8 @@ NavbarBrand,
 NavbarToggler,
 } from "reactstrap";
 import { logout } from "../../Managers/authManger";
+import icon from "../../images/icon.png"
+import "../../index.css";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
 const [open, setOpen] = useState(false);
@@ -21,7 +23,10 @@ const toggleNavbar = () => setOpen(!open);
         <Navbar color="info" fixed="true" expand="sm">
             
             <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-                Unison
+                <div id="nav-title">
+                    <img id="navbar-icon" src={icon} alt="icon" style={{height:42, marginRight:12, padding:0}}/>
+                    <h4>UNISON</h4>
+                </div>
             </NavbarBrand>
 
             {loggedInUser?.firstName ?

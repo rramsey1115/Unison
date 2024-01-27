@@ -19,8 +19,20 @@ body {
   margin: 30px auto;
 }
 
+#nav-title {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: none;
+  align-items: center;
+}
+
+#nav-title > h4 {
+  margin: 0;
+  padding: 0;
+}
+
 .blue-btn {
-  
+
 }
 
 
