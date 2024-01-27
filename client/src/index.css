@@ -14,11 +14,14 @@ body {
 }
 
 .container {
-  width: 95%;
-  min-width: 330px;
-  margin: 10px auto;
+  width: 90%;
+  min-width: 350px;
+  margin: 30px auto;
 }
 
+.blue-btn {
+  
+}
 
 
 

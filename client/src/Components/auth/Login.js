@@ -22,7 +22,7 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
+    <div className="container" style={{ maxWidth: "350px" }}>
       <h3>Login</h3>
       <FormGroup>
         <Label>Email</Label>
@@ -50,7 +50,7 @@ export default function Login({ setLoggedInUser }) {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button color="info" onClick={handleSubmit}>
+      <Button className="blue-btn" color="info" onClick={handleSubmit}>
         Login
       </Button>
       <p>
