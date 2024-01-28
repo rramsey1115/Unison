@@ -76,11 +76,6 @@ const toggleNavbar = () => setOpen(!open);
                                     </NavLink>
                                 </NavItem> 
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/favorite">
-                                        Favorites
-                                    </NavLink>
-                                </NavItem> 
-                                <NavItem>
                                     <NavLink tag={RRNavLink} to="">
                                         Assignments
                                     </NavLink>

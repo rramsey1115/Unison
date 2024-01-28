@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { ScaleLoader } from "react-spinners";
 
-export const FavoriteActivities = () => {
+export const FavoriteSessions = () => {
     const [favorites, setFavorites] = useState([]);
 
-    
+    const getAndSetFavorites = () => {
+        
+    }
 
     return (
         favorites.length === 0

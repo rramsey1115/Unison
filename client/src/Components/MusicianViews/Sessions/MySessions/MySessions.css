@@ -9,6 +9,14 @@
     width: 90%;
     min-width: 330px;
     margin: 1em auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#filter-favs-btn {
+    margin: 6px;
+    transition: all ease-in-out .3s;
 }
 
 .sessions-cards {
@@ -18,13 +26,6 @@
     height: fit-content;
     margin: 10px auto;
 }
-
-/* @media screen and (min-width: 400px) {
-    .sessions-cards {
-        width: 95%;
-        justify-content: flex-start;
-    }
-} */
 
 /* individual completed session cards */
 .session {
@@ -66,27 +67,68 @@
     margin: 0;
 }
 
+/*  icon and buttons wrapping the icons at 
+    the bottom of session card ----------*/
 .session-div-btns {
     display: flex;
     justify-content: space-evenly;
 }
 
-.session-div-btns > img {
-    width: 40px;
-    height: 40px;
-    padding: 2px;
-    cursor: pointer;
-    transition: ease-in-out .2s;
-}
-
-.session-div-btns > img:hover {
+.session-div-btns > button {
+    width: 45px;
+    height: 45px;
     padding: 0px;
-    width: 40px;
-    height: 40px;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+/* img icons wrapped in buttons */
+.session-div-btns > button > img {
+    padding: 2px;
+    margin: auto;
+    width: inherit;
+    border: none;
+    background-color: transparent;
+    transition: ease-in-out .2s;
+}
+
+.session-div-btns > button > img:hover {
+    padding: 0px;
+    width: 45px;
+    height: 45px;
     cursor: pointer;
     transition: ease-in-out .2s;
 }
 
+.session-div-btns > button > img:active {
+    filter: brightness(.5);
+    padding: 2px;
+}
+
+.session-div-btns > button > img:focus {
+    filter: brightness(.5);
+    padding: 2px;
+}
+
+.session-div-btn {
+    padding: 2px;
+    margin: auto;
+    width: inherit;
+    border: none;
+    background-color: transparent;
+    transition: ease-in-out .2s;
+}
+
+.session-div-btn:hover {
+    padding: 0px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
+
+/* ----------------- info displayed in the card ------------------ */
 #session-div-activities {
     border-top: thin solid var(--lightBlue);
     padding: 6px 0px;

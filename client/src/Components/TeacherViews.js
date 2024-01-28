@@ -4,11 +4,10 @@ import Register from "./auth/Register";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import { BrowseCategories } from "./MusicianViews/Browse/BrowseCategories";
 import { BrowseActivities } from "./MusicianViews/Browse/BrowseActivities";
-import { FavoriteActivities } from "./MusicianViews/Browse/FavoriteActivities";
 import { TeacherHome } from "./TeacherViews/TeacherHome";
 import { StudentSessions } from "./TeacherViews/Sessions/StudentSessions";
 import { Students } from "./TeacherViews/MyStudents/Students";
-
+// import { FavoriteSessions } from "./MusicianViews/Sessions/MySessions/FavoriteSession";
 
 export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
   return (
@@ -48,13 +47,13 @@ export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
                 />
             </Route>
 
-            <Route path="favorite">
+            {/* <Route path="favorite">
                 <Route index element={
                 <AuthorizedRoute loggedInUser={loggedInUser}>
-                    <FavoriteActivities loggedInUser={loggedInUser} />
+                    <FavoriteSessions loggedInUser={loggedInUser} />
                 </AuthorizedRoute>}
                 />
-            </Route>
+            </Route> */}
 
             <Route
                 path="login"

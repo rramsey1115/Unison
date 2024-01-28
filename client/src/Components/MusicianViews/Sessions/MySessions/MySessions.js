@@ -6,17 +6,19 @@ import repeatIcon from "../../../../images/start.png";
 import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
 import { deleteSessionById, getAllSessions } from "../../../../Managers/sessionManager";
-import { getFavoritesByMusicianId } from "../../../../Managers/favoriteSessionsManager";
+import { addFavorite, getFavoritesByMusicianId, removeFavorite } from "../../../../Managers/favoriteSessionsManager";
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 import { getAllComments } from "../../../../Managers/commentManager";
+import { Button } from "reactstrap";
 
 export const MySessions = ({ loggedInUser }) => {
     const [favoriteSessions, setFavoriteSessions] = useState([]);
     const [sessions, setSessions] = useState([]);
     const [comments, setComments] = useState([]);
+    const [filterFavs, setFilterFavs] = useState(false);
     const userId = loggedInUser.id;
 
-    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId); getAndSetComments(); }, [userId]);
+    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId); getAndSetComments(); }, [userId, filterFavs]);
 
     const getAndSetSessions = () => {
         getAllSessions().then((data) => {
@@ -53,10 +55,46 @@ export const MySessions = ({ loggedInUser }) => {
         deleteSessionById(id).then(() => getAndSetSessions()).then(() => getAndSetFavoriteSessions());
     };
 
+    const handleAddFav = (sesId) => {
+        var obj = {
+            sessionId:sesId, 
+            musicianId:userId
+        }
+        addFavorite(obj).then(() => {
+            getAndSetFavoriteSessions(userId);
+        })
+    };
+
+    const handleRemoveFav = (favSessId) => {
+        removeFavorite(favSessId).then(() => {
+            getAndSetFavoriteSessions();
+        });
+    };
+
     return (
         <section className="sessions-container">
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
+                <div>
+                    {filterFavs===false
+                    ? 
+                    <Button
+                        id="filter-on-btn"
+                        size="md" 
+                        color="info"
+                        onClick={(e) => setFilterFavs(!filterFavs)}
+                    >Favorites Only
+                    </Button>
+                    : 
+                    <Button
+                        id="filter-on-btn"
+                        size="md"
+                        color="info"
+                        onClick={(e) => setFilterFavs(!filterFavs)}
+                    >Show All
+                    </Button>
+                    }
+                </div>
             </header>
             <section className="sessions-cards">
                 <div id="create-session-div" onClick={(e) => navigate('create')}>
@@ -85,7 +123,6 @@ export const MySessions = ({ loggedInUser }) => {
                                 <h5>My Notes</h5>
                                 <p>{s.notes}</p>
                             </div>
-                                
 
                             <div className="session-div-comments">
                                 <h5>Teacher Comments</h5>
@@ -97,45 +134,71 @@ export const MySessions = ({ loggedInUser }) => {
                                 : <p>None at this time</p>}
                             </div>
                         </div>
+
                         <div className="session-div-btns">
                             {favoriteSessions.length > 0 ? favoriteSessions?.map(fs => {
                                 if(s.id === fs.sessionId )
                                 {
-                                    return <img 
-                                        key={s.id} 
-                                        id="favorite-icon" 
-                                        className="favorite-icon" 
-                                        alt="favorite icon" 
-                                        src={filledFav}
-                                    />
+                                    return( 
+                                        <button 
+                                            key={s.id}
+                                            value={fs.id}
+                                            className="session-activities-btn"
+                                            onClick={(e) => handleRemoveFav(e.currentTarget.value*1)}
+                                            >
+                                            <img 
+                                                id="favorite-icon" 
+                                                className="favorite-icon" 
+                                                alt="favorite icon" 
+                                                src={filledFav}
+                                            />
+                                        </button>
+                                    )
                                 }
                                 else
                                 {
-                                    return <img 
-                                        key={s.id} 
-                                        id="favorite-icon" 
-                                        className="favorite-icon" 
-                                        alt="favorite icon" 
-                                        src={emptyFav}
-                                    />
+                                    return ( 
+                                        <button
+                                            key={s.id}
+                                            value={s.id}
+                                            className="session-activities-btn"
+                                            onClick={(e) => handleAddFav(e.currentTarget.value*1)}
+                                            >
+                                            <img 
+                                                key={s.id} 
+                                                id="favorite-icon" 
+                                                className="favorite-icon" 
+                                                alt="favorite icon" 
+                                                src={emptyFav}
+                                            />
+                                        </button>
+                                    )
                                 }
                             })
                             : 
-                            <img 
-                                key={s.id} 
-                                id="favorite-icon" 
-                                className="favorite-icon" 
-                                alt="favorite icon" 
-                                src={emptyFav}
-                            />
+                            <button
+                                key={s.id}
+                                value={s.id}
+                                className="session-activities-btn"
+                                onClick={(e) => handleAddFav(e.currentTarget.value*1)}
+                                >
+                                <img 
+                                    key={s.id} 
+                                    id="favorite-icon" 
+                                    className="favorite-icon" 
+                                    alt="favorite icon" 
+                                    src={emptyFav}
+                                />
+                            </button>
                             }
-
-                            <img 
-                                id="repeat-icon" 
-                                className="repeat-icon" 
-                                alt="repeat icon" 
-                                src={repeatIcon}
-                            />
+                            <button className="session-activities-btn">
+                                <img 
+                                    id="repeat-icon" 
+                                    className="repeat-icon" 
+                                    alt="repeat icon" 
+                                    src={repeatIcon}
+                                />
+                            </button>
 
                             <ConfirmDeleteModal session={s} handleDeleteSession={handleDeleteSession} getFormattedDate={getFormattedDate}/>
                             

@@ -8,9 +8,9 @@ export const ConfirmDeleteModal = ({session, handleDeleteSession, getFormattedDa
     const toggle = () => setModal(!modal);
 
     return (
-        <div>
+        <div className='session-div-btns'>
             <button 
-                className="session-activities-btn"
+                className='session-div-btn'
                 onClick={toggle}
             >
                 <img 
