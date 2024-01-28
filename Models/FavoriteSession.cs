@@ -10,11 +10,12 @@ public class FavoriteSession
     public int SessionId { get; set; }
 
     [ForeignKey("SessionId")]
-    public Session Session { get; set; }
+    public Session? Session { get; set; }
 
     [Required]
     public int MusicianId { get; set; }
 
     [ForeignKey("MusicianId")]
-    public UserProfile Musician { get; set; }
+    public UserProfile? Musician { get; set; }
+    
 }

@@ -8,7 +8,7 @@ import { CreateSession } from "./MusicianViews/Sessions/CreateSession/CreateSess
 import { ActiveSession } from "./MusicianViews/Sessions/ActiveSession/ActiveSession";
 import { BrowseCategories } from "./MusicianViews/Browse/BrowseCategories";
 import { BrowseActivities } from "./MusicianViews/Browse/BrowseActivities";
-import { FavoriteActivities } from "./MusicianViews/Browse/FavoriteActivities";
+import { FavoriteSessions } from "./MusicianViews/Sessions/MySessions/FavoriteSession";
 
 export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
   return (
@@ -55,13 +55,13 @@ export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
             />
         </Route>
 
-        <Route path="favorite">
+        {/* <Route path="favorite">
           <Route index element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <FavoriteActivities loggedInUser={loggedInUser} />
+              <FavoriteSessions loggedInUser={loggedInUser} />
             </AuthorizedRoute>}
           />
-        </Route>
+        </Route> */}
 
         <Route
           path="login"
