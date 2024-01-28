@@ -46,7 +46,6 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
             Add to category:{" "}{category.name}
         </ModalHeader>
         <ModalBody className='modal-body'>
-            
             <input
                 id='activity-name-input'
                 value={newActivity.name}
@@ -58,7 +57,6 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
                     setNewActivity(copy);
                 }}
             />
-
             <textarea
                 id='activity-details-input'
                 value={newActivity.details}
@@ -70,12 +68,12 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
                     setNewActivity(copy);
                 }}
             />
-
         </ModalBody>
         <ModalFooter>
+          {newActivity.name && newActivity.details ? 
           <Button color="secondary" onClick={(e) => handleSubmit(e)}>
             Create Activity
-          </Button>
+          </Button> : null}
         </ModalFooter>
       </Modal>
     </div>

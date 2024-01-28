@@ -13,7 +13,6 @@ export const CreateCategoryModal = ({getAndSetAllCategories, loggedInUser}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("createdCategory", createdCategory);
         await createCategory(createdCategory);
         await getAndSetAllCategories();
         toggleModal();
@@ -56,9 +55,10 @@ export const CreateCategoryModal = ({getAndSetAllCategories, loggedInUser}) => {
 
         </ModalBody>
         <ModalFooter>
+          {createdCategory.name && createdCategory.details ?
           <Button color="secondary" onClick={(e) => handleSubmit(e)}>
             Create Category
-          </Button>
+          </Button> : null}
         </ModalFooter>
       </Modal>
     </div>
