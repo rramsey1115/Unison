@@ -66,6 +66,9 @@
     margin: 0;
 }
 
+/*  icon and buttons wrapping the icons at 
+    the bottom of session card ----------*/
+
 .session-div-btns {
     display: flex;
     justify-content: space-evenly;
@@ -87,6 +90,33 @@
     transition: ease-in-out .2s;
 }
 
+/* img icons wrapped in buttons */
+.session-div-btns > button > img {
+    width: 45px;
+    height: 45px;
+    padding: 2px;
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
+.session-div-btns > button > img:hover {
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
+/* icons themselves */
+.favorite-icon-btn {
+    padding: 0;
+    margin: 0;
+    width: inherit;
+    border: none;
+    background-color: transparent;
+}
+
+/* ----------------- info displayed in the card ------------------ */
 #session-div-activities {
     border-top: thin solid var(--lightBlue);
     padding: 6px 0px;

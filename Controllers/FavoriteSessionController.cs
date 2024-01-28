@@ -54,6 +54,7 @@ public class FavoriteSessionController : ControllerBase
             {
                 return BadRequest("MusicianId and SessionId must be ints great than 0");
             }
+
             // finds if matching foreign key relationship already exists
             var matches = _dbContext.FavoriteSessions.Where(fav => fav.MusicianId == obj.MusicianId && fav.SessionId == obj.SessionId);
             if (matches.Any())
@@ -67,8 +68,10 @@ public class FavoriteSessionController : ControllerBase
                 _dbContext.SaveChanges();
                 return Ok();
             }
+
             return BadRequest("int SessionId & int MusicianId required");
         }
+        
         catch (Exception ex)
         {
             return BadRequest($"Bad Data: {ex}");
