@@ -44,6 +44,7 @@ const toggleNavbar = () => setOpen(!open);
                                     Browse
                                 </NavLink>
                             </NavItem>
+                            </Nav>
                             <button
                                 className="nav-btn"
                                 onClick={(e) => {
@@ -57,7 +58,6 @@ const toggleNavbar = () => setOpen(!open);
                                 >
                             Logout
                             </button>
-                        </Nav>
                     </Collapse>
                 </>
                 :
