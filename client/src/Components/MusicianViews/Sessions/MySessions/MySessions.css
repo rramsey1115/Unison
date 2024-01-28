@@ -72,7 +72,7 @@
     height: 45px;
     padding: 0px;
     cursor: pointer;
-    transition: ease-in-out .2s;
+    transition: ease-in-out .3s;
 }
 
 /* img icons wrapped in buttons */
@@ -91,6 +91,16 @@
     height: 45px;
     cursor: pointer;
     transition: ease-in-out .2s;
+}
+
+.session-div-btns > button > img:active {
+    filter: brightness(.5);
+    padding: 2px;
+}
+
+.session-div-btns > button > img:focus {
+    filter: brightness(.5);
+    padding: 2px;
 }
 
 .session-div-btn {

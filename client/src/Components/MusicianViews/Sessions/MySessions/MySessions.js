@@ -53,21 +53,18 @@ export const MySessions = ({ loggedInUser }) => {
         deleteSessionById(id).then(() => getAndSetSessions()).then(() => getAndSetFavoriteSessions());
     };
 
-    const handleAddFav = (e) => {
-        e.preventDefault();
+    const handleAddFav = (sesId) => {
         var obj = {
-            sessionId:e.target.value*1, 
+            sessionId:sesId, 
             musicianId:userId
-        };
+        }
         addFavorite(obj).then(() => {
             getAndSetFavoriteSessions(userId);
-        });
+        })
     };
 
-    const handleRemoveFav = (e) => {
-        e.preventDefault();
-        var id = e.target.value*1;
-        removeFavorite(id).then(() => {
+    const handleRemoveFav = (favSessId) => {
+        removeFavorite(favSessId).then(() => {
             getAndSetFavoriteSessions();
         });
     };
@@ -125,7 +122,7 @@ export const MySessions = ({ loggedInUser }) => {
                                             key={s.id}
                                             value={fs.id}
                                             className="session-activities-btn"
-                                            onClick={(e) => handleRemoveFav(e)}
+                                            onClick={(e) => handleRemoveFav(e.currentTarget.value*1)}
                                             >
                                             <img 
                                                 id="favorite-icon" 
@@ -143,7 +140,7 @@ export const MySessions = ({ loggedInUser }) => {
                                             key={s.id}
                                             value={s.id}
                                             className="session-activities-btn"
-                                            onClick={(e) => handleAddFav(e)}
+                                            onClick={(e) => handleAddFav(e.currentTarget.value*1)}
                                             >
                                             <img 
                                                 key={s.id} 
@@ -161,7 +158,7 @@ export const MySessions = ({ loggedInUser }) => {
                                 key={s.id}
                                 value={s.id}
                                 className="session-activities-btn"
-                                onClick={(e) => handleAddFav(e)}
+                                onClick={(e) => handleAddFav(e.currentTarget.value*1)}
                                 >
                                 <img 
                                     key={s.id} 
