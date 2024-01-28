@@ -1,23 +1,38 @@
 /* main body of page layout styling */
 .sessions-container {
     width: 95vw;
-    min-width: 380px;
-    margin: 10px auto;
+    min-width: 350px;
+    margin: 1em;
 }
 
+.sessions-header {
+    width: 90%;
+    min-width: 330px;
+    margin: 1em auto;
+}
 
 .sessions-cards {
     display:flex;
     flex-wrap: wrap;
+    width: 95%;
     height: fit-content;
+    margin: 10px auto;
 }
+
+/* @media screen and (min-width: 400px) {
+    .sessions-cards {
+        width: 95%;
+        justify-content: flex-start;
+    }
+} */
 
 /* individual completed session cards */
 .session {
     width: 340px;
     height: 500px;
-    margin: 10px 4px 4px 10px;
-    padding: 20px 10px;
+    margin: 10px;
+    padding: 10px;
+    color: white;
     border: 1px solid black;
     border-radius: 40px;
     background-color: var(--blueGray);
@@ -40,8 +55,11 @@
 .session-div-header {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 0 0 6px 0;
+    border-bottom: thin solid var(--lightBlue);
 }
 
 .session-div-header > h4 {
@@ -54,8 +72,8 @@
 }
 
 .session-div-btns > img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding: 2px;
     cursor: pointer;
     transition: ease-in-out .2s;
@@ -63,23 +81,41 @@
 
 .session-div-btns > img:hover {
     padding: 0px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     transition: ease-in-out .2s;
 }
 
+#session-div-activities {
+    border-top: thin solid var(--lightBlue);
+    padding: 6px 0px;
+}
 
+#session-div-activities > p {
+    margin: 6px 0px;
+}
+
+.session-div-notes {
+    border-top: thin solid var(--lightBlue);
+    padding: 6px 0px;
+}
+
+.session-div-comments {
+    border-top: thin solid var(--lightBlue);
+    padding: 6px 0px;
+}
 
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
-    width: 330px;
+    width: 340px;
     height: 500px;
-    margin: 10px 4px 4px 10px;
-    padding: 12px;
+    margin: 10px;
+    padding: 20px 10px;
+    border: 1px solid black;
     border-radius: 40px;
-    background-color: var(--blueGray);
-    opacity: .33;
+    background-color: var(--lightBlue);
+    opacity: .5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +133,6 @@
 }
 
 .plus-icon {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
 }

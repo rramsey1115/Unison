@@ -2,22 +2,25 @@
 .active-container {
     width: 95vw;
     min-width: 380px;
-    margin: 10px auto;
+    margin: 1em auto;
 }
 
 .active-container-form {
     width: 70%;
-    min-width: 340px;
-    margin: 30px auto 60px auto;
+    max-width: 600px;
+    min-width: 360px;
+    margin: 2em auto 60px auto;
     padding: 12px 12px;
     height: fit-content;
+    color: white;
     border: 1px solid black;
     border-radius: 20px;
     background-color: var(--blueGray);
+    box-shadow: 1px 1px 4px var(--brightBlue);
 }
 
 .active-container-header {
-    margin: 20px auto;
+    margin: 10px auto;
     text-align: center;
 }
 
@@ -70,6 +73,7 @@
 .active-btn {
     width: 100px;
     box-shadow: 1px 1px 2px var(--lightBlue);
+    transition: ease-in-out .2s;
 }
 
 #active-btn-complete {

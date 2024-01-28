@@ -1,0 +1,49 @@
+/* ----------------------- login form ------------------  */
+.login-container {
+    width: 80vw;
+    min-width: 340px;
+    max-width: 450px;
+    margin: 5% auto;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: thin solid var(--brightBlue);
+}
+
+.login-header {
+    margin: 20px auto;
+    border-bottom: thin solid var(--brightBlue);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0.15em 0.15em var(--brightBlue) !important;
+}
+
+.input-group-text {
+    background-color: lightgrey;
+    border: none;
+}
+
+/* inputs */
+.mb-3 {
+    margin: 20px auto;
+}
+
+
+/*  -------------- create account/register form ---------- */
+.radio-div {
+    display: flex;
+    justify-content: center;
+    margin: 2px auto;
+}
+
+#teacher-dropdown {
+    width: 300px;
+    height: 40px;
+    border-radius: 8px;
+    transition: all .25s ease-in-out;
+}
+
+
+
+
+

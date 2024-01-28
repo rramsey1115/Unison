@@ -15,16 +15,16 @@ export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
     <Routes>
       <Route path="/">
       
-      <Route
-          index
-          element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Home loggedInUser={loggedInUser}/>
-            </AuthorizedRoute>
-          }
-      />
+        <Route
+            index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <Home loggedInUser={loggedInUser}/>
+              </AuthorizedRoute>
+            }
+        />
 
-      <Route path="session">
+        <Route path="session">
           <Route index loggedInUser={loggedInUser} element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <MySessions loggedInUser={loggedInUser}/>
@@ -40,9 +40,9 @@ export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
               <CreateSession loggedInUser={loggedInUser}/>
             </AuthorizedRoute>}
           />
-      </Route>
+        </Route>
 
-      <Route path="browse">
+        <Route path="browse">
             <Route path="category" element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
                 <BrowseCategories loggedInUser={loggedInUser}/>
@@ -53,27 +53,28 @@ export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
                 <BrowseActivities loggedInUser={loggedInUser}/>
               </AuthorizedRoute>}
             />
-      </Route>
+        </Route>
 
-      <Route path="favorite">
-        <Route index element={
-          <AuthorizedRoute loggedInUser={loggedInUser}>
-            <FavoriteActivities loggedInUser={loggedInUser} />
-          </AuthorizedRoute>}
+        <Route path="favorite">
+          <Route index element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <FavoriteActivities loggedInUser={loggedInUser} />
+            </AuthorizedRoute>}
+          />
+        </Route>
+
+        <Route
+          path="login"
+          element={<Login setLoggedInUser={setLoggedInUser} />}
         />
-      </Route>
 
-      <Route
-        path="login"
-        element={<Login setLoggedInUser={setLoggedInUser} />}
-      />
-
-      <Route
-        path="register"
-        element={<Register setLoggedInUser={setLoggedInUser} />}
-      />
+        <Route
+          path="register"
+          element={<Register setLoggedInUser={setLoggedInUser} />}
+        />
 
       </Route>
+      
       <Route path="*" element={<p>Whoops, nothing here...</p>} />
     </Routes>
   );

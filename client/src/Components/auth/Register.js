@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { register } from "../../Managers/authManger";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import { Button, FormFeedback, FormGroup, Input, InputGroup, InputGroupText, Label } from "reactstrap";
 import { getUsersWithRoles } from "../../Managers/profileManager";
+import { MdAlternateEmail } from "react-icons/md";
+import { FaUserAlt } from "react-icons/fa";
+import { FaGlobe } from "react-icons/fa";
+import { FaMapLocationDot } from "react-icons/fa6";
+import { RiLockPasswordFill } from "react-icons/ri";
+
+
 
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState("");
@@ -59,7 +66,7 @@ export default function Register({ setLoggedInUser }) {
           teacherId
         }
       }
-      console.log('newUser', newUser);
+
       register(newUser).then((user) => {
         if (user) {
           setLoggedInUser(user);
@@ -74,89 +81,164 @@ export default function Register({ setLoggedInUser }) {
 
   
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Sign Up</h3>
+    <div className="login-container">
+      <div className="login-header">
+        <h1>Sign Up</h1>
+      </div>
+
       <FormGroup>
-        <Label>First Name</Label>
-        <Input
-          type="text"
-          value={firstName}
-          onChange={(e) => {
-            setFirstName(e.target.value);
-          }}
-        />
+        <InputGroup size="md">
+          <InputGroupText>
+            <FaUserAlt />
+          </InputGroupText>
+            <Input
+              type="text"
+              value={firstName}
+              placeholder="First Name"
+              onChange={(e) => {
+                setFirstName(e.target.value);
+              }}
+            />
+        </InputGroup>
+      </FormGroup>
+
+      <FormGroup>
+        <InputGroup size="md">
+          <InputGroupText>
+            <FaUserAlt />
+          </InputGroupText>
+            <Input
+              type="text"
+              value={lastName}
+              placeholder="Last Name"
+              onChange={(e) => {
+                setLastName(e.target.value);
+              }}
+            />
+        </InputGroup>
+      </FormGroup>
+
+      <FormGroup>
+        <InputGroup size="md">
+          <InputGroupText>
+            <FaMapLocationDot />
+          </InputGroupText>
+          <Input
+            type="text"
+            value={address}
+            placeholder="Address"
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+          />
+        </InputGroup>
+      </FormGroup>
+
+      <FormGroup>
+        <InputGroup size="md">
+          <InputGroupText>
+            <FaGlobe />
+          </InputGroupText>
+          <Input
+            type="text"
+            value={userName}
+            placeholder="Username"
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+        </InputGroup>
+      </FormGroup>
+
+      <FormGroup>
+        <InputGroup size="md">
+          <InputGroupText>
+            <MdAlternateEmail />
+          </InputGroupText>
+          <Input
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </InputGroup>
+      </FormGroup>
+
+
+      <FormGroup>
+        <InputGroup size="md">
+          <InputGroupText>
+            <RiLockPasswordFill />
+          </InputGroupText>
+          <Input
+            invalid={passwordMismatch}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPasswordMismatch(false);
+              setPassword(e.target.value);
+            }}
+          />
+        </InputGroup>
       </FormGroup>
       <FormGroup>
-        <Label>Last Name</Label>
-        <Input
-          type="text"
-          value={lastName}
+        <InputGroup size="md">
+          <InputGroupText>
+            <RiLockPasswordFill />
+          </InputGroupText>
+          <Input
+          invalid={passwordMismatch}
+          type="password"
+          placeholder="Confirm"
+          value={confirmPassword}
           onChange={(e) => {
-            setLastName(e.target.value);
+            setPasswordMismatch(false);
+            setConfirmPassword(e.target.value);
           }}
         />
+        </InputGroup>
+        <FormFeedback>Passwords do not match!</FormFeedback>
       </FormGroup>
-      <FormGroup>
-        <Label>Email</Label>
-        <Input
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>User Name</Label>
-        <Input
-          type="text"
-          value={userName}
-          onChange={(e) => {
-            setUserName(e.target.value);
-          }}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Address</Label>
-        <Input
-          type="text"
-          value={address}
-          onChange={(e) => {
-            setAddress(e.target.value);
-          }}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Sign Up With Teacher?</Label><br/>
-          <Input 
-            required
-            id="teacher-checkbox-yes" 
-            className="radio-input" 
-            type="radio"
-            name="teacher"
-            onClick={(e) => setSignUpWithTeacher(true)}
-            />Yes
-          <Input 
-            required
-            defaultChecked
-            id="teacher-checkbox-no" 
-            className="radio-input" 
-            type="radio"
-            name="teacher"
-            onClick={(e) => setSignUpWithTeacher(false)}
-            />No
+
+      Sign Up With Teacher?
+      <FormGroup className="radio-div">
+          <div style={{margin:10}}>
+            <Input 
+              style={{padding:6}}
+              required
+              id="teacher-checkbox-yes" 
+              className="radio-input" 
+              type="radio"
+              name="teacher"
+              onClick={(e) => setSignUpWithTeacher(true)}
+            /> Yes
+          </div>
+          <div style={{margin:10}}>
+            <Input 
+              required
+              defaultChecked
+              id="teacher-checkbox-no" 
+              className="radio-input" 
+              type="radio"
+              name="teacher"
+              onClick={(e) => setSignUpWithTeacher(false)}
+            /> No
+          </div>
       </FormGroup>
       {signUpWithTeacher == false ? null : 
       <FormGroup>
-        <Label>Teacher</Label>
         <select
           required
           name="teacher"
-          className="register-select"
+          id="teacher-dropdown"
+          className="dropdown"
           onChange={(e) => {
             setTeacherId(e.target.value*1);
           }}>
-          <option value={0} name="teacher">Teachers</option>
+          <option value={0} name="teacher">Select Teacher</option>
           {teachers.map(t => {
             return (
               <option key={t.id} value={t.id} name="teacher">
@@ -166,44 +248,24 @@ export default function Register({ setLoggedInUser }) {
           })}
         </select>
       </FormGroup>}
-      <FormGroup>
-        <Label>Password</Label>
-        <Input
-          invalid={passwordMismatch}
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPasswordMismatch(false);
-            setPassword(e.target.value);
-          }}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label> Confirm Password</Label>
-        <Input
-          invalid={passwordMismatch}
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => {
-            setPasswordMismatch(false);
-            setConfirmPassword(e.target.value);
-          }}
-        />
-        <FormFeedback>Passwords do not match!</FormFeedback>
-      </FormGroup>
+
       <p style={{ color: "red" }} hidden={!registrationFailure}>
         Registration Failure
       </p>
-      <Button
+
+      <button
+        className="animated-btn"
         color="primary"
         onClick={handleSubmit}
         disabled={passwordMismatch}
       >
         Register
-      </Button>
+      </button>
+
       <p>
-        Already signed up? Log in <Link to="/login">here</Link>
+        Already signed up? <Link to="/login">Log in</Link>
       </p>
+
     </div>
   );
 }

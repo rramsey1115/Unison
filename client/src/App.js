@@ -5,6 +5,7 @@ import NavBar from "./Components/navbar/NavBar";
 import { tryGetLoggedInUser } from "./Managers/authManger";
 import { TeacherViews } from "./Components/TeacherViews.js";
 import { MusicianViews } from "./Components/MusicianViews.js";
+import Login from "./Components/auth/Login.js";
 
 export const App = () => {
   const [loggedInUser, setLoggedInUser] = useState();
@@ -23,14 +24,15 @@ export const App = () => {
 
   return (
     loggedInUser?.roles?.includes("Teacher")
-    ?<>
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-      <TeacherViews loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-    </>
+    ?
+      <>
+        <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+        <TeacherViews loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+      </>
     :
-    <>
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-      <MusicianViews loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-    </>
+      <>
+        <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+        <MusicianViews loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+      </>
   );
 }
