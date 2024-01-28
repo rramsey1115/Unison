@@ -16,7 +16,7 @@ const toggleNavbar = () => setOpen(!open);
             <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
                 <div id="nav-title">
                     <img id="navbar-icon" src={icon} alt="icon" style={{height:42, marginRight:12, padding:0}}/>
-                    <h3>UNISON</h3>
+                    {/* <h3>UNISON</h3> */}
                 </div>
             </NavbarBrand>
 

@@ -15,27 +15,27 @@ export const Home = () => {
             <section className="home-main">
 
                 <Card className="home-card" onClick={(e) => navigate('session')}>
-                    <h3>Sessions</h3>
+                    <h4>Sessions</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('session/create')}>
-                    <h3>New Session</h3>
+                    <h4>New Session</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('/')}>
-                    <h3>Stats</h3>
+                    <h4>Stats</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('/')}>
-                    <h3>Assignments</h3>
+                    <h4>Assignments</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('favorite')}>
-                    <h3>Favorites</h3>
+                    <h4>Favorites</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('browse/category')}>
-                    <h3>Browse</h3>
+                    <h4>Browse</h4>
                 </Card>
    
             </section>

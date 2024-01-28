@@ -13,12 +13,11 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 80%;
+  max-width: 600px;
   min-width: 350px;
   margin: 30px auto;
 }
-
-
 
 
 /* ------ animated button matching color scheme ----- */

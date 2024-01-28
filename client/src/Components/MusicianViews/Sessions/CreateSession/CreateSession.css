@@ -1,23 +1,26 @@
 .create-session-container {
     width: 95vw;
-    min-width: 380px;
-    margin: 10px auto;
+    min-width: 350px;
+    margin: 1em auto;
 }
 
 .create-session-header {
-    width: 70%;
-    margin: 20px auto;
+    width: 90%;
+    min-width: 330px;
+    margin: 1em auto;
 }
 
 .create-session-form {
-    width: 70%;
+    width: 60%;
     min-width: 340px;
-    margin: 10px auto;
+    margin: 1em auto;
     padding: 12px 6px;
     height: fit-content;
     border: 1px solid black;
     border-radius: 20px;
+    color: black;
     background-color: var(--blueGray);
+    box-shadow: 1px 1px 4px var(--brightBlue);
 }
 
 .session-form-fieldset {

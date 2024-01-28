@@ -62,7 +62,7 @@ export const MySessions = ({ loggedInUser }) => {
                 <div id="create-session-div" onClick={(e) => navigate('create')}>
                     <img id="plus-icon" className="plus-icon" alt="plus icon" src={plusIcon}/>
                 </div>
-                {/* returns card for each session */}
+                 {/* returns a card for each session */}
                 {sessions.map(s => {
                     // sets comments for this session - if null handled below
                     var arr = comments.filter(c => c.sessionId === s.id);
