@@ -36,7 +36,6 @@ export const BrowseActivities = ({loggedInUser}) => {
         deleteActivityById(e.target.value*1).then(() => getAndSetActivitiesByCategoryId(categoryId))
     }
 
-
     return (
     activities.length === 0
     ? 
