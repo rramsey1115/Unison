@@ -73,7 +73,7 @@ export const MySessions = ({ loggedInUser }) => {
                             <div className="session-div-header">
                                 <h4 id="session-div-header-date">{getFormattedDate(s.dateCompleted)}</h4>
                             </div>
-                            <h5>{s.duration} Minutes</h5>
+                            <h5>Total Time: {s.duration} Minutes</h5>
                             {s.sessionActivities.map(a => {
                                 return (
                                 <div id="session-div-activities" className="session-card" key={a.id}>
@@ -128,16 +128,14 @@ export const MySessions = ({ loggedInUser }) => {
                                 alt="favorite icon" 
                                 src={emptyFav}
                             />
-                            
                             }
 
-                            {/* Comment this back in once I have functionality to redo a session */}
-                            {/* <img 
+                            <img 
                                 id="repeat-icon" 
                                 className="repeat-icon" 
                                 alt="repeat icon" 
                                 src={repeatIcon}
-                            /> */}
+                            />
 
                             <ConfirmDeleteModal session={s} handleDeleteSession={handleDeleteSession} getFormattedDate={getFormattedDate}/>
                             

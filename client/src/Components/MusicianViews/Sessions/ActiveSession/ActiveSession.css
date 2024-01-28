@@ -12,10 +12,11 @@
     margin: 2em auto 60px auto;
     padding: 12px 12px;
     height: fit-content;
-    color: var(--blue1);
+    color: white;
     border: 1px solid black;
     border-radius: 20px;
     background-color: var(--blueGray);
+    box-shadow: 1px 1px 4px var(--brightBlue);
 }
 
 .active-container-header {

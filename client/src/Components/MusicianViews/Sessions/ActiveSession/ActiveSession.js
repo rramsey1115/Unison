@@ -72,7 +72,7 @@ export const ActiveSession = ({loggedInUser}) => {
                         <Button 
                             id="active-btn-exit" 
                             className="active-btn"
-                            
+                            onClick={(e) => navigate('/session')}
                         >
                             Exit
                         </Button>

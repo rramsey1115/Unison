@@ -18,7 +18,7 @@
     height: fit-content;
     border: 1px solid black;
     border-radius: 20px;
-    color: black;
+    color: white;
     background-color: var(--blueGray);
     box-shadow: 1px 1px 4px var(--brightBlue);
 }
@@ -98,7 +98,6 @@
 #edit-activity-icon {
     width: 96%;
     height: 96%;
-
     transition: ease-in-out .2s;
 }
 
@@ -126,12 +125,24 @@
 }
 
 /*  add a new activity modal/popup window */
+
 .modal-body {
+    background-color: var(--offWhite);
+    border-bottom: thin solid var(--lightBlue);
+    border-top: thin solid var(--lightBlue);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     height: fit-content;
+}
+
+.modal-header {
+    background-color: var(--offWhite);
+}
+
+.modal-footer {
+    background-color: var(--offWhite);
 }
 
 #activity-name-input {

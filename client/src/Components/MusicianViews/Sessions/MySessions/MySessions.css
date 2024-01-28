@@ -32,7 +32,7 @@
     height: 500px;
     margin: 10px;
     padding: 10px;
-    color: var(--blue1);
+    color: white;
     border: 1px solid black;
     border-radius: 40px;
     background-color: var(--blueGray);
@@ -58,6 +58,8 @@
     align-items: center;
     justify-content: center;
     margin: 10px auto;
+    padding: 0 0 6px 0;
+    border-bottom: thin solid var(--lightBlue);
 }
 
 .session-div-header > h4 {
@@ -85,6 +87,24 @@
     transition: ease-in-out .2s;
 }
 
+#session-div-activities {
+    border-top: thin solid var(--lightBlue);
+    padding: 6px 0px;
+}
+
+#session-div-activities > p {
+    margin: 6px 0px;
+}
+
+.session-div-notes {
+    border-top: thin solid var(--lightBlue);
+    padding: 6px 0px;
+}
+
+.session-div-comments {
+    border-top: thin solid var(--lightBlue);
+    padding: 6px 0px;
+}
 
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
@@ -94,8 +114,8 @@
     padding: 20px 10px;
     border: 1px solid black;
     border-radius: 40px;
-    background-color: var(--blueGray);
-    opacity: .33;
+    background-color: var(--lightBlue);
+    opacity: .5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,6 +133,6 @@
 }
 
 .plus-icon {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
 }
