@@ -9,14 +9,16 @@ import { deleteSessionById, getAllSessions } from "../../../../Managers/sessionM
 import { addFavorite, getFavoritesByMusicianId, removeFavorite } from "../../../../Managers/favoriteSessionsManager";
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 import { getAllComments } from "../../../../Managers/commentManager";
+import { Button } from "reactstrap";
 
 export const MySessions = ({ loggedInUser }) => {
     const [favoriteSessions, setFavoriteSessions] = useState([]);
     const [sessions, setSessions] = useState([]);
     const [comments, setComments] = useState([]);
+    const [filterFavs, setFilterFavs] = useState(false);
     const userId = loggedInUser.id;
 
-    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId); getAndSetComments(); }, [userId]);
+    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId); getAndSetComments(); }, [userId, filterFavs]);
 
     const getAndSetSessions = () => {
         getAllSessions().then((data) => {
@@ -73,6 +75,26 @@ export const MySessions = ({ loggedInUser }) => {
         <section className="sessions-container">
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
+                <div>
+                    {filterFavs===false
+                    ? 
+                    <Button
+                        id="filter-on-btn"
+                        size="md" 
+                        color="info"
+                        onClick={(e) => setFilterFavs(!filterFavs)}
+                    >Favorites Only
+                    </Button>
+                    : 
+                    <Button
+                        id="filter-on-btn"
+                        size="md"
+                        color="info"
+                        onClick={(e) => setFilterFavs(!filterFavs)}
+                    >Show All
+                    </Button>
+                    }
+                </div>
             </header>
             <section className="sessions-cards">
                 <div id="create-session-div" onClick={(e) => navigate('create')}>
