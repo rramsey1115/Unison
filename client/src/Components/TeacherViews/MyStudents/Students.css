@@ -1,16 +1,16 @@
 .students-container {
     width: 85vw;
-    min-width: 350px;
+    min-width: 380px;
     margin: 10px auto;
 }
 
 .students-body {
-    min-width: 350px;
+    min-width: 370px;
     margin: 20px auto;
 }
 
 .students-header {
-    min-width: 350px;
+    min-width: 370px;
     margin: 20px auto;
 }
 

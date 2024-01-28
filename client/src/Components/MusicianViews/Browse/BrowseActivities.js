@@ -5,6 +5,7 @@ import { getcategoryById } from "../../../Managers/categoryManager";
 import { useParams } from "react-router-dom";
 import { CreateActivityModal } from "../Sessions/CreateSession/CreateActivityModal";
 import { EditActivityModal } from "./EditActivityModal";
+import { ScaleLoader } from "react-spinners";
 
 export const BrowseActivities = ({loggedInUser}) => {
     const categoryId = useParams().id;
@@ -37,6 +38,12 @@ export const BrowseActivities = ({loggedInUser}) => {
 
 
     return (
+    activities.length === 0
+    ? 
+        <div className="spinner-container">
+            <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+        </div>
+    :
         <div className="browse-container">
             <header className="browse-header">
                 <div className="header-div">

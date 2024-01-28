@@ -13,13 +13,14 @@
 .home-main {
     width: 90%;
     min-width: 330px;
-    margin: .5rem auto;
+    margin: 1em auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     margin: 5px auto;
 }
 
-@media screen and (min-width: 400px) {
+/* @media screen and (min-width: 300px) {
     .home-main {
         width: 90%;
         justify-content: space-evenly;
@@ -28,7 +29,7 @@
     .home-header {
         width: 80%;
     }
-}
+} */
 
 .home-card {
     width: 20%;

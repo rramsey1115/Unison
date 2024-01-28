@@ -22,9 +22,9 @@ export const TeacherHome = () => {
                     <h3>Browse</h3>
                 </Card>
 
-                {/* <Card className="home-card" onClick={(e) => navigate('')}>
+                <Card className="home-card" onClick={(e) => navigate('')}>
                     <h3>Assign</h3>
-                </Card> */}
+                </Card>
    
             </section>
 
