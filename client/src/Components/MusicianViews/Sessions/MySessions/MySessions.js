@@ -172,13 +172,14 @@ export const MySessions = ({ loggedInUser }) => {
                                 />
                             </button>
                             }
-
-                            <img 
-                                id="repeat-icon" 
-                                className="repeat-icon" 
-                                alt="repeat icon" 
-                                src={repeatIcon}
-                            />
+                            <button className="session-activities-btn">
+                                <img 
+                                    id="repeat-icon" 
+                                    className="repeat-icon" 
+                                    alt="repeat icon" 
+                                    src={repeatIcon}
+                                />
+                            </button>
 
                             <ConfirmDeleteModal session={s} handleDeleteSession={handleDeleteSession} getFormattedDate={getFormattedDate}/>
                             

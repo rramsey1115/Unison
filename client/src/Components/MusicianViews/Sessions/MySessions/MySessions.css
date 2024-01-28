@@ -19,13 +19,6 @@
     margin: 10px auto;
 }
 
-/* @media screen and (min-width: 400px) {
-    .sessions-cards {
-        width: 95%;
-        justify-content: flex-start;
-    }
-} */
-
 /* individual completed session cards */
 .session {
     width: 340px;
@@ -66,55 +59,57 @@
     margin: 0;
 }
 
+
 /*  icon and buttons wrapping the icons at 
     the bottom of session card ----------*/
-
 .session-div-btns {
     display: flex;
     justify-content: space-evenly;
 }
 
-.session-div-btns > img {
-    width: 40px;
-    height: 40px;
-    padding: 2px;
-    cursor: pointer;
-    transition: ease-in-out .2s;
-}
-
-.session-div-btns > img:hover {
+.session-div-btns > button {
+    width: 45px;
+    height: 45px;
     padding: 0px;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
     transition: ease-in-out .2s;
 }
 
 /* img icons wrapped in buttons */
 .session-div-btns > button > img {
-    width: 45px;
-    height: 45px;
     padding: 2px;
-    cursor: pointer;
+    margin: auto;
+    width: inherit;
+    border: none;
+    background-color: transparent;
     transition: ease-in-out .2s;
 }
 
 .session-div-btns > button > img:hover {
     padding: 0px;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     cursor: pointer;
     transition: ease-in-out .2s;
 }
 
-/* icons themselves */
-.favorite-icon-btn {
-    padding: 0;
-    margin: 0;
+.session-div-btn {
+    padding: 2px;
+    margin: auto;
     width: inherit;
     border: none;
     background-color: transparent;
+    transition: ease-in-out .2s;
 }
+
+.session-div-btn:hover {
+    padding: 0px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
 
 /* ----------------- info displayed in the card ------------------ */
 #session-div-activities {
