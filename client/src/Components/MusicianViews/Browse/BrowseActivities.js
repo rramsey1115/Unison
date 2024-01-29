@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from "reactstrap"
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button, Input } from "reactstrap"
 import { deleteActivityById, getActivityByCategoryId } from "../../../Managers/activityManager";
 import { getcategoryById } from "../../../Managers/categoryManager";
 import { useParams } from "react-router-dom";
@@ -12,11 +12,12 @@ export const BrowseActivities = ({loggedInUser}) => {
     const [category, setCategory] = useState({});
     const [activities, setActivities] = useState([]);
     const [open, setOpen] = useState('0');
+    const [filterText, setFilterText] = useState("");
 
     useEffect(() => {
         getAndSetActivitiesByCategoryId(categoryId);
         getAndSetCategoryById(categoryId);
-    }, [categoryId]);
+    }, [categoryId, filterText]);
 
     const getAndSetActivitiesByCategoryId = (id) => {
         getActivityByCategoryId(id).then(setActivities);
@@ -37,7 +38,7 @@ export const BrowseActivities = ({loggedInUser}) => {
     }
 
     return (
-    activities.length === 0 || !category.details
+    !activities || !category.details
     ? 
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
@@ -48,6 +49,16 @@ export const BrowseActivities = ({loggedInUser}) => {
                 <div className="header-div">
                     <h1>{category.name}</h1>
                     <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>
+                    <Input
+                        type="text"
+                        id="sessions-search-input"
+                        className="search-input"
+                        placeholder="Search"
+                        value={filterText}
+                        onChange={(e) => {
+                            setFilterText(e.target.value);
+                        }}
+                    />
                 </div>
                 <h5>{category.details}</h5>
             </header>
