@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { deleteCategoryById, getAllCategories } from "../../../Managers/categoryManager";
 import "./Browse.css";
-import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button } from 'reactstrap';
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Button, Input } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
 import { EditCategoryModal } from "./EditCategoryModal";
 import { CreateCategoryModal } from "./CreateCategoryModal";
@@ -12,13 +12,33 @@ import { ScaleLoader } from "react-spinners";
 export const BrowseCategories = ({loggedInUser}) => {
     const [categories, setCategories] = useState([]);
     const [open, setOpen] = useState('0');
+    const [filterText, setFilterText] = useState("");
 
     useEffect(() => {
         getAndSetAllCategories();
-    }, []);
+    }, [filterText]);
+
+    useEffect(() => {}, [])
 
     const getAndSetAllCategories = () => {
-        getAllCategories().then(setCategories);
+        getAllCategories().then(data => {
+            var arr = [];
+            if(filterText.length > 1)
+            {
+                for(let d of data)
+                {
+                    console.log('d', d);
+                    if(d.details.toLowerCase().includes(filterText.toLowerCase()) || d.name.toLowerCase().includes(filterText.toLowerCase()))
+                    {
+                        arr.push(d);
+                    }
+                }
+                setCategories(arr);
+            }
+            else{
+                setCategories(data);
+            }
+        });
     }
 
     const toggle = (id) => {
@@ -33,21 +53,33 @@ export const BrowseCategories = ({loggedInUser}) => {
     const navigate = useNavigate();
 
     return (
-    categories.length === 0
-    ? 
-        <div className="spinner-container">
-            <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
-        </div>
-    :
         <div className="browse-container">
-            <div id="browse-category-header" className="browse-header">
-                <h1>Browse Categories</h1>
-                {loggedInUser.roles[0]!=="Teacher" ? null
-                :<CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/> }
+            <div className="browse-header">
+                <h1>Categories</h1>
+                <div className="header-div">
+                    {loggedInUser.roles[0]!=="Teacher" ? null
+                    :<CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/> }
+                    {/* keyword search for sessions */}
+                    <Input
+                        type="text"
+                        id="browse-search-input"
+                        className="search-input"
+                        placeholder="Search"
+                        value={filterText}
+                        onChange={(e) => {
+                            setFilterText(e.target.value);
+                        }}
+                    />
+                </div>
             </div>
             <section className="browse-body">
                 <Accordion open={open} toggle={toggle}>
-                    {categories?.map(c => {
+                    {categories.length === 0 
+                    ?   <div className="spinner-container">
+                            <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+                        </div> 
+                    :
+                    categories?.map(c => {
                         return (
                         <AccordionItem key={c.id}>
                             <AccordionHeader targetId={`${c.id}`}><h5>{c.name}</h5></AccordionHeader>

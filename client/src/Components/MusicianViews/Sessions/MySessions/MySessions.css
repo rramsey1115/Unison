@@ -1,42 +1,57 @@
 /* main body of page layout styling */
 .sessions-container {
     width: 95vw;
-    min-width: 350px;
-    margin: 1em;
+    min-width: 360px;
+    margin: 1em auto;
 }
 
 .sessions-header {
-    width: 90%;
+    width: 95%;
     min-width: 330px;
     margin: 1em auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.sessions-header > h1 {
+    margin: 10px 0 0 0;
+}
+
+.sessions-header > div {
+    display: flex;
+    flex-wrap: none;
+    height: 40px;
+    margin: 10px 0 0 0;
 }
 
 #sessions-search-input {
-    width: 250px;
-    margin: 0 10px;
+    width: 225px;
+    margin: 0 0 0 10px;
 }
 
 #filter-favs-btn {
-    margin: 6px;
+    margin: 0 10px 0 0;
+    height: 40px;
+    width: 100px;
     transition: all ease-in-out .3s;
 }
 
 .sessions-cards {
     display:flex;
     flex-wrap: wrap;
-    width: 95%;
+    justify-content: space-evenly;
+    width: 98%;
     height: fit-content;
     margin: 10px auto;
 }
 
 /* individual completed session cards */
 .session {
-    width: 340px;
-    height: 500px;
+    width: 350px;
+    height: 300px;
     margin: 10px;
     padding: 10px;
     color: white;
@@ -156,8 +171,8 @@
 
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
-    width: 340px;
-    height: 500px;
+    width: 350px;
+    height: 200px;
     margin: 10px;
     padding: 20px 10px;
     border: 1px solid black;
@@ -169,6 +184,16 @@
     align-items: center;
     cursor: pointer;
     transition: ease-in-out 0.25s;
+}
+
+@media screen and (min-width: 400px) {
+    #create-session-div{
+         height: 500px;
+    }
+
+    .session {
+        height: 500px;
+    }
 }
 
 #create-session-div:hover {

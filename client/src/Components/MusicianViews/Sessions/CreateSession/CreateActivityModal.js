@@ -45,8 +45,8 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
       </div>
     :
     <div>
-      <Button id="create-activity-btn" className="create-btn" color='info' size='sm' onClick={toggleModal}>
-        Create New Activity
+      <Button className="create-btn" color='info' size='sm' onClick={toggleModal}>
+        Create Activity
       </Button>
       <Modal isOpen={modal} toggle={toggleModal} style={{color:'black'}} backdrop="static">
         <ModalHeader toggle={toggleModal}>

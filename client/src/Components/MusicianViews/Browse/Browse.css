@@ -19,8 +19,13 @@
 .header-div {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    align-items: center;
+    margin: 20px auto;
+}
+
+#browse-search-input {
+    width: 45%;
+    min-width: 225px;
 }
 
 .accordion-btns {
@@ -29,10 +34,10 @@
     flex-wrap: wrap;
 }
 
-#browse-category-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.create-btn {
+    width: 120px;
+    height: 36px;
+    margin: 0;
 }
 
 #explore-category-btn {

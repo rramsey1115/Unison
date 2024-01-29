@@ -17,6 +17,7 @@ export const MySessions = ({ loggedInUser }) => {
     const [sessions, setSessions] = useState([]);
     const [comments, setComments] = useState([]);
     const [filterFavs, setFilterFavs] = useState(false);
+    const [filterText, setFilterText] = useState("");
     const userId = loggedInUser.id;
 
     useEffect(() => { 
@@ -24,6 +25,10 @@ export const MySessions = ({ loggedInUser }) => {
         getAndSetFavoriteSessions(userId); 
         getAndSetComments(); 
     }, [filterFavs]);
+
+    useEffect(() => {
+        filterTextResults(filterText);
+    }, [filterText]);
 
     const getAndSetSessions = () => {
         filterFavs === false ?
@@ -56,8 +61,51 @@ export const MySessions = ({ loggedInUser }) => {
                     setSessions(results);
                 })
             }
-        });
+        })
+        
     };
+
+    const filterTextResults = (filterText) => {
+                // filters based on filter text input
+                if(filterText.length >= 3)
+                {
+                    // array to hold results of textFilter
+                    var searchArr = [];
+                    for(let s of sessions)
+                    {
+                        for(let sa of s.sessionActivities)
+                        {
+                            // test multiple levels of data to find any matches
+                            if (sa.activity.category.details.toLowerCase().includes(filterText.toLowerCase()) || 
+                                sa.activity.category.name.toLowerCase().includes(filterText.toLowerCase()) || 
+                                sa.activity.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                                sa.activity.details.toLowerCase().includes(filterText.toLowerCase())
+                            )
+                            {
+                                searchArr.push(s);
+                            }
+                        }
+                    }
+                    // if there are matches.. set sessions to those matches
+                    if(searchArr.length > 0)
+                    {
+                        console.log('searchArr', searchArr);
+                        setSessions(searchArr);
+                    }
+                    // if no matches to textFilter.. empty array - emply screen
+                    else
+                    {
+                        setSessions([]);
+                    }
+                }
+
+                // if less than three characters in filter text input, get all sessions
+                if(filterText.length < 3)
+                {
+                    setSessions([]);
+                    getAndSetSessions();
+                }
+    }
 
     const getAndSetFavoriteSessions = () => {
         getFavoritesByMusicianId(userId).then(data =>setFavoriteSessions(data));
@@ -111,36 +159,39 @@ export const MySessions = ({ loggedInUser }) => {
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
 
+                <div>
                     {/* filter sessions by favorites only button */}
                     {filterFavs===false
-                    ? 
-                    <Button
-                        id="filter-on-btn"
-                        size="md" 
-                        color="info"
-                        onClick={(e) => setFilterFavs(!filterFavs)}
-                    >Favorites Only
-                    </Button>
-                    : 
-                    <Button
-                        id="filter-on-btn"
-                        size="md"
-                        color="info"
-                        onClick={(e) => setFilterFavs(!filterFavs)}
-                    >Show All
-                    </Button>
+                        ? 
+                        <Button
+                            id="filter-favs-btn"
+                            size="md" 
+                            color="info"
+                            onClick={(e) => {setFilterText(""); setFilterFavs(!filterFavs)}}
+                        >Favorites
+                        </Button>
+                        : 
+                        <Button
+                            id="filter-favs-btn"
+                            size="md"
+                            color="info"
+                            onClick={(e) => {setFilterText(""); setFilterFavs(!filterFavs)}}
+                        >Show All
+                        </Button>
                     }
 
+                    {/* keyword search for sessions */}
                     <Input 
                         type="text"
                         id="sessions-search-input"
                         className="search-input"
                         placeholder="Search"
+                        value={filterText}
+                        onChange={(e) => {
+                            setFilterText(e.target.value);
+                        }}
                     />
-           
-
-                    {/* keyword search for sessions */}
-                    
+                </div>
             </header>
             <section className="sessions-cards">
                 <div id="create-session-div" onClick={(e) => navigate('create')}>
