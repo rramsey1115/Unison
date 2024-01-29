@@ -23,6 +23,11 @@
     margin: 20px auto;
 }
 
+#browse-search-input {
+    width: 45%;
+    min-width: 225px;
+}
+
 .accordion-btns {
     display: flex;
     align-items: flex-start;
@@ -32,6 +37,7 @@
 .create-btn {
     width: 120px;
     height: 36px;
+    margin: 0;
 }
 
 #explore-category-btn {

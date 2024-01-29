@@ -52,7 +52,7 @@ export const BrowseActivities = ({loggedInUser}) => {
                     <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>
                     <Input
                         type="text"
-                        id="sessions-search-input"
+                        id="browse-search-input"
                         className="search-input"
                         placeholder="Search"
                         value={filterText}

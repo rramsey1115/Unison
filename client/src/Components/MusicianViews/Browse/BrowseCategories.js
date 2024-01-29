@@ -62,7 +62,7 @@ export const BrowseCategories = ({loggedInUser}) => {
                     {/* keyword search for sessions */}
                     <Input
                         type="text"
-                        id="sessions-search-input"
+                        id="browse-search-input"
                         className="search-input"
                         placeholder="Search"
                         value={filterText}
