@@ -5,7 +5,7 @@ import filledFav from "../../../../images/filled-favorite.png"
 import repeatIcon from "../../../../images/start.png";
 import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
-import { deleteSessionById, getAllSessions } from "../../../../Managers/sessionManager";
+import { deleteSessionById, getAllSessions, getSessionById } from "../../../../Managers/sessionManager";
 import { addFavorite, getFavoritesByMusicianId, removeFavorite } from "../../../../Managers/favoriteSessionsManager";
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 import { getAllComments } from "../../../../Managers/commentManager";
@@ -18,15 +18,43 @@ export const MySessions = ({ loggedInUser }) => {
     const [filterFavs, setFilterFavs] = useState(false);
     const userId = loggedInUser.id;
 
-    useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId); getAndSetComments(); }, [userId, filterFavs]);
+    useEffect(() => { 
+        getAndSetSessions(); 
+        getAndSetFavoriteSessions(userId); 
+        getAndSetComments(); 
+    }, [filterFavs]);
 
     const getAndSetSessions = () => {
+        filterFavs === false ?
+        // get all sessions with matching userId & then order by activity date
         getAllSessions().then((data) => {
             var filtered = data.filter(d => d.musicianId === userId && d.dateCompleted !== null);
             filtered ?? filtered.sessionActivities.sort(function(a, b) { 
                 return a.activity.categoryId - b.activity.categoryId
               });
             setSessions(filtered);
+        })
+        :
+        // get only favorite sessions
+        getFavoritesByMusicianId(userId).then((data) => {
+            var promises = [];
+        
+            if (data.length === 0) 
+            {
+                setSessions([]);
+            } 
+            else 
+            {
+                for (const d of data) 
+                {
+                    // holds results of fetch call - the session object
+                    promises.push(getSessionById(d.sessionId * 1));
+                }
+                // once all promises in the promises array are resolved, setSessions to the result
+                Promise.all(promises).then((results) => {
+                    setSessions(results);
+                })
+            }
         });
     };
 
@@ -104,6 +132,17 @@ export const MySessions = ({ loggedInUser }) => {
                 {sessions.map(s => {
                     // sets comments for this session - if null handled below
                     var arr = comments.filter(c => c.sessionId === s.id);
+                    
+                    // sets if this session is favorited or not & favoriteSessionId
+                    let isFavorite = false;
+                    let favId = 0;
+                    favoriteSessions.forEach(fs => {
+                        if (fs.sessionId === s.id)
+                        {
+                            isFavorite = true;
+                            favId = fs.id;
+                        }
+                    })
 
                     return( 
                     <div key={s.id} className="session">
@@ -136,61 +175,36 @@ export const MySessions = ({ loggedInUser }) => {
                         </div>
 
                         <div className="session-div-btns">
-                            {favoriteSessions.length > 0 ? favoriteSessions?.map(fs => {
-                                if(s.id === fs.sessionId )
-                                {
-                                    return( 
-                                        <button 
-                                            key={s.id}
-                                            value={fs.id}
-                                            className="session-activities-btn"
-                                            onClick={(e) => handleRemoveFav(e.currentTarget.value*1)}
-                                            >
-                                            <img 
-                                                id="favorite-icon" 
-                                                className="favorite-icon" 
-                                                alt="favorite icon" 
-                                                src={filledFav}
-                                            />
-                                        </button>
-                                    )
-                                }
-                                else
-                                {
-                                    return ( 
-                                        <button
-                                            key={s.id}
-                                            value={s.id}
-                                            className="session-activities-btn"
-                                            onClick={(e) => handleAddFav(e.currentTarget.value*1)}
-                                            >
-                                            <img 
-                                                key={s.id} 
-                                                id="favorite-icon" 
-                                                className="favorite-icon" 
-                                                alt="favorite icon" 
-                                                src={emptyFav}
-                                            />
-                                        </button>
-                                    )
-                                }
-                            })
+                            {isFavorite === true ?
+                                <button
+                                    key={favId}
+                                    value={favId}
+                                    className="session-activities-btn"
+                                    onClick={(e) => handleRemoveFav(e.currentTarget.value * 1)}
+                                    >
+                                    <img
+                                        id="favorite-icon"
+                                        className="favorite-icon"
+                                        alt="favorite icon"
+                                        src={filledFav}
+                                    />
+                                </button>
                             : 
-                            <button
-                                key={s.id}
-                                value={s.id}
-                                className="session-activities-btn"
-                                onClick={(e) => handleAddFav(e.currentTarget.value*1)}
-                                >
-                                <img 
-                                    key={s.id} 
-                                    id="favorite-icon" 
-                                    className="favorite-icon" 
-                                    alt="favorite icon" 
-                                    src={emptyFav}
-                                />
-                            </button>
+                                <button
+                                    key={s.id}
+                                    value={s.id}
+                                    className="session-activities-btn"
+                                    onClick={(e) => handleAddFav(e.currentTarget.value * 1)}
+                                    >
+                                        <img
+                                            id="favorite-icon"
+                                            className="favorite-icon"
+                                            alt="favorite icon"
+                                            src={emptyFav}
+                                        />
+                                </button>
                             }
+
                             <button className="session-activities-btn">
                                 <img 
                                     id="repeat-icon" 
