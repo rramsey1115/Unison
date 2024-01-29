@@ -37,16 +37,25 @@ export const MySessions = ({ loggedInUser }) => {
         :
         // get only favorite sessions
         getFavoritesByMusicianId(userId).then((data) => {
-            var filtered = [];
-            if(data.length === 0)
+            var promises = [];
+        
+            if (data.length === 0) 
             {
                 setSessions([]);
-            }
-            for(const d of data)
+            } 
+            else 
             {
-                getSessionById(d.sessionId*1).then(res => filtered.push(res)).then(() => setSessions(filtered))
+                for (const d of data) 
+                {
+                    // holds results of fetch call - the session object
+                    promises.push(getSessionById(d.sessionId * 1));
+                }
+                // once all promises in the promises array are resolved, setSessions to the result
+                Promise.all(promises).then((results) => {
+                    setSessions(results);
+                })
             }
-        })      
+        });
     };
 
     const getAndSetFavoriteSessions = () => {
