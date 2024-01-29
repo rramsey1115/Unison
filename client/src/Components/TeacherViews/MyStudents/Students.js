@@ -36,9 +36,9 @@ export const Students = ({loggedInUser}) => {
                                 <th>Email</th>
                                 <th>Last Session</th>
                                 <th>Sessions</th>
-                                {/* <th>Stats</th> */}
-                                {/* <th>Assignment</th> */}
-                                {/* <th>Remove</th> */}
+                                <th>Stats</th>
+                                <th>Assignment</th>
+                                <th>Remove</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,7 +58,7 @@ export const Students = ({loggedInUser}) => {
                                             >Sessions
                                             </Button>
                                         </td>
-                                        {/* <td>
+                                        <td>
                                             <Button 
                                                 color="info" 
                                                 size="sm" 
@@ -81,7 +81,7 @@ export const Students = ({loggedInUser}) => {
                                                 className="students-table-btn"
                                             >Remove
                                             </Button>
-                                        </td> */}
+                                        </td>
                                     </tr>
                                 )
                             })}
