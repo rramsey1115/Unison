@@ -46,8 +46,9 @@ export const BrowseActivities = ({loggedInUser}) => {
     :
         <div className="browse-container">
             <header className="browse-header">
+                <h1>{category.name}</h1>
+                <h5>{category.details}</h5>
                 <div className="header-div">
-                    <h1>{category.name}</h1>
                     <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>
                     <Input
                         type="text"
@@ -60,7 +61,6 @@ export const BrowseActivities = ({loggedInUser}) => {
                         }}
                     />
                 </div>
-                <h5>{category.details}</h5>
             </header>
             <section className="browse-body">
 

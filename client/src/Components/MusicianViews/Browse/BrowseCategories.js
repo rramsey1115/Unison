@@ -54,21 +54,23 @@ export const BrowseCategories = ({loggedInUser}) => {
 
     return (
         <div className="browse-container">
-            <div id="browse-category-header" className="browse-header">
-                <h1>Browse Categories</h1>
-                {loggedInUser.roles[0]!=="Teacher" ? null
-                :<CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/> }
-                {/* keyword search for sessions */}
-                <Input
-                    type="text"
-                    id="sessions-search-input"
-                    className="search-input"
-                    placeholder="Search"
-                    value={filterText}
-                    onChange={(e) => {
-                        setFilterText(e.target.value);
-                    }}
-                />
+            <div className="browse-header">
+                <h1>Categories</h1>
+                <div className="header-div">
+                    {loggedInUser.roles[0]!=="Teacher" ? null
+                    :<CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/> }
+                    {/* keyword search for sessions */}
+                    <Input
+                        type="text"
+                        id="sessions-search-input"
+                        className="search-input"
+                        placeholder="Search"
+                        value={filterText}
+                        onChange={(e) => {
+                            setFilterText(e.target.value);
+                        }}
+                    />
+                </div>
             </div>
             <section className="browse-body">
                 <Accordion open={open} toggle={toggle}>
