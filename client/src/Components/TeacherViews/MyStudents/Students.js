@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getTeacherStudents } from "../../../Managers/profileManager";
 import { LastSession } from "./LastSession";
 import { useNavigate } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 
 export const Students = ({loggedInUser}) => {
     const [students, setStudents] = useState([]);
@@ -17,6 +18,12 @@ export const Students = ({loggedInUser}) => {
     const navigate = useNavigate();
 
     return (
+        !students
+        ? 
+            <div className="spinner-container">
+                <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+            </div>
+        :
         <div className="students-container">
             <div className="students-header">
                 <h1>My Students</h1>

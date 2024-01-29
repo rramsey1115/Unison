@@ -37,7 +37,7 @@ export const BrowseActivities = ({loggedInUser}) => {
     }
 
     return (
-    activities.length === 0
+    activities.length === 0 || !category.details
     ? 
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
@@ -54,7 +54,7 @@ export const BrowseActivities = ({loggedInUser}) => {
             <section className="browse-body">
 
                 <Accordion open={open} toggle={toggle}>
-                    {activities?.map(a => {
+                    {activities.map(a => {
                         return (
                         <AccordionItem key={a.id}>
                             <AccordionHeader targetId={`${a.id}`}><h5>{a.name}</h5></AccordionHeader>

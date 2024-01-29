@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { getcategoryById } from '../../../../Managers/categoryManager';
 import { postNewActivity } from '../../../../Managers/activityManager';
+import { ScaleLoader } from 'react-spinners';
 
 export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUser}) => {
     const [modal, setModal] = useState(false);
@@ -37,6 +38,12 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
     }
 
     return (
+    !category
+    ? 
+      <div className="spinner-container">
+          <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+      </div>
+    :
     <div>
       <Button id="create-activity-btn" className="create-btn" color='info' size='sm' onClick={toggleModal}>
         Create New Activity

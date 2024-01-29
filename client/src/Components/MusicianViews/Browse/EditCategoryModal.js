@@ -20,7 +20,7 @@ export const EditCategoryModal = ({categoryId, getAndSetAllCategories}) => {
 
     const getAndSetCategory = () => {
         getcategoryById(categoryId).then(setCategory);
-    }
+    };
 
     const toggleModal = () => {
         setModal(!modal)
@@ -28,11 +28,10 @@ export const EditCategoryModal = ({categoryId, getAndSetAllCategories}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("newCategory", newCategory);
         await updateCategory(newCategory);
         await getAndSetAllCategories();
         toggleModal();
-    }
+    };
 
     return (
     <div>
@@ -45,7 +44,6 @@ export const EditCategoryModal = ({categoryId, getAndSetAllCategories}) => {
             {newCategory.name}
         </ModalHeader>
         <ModalBody className='modal-body'>
-            
             <input
                 id='activity-name-input'
                 value={newCategory.name}
@@ -57,7 +55,6 @@ export const EditCategoryModal = ({categoryId, getAndSetAllCategories}) => {
                     setNewCategory(copy);
                 }}
             />
-
             <textarea
                 id='activity-details-input'
                 value={newCategory.details}
@@ -69,7 +66,6 @@ export const EditCategoryModal = ({categoryId, getAndSetAllCategories}) => {
                     setNewCategory(copy);
                 }}
             />
-
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={(e) => handleSubmit(e)}>

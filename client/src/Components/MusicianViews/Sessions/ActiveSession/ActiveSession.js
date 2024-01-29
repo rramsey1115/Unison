@@ -3,6 +3,7 @@ import "./ActiveSession.css";
 import { completeSession, getSessionById } from "../../../../Managers/sessionManager";
 import { useEffect, useState } from "react";
 import { Button } from "reactstrap";
+import { ScaleLoader } from "react-spinners";
 
 export const ActiveSession = ({loggedInUser}) => {
     const sessionId = useParams().id;
@@ -26,6 +27,12 @@ export const ActiveSession = ({loggedInUser}) => {
     }
 
     return (
+        !session.sessionActivities
+        ? 
+            <div className="spinner-container">
+                <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+            </div>
+        :
         <div className="active-container">
 
             <section className="active-container-form">

@@ -7,6 +7,7 @@ import plusIcon from "../../../images/plus-icon.png";
 import { getUserById } from "../../../Managers/profileManager";
 import { Button, Spinner } from "reactstrap";
 import { CommentModal } from "./CommentModal";
+import { ScaleLoader } from "react-spinners";
 
 export const StudentSessions = ({ loggedInUser }) => {
     const [sessions, setSessions] = useState([]);
@@ -57,7 +58,11 @@ export const StudentSessions = ({ loggedInUser }) => {
     }
 
     return (
-    !student.firstName ? <Spinner/>
+    !student.firstName || !sessions || !comments
+    ? 
+        <div className="spinner-container">
+            <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+        </div>
     :
         <section className="sessions-container">
             <header className="sessions-header">

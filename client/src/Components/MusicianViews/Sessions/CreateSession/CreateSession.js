@@ -7,6 +7,7 @@ import { SessionActivitySelect } from "./SessionActivitySelect";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
+import { ScaleLoader } from "react-spinners";
 
 export const CreateSession = ({loggedInUser}) => {
     const [totalTime, setTotalTime] = useState(0);
@@ -52,6 +53,12 @@ export const CreateSession = ({loggedInUser}) => {
     const navigate = useNavigate();
 
     return (
+        !newSession
+        ? 
+            <div className="spinner-container">
+                <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+            </div>
+        :
         <div className="create-session-container">
 
             <header className="create-session-header">

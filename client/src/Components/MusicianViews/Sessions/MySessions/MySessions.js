@@ -10,6 +10,7 @@ import { addFavorite, getFavoritesByMusicianId, removeFavorite } from "../../../
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 import { getAllComments } from "../../../../Managers/commentManager";
 import { Button } from "reactstrap";
+import { ScaleLoader } from "react-spinners";
 
 export const MySessions = ({ loggedInUser }) => {
     const [favoriteSessions, setFavoriteSessions] = useState([]);
@@ -100,6 +101,12 @@ export const MySessions = ({ loggedInUser }) => {
     };
 
     return (
+        !sessions || !favoriteSessions || !comments
+        ? 
+            <div className="spinner-container">
+                <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+            </div>
+        :
         <section className="sessions-container">
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>

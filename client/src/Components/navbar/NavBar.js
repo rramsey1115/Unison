@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
+import { NavLink as RRNavLink, useNavigate } from "react-router-dom";
 import { Collapse, Nav, NavLink, NavItem, Navbar, NavbarBrand, NavbarToggler } from "reactstrap";
 import { logout } from "../../Managers/authManger";
 import icon from "../../images/icon.png"
@@ -7,6 +7,8 @@ import "./NavBar.css";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
 const [open, setOpen] = useState(false);
+
+const navigate = useNavigate();
 
 const toggleNavbar = () => setOpen(!open);
 
@@ -53,6 +55,7 @@ const toggleNavbar = () => setOpen(!open);
                                     logout().then(() => {
                                         setLoggedInUser(null);
                                         setOpen(false);
+                                        navigate('/');
                                     });
                                 }}
                                 >
@@ -95,6 +98,7 @@ const toggleNavbar = () => setOpen(!open);
                                     logout().then(() => {
                                         setLoggedInUser(null);
                                         setOpen(false);
+                                        navigate('/');
                                     });
                                 }}
                             >
