@@ -42,6 +42,7 @@
 .sessions-cards {
     display:flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     width: 98%;
     height: fit-content;
     margin: 10px auto;
@@ -49,8 +50,8 @@
 
 /* individual completed session cards */
 .session {
-    width: 340px;
-    height: 500px;
+    width: 350px;
+    height: 300px;
     margin: 10px;
     padding: 10px;
     color: white;
@@ -170,8 +171,8 @@
 
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
-    width: 340px;
-    height: 500px;
+    width: 350px;
+    height: 200px;
     margin: 10px;
     padding: 20px 10px;
     border: 1px solid black;
@@ -183,6 +184,16 @@
     align-items: center;
     cursor: pointer;
     transition: ease-in-out 0.25s;
+}
+
+@media screen and (min-width: 400px) {
+    #create-session-div{
+         height: 500px;
+    }
+
+    .session {
+        height: 500px;
+    }
 }
 
 #create-session-div:hover {
