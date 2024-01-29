@@ -1,11 +1,11 @@
 .students-container {
     width: 85vw;
-    min-width: 380px;
+    min-width: 370px;
     margin: 10px auto;
 }
 
 .students-body {
-    min-width: 370px;
+    min-width: 360px;
     margin: 20px auto;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .students-table-btn {
-    width: 80px;
+    width: 95px;
 }
 
 /*  add comment modal */
