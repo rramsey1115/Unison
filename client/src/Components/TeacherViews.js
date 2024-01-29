@@ -7,6 +7,8 @@ import { BrowseActivities } from "./MusicianViews/Browse/BrowseActivities";
 import { TeacherHome } from "./TeacherViews/TeacherHome";
 import { StudentSessions } from "./TeacherViews/Sessions/StudentSessions";
 import { Students } from "./TeacherViews/MyStudents/Students";
+import { CreateAssignment } from "./TeacherViews/Assignments/CreateAssignment";
+import { Assignments } from "./MusicianViews/Assignments/Assignments";
 // import { FavoriteSessions } from "./MusicianViews/Sessions/MySessions/FavoriteSession";
 
 export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
@@ -33,6 +35,22 @@ export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
                     </AuthorizedRoute>}
                 />
             </Route>
+
+
+            <Route path="assignments">
+                <Route path=":id" element={
+                    <AuthorizedRoute loggedInUser={loggedInUser}>
+                        <Assignments loggedInUser={loggedInUser}/>
+                    </AuthorizedRoute>
+                }/>
+                <Route path="create" element={
+                    <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
+                        <CreateAssignment loggedInUser={loggedInUser} />
+                    </AuthorizedRoute>}
+                />
+            </Route>
+
+
       
             <Route path="browse">
                 <Route path="category" element={
@@ -46,14 +64,6 @@ export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
                     </AuthorizedRoute>}
                 />
             </Route>
-
-            {/* <Route path="favorite">
-                <Route index element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                    <FavoriteSessions loggedInUser={loggedInUser} />
-                </AuthorizedRoute>}
-                />
-            </Route> */}
 
             <Route
                 path="login"

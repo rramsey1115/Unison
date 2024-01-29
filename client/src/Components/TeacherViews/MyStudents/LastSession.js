@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { getAllSessions } from "../../../Managers/sessionManager";
 
 export const LastSession = ({studentId}) => {
-    const[lastSession, setLastSession] = useState([]);
+    const [lastSession, setLastSession] = useState([]);
+    const [old, setOld] = useState(false);
 
     useEffect(() => { getAndSetSessions() }, [studentId])
 
@@ -21,7 +22,10 @@ export const LastSession = ({studentId}) => {
 
     return(
         lastSession?.length === 0 
-        ? <>{"--/--/----"}</> 
-        : <>{new Date(lastSession.dateCompleted).toLocaleDateString()}</>
+        ? <p>{"--/--/----"}</p> 
+            // if the last practice session was more than 7 days ago, make the text color red
+        : (new Date(lastSession.dateCompleted).getTime() < (Date.now() - 7 * 24 * 60 * 60 * 1000)) ?
+            <p style={{color:"red"}}>{new Date(lastSession.dateCompleted).toLocaleDateString()}</p>
+        : <p>{new Date(lastSession.dateCompleted).toLocaleDateString()}</p>
     );
 }

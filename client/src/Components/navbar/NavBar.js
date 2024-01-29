@@ -35,32 +35,32 @@ const toggleNavbar = () => setOpen(!open);
                                 </NavLink>
                             </NavItem>
             
-                            <NavItem>
-                                <NavLink tag={RRNavLink} to="">
+                            {/* <NavItem>
+                                <NavLink tag={RRNavLink} to="assignments">
                                     Assignments
                                 </NavLink>
-                            </NavItem>
+                            </NavItem> */}
             
                             <NavItem>
                                 <NavLink tag={RRNavLink} to="/browse/category">
                                     Browse
                                 </NavLink>
                             </NavItem>
-                            </Nav>
-                            <button
-                                className="nav-btn"
-                                onClick={(e) => {
-                                    e.preventDefault();
+                        </Nav>
+                        <button
+                            className="nav-btn"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setOpen(false);
+                                logout().then(() => {
+                                    setLoggedInUser(null);
                                     setOpen(false);
-                                    logout().then(() => {
-                                        setLoggedInUser(null);
-                                        setOpen(false);
-                                        navigate('/');
-                                    });
-                                }}
-                                >
-                            Logout
-                            </button>
+                                    navigate('/');
+                                });
+                            }}
+                        >
+                        Logout
+                        </button>
                     </Collapse>
                 </>
                 :
@@ -79,7 +79,7 @@ const toggleNavbar = () => setOpen(!open);
                                     </NavLink>
                                 </NavItem> 
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="">
+                                    <NavLink tag={RRNavLink} to={`assignments/${loggedInUser.id}`}>
                                         Assignments
                                     </NavLink>
                                 </NavItem>
