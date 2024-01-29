@@ -11,7 +11,7 @@ export const Home = () => {
     useEffect(() => {
         setTimeout(() => {
             setLoaded(true);
-        }, 1250);
+        }, 1000);
     }, []); // empty dependency to only run once
     
     return (

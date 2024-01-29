@@ -9,7 +9,7 @@ import { deleteSessionById, getAllSessions, getSessionById } from "../../../../M
 import { addFavorite, getFavoritesByMusicianId, removeFavorite } from "../../../../Managers/favoriteSessionsManager";
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 import { getAllComments } from "../../../../Managers/commentManager";
-import { Button } from "reactstrap";
+import { Button, Input } from "reactstrap";
 import { ScaleLoader } from "react-spinners";
 
 export const MySessions = ({ loggedInUser }) => {
@@ -110,7 +110,8 @@ export const MySessions = ({ loggedInUser }) => {
         <section className="sessions-container">
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
-                <div>
+
+                    {/* filter sessions by favorites only button */}
                     {filterFavs===false
                     ? 
                     <Button
@@ -129,7 +130,17 @@ export const MySessions = ({ loggedInUser }) => {
                     >Show All
                     </Button>
                     }
-                </div>
+
+                    <Input 
+                        type="text"
+                        id="sessions-search-input"
+                        className="search-input"
+                        placeholder="Search"
+                    />
+           
+
+                    {/* keyword search for sessions */}
+                    
             </header>
             <section className="sessions-cards">
                 <div id="create-session-div" onClick={(e) => navigate('create')}>
