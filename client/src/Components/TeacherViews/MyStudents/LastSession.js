@@ -3,7 +3,6 @@ import { getAllSessions } from "../../../Managers/sessionManager";
 
 export const LastSession = ({studentId}) => {
     const [lastSession, setLastSession] = useState([]);
-    const [old, setOld] = useState(false);
 
     useEffect(() => { getAndSetSessions() }, [studentId])
 
