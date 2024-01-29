@@ -40,12 +40,7 @@ export const MySessions = ({ loggedInUser }) => {
             }
             for(const d of data)
             {
-                console.log('d', d);
-                getSessionById(d.sessionId*1).then(res => {
-                    filtered.push(res)
-                }).then(() => {
-                    setSessions(filtered)
-                })
+                getSessionById(d.sessionId*1).then(res => filtered.push(res)).then(() => setSessions(filtered))
             }
         })      
     };
