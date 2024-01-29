@@ -24,7 +24,11 @@ export const MySessions = ({ loggedInUser }) => {
         getAndSetSessions(); 
         getAndSetFavoriteSessions(userId); 
         getAndSetComments(); 
-    }, [filterFavs, filterText]);
+    }, [filterFavs]);
+
+    useEffect(() => {
+        filterTextResults(filterText);
+    }, [filterText]);
 
     const getAndSetSessions = () => {
         filterFavs === false ?
@@ -57,8 +61,51 @@ export const MySessions = ({ loggedInUser }) => {
                     setSessions(results);
                 })
             }
-        });
+        })
+        
     };
+
+    const filterTextResults = (filterText) => {
+                // filters based on filter text input
+                if(filterText.length >= 3)
+                {
+                    // array to hold results of textFilter
+                    var searchArr = [];
+                    for(let s of sessions)
+                    {
+                        for(let sa of s.sessionActivities)
+                        {
+                            // test multiple levels of data to find any matches
+                            if (sa.activity.category.details.toLowerCase().includes(filterText.toLowerCase()) || 
+                                sa.activity.category.name.toLowerCase().includes(filterText.toLowerCase()) || 
+                                sa.activity.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                                sa.activity.details.toLowerCase().includes(filterText.toLowerCase())
+                            )
+                            {
+                                searchArr.push(s);
+                            }
+                        }
+                    }
+                    // if there are matches.. set sessions to those matches
+                    if(searchArr.length > 0)
+                    {
+                        console.log('searchArr', searchArr);
+                        setSessions(searchArr);
+                    }
+                    // if no matches to textFilter.. empty array - emply screen
+                    else
+                    {
+                        setSessions([]);
+                    }
+                }
+
+                // if less than three characters in filter text input, get all sessions
+                if(filterText.length < 3)
+                {
+                    setSessions([]);
+                    getAndSetSessions();
+                }
+    }
 
     const getAndSetFavoriteSessions = () => {
         getFavoritesByMusicianId(userId).then(data =>setFavoriteSessions(data));
@@ -120,7 +167,7 @@ export const MySessions = ({ loggedInUser }) => {
                             id="filter-favs-btn"
                             size="md" 
                             color="info"
-                            onClick={(e) => setFilterFavs(!filterFavs)}
+                            onClick={(e) => {setFilterText(""); setFilterFavs(!filterFavs)}}
                         >Favorites
                         </Button>
                         : 
@@ -128,7 +175,7 @@ export const MySessions = ({ loggedInUser }) => {
                             id="filter-favs-btn"
                             size="md"
                             color="info"
-                            onClick={(e) => setFilterFavs(!filterFavs)}
+                            onClick={(e) => {setFilterText(""); setFilterFavs(!filterFavs)}}
                         >Show All
                         </Button>
                     }
@@ -139,6 +186,10 @@ export const MySessions = ({ loggedInUser }) => {
                         id="sessions-search-input"
                         className="search-input"
                         placeholder="Search"
+                        value={filterText}
+                        onChange={(e) => {
+                            setFilterText(e.target.value);
+                        }}
                     />
                 </div>
             </header>
