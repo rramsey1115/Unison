@@ -17,13 +17,14 @@ export const MySessions = ({ loggedInUser }) => {
     const [sessions, setSessions] = useState([]);
     const [comments, setComments] = useState([]);
     const [filterFavs, setFilterFavs] = useState(false);
+    const [filterText, setFilterText] = useState("");
     const userId = loggedInUser.id;
 
     useEffect(() => { 
         getAndSetSessions(); 
         getAndSetFavoriteSessions(userId); 
         getAndSetComments(); 
-    }, [filterFavs]);
+    }, [filterFavs, filterText]);
 
     const getAndSetSessions = () => {
         filterFavs === false ?
@@ -111,36 +112,35 @@ export const MySessions = ({ loggedInUser }) => {
             <header className="sessions-header">
                 <h1>{loggedInUser.firstName}'s Sessions</h1>
 
+                <div>
                     {/* filter sessions by favorites only button */}
                     {filterFavs===false
-                    ? 
-                    <Button
-                        id="filter-on-btn"
-                        size="md" 
-                        color="info"
-                        onClick={(e) => setFilterFavs(!filterFavs)}
-                    >Favorites Only
-                    </Button>
-                    : 
-                    <Button
-                        id="filter-on-btn"
-                        size="md"
-                        color="info"
-                        onClick={(e) => setFilterFavs(!filterFavs)}
-                    >Show All
-                    </Button>
+                        ? 
+                        <Button
+                            id="filter-favs-btn"
+                            size="md" 
+                            color="info"
+                            onClick={(e) => setFilterFavs(!filterFavs)}
+                        >Favorites
+                        </Button>
+                        : 
+                        <Button
+                            id="filter-favs-btn"
+                            size="md"
+                            color="info"
+                            onClick={(e) => setFilterFavs(!filterFavs)}
+                        >Show All
+                        </Button>
                     }
 
+                    {/* keyword search for sessions */}
                     <Input 
                         type="text"
                         id="sessions-search-input"
                         className="search-input"
                         placeholder="Search"
                     />
-           
-
-                    {/* keyword search for sessions */}
-                    
+                </div>
             </header>
             <section className="sessions-cards">
                 <div id="create-session-div" onClick={(e) => navigate('create')}>
