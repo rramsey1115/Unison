@@ -5,7 +5,7 @@ import filledFav from "../../../../images/filled-favorite.png"
 import repeatIcon from "../../../../images/start.png";
 import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
-import { deleteSessionById, getAllSessions } from "../../../../Managers/sessionManager";
+import { deleteSessionById, getAllSessions, getSessionById } from "../../../../Managers/sessionManager";
 import { addFavorite, getFavoritesByMusicianId, removeFavorite } from "../../../../Managers/favoriteSessionsManager";
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 import { getAllComments } from "../../../../Managers/commentManager";
@@ -21,13 +21,33 @@ export const MySessions = ({ loggedInUser }) => {
     useEffect(() => { getAndSetSessions(); getAndSetFavoriteSessions(userId); getAndSetComments(); }, [userId, filterFavs]);
 
     const getAndSetSessions = () => {
+        filterFavs === false ?
+        // get all sessions with matching userId & then order by activity date
         getAllSessions().then((data) => {
             var filtered = data.filter(d => d.musicianId === userId && d.dateCompleted !== null);
             filtered ?? filtered.sessionActivities.sort(function(a, b) { 
                 return a.activity.categoryId - b.activity.categoryId
               });
             setSessions(filtered);
-        });
+        })
+        :
+        // get only favorite sessions
+        getFavoritesByMusicianId(userId).then((data) => {
+            var filtered = [];
+            if(data.length === 0)
+            {
+                setSessions([]);
+            }
+            for(const d of data)
+            {
+                console.log('d', d);
+                getSessionById(d.sessionId*1).then(res => {
+                    filtered.push(res)
+                }).then(() => {
+                    setSessions(filtered)
+                })
+            }
+        })      
     };
 
     const getAndSetFavoriteSessions = () => {

@@ -25,7 +25,8 @@ public class FavoriteSessionController : ControllerBase
     {
         try
         {
-            var found = _dbContext.FavoriteSessions.Where(f => f.MusicianId == id);
+            var found = _dbContext.FavoriteSessions
+            .Where(f => f.MusicianId == id);
 
             var result = found.Select(f => new FavoriteSessionDTO
             {
