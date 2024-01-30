@@ -4,6 +4,7 @@ using Unison.Data;
 using Unison.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Authorization;
 namespace Unison.Controllers;
 
 [ApiController]
@@ -20,7 +21,7 @@ public class AssignmentController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult Get()
     {
 
@@ -30,6 +31,7 @@ public class AssignmentController : ControllerBase
             .Include(a => a.Session).ThenInclude(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(ac => ac.Category)
             .Include(a => a.Teacher)
             .Include(a => a.Musician)
+            .OrderBy(a => a.Session.DateCompleted != null)
             .Select(a => new AssignmentDTO
             {
                 Id = a.Id,
@@ -87,7 +89,7 @@ public class AssignmentController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetById(int id)
     {
         try
@@ -159,8 +161,8 @@ public class AssignmentController : ControllerBase
     }
 
 
-     [HttpGet("musician/{id}")]
-    // [Authorize]
+    [HttpGet("musician/{id}")]
+    [Authorize]
     public IActionResult GetByMusicianId(int id)
     {
         try
@@ -169,7 +171,7 @@ public class AssignmentController : ControllerBase
             .Include(a => a.Session).ThenInclude(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(ac => ac.Category)
             .Include(a => a.Teacher)
             .Include(a => a.Musician)
-            .OrderBy(a => a.Complete)
+            .OrderBy(a => a.Session.DateCompleted != null)
             .Where(a => a.MusicianId == id).ToList();
 
             if (array == null)

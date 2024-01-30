@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ScaleLoader } from "react-spinners";
 import { getUserById } from "../../../Managers/profileManager";
 import "./AssignmentsStyles.css";
 import "../Sessions/MySessions/MySessions.css";
 import { getAssignmentByMusicianId } from "../../../Managers/assignmentManager";
 import { getAllComments } from "../../../Managers/commentManager";
+import startIcon from "../../../images/start.png";
+import { Button } from "reactstrap";
 
 export const Assignments = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
@@ -24,6 +26,7 @@ export const Assignments = ({ loggedInUser }) => {
     const getAndSetComments = () => { getAllComments().then(setComments)};
     const getAndSetActivities = (studentId) => {getAssignmentByMusicianId(studentId).then(setAssignments)}
     const getAndSetStudentById = (studentId) => { getUserById(studentId).then(setStudent);}
+    const navigate = useNavigate();
 
     return (
     !student || !assignments || !comments
@@ -35,19 +38,28 @@ export const Assignments = ({ loggedInUser }) => {
     <div className="assignments-container">
             <header className="assignments-header">
                 <h1>{`${student.firstName} ${student.lastName}'s Assignments`}</h1>
+                <Button 
+                    size="md" 
+                    color="info" 
+                    className="create-btn"
+                    onClick={(e) => navigate('/assignments/create')}
+                >New
+                </Button>
             </header>
             <section className="assignments-body">
                 {assignments.map(a => {
-                    console.log(a);
                     var arr = comments.filter(c => c.sessionId === a.session.id);
-
                     return(
                     <div key={a.session.id} className="session">
                         <div key={a.session.id} className="session-div">
                             <div className="session-div-header">
+                                {/* shows due date or completedOn date... or red due date means past due */}
                                 {a.complete 
                                 ?<h4 style={{color:"green"}}>Completed: {new Date(a.session.dateCompleted).toLocaleDateString()}</h4>
-                                : <h4 style={{color:"red"}}>Due: {new Date(a.dueDate).toLocaleDateString()} </h4> }
+                                : (new Date(a.dueDate).getTime() > (Date.now()))
+                                    ?<h4>Due: {new Date(a.dueDate).toLocaleDateString()}</h4>
+                                    :<h4 style={{color:"red"}}>Due: {new Date(a.dueDate).toLocaleDateString()}</h4>
+                                }
                             </div>
                             <h5>Total Time: {a.session.duration} Minutes</h5>
                             {a.session.sessionActivities.map(sa => {
@@ -72,6 +84,18 @@ export const Assignments = ({ loggedInUser }) => {
                                     )})
                                 : <p>None at this time</p>}
                             </div>
+                        </div>
+                        <div className="session-div-btns">
+                        {studentId === loggedInUser.id && a.complete === false ? 
+                        <button className="session-activities-btn" value={a.sessionId}>
+                                <img 
+                                    id="repeat-icon" 
+                                    className="repeat-icon" 
+                                    alt="repeat icon" 
+                                    src={startIcon}
+                                />
+                            </button>
+                        : null}
                         </div>
                     </div>)}
                 )} 

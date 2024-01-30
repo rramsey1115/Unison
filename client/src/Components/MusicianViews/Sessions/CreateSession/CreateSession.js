@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import "./CreateSession.css";
 import startIcon from "../../../../images/start.png";
 import removeIcon from "../../../../images/delete.png";
-import editIcon from "../../../../images/edit.png";
 import { SessionActivitySelect } from "./SessionActivitySelect";
 import { createNewSession } from "../../../../Managers/sessionManager";
 import { useNavigate } from "react-router-dom";
-import { Button } from "reactstrap";
 import { ScaleLoader } from "react-spinners";
 
 export const CreateSession = ({loggedInUser}) => {
