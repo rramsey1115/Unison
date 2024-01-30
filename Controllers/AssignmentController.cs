@@ -75,8 +75,7 @@ public class AssignmentController : ControllerBase
                         Duration = sa.Duration
                     }).ToList()
                 },
-                DueDate = a.DueDate,
-                Complete = a.Complete
+                DueDate = a.DueDate
             }).ToList()
             );
         }
@@ -149,8 +148,7 @@ public class AssignmentController : ControllerBase
                         Duration = sa.Duration
                     }).ToList()
                 },
-                DueDate = a.DueDate,
-                Complete = a.Complete
+                DueDate = a.DueDate
             });
         }
 
@@ -223,8 +221,7 @@ public class AssignmentController : ControllerBase
                         Duration = sa.Duration
                     }).ToList()
                 },
-                DueDate = a.DueDate,
-                Complete = a.Complete
+                DueDate = a.DueDate
             }).ToList()
             );
         }

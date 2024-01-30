@@ -27,6 +27,5 @@ public class AssignmentDTO
     [Required]
     public DateTime DueDate { get; set; }
 
-    [Required]
-    public bool Complete { get; set; }
+    public bool? Complete { get; set; }
 }

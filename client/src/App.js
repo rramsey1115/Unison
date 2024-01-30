@@ -18,7 +18,10 @@ export const App = () => {
 
   // wait to get a definite logged-in state before rendering
   if (loggedInUser === undefined) {
-    return <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />;
+    return (
+      <div className="spinner-container">
+        <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+      </div>);
   }
 
   return (
