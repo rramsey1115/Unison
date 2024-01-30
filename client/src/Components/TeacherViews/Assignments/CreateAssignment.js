@@ -4,17 +4,22 @@ import removeIcon from "../../../images/delete.png";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import { SessionActivitySelect } from "../../MusicianViews/Sessions/CreateSession/SessionActivitySelect";
-import { getTeacherStudents } from "../../../Managers/profileManager";
+import { getTeacherStudents, getUserById } from "../../../Managers/profileManager";
+import { Button, Input } from "reactstrap";
+import { createNewSession } from "../../../Managers/sessionManager";
+import { createNewAssignment } from "../../../Managers/assignmentManager";
 
 export const CreateAssignment = ({ loggedInUser }) => {
     const [totalTime, setTotalTime] = useState(0);
     const [musicianId, setMusicianId] = useState(0);
     const [students, setStudents] = useState([]);
+    const [student, setStudent] = useState({});
     const [newSession, setNewSession] = useState({});
     const [newAssignment, setNewAssignment] = useState({});
-    const [dueDays, setDuteDays] = useState(0);
+    const [dueDays, setDueDays] = useState(1);
 
     useEffect(() => { getAndSetStudents() }, [loggedInUser]);
+    useEffect(() => { if (musicianId > 0) getAndSetStudentById(musicianId)}, [musicianId]);
 
     useEffect(() => {
 
@@ -26,7 +31,7 @@ export const CreateAssignment = ({ loggedInUser }) => {
         setNewAssignment({
             musicianId: musicianId,
             teacherId: loggedInUser.id,
-            dueDate: Date.now() + dueDays * 7 * 60 * 60 * 24 * 1000
+            dueDate: new Date(Date.now() + dueDays * 60 * 60 * 24 * 1000)
         });
 
     }, [loggedInUser, musicianId, dueDays]);
@@ -48,7 +53,17 @@ export const CreateAssignment = ({ loggedInUser }) => {
         getTeacherStudents(loggedInUser.id).then(setStudents);
     }
 
+    const getAndSetStudentById = (musicianId) => {
+        getUserById(musicianId).then(setStudent);
+    }
+
     const navigate = useNavigate();
+
+    const handleSubmitAssignment = async () => {
+        await createNewSession(newSession)
+        await createNewAssignment(newAssignment)
+        navigate('/teacher/students')
+    }
 
     return (
         !newSession
@@ -63,15 +78,33 @@ export const CreateAssignment = ({ loggedInUser }) => {
             </header>
             <section className="create-session-form">
                 <header className="session-form-header">
-                    <h3>Total Time: {totalTime} Minutes</h3>
+                    <h4>Total Time: {totalTime} Minutes</h4>
+                    <h4>Musician: {student.firstName} {student.lastName}</h4>
+                    <h4>Due Date: {newAssignment.dueDate && new Date(newAssignment.dueDate).toLocaleDateString()}</h4> 
+                    
                 </header>
-                {newSession.musicianId === 0 ?
-                    <select>
-                        <option value={0}>Students</option>
-                    </select> 
-                : null}
+                    <fieldset id="session-activities" className="session-form-fieldset">
+                        <label><span style={{fontSize:20}}>Choose Student</span>
+                            <select 
+                                className="create-session-dropdown"
+                                onChange={(e) => {setMusicianId(e.target.value*1)}}
+                            >
+                                <option value={0}>Students</option>
+                                {students.map(s => {
+                                    return(
+                                        <option key={s.id} value={s.id}>{s.firstName} {s.lastName}</option>
+                                    )
+                                })}
+                            </select> 
+                        </label>
+                    </fieldset>
+                    <fieldset id="session-number-select" className="session-form-fieldset">
+                        <label><span style={{fontSize:20}}>Choose Days Unil Due</span>
+                            <Input className="create-session-dropdown" type="number" min={0} defaultValue={1} onChange={(e) => setDueDays(e.target.value)}/>
+                        </label>
+                    </fieldset>
                 
-                {newSession.sessionActivities?.length > 0 
+                {newSession.sessionActivities?.length >= 1 
                 ? newSession.sessionActivities.map(sa => {
                     return (
                         <fieldset key={sa.activityId} id="session-activities" className="session-form-fieldset">
@@ -98,11 +131,30 @@ export const CreateAssignment = ({ loggedInUser }) => {
                     )})
                 : null}
 
-                {newSession.musicianId > 0 ??
-                <fieldset id="activity-fieldset" className="session-form-fieldset">
+                {newSession?.musicianId > 0 ?
+                <fieldset className="session-form-fieldset">
                     <SessionActivitySelect setNewSession={setNewSession} newSession={newSession} loggedInUser={loggedInUser}/>
-                </fieldset>}
+                </fieldset>
+                : null}
 
+                {newAssignment.dueDate && 
+                newAssignment.teacherId && 
+                newAssignment.musicianId && 
+                newSession.musicianId && 
+                newSession.sessionActivities?.length > 0 
+                ?
+                    <fieldset className="session-form-fieldset">
+                        <div className="submit-btn-container">
+                            <Button 
+                                id="submit-assignment-btn"
+                                size="md" 
+                                color="info"
+                                onClick={(e) => handleSubmitAssignment()}
+                            >Submit
+                            </Button>
+                        </div>
+                    </fieldset>
+                : null}
             </section>
         </div>
     )

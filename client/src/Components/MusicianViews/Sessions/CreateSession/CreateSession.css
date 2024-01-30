@@ -48,6 +48,10 @@
     justify-content: space-between;
 }
 
+.form-control {
+    display: inline;
+}
+
 #button-fieldset {
    display: flex;
    justify-content: center; 
@@ -122,6 +126,18 @@
     height: 60px;
     padding: 0px;
     transition: ease-in-out .2s;
+}
+
+.submit-btn-container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+#submit-assignment-btn {
+    width: 125px;
+    height: 40px;
+    margin: 10px auto;
 }
 
 /*  add a new activity modal/popup window */

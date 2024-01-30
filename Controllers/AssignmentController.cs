@@ -235,4 +235,28 @@ public class AssignmentController : ControllerBase
         }
     }
 
+
+    [HttpPost]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult NewAssignment(Assignment assignment)
+    {
+        try
+        {
+            // assignment needs a SessionId - get it based on that table's count
+            int newId = _dbContext.Sessions.Count() + 1;
+            assignment.SessionId = newId;
+
+            // once the assignment has a SessionId - add it to the database
+            _dbContext.Assignments.Add(assignment);
+            _dbContext.SaveChanges();
+
+            // return the object created
+            return Created($"/api/assignment/{assignment.Id}", assignment);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad Data Send: {ex}");
+        }
+    }
+
 }

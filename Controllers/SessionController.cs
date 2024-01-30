@@ -18,7 +18,7 @@ public class SessionController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult Get()
     {
         try
@@ -205,4 +205,5 @@ public class SessionController : ControllerBase
             return BadRequest($"Bad Data: {ex}");
         }
     }
+
 }

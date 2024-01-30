@@ -19,13 +19,13 @@ export const CreateSession = ({loggedInUser}) => {
                 sessionActivities: []
             })
         }
-    }, [loggedInUser])
+    }, [loggedInUser]);
 
     useEffect(() => {
         var total = 0;
         newSession.sessionActivities?.map(sa => total += sa.duration )
         setTotalTime(total);
-    }, [newSession])
+    }, [newSession]);
 
     const handleStartSession = (e) => {
         const copy = {
