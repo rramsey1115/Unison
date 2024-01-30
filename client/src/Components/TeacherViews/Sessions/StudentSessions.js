@@ -1,11 +1,10 @@
 import "../../../Components/MusicianViews/Sessions/MySessions/MySessions.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllSessions } from "../../../Managers/sessionManager";
 import { deleteComment, getAllComments } from "../../../Managers/commentManager";
-import plusIcon from "../../../images/plus-icon.png";
 import { getUserById } from "../../../Managers/profileManager";
-import { Button, Spinner } from "reactstrap";
+import { Button } from "reactstrap";
 import { CommentModal } from "./CommentModal";
 import { ScaleLoader } from "react-spinners";
 
@@ -30,7 +29,7 @@ export const StudentSessions = ({ loggedInUser }) => {
     };
 
     const getAndSetStudentById = (studentId) => {
-        {getUserById(studentId).then(setStudent)}
+        getUserById(studentId).then(setStudent)
     }
 
     const getAndSetComments = () => {
@@ -47,8 +46,6 @@ export const StudentSessions = ({ loggedInUser }) => {
         const formatted = mm + "/" + dd + "/" + yyyy;
         return formatted;
     };
-
-    const navigate = useNavigate();
 
     const handleDelete = async (e) => {
         e.preventDefault();

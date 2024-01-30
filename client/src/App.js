@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Spinner } from "reactstrap";
 import NavBar from "./Components/navbar/NavBar";
 import { tryGetLoggedInUser } from "./Managers/authManger";
 import { TeacherViews } from "./Components/TeacherViews.js";
 import { MusicianViews } from "./Components/MusicianViews.js";
-import Login from "./Components/auth/Login.js";
+import { ScaleLoader } from "react-spinners";
 
 export const App = () => {
   const [loggedInUser, setLoggedInUser] = useState();
@@ -19,7 +18,7 @@ export const App = () => {
 
   // wait to get a definite logged-in state before rendering
   if (loggedInUser === undefined) {
-    return <Spinner />;
+    return <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />;
   }
 
   return (
