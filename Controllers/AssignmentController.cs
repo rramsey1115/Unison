@@ -243,8 +243,18 @@ public class AssignmentController : ControllerBase
         try
         {
             // assignment needs a SessionId - get it based on that table's count
-            int newId = _dbContext.Sessions.Count() + 1;
+            int newId = _dbContext.Sessions.Count();
             assignment.SessionId = newId;
+
+            // find the session you just created based on Id
+            var found = _dbContext.Sessions.SingleOrDefault(s => s.Id == newId);
+            if (found==null)
+            {
+                return BadRequest("No Session foudn with given SessionId");
+            }
+
+            // set assignment.Session based on search above
+            assignment.Session = found;
 
             // once the assignment has a SessionId - add it to the database
             _dbContext.Assignments.Add(assignment);

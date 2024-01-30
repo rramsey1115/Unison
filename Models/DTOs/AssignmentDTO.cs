@@ -30,7 +30,16 @@ public class AssignmentDTO
     public bool Complete { 
         get
         {
-               return Session.DateCompleted != null;
+
+            if(Session == null)
+            {
+                return false;
+            }
+            if (Session?.DateCompleted == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -59,9 +59,19 @@ export const CreateAssignment = ({ loggedInUser }) => {
 
     const navigate = useNavigate();
 
-    const handleSubmitAssignment = async () => {
-        await createNewSession(newSession)
-        await createNewAssignment(newAssignment)
+    const handleSubmitAssignment = async () => {    
+        const copy = {
+            musicianId: musicianId,
+            sessionActivities: []
+        }
+        newSession.sessionActivities.map(sa => copy.sessionActivities.push(
+            {
+            activityId: sa.activityId,
+            duration: sa.duration
+            }
+        ));
+        await createNewSession(copy)
+        await createNewAssignment(newAssignment);
         navigate('/teacher/students')
     }
 
