@@ -45,10 +45,9 @@ export const Assignments = ({ loggedInUser }) => {
                     <div key={a.session.id} className="session">
                         <div key={a.session.id} className="session-div">
                             <div className="session-div-header">
-                                <h4>Due: {new Date(a.dueDate).toLocaleDateString()} </h4>
-                                {a.session.dateCompleted !== null 
-                                ? <h4>Completed: {new Date(a.session.dateCompleted).toLocaleDateString()}</h4>
-                                : <h4 style={{color:"red"}}>Incomplete</h4>}
+                                {a.complete 
+                                ?<h4 style={{color:"green"}}>Completed: {new Date(a.session.dateCompleted).toLocaleDateString()}</h4>
+                                : <h4 style={{color:"red"}}>Due: {new Date(a.dueDate).toLocaleDateString()} </h4> }
                             </div>
                             <h5>Total Time: {a.session.duration} Minutes</h5>
                             {a.session.sessionActivities.map(sa => {

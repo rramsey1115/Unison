@@ -28,10 +28,10 @@ public class Assignment
     [Required]
     public DateTime DueDate { get; set; }
 
-    public bool? Complete { 
+    public bool Complete { 
         get
         {
-            return Session.DateCompleted != null ? true : false;
+            return Session.DateCompleted != null;
         }
     }
 }
