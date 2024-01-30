@@ -4,7 +4,7 @@ import { ScaleLoader } from "react-spinners";
 import { getUserById } from "../../../Managers/profileManager";
 import "./AssignmentsStyles.css";
 
-export const Assignments = ({loggedInUser}) => {
+export const Assignments = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
     const [student, setStudent] = useState({});
 
