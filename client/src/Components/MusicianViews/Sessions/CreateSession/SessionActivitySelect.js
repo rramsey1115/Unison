@@ -59,7 +59,7 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
     }
 
     return (
-    <div className="create-session-div">
+    <div className="activity-select-div">
         <label><span style={{fontSize:20}}>Choose Category</span>
             <select 
                 className="create-session-dropdown"
@@ -81,22 +81,23 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
         </label>
    
         {categoryId > 0 
-        ? <label><span style={{fontSize:20, minWidth: 150}}>Choose Activity</span>
-            <select
-                className="create-session-dropdown"
-                onChange={(e) => setActivityId(e.target.value*1)}>
-                <option value={0}>Activities</option>
-                {activities?.map(a => {
-                    return ( 
-                    <option 
-                        key={a.id}
-                        value={a.id}
-                    >
-                        {a.name}
-                    </option>)
-                })}
-            </select>
-        </label>
+        ? 
+            <label><span style={{fontSize:20, minWidth: 150}}>Choose Activity</span>
+                <select
+                    className="create-session-dropdown"
+                    onChange={(e) => setActivityId(e.target.value*1)}>
+                    <option value={0}>Activities</option>
+                    {activities?.map(a => {
+                        return ( 
+                        <option 
+                            key={a.id}
+                            value={a.id}
+                        >
+                            {a.name}
+                        </option>)
+                    })}
+                </select>
+            </label>
         : null
         }
 
@@ -104,24 +105,25 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
         ? <>
             <span style={{fontSize:20, marginLeft:30}}>OR</span>
             <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivities} loggedInUser={loggedInUser}/>
-        </>
+            </>
         : null}
         
         {categoryId > 0 && activityId > 0 
-        ? <label><span style={{fontSize:20}}>Duration</span>
-            <select
-                className="create-session-dropdown"
-                onChange={(e) => handleDurationChange(e)}>
-                <option value={0}>Minutes</option>
-                {Array.from({ length: 60 }, (_, index) => (
-                    <option 
-                        key={index+1} 
-                        value={index+1}
-                    >{index+1}
-                    </option>
-                ))}
-            </select>
-        </label>
+        ? 
+            <label><span style={{fontSize:20}}>Duration</span>
+                <select
+                    className="create-session-dropdown"
+                    onChange={(e) => handleDurationChange(e)}>
+                    <option value={0}>Minutes</option>
+                    {Array.from({ length: 60 }, (_, index) => (
+                        <option 
+                            key={index+1} 
+                            value={index+1}
+                        >{index+1}
+                        </option>
+                    ))}
+                </select>
+            </label>
         : null}
 
         {buttonHidden === true 

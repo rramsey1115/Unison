@@ -7,3 +7,24 @@ export const getAllassignments = () => {
 export const getAssignmentById = (id) => {
     return fetch(`/api/assignment/${id}`).then(res => res.json());
 }
+
+// get assignments by musicianId
+export const getAssignmentByMusicianId = (id) => {
+    return fetch(`/api/assignment/musician/${id}`).then(res => res.json());
+}
+
+// remove assignment by assignment id
+export const removeAssignmentById = (id) => {
+    return fetch(`/api/assignment/delete/${id}`, {
+        method: "DELETE"
+    });
+}
+
+// post new assignment
+export const createNewAssignment = (obj) => {
+    return fetch(`/api/assignment`, {
+        method: "POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(obj)
+    }).then(res => res.json());
+}

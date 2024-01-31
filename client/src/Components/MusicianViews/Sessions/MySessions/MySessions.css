@@ -172,7 +172,7 @@
 /* empty div for creating new session - whole div clickable */
 #create-session-div {
     width: 350px;
-    height: 200px;
+    height: 150px;
     margin: 10px;
     padding: 20px 10px;
     border: 1px solid black;

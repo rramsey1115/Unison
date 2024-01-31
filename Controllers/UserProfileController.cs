@@ -120,4 +120,29 @@ public class UserProfileController : ControllerBase
             return BadRequest($"Bad data: {ex}");
         }
     }
+
+
+    [HttpGet("musicians")]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult GetMusicians()
+    {
+        return Ok(_dbContext.UserProfiles
+        .Include(up => up.IdentityUser)
+        .OrderBy(up => up.Id)
+        .Select(up => new UserProfileDTO
+        {
+            Id = up.Id,
+            FirstName = up.FirstName,
+            LastName = up.LastName,
+            Address = up.Address,
+            Email = up.IdentityUser.Email,
+            UserName = up.IdentityUser.UserName,
+            TeacherId = up.TeacherId,
+            IdentityUserId = up.IdentityUserId,
+            Roles = _dbContext.UserRoles
+            .Where(ur => ur.UserId == up.IdentityUserId)
+            .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
+            .ToList()
+        }).Where(up => !up.Roles.Contains("Teacher")));
+    }
 }

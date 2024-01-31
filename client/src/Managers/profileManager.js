@@ -24,3 +24,8 @@ export const removeTeacherIdFromStudent = (studentId) => {
 export const getUserById = (id) => {
     return fetch(`/api/userprofile/${id}`).then(res => res.json());
 }
+
+// get all Musician Students
+export const getAllMusicians = () => {
+    return fetch(`/api/userprofile/musicians`).then(res => res.json());
+}

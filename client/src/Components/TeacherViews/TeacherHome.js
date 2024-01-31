@@ -38,7 +38,7 @@ export const TeacherHome = () => {
                     <h3>Browse</h3>
                 </Card>
 
-                <Card className="home-card" onClick={(e) => navigate('')}>
+                <Card className="home-card" onClick={(e) => navigate('assignments/create')}>
                     <h3>Assign</h3>
                 </Card>
    

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import { useEffect, useState } from "react";
 
-export const Home = () => {
+export const Home = ({loggedInUser}) => {
     const navigate = useNavigate();
     const [loaded, setLoaded] = useState(false);
 
@@ -41,12 +41,8 @@ export const Home = () => {
                     <h4>Stats</h4>
                 </Card>
 
-                <Card className="home-card" onClick={(e) => navigate('/')}>
+                <Card className="home-card" onClick={(e) => navigate(`/assignments/${loggedInUser.id}`)}>
                     <h4>Assignments</h4>
-                </Card>
-
-                <Card className="home-card" onClick={(e) => navigate('favorite')}>
-                    <h4>Favorites</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('browse/category')}>
