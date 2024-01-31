@@ -5,11 +5,11 @@ import filledFav from "../../../../images/filled-favorite.png"
 import repeatIcon from "../../../../images/start.png";
 import emptyFav from "../../../../images/empty-favorite.png"
 import { useEffect, useState } from "react";
-import { deleteSessionById, getAllSessions, getSessionById } from "../../../../Managers/sessionManager";
+import { createNewSession, deleteSessionById, getAllSessions, getSessionById } from "../../../../Managers/sessionManager";
 import { addFavorite, getFavoritesByMusicianId, removeFavorite } from "../../../../Managers/favoriteSessionsManager";
 import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 import { getAllComments } from "../../../../Managers/commentManager";
-import { Button, Input } from "reactstrap";
+import { Button, Input, Spinner } from "reactstrap";
 import { ScaleLoader } from "react-spinners";
 
 export const MySessions = ({ loggedInUser }) => {
@@ -18,6 +18,7 @@ export const MySessions = ({ loggedInUser }) => {
     const [comments, setComments] = useState([]);
     const [filterFavs, setFilterFavs] = useState(false);
     const [filterText, setFilterText] = useState("");
+    const [loaded, setLoaded] = useState(true);
     const userId = loggedInUser.id;
 
     useEffect(() => { 
@@ -148,6 +149,28 @@ export const MySessions = ({ loggedInUser }) => {
         });
     };
 
+    const handleReplaySession = async (sessionid) => {
+        setLoaded(false);
+        let copy = {};
+        const activitiesArr = []
+
+        await getSessionById(sessionid).then(data => copy = {...data});
+
+        copy.sessionActivities.map(sa => activitiesArr.push(
+            {
+                activityId: sa.activityId,
+                duration: sa.duration
+            }
+        ));
+
+        const newSession = {
+            musicianId: copy.musicianId,
+            sessionActivities: activitiesArr
+        }
+
+        await createNewSession(newSession).then((data) => navigate(`/session/${data.id}`))
+    }
+
     return (
         !sessions || !favoriteSessions || !comments
         ? 
@@ -274,13 +297,18 @@ export const MySessions = ({ loggedInUser }) => {
                                 </button>
                             }
 
-                            <button className="session-activities-btn">
-                                <img 
+                            <button 
+                                className="session-activities-btn" 
+                                value={s.id}
+                                onClick={(e) => handleReplaySession(e.currentTarget.value * 1)}
+                            >   
+                                {loaded===false ? <Spinner color="secondary" />
+                                :<img 
                                     id="repeat-icon" 
                                     className="repeat-icon" 
                                     alt="repeat icon" 
                                     src={repeatIcon}
-                                />
+                                />}
                             </button>
 
                             <ConfirmDeleteModal session={s} handleDeleteSession={handleDeleteSession} getFormattedDate={getFormattedDate}/>

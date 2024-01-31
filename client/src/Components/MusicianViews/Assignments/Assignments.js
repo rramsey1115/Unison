@@ -38,6 +38,11 @@ export const Assignments = ({ loggedInUser }) => {
         getAndSetComments();
     }
 
+    const handleCompleteAssignment = (sessionId) => {
+        setIsLoading(false);
+        navigate(`/session/${sessionId}`);
+    }
+    
     return (
     !student || !assignments || !comments
     ? 
@@ -97,13 +102,21 @@ export const Assignments = ({ loggedInUser }) => {
                         </div>
                         <div className="session-div-btns">
                         {studentId === loggedInUser.id && a.session.dateCompleted === null ? 
-                        <button className="session-activities-btn" value={a.sessionId}>
+                        <button 
+                            className="session-activities-btn" 
+                            value={a.sessionId}
+                            onClick={(e) => handleCompleteAssignment(e.currentTarget.value * 1)}
+                        >
+                             {isLoading ? (
+                                <Spinner />
+                                ) : (
                                 <img 
                                     id="repeat-icon" 
                                     className="repeat-icon" 
                                     alt="repeat icon" 
                                     src={startIcon}
                                 />
+                                )}
                             </button>
                         : null}
                         {loggedInUser.roles.includes("Teacher") && !a.session.dateCompleted ? (

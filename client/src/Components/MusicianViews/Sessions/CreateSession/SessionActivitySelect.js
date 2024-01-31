@@ -59,7 +59,7 @@ export const SessionActivitySelect = ({newSession, setNewSession, loggedInUser})
     }
 
     return (
-    <div>
+    <div className="activity-select-div">
         <label><span style={{fontSize:20}}>Choose Category</span>
             <select 
                 className="create-session-dropdown"

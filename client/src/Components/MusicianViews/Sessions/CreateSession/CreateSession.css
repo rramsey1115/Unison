@@ -61,6 +61,13 @@
     margin-top: 0px;
 }
 
+.activity-select-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
 .session-activities-info > h5 {
     margin: 12px 0px;
 }
