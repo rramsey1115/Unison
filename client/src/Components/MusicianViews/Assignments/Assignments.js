@@ -42,15 +42,16 @@ export const Assignments = ({ loggedInUser }) => {
         setIsLoading(false);
         navigate(`/session/${sessionId}`);
     }
-    
+
     return (
-    !student || !assignments || !comments
+    !student || !assignments || !comments || !studentId || loggedInUser.id!==studentId
     ? 
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+            {loggedInUser.id!==studentId && <h5 style={{margin:"40px auto", textAlign:"center"}}>Not Authorized to View These Assignments</h5>}
         </div>
     :
-    <div className="assignments-container">
+    (<div className="assignments-container">
             <header className="assignments-header">
                 <h1>{`${student.firstName} ${student.lastName}'s Assignments`}</h1>
                 <Button 
@@ -142,6 +143,6 @@ export const Assignments = ({ loggedInUser }) => {
                     </div>)}
                 )} 
             </section>
-        </div>
+        </div>)
     );
 }
