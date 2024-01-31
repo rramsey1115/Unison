@@ -9,6 +9,7 @@ import { ActiveSession } from "./MusicianViews/Sessions/ActiveSession/ActiveSess
 import { BrowseCategories } from "./MusicianViews/Browse/BrowseCategories";
 import { BrowseActivities } from "./MusicianViews/Browse/BrowseActivities";
 import { FavoriteSessions } from "./MusicianViews/Sessions/MySessions/FavoriteSession";
+import { Assignments } from "./MusicianViews/Assignments/Assignments";
 
 export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
   return (
@@ -53,6 +54,14 @@ export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
                 <BrowseActivities loggedInUser={loggedInUser}/>
               </AuthorizedRoute>}
             />
+        </Route>
+
+        <Route path="assignments">
+          <Route path=":id" element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Assignments loggedInUser={loggedInUser} />
+            </AuthorizedRoute>} 
+          />
         </Route>
 
         {/* <Route path="favorite">

@@ -5,6 +5,8 @@ using Unison.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 namespace Unison.Controllers;
 
 [ApiController]
@@ -242,21 +244,19 @@ public class AssignmentController : ControllerBase
     {
         try
         {
-            // assignment needs a SessionId - get it based on that table's count
-            int newId = _dbContext.Sessions.Count();
-            assignment.SessionId = newId;
-
-            // find the session you just created based on Id
-            var found = _dbContext.Sessions.SingleOrDefault(s => s.Id == newId);
+            // find highest Id in Sessions table... should be the newest one just created
+            var found = _dbContext.Sessions.OrderByDescending(s => s.Id).First();
+            
             if (found==null)
             {
-                return BadRequest("No Session foudn with given SessionId");
+                return BadRequest("No Session found with given SessionId");
             }
 
-            // set assignment.Session based on search above
+            // use found Session.Id to create assignment.Session obj;
+            assignment.SessionId = found.Id;
             assignment.Session = found;
 
-            // once the assignment has a SessionId - add it to the database
+            // once the assignment has a SessionId & Session - add it to the database
             _dbContext.Assignments.Add(assignment);
             _dbContext.SaveChanges();
 
@@ -266,6 +266,36 @@ public class AssignmentController : ControllerBase
         catch (Exception ex)
         {
             return BadRequest($"Bad Data Send: {ex}");
+        }
+    }
+
+    [HttpDelete("delete/{id}")]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult DeleteByAssignmentId(int id)
+    {
+        try
+        {
+            var foundAssignment = _dbContext.Assignments.SingleOrDefault(a => a.Id == id);
+            if (foundAssignment == null) 
+            { 
+                return NotFound("No assignment found with matching id");
+            }
+            
+            var foundSession = _dbContext.Sessions.SingleOrDefault(s => s.Id == foundAssignment.SessionId);
+            if (foundSession != null)
+            {
+                _dbContext.Sessions.Remove(foundSession);
+                _dbContext.SaveChanges();
+            }
+
+            // _dbContext.Assignments.Remove(foundAssignment);
+            // _dbContext.SaveChanges();
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad Data sent: {ex}");
         }
     }
 

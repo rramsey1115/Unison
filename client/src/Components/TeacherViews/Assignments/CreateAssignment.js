@@ -70,9 +70,9 @@ export const CreateAssignment = ({ loggedInUser }) => {
             duration: sa.duration
             }
         ));
-        await createNewSession(copy)
+        await createNewSession(copy);
         await createNewAssignment(newAssignment);
-        navigate('/teacher/students')
+        navigate(`/assignments/${student.id}`)
     }
 
     return (

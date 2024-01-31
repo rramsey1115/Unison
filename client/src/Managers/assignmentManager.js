@@ -13,6 +13,13 @@ export const getAssignmentByMusicianId = (id) => {
     return fetch(`/api/assignment/musician/${id}`).then(res => res.json());
 }
 
+// remove assignment by assignment id
+export const removeAssignmentById = (id) => {
+    return fetch(`/api/assignment/delete/${id}`, {
+        method: "DELETE"
+    });
+}
+
 // post new assignment
 export const createNewAssignment = (obj) => {
     return fetch(`/api/assignment`, {
