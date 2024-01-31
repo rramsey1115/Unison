@@ -28,19 +28,4 @@ public class Assignment
     [Required]
     public DateTime DueDate { get; set; }
 
-    public bool Complete { 
-        get
-        {
-
-            if(Session == null)
-            {
-                return false;
-            }
-            if (Session?.DateCompleted == null)
-            {
-                return false;
-            }
-            return true;
-        }
-    }
 }

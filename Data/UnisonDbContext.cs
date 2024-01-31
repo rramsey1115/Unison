@@ -705,8 +705,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 MusicianId = 3,
                 TeacherId = 1,
                 SessionId = 6,
-                DueDate = new DateTime(2024, 02, 01, 17, 00, 00),
-                Complete = true
+                DueDate = new DateTime(2024, 02, 01, 17, 00, 00)
             },
             new
             {
@@ -714,8 +713,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 MusicianId = 4,
                 TeacherId = 1,
                 SessionId = 7,
-                DueDate = new DateTime(2024, 02, 10, 17, 00, 00),
-                Complete = true
+                DueDate = new DateTime(2024, 02, 10, 17, 00, 00)
             },
             new
             {
@@ -723,8 +721,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 MusicianId = 4,
                 TeacherId = 1,
                 SessionId = 8,
-                DueDate = new DateTime(2024, 02, 17, 17, 00, 00),
-                Complete = false
+                DueDate = new DateTime(2024, 02, 17, 17, 00, 00)
             },
             new
             {
@@ -732,8 +729,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 MusicianId = 8,
                 TeacherId = 2,
                 SessionId = 9,
-                DueDate = new DateTime(2024, 02, 22, 17, 00, 00),
-                Complete = false
+                DueDate = new DateTime(2024, 02, 22, 17, 00, 00)
             },
             new
             {
@@ -741,8 +737,7 @@ public class UnisonDbContext : IdentityDbContext<IdentityUser>
                 MusicianId = 9,
                 TeacherId = 2,
                 SessionId = 10,
-                DueDate = new DateTime(2024, 03, 01, 17, 00, 00),
-                Complete = false
+                DueDate = new DateTime(2024, 03, 01, 17, 00, 00)
             }
         );
 
