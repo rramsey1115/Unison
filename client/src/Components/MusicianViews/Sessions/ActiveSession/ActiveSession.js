@@ -33,7 +33,6 @@ export const ActiveSession = ({loggedInUser}) => {
         !session.sessionActivities || loggedInUser.id !== session.musicianId || session.dateCompleted!==null
         ? 
             <div className="spinner-container">
-                
                 <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
                 {loggedInUser.id !== session.musicianId && 
                 <h5 style={{margin:"20px auto", textAlign:"center"}}>Cannot complete sessions that you did not create</h5>}
@@ -61,7 +60,7 @@ export const ActiveSession = ({loggedInUser}) => {
                             </div>)
                         })}
                     </div>
-                    {console.log('activityDurationsArr', activityDurationsArr)}
+                    {/* {console.log('activityDurationsArr', activityDurationsArr)} */}
                     <div className="active-notes">
                         <textarea 
                             id="active-notes-textarea"
@@ -77,7 +76,7 @@ export const ActiveSession = ({loggedInUser}) => {
                     </div>
 
                     <div className="timer-div">
-                        <CountdownTimer arr={activityDurationsArr}/>
+                        {/* <CountdownTimer arr={activityDurationsArr}/> */}
                     </div>
 
                     <div className="active-btn-container">

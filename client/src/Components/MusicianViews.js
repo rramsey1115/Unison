@@ -8,8 +8,8 @@ import { CreateSession } from "./MusicianViews/Sessions/CreateSession/CreateSess
 import { ActiveSession } from "./MusicianViews/Sessions/ActiveSession/ActiveSession";
 import { BrowseCategories } from "./MusicianViews/Browse/BrowseCategories";
 import { BrowseActivities } from "./MusicianViews/Browse/BrowseActivities";
-import { FavoriteSessions } from "./MusicianViews/Sessions/MySessions/FavoriteSession";
 import { Assignments } from "./MusicianViews/Assignments/Assignments";
+import { StudentProfile } from "./MusicianViews/Profile/StudentProfile";
 
 export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
   return (
@@ -43,6 +43,23 @@ export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
           />
         </Route>
 
+
+        <Route path="profile">
+          <Route path=":id" loggedInUser={loggedInUser} element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <StudentProfile loggedInUser={loggedInUser} />
+            </AuthorizedRoute>}
+          />
+        </Route>
+
+        <Route path="assignments">
+          <Route path=":id" element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Assignments loggedInUser={loggedInUser} />
+            </AuthorizedRoute>} 
+          />
+        </Route>
+
         <Route path="browse">
             <Route path="category" element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
@@ -56,21 +73,7 @@ export const MusicianViews = ({ loggedInUser, setLoggedInUser }) => {
             />
         </Route>
 
-        <Route path="assignments">
-          <Route path=":id" element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Assignments loggedInUser={loggedInUser} />
-            </AuthorizedRoute>} 
-          />
-        </Route>
 
-        {/* <Route path="favorite">
-          <Route index element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <FavoriteSessions loggedInUser={loggedInUser} />
-            </AuthorizedRoute>}
-          />
-        </Route> */}
 
         <Route
           path="login"

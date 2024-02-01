@@ -37,8 +37,8 @@ export const Home = ({loggedInUser}) => {
                     <h4>New Session</h4>
                 </Card>
 
-                <Card className="home-card" onClick={(e) => navigate('/')}>
-                    <h4>Stats</h4>
+                <Card className="home-card" onClick={(e) => navigate(`/profile/${loggedInUser.id}`)}>
+                    <h4>Profile</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate(`/assignments/${loggedInUser.id}`)}>
