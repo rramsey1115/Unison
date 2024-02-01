@@ -4,6 +4,7 @@ import { completeSession, getSessionById } from "../../../../Managers/sessionMan
 import { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import { ScaleLoader } from "react-spinners";
+import { CountdownTimer } from "./CountdownTimer";
 
 
 export const ActiveSession = ({loggedInUser}) => {
@@ -51,7 +52,7 @@ export const ActiveSession = ({loggedInUser}) => {
                 <section className="active-body">
                     <div className="active-activities-div">
                         {session.sessionActivities?.map(sa => {
-                            activityDurationsArr.push(sa.duration * 1);
+                            activityDurationsArr.push(sa);
                             return (
                             <div key={sa.id} className="active-activity">
                                 <h4>{sa.activity.category.name}</h4>
@@ -76,7 +77,7 @@ export const ActiveSession = ({loggedInUser}) => {
                     </div>
 
                     <div className="timer-div">
-                        {/* {activityDurationsArr.map(d => <CountdownTimer/> )}  */}
+                        <CountdownTimer arr={activityDurationsArr}/>
                     </div>
 
                     <div className="active-btn-container">
