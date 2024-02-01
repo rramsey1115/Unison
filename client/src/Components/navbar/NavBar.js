@@ -74,8 +74,8 @@ const toggleNavbar = () => setOpen(!open);
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="">
-                                        Stats
+                                    <NavLink tag={RRNavLink} to={`profile/${loggedInUser.id}`}>
+                                        Profile
                                     </NavLink>
                                 </NavItem> 
                                 <NavItem>

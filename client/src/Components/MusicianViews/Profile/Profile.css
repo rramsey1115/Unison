@@ -1,0 +1,17 @@
+.profile-container {
+    width: 85vw;
+    min-width: 370px;
+    margin: 10px auto;
+}
+
+.profile-header {
+    width: 90%;
+    min-width: 360px;
+    margin: 20px auto;
+}
+
+.profile-body {
+    width: 90%;
+    min-width: 360px;
+    margin: 20px auto;
+}
