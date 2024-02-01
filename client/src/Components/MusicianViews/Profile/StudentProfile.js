@@ -19,28 +19,29 @@ export const StudentProfile = ({ loggedInUser }) => {
     return(
     !student
     ?
-    <div className="spinner-container">
-        <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
-    </div>
+        <div className="spinner-container">
+            <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+        </div>
     :
-    <div className="profile-container">
+        <div className="profile-container">
 
-        <header className="profile-header">
-            <h2>{`${student.firstName} ${student.lastName}'s Profile`}</h2>
-        </header>
+            <header className="profile-header">
+                <h2>{`${student.firstName} ${student.lastName}'s Profile`}</h2>
+            </header>
 
-        <section className="profile-body">
-            <div className="profile-about">
-                <h5>About</h5>
-            </div>
-            {loggedInUser.roles[0]==="Teacher"
-            ?<div className="profile-teacher-div">
+            <section className="profile-body">
+                <div className="profile-about">
+                    <h5>About</h5>
+                </div>
+                {loggedInUser.roles[0]==="Teacher"
+                ?<div className="profile-teacher-div">
 
-            </div>
-            :<div className="profile-stats">
-                <h5>Profile Stats</h5>
-            </div>}
-        </section>
+                </div>
+                :<div className="profile-stats">
+                    <h5>Profile Stats</h5>
+                </div>}
+            </section>
 
-    </div>)
+        </div>
+    )
 }
