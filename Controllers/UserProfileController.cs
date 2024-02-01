@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Unison.Data;
 using Unison.Models;
 using Unison.Models.DTOs;
-
-namespace GuiseppeJoes.Controllers;
+namespace Unison.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -31,6 +30,7 @@ public class UserProfileController : ControllerBase
                 LastName = up.LastName,
                 Address = up.Address,
                 IdentityUserId = up.IdentityUserId,
+                TeacherId = up.TeacherId,
                 UserName = up.IdentityUser.UserName
             })
         .ToList());
@@ -42,6 +42,7 @@ public class UserProfileController : ControllerBase
     {
         return Ok(_dbContext.UserProfiles
         .Include(up => up.IdentityUser)
+        .Include(up => up.Teacher)
         .OrderBy(up => up.Id)
         .Select(up => new UserProfileDTO
         {
@@ -64,39 +65,73 @@ public class UserProfileController : ControllerBase
     [Authorize]
     public IActionResult GetById(int id)
     {
-        var up = _dbContext
-        .UserProfiles
-        .Include(up => up.IdentityUser)
-        .SingleOrDefault(up => up.Id == id);
-
-        if (up == null)
+        try
         {
-            return NotFound("Id doesn't exist on a userProfile");
+
+            var up = _dbContext
+            .UserProfiles
+            .Include(up => up.IdentityUser)
+            .Include(up => up.Teacher)
+            .SingleOrDefault(up => up.Id == id);
+
+            if (up == null)
+            {
+                return NotFound("Id doesn't exist on a userProfile");
+            }
+
+            if(up.TeacherId > 0)
+            {
+                return Ok(new UserProfileDTO
+                {
+                    Id = up.Id,
+                    FirstName = up.FirstName,
+                    LastName = up.LastName,
+                    Address = up.Address,
+                    TeacherId = up.TeacherId,
+                    Teacher = new UserProfileDTO
+                    {
+                        Id = up.Teacher.Id,
+                        FirstName = up.Teacher.FirstName,
+                        LastName = up.Teacher.LastName
+                    },
+                    IdentityUserId = up.IdentityUserId,
+                    Email = up.IdentityUser.Email,
+                    UserName = up.IdentityUser.UserName
+                });
+            }
+
+            else
+            {
+                return Ok(new UserProfileDTO
+                {
+                    Id = up.Id,
+                    FirstName = up.FirstName,
+                    LastName = up.LastName,
+                    Address = up.Address,
+                    TeacherId = up.TeacherId,
+                    IdentityUserId = up.IdentityUserId,
+                    Email = up.IdentityUser.Email,
+                    UserName = up.IdentityUser.UserName
+                });
+            }
+
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data {ex}");
         }
 
-        return Ok(new UserProfileDTO
-        {
-            Id = up.Id,
-            FirstName = up.FirstName,
-            LastName = up.LastName,
-            Address = up.Address,
-            TeacherId = up.TeacherId,
-            IdentityUserId = up.IdentityUserId,
-            Email = up.IdentityUser.Email,
-            UserName = up.IdentityUser.UserName
-        }
-
-        );
     }
 
     [HttpGet("teacher/{id}")]
-    [Authorize(Roles = "Teacher")]
+    // [Authorize(Roles = "Teacher")]
     public IActionResult GetTeacherStudents(int id)
     {
         try
         {
             List<UserProfile> found = _dbContext.UserProfiles
             .Include(u => u.IdentityUser)
+            .Include(u => u.Teacher)
             .Where(u => u.TeacherId == id).ToList();
 
             return Ok(found.Select(f => new UserProfileDTO
@@ -108,6 +143,11 @@ public class UserProfileController : ControllerBase
                 Email = f.IdentityUser.Email,
                 UserName = f.IdentityUser.UserName,
                 TeacherId = f.TeacherId,
+                Teacher =  new UserProfileDTO {
+                Id = f.Teacher.Id,
+                FirstName = f.Teacher.FirstName,
+                LastName = f.Teacher.LastName
+                },
                 IdentityUserId = f.IdentityUserId,
                 Roles = _dbContext.UserRoles
                     .Where(ur => ur.UserId == f.IdentityUserId)
@@ -123,11 +163,12 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("musicians")]
-    [Authorize(Roles = "Teacher")]
+    // [Authorize(Roles = "Teacher")]
     public IActionResult GetMusicians()
     {
         return Ok(_dbContext.UserProfiles
         .Include(up => up.IdentityUser)
+        .Include(up => up.Teacher)
         .OrderBy(up => up.Id)
         .Select(up => new UserProfileDTO
         {
@@ -138,6 +179,11 @@ public class UserProfileController : ControllerBase
             Email = up.IdentityUser.Email,
             UserName = up.IdentityUser.UserName,
             TeacherId = up.TeacherId,
+            Teacher =  new UserProfileDTO {
+                Id = up.Teacher.Id,
+                FirstName = up.Teacher.FirstName,
+                LastName = up.Teacher.LastName
+            },
             IdentityUserId = up.IdentityUserId,
             Roles = _dbContext.UserRoles
             .Where(ur => ur.UserId == up.IdentityUserId)

@@ -24,7 +24,7 @@ export const StudentProfile = ({ loggedInUser }) => {
         </div>
     :
         <div className="profile-container">
-
+            {console.log('student', student)}
             <header className="profile-header">
                 <h2>{`${student.firstName} ${student.lastName}`}</h2>
             </header>
@@ -33,8 +33,9 @@ export const StudentProfile = ({ loggedInUser }) => {
                 <div className="profile-about">
                     <h5>About</h5>
                     <ul>
-                        <li>Email</li>
-                        <li>Username</li>
+                        <li>{student.email}</li>
+                        <li>{student.userName}</li>
+                        <li>{student.address}</li>
                         <li>Teacher:(if any)</li>
                         <li>Edit Profile Btn - if matching userId or if their teacher</li>
                     </ul>
