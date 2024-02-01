@@ -3,6 +3,7 @@ import "./Profile.css";
 import { useEffect, useState } from "react";
 import { getUserById } from "../../../Managers/profileManager";
 import { ScaleLoader } from "react-spinners";
+import { Button } from "reactstrap";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
@@ -31,16 +32,20 @@ export const StudentProfile = ({ loggedInUser }) => {
 
             <section className="profile-body">
                 <div className="profile-about">
-                    <h5>About</h5>
-                    <ul>
-                        <li>{student.email}</li>
-                        <li>{student.userName}</li>
-                        <li>{student.address}</li>
-                        <li>Teacher:(if any)</li>
-                        <li>Edit Profile Btn - if matching userId or if their teacher</li>
+                    <div className="profile-about-header">
+                        <h5>About</h5>
+                        {student.id === loggedInUser.id || loggedInUser.id === student.teacherId
+                        ? <Button size="sm" color="info">Edit Profile</Button>
+                        : null}
+                    </div>
+                    <ul className="profile-ul">
+                        <li>Email: {student.email}</li>
+                        <li>UserName: {student.userName}</li>
+                        {loggedInUser.id === student.teacherId && <li>Address: {student.address}</li>}
+                        {student.teacher ? <li>Teacher: {`${student.teacher.firstName} ${student.teacher.lastName}`}</li> : null}
                     </ul>
                 </div>
-                {student.roles && student.roles[0] == "Teacher"
+                {student.roles && student.roles[0] != "Musician"
                 ?<div className="profile-teacher-div">
                     <h5>Teacher Stats</h5>
                         <ul>

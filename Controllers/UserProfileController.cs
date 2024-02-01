@@ -42,7 +42,6 @@ public class UserProfileController : ControllerBase
     {
         return Ok(_dbContext.UserProfiles
         .Include(up => up.IdentityUser)
-        .Include(up => up.Teacher)
         .OrderBy(up => up.Id)
         .Select(up => new UserProfileDTO
         {
@@ -67,7 +66,6 @@ public class UserProfileController : ControllerBase
     {
         try
         {
-
             var up = _dbContext
             .UserProfiles
             .Include(up => up.IdentityUser)
@@ -96,7 +94,11 @@ public class UserProfileController : ControllerBase
                     },
                     IdentityUserId = up.IdentityUserId,
                     Email = up.IdentityUser.Email,
-                    UserName = up.IdentityUser.UserName
+                    UserName = up.IdentityUser.UserName,
+                    Roles = _dbContext.UserRoles
+                        .Where(ur => ur.UserId == up.IdentityUserId)
+                        .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
+                        .ToList()
                 });
             }
 
@@ -111,7 +113,11 @@ public class UserProfileController : ControllerBase
                     TeacherId = up.TeacherId,
                     IdentityUserId = up.IdentityUserId,
                     Email = up.IdentityUser.Email,
-                    UserName = up.IdentityUser.UserName
+                    UserName = up.IdentityUser.UserName,
+                    Roles = _dbContext.UserRoles
+                        .Where(ur => ur.UserId == up.IdentityUserId)
+                        .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
+                        .ToList()
                 });
             }
 
