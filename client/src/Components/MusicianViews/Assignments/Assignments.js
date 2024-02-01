@@ -44,7 +44,7 @@ export const Assignments = ({ loggedInUser }) => {
     }
 
     return (
-    !student || !assignments || !comments || !studentId || loggedInUser.id!==studentId
+    !student.firstName || !assignments || !comments || !studentId || loggedInUser.id!==studentId
     ? 
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
