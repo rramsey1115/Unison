@@ -37,7 +37,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("withroles")]
-    // [Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     public IActionResult GetWithRoles()
     {
         return Ok(_dbContext.UserProfiles
@@ -122,15 +122,15 @@ public class UserProfileController : ControllerBase
             }
 
         }
+
         catch (Exception ex)
         {
             return BadRequest($"Bad data {ex}");
         }
-
     }
 
     [HttpGet("teacher/{id}")]
-    // [Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     public IActionResult GetTeacherStudents(int id)
     {
         try
@@ -169,7 +169,7 @@ public class UserProfileController : ControllerBase
 
 
     [HttpGet("musicians")]
-    // [Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     public IActionResult GetMusicians()
     {
         return Ok(_dbContext.UserProfiles

@@ -45,6 +45,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                         {student.teacher ? <li>Teacher: {`${student.teacher.firstName} ${student.teacher.lastName}`}</li> : null}
                     </ul>
                 </div>
+                {/* visible if looking at a teacher's profile */}
                 {student.roles && student.roles[0] != "Musician"
                 ?<div className="profile-teacher-div">
                     <h5>Teacher Stats</h5>
@@ -53,6 +54,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                             <li>???</li>
                         </ul>
                 </div>
+                // visible if viewing a student's profile
                 :<div className="profile-stats">
                     <h5>Profile Stats</h5>
                     <ul>
