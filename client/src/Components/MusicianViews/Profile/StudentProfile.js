@@ -64,8 +64,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                         <li>Most Frequent Category</li>
                         <li>Most Frequent Activity</li>
                         <li>Total Assignments Completed</li>
-                        <li>Last Session</li>
-                        <li>Last Session</li>
+                        <li>Chart/Graph???</li>
                     </ul>
                 </div>}
             </section>
