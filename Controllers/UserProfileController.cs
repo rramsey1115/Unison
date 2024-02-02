@@ -208,6 +208,17 @@ public class UserProfileController : ControllerBase
             {
                 return BadRequest("Id's do not match");
             }
+
+            if(string.IsNullOrWhiteSpace(obj.FirstName) || 
+                string.IsNullOrWhiteSpace(obj.LastName) || 
+                string.IsNullOrWhiteSpace(obj.Address) ||
+                string.IsNullOrWhiteSpace(obj.Email) ||
+                string.IsNullOrWhiteSpace(obj.UserName)
+            )
+            {
+                return BadRequest("All input fields are required");
+            }
+
             var found = _dbContext.UserProfiles
             .Include(up => up.IdentityUser)
             .SingleOrDefault(up => up.Id == id);
