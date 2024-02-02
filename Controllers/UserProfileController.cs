@@ -197,4 +197,41 @@ public class UserProfileController : ControllerBase
             .ToList()
         }).Where(up => !up.Roles.Contains("Teacher")));
     }
+
+    [HttpPut("{id}")]
+    // [Authorize]
+    public IActionResult UpdateProfile(int id, UserProfile obj)
+    {
+        try
+        {
+            if(id != obj.Id)
+            {
+                return BadRequest("Id's do not match");
+            }
+            var found = _dbContext.UserProfiles
+            .Include(up => up.IdentityUser)
+            .SingleOrDefault(up => up.Id == id);
+
+            if(found == null)
+            {
+                return BadRequest("No User found with given id");
+            }
+
+            found.FirstName = obj.FirstName;
+            found.LastName = obj.LastName;
+            found.Address = obj.Address;
+            found.IdentityUser.Email = obj.Email;
+            found.IdentityUser.UserName = obj.UserName;
+
+            _dbContext.SaveChanges();
+
+            return Ok();
+
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
+
 }

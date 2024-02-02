@@ -2,16 +2,22 @@ import { useParams } from "react-router-dom";
 import "./Profile.css";
 import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
-import { Button } from "reactstrap";
 import { getStatsByUserId } from "../../../Managers/statsManager";
+import { EditProfileModal } from "./EditProfileModal";
+import { getUserById } from "../../../Managers/profileManager";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
     const [stats, setStats] = useState({});
+    const [user, setUser] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        if(studentId > 0){ getandsetStats(studentId) }
+        if(studentId > 0)
+        { 
+            getAndSetUser(studentId);
+            getandsetStats(studentId) 
+        }
 
         setTimeout(() => {
             setIsLoaded(true);
@@ -23,13 +29,15 @@ export const StudentProfile = ({ loggedInUser }) => {
         getStatsByUserId(id).then(setStats);
     }
 
+    const getAndSetUser = (id) => {
+        getUserById(id).then(setUser);
+    }
+
     function toHoursAndMinutes(totalMinutes) {
         const hours = Math.floor(totalMinutes / 60);
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     }
-
-    console.log('stats', stats);
 
     return (
     !stats.user?.lastName || isLoaded === false
@@ -48,18 +56,18 @@ export const StudentProfile = ({ loggedInUser }) => {
                     <div className="profile-about-header">
                         <h5>About</h5>
                         {stats.userId === loggedInUser.id || loggedInUser.id === stats.user.teacherId
-                        ? <Button size="sm" color="info">Edit Profile</Button>
+                        ? <EditProfileModal loggedInUser={loggedInUser} user={user} getAndSetUser={getAndSetUser}/>
                         : null}
                     </div>
                     <ul className="profile-ul">
                         <li>Email: {stats.user.email}</li>
-                        <li>UserName: {stats.user.userName}</li>
+                        <li>Username: {stats.user.userName}</li>
                         {loggedInUser.id === stats.user.teacherId && <li>Address: {stats.user.address}</li>}
                         {stats.user.teacher ? <li>Teacher: {`${stats.user.teacher.firstName} ${stats.user.teacher.lastName}`}</li> : null}
                     </ul>
                 </div>
                 {/* visible if looking at a teacher's profile */}
-                {stats.user.roles && stats.user.roles[0] != "Musician"
+                {stats.user.roles && stats.user.roles[0] !== "Musician"
                 ?<div className="profile-teacher-div">
                     <h5>Teacher Stats</h5>
                         <ul>
@@ -70,7 +78,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                 // visible if viewing a student's profile
                 :<div className="profile-stats">
                     <h5>Practice Stats</h5>
-                    <ul>
+                    <ul className="profile-ul">
                         <li>Total Practice Sessions: {stats.completedSessions}</li>
                         <li>Total Assignments Completed: {stats.completedAssignments}</li>
                         <li>Total Time Spent Practicing: {toHoursAndMinutes(stats.totalTime)} Minutes</li>
