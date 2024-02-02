@@ -33,8 +33,6 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
         toggleModal();
     }
 
-    console.log("user", user);
-
     return (
     <div>
       <Button id="edit-profile-btn" className="create-btn" color='info' size='sm' onClick={toggleModal}>
@@ -49,6 +47,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
             
                 <label>First Name
                     <input
+                        required
                         id='first-name-input'
                         value={updatedUser.firstName}
                         type='text'
@@ -62,6 +61,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
 
                 <label>Last Name
                     <input
+                        required
                         id='last-name-input'
                         value={updatedUser.lastName}
                         type='text'
@@ -75,6 +75,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
 
                 <label>Address
                     <input
+                        required
                         id='address-input'
                         value={updatedUser.address}
                         type='text'
@@ -88,6 +89,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
 
                 <label>Email
                     <input
+                        required
                         id='email-input'
                         value={updatedUser.email}
                         type='email'
@@ -101,6 +103,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
 
                 <label>Username
                     <input
+                        required
                         id='username-input'
                         value={updatedUser.userName}
                         type='text'
@@ -119,10 +122,17 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                 </ModalBody>
             }
             <ModalFooter>
-            {updatedUser.firstName && updatedUser.lastName ?
-            <Button color="secondary" onClick={(e) => handleSubmit(e)}>
-                Update Profile
-            </Button> : null}
+                {updatedUser.firstName &&
+                updatedUser.lastName &&
+                updatedUser.email &&
+                updatedUser.address &&
+                updatedUser.userName &&
+                updatedUser.identityUserId
+                ?
+                    <Button color="secondary" onClick={(e) => handleSubmit(e)}>
+                        Update Profile
+                    </Button> 
+                : null}
             </ModalFooter>
       </Modal>
     </div>

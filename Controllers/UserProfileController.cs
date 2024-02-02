@@ -199,7 +199,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult UpdateProfile(int id, UserProfile obj)
     {
         try
@@ -209,6 +209,7 @@ public class UserProfileController : ControllerBase
                 return BadRequest("Id's do not match");
             }
 
+            // return error if there are any empty or null values given
             if(string.IsNullOrWhiteSpace(obj.FirstName) || 
                 string.IsNullOrWhiteSpace(obj.LastName) || 
                 string.IsNullOrWhiteSpace(obj.Address) ||

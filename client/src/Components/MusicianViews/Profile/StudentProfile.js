@@ -5,6 +5,7 @@ import { ScaleLoader } from "react-spinners";
 import { getStatsByUserId } from "../../../Managers/statsManager";
 import { EditProfileModal } from "./EditProfileModal";
 import { getUserById } from "../../../Managers/profileManager";
+import { Table } from "reactstrap";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
@@ -40,7 +41,7 @@ export const StudentProfile = ({ loggedInUser }) => {
     }
 
     return (
-    !stats.user?.lastName || isLoaded === false
+    !stats.user?.lastName || isLoaded === false || !user.firstName
     ?
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
@@ -48,28 +49,45 @@ export const StudentProfile = ({ loggedInUser }) => {
     :
         <div className="profile-container">
             <header className="profile-header">
-                <h2>{`${stats.user.firstName} ${stats.user.lastName}`}</h2>
+                <h2>{`${user.firstName} ${user.lastName}`}</h2>
             </header>
 
             <section className="profile-body">
                 <div className="profile-about">
                     <div className="profile-about-header">
-                        <h5>About</h5>
-                        {stats.userId === loggedInUser.id || loggedInUser.id === stats.user.teacherId
+                        <h3>About</h3>
+                        {user.id === loggedInUser.id || loggedInUser.id === user.teacherId
                         ? <EditProfileModal loggedInUser={loggedInUser} user={user} getAndSetUser={getAndSetUser}/>
                         : null}
                     </div>
-                    <ul className="profile-ul">
-                        <li>Email: {stats.user.email}</li>
-                        <li>Username: {stats.user.userName}</li>
-                        {loggedInUser.id === stats.user.teacherId && <li>Address: {stats.user.address}</li>}
-                        {stats.user.teacher ? <li>Teacher: {`${stats.user.teacher.firstName} ${stats.user.teacher.lastName}`}</li> : null}
-                    </ul>
+                    <table className="about-table">
+                        <tbody className="about-table">
+                            <tr>
+                                <th>Email</th>
+                                <td>{user.email}</td>
+                            </tr>
+                            <tr>
+                                <th>Username</th>
+                                <td>{user.userName}</td>
+                            </tr>
+                            {loggedInUser.id === user.teacherId &&
+                            <tr>
+                                <th>Address</th>
+                                <td>{user.address}</td>
+                            </tr>}
+                            {user.teacher &&
+                            <tr>
+                                <th>Teacher</th>
+                                <td>{user.teacher.firstName} {user.teacher.lastName}</td>
+                            </tr>}
+
+                        </tbody>
+                    </table>
                 </div>
                 {/* visible if looking at a teacher's profile */}
-                {stats.user.roles && stats.user.roles[0] !== "Musician"
+                {user.roles && user.roles[0] !== "Musician"
                 ?<div className="profile-teacher-div">
-                    <h5>Teacher Stats</h5>
+                    <h3>Teacher Stats</h3>
                         <ul>
                             <li>Total Students</li>
                             <li>???</li>
@@ -77,7 +95,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                 </div>
                 // visible if viewing a student's profile
                 :<div className="profile-stats">
-                    <h5>Practice Stats</h5>
+                    <h3>Practice Stats</h3>
                     <ul className="profile-ul">
                         <li>Total Practice Sessions: {stats.completedSessions}</li>
                         <li>Total Assignments Completed: {stats.completedAssignments}</li>
