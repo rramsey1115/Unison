@@ -8,16 +8,22 @@ import { Button } from "reactstrap";
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
     const [student, setStudent] = useState({});
+    const [stats, setStats] = useState({});
 
     useEffect(() => {
-        getAndSetStudentById(studentId)
-    }, [studentId])
+        getAndSetStudentById(studentId);
+        getandsetStats(studentId)
+    }, [studentId]);
+
+    const getandsetStats = (id) => {
+        getStatsByUserId(id).then(setStats);
+    }
 
     const getAndSetStudentById = (id) => {
         getUserById(id).then(setStudent);
     }
 
-    return(
+    return (
     !student.firstName
     ?
         <div className="spinner-container">
