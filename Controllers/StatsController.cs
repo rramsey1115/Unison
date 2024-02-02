@@ -18,7 +18,7 @@ public class StatsController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     // [Authorize]
     public IActionResult GetStatsByUserId(int id)
     {

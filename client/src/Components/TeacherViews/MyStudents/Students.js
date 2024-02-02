@@ -63,6 +63,8 @@ export const Students = ({loggedInUser}) => {
                                                 color="info" 
                                                 size="sm" 
                                                 className="students-table-btn"
+                                                value={s.id}
+                                                onClick={(e) => {navigate(`/profile/${e.target.value}`)}}
                                             >Stats
                                             </Button>
                                         </td>

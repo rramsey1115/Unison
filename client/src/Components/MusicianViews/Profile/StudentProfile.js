@@ -1,58 +1,60 @@
 import { useParams } from "react-router-dom";
 import "./Profile.css";
 import { useEffect, useState } from "react";
-import { getUserById } from "../../../Managers/profileManager";
 import { ScaleLoader } from "react-spinners";
 import { Button } from "reactstrap";
+import { getStatsByUserId } from "../../../Managers/statsManager";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
-    const [student, setStudent] = useState({});
     const [stats, setStats] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        getAndSetStudentById(studentId);
-        getandsetStats(studentId)
+        if(studentId > 0){ getandsetStats(studentId) }
+
+        setTimeout(() => {
+            setIsLoaded(true);
+        }, 1500);
+
     }, [studentId]);
+
 
     const getandsetStats = (id) => {
         getStatsByUserId(id).then(setStats);
     }
 
-    const getAndSetStudentById = (id) => {
-        getUserById(id).then(setStudent);
-    }
+    console.log('stats', stats);
 
     return (
-    !student.firstName
+    !stats.user?.lastName || isLoaded === false
     ?
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
         </div>
     :
         <div className="profile-container">
-            {console.log('student', student)}
             <header className="profile-header">
-                <h2>{`${student.firstName} ${student.lastName}`}</h2>
+                <h2>{`${stats.user.firstName} ${stats.user.lastName}`}</h2>
             </header>
 
             <section className="profile-body">
                 <div className="profile-about">
                     <div className="profile-about-header">
                         <h5>About</h5>
-                        {student.id === loggedInUser.id || loggedInUser.id === student.teacherId
+                        {stats.userId === loggedInUser.id || loggedInUser.id === stats.user.teacherId
                         ? <Button size="sm" color="info">Edit Profile</Button>
                         : null}
                     </div>
                     <ul className="profile-ul">
-                        <li>Email: {student.email}</li>
-                        <li>UserName: {student.userName}</li>
-                        {loggedInUser.id === student.teacherId && <li>Address: {student.address}</li>}
-                        {student.teacher ? <li>Teacher: {`${student.teacher.firstName} ${student.teacher.lastName}`}</li> : null}
+                        <li>Email: {stats.user.email}</li>
+                        <li>UserName: {stats.user.userName}</li>
+                        {loggedInUser.id === stats.user.teacherId && <li>Address: {stats.user.address}</li>}
+                        {stats.user.teacher ? <li>Teacher: {`${stats.user.teacher.firstName} ${stats.user.teacher.lastName}`}</li> : null}
                     </ul>
                 </div>
                 {/* visible if looking at a teacher's profile */}
-                {student.roles && student.roles[0] != "Musician"
+                {stats.user.roles && stats.user.roles[0] != "Musician"
                 ?<div className="profile-teacher-div">
                     <h5>Teacher Stats</h5>
                         <ul>
