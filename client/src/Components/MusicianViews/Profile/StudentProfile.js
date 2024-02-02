@@ -5,7 +5,6 @@ import { ScaleLoader } from "react-spinners";
 import { getStatsByUserId } from "../../../Managers/statsManager";
 import { EditProfileModal } from "./EditProfileModal";
 import { getUserById } from "../../../Managers/profileManager";
-import { Table } from "reactstrap";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
