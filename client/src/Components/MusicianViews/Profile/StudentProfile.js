@@ -19,9 +19,14 @@ export const StudentProfile = ({ loggedInUser }) => {
 
     }, [studentId]);
 
-
     const getandsetStats = (id) => {
         getStatsByUserId(id).then(setStats);
+    }
+
+    function toHoursAndMinutes(totalMinutes) {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     }
 
     console.log('stats', stats);
@@ -64,16 +69,16 @@ export const StudentProfile = ({ loggedInUser }) => {
                 </div>
                 // visible if viewing a student's profile
                 :<div className="profile-stats">
-                    <h5>Profile Stats</h5>
+                    <h5>Practice Stats</h5>
                     <ul>
-                        <li>Total Practice Sessions</li>
-                        <li>Total Time Spent Practicing</li>
-                        <li>Most Recent Session</li>
-                        <li>Most Frequent Category</li>
-                        <li>Most Frequent Activity</li>
-                        <li>Total Assignments Completed</li>
-                        <li>Chart/Graph???</li>
+                        <li>Total Practice Sessions: {stats.completedSessions}</li>
+                        <li>Total Assignments Completed: {stats.completedAssignments}</li>
+                        <li>Total Time Spent Practicing: {toHoursAndMinutes(stats.totalTime)} Minutes</li>
+                        <li>Most Recent Session: {new Date(stats.lastSession).toLocaleDateString()}</li>
+                        <li>Most Frequent Category: {stats.topCategory.name}</li>
+                        <li>Most Frequent Activity: {stats.topActivity.name}</li>
                     </ul>
+                    <h5>Graph??</h5>
                 </div>}
             </section>
 
