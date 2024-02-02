@@ -96,14 +96,34 @@ export const StudentProfile = ({ loggedInUser }) => {
                 // visible if viewing a student's profile
                 :<div className="profile-stats">
                     <h3>Practice Stats</h3>
-                    <ul className="profile-ul">
-                        <li>Total Practice Sessions: {stats.completedSessions}</li>
-                        <li>Total Assignments Completed: {stats.completedAssignments}</li>
-                        <li>Total Time Spent Practicing: {toHoursAndMinutes(stats.totalTime)} Minutes</li>
-                        <li>Most Recent Session: {new Date(stats.lastSession).toLocaleDateString()}</li>
-                        <li>Most Frequent Category: {stats.topCategory.name}</li>
-                        <li>Most Frequent Activity: {stats.topActivity.name}</li>
-                    </ul>
+                    <table className="stats-table">
+                        <tbody>
+                            <tr>
+                                <th>Total Sessions</th>
+                                <td>{stats.completedSessions}</td>
+                            </tr>
+                            <tr>
+                                <th>Total Assignments</th>
+                                <td>{stats.completedAssignments}</td>
+                            </tr>
+                            <tr>
+                                <th>Total Time</th>
+                                <td>{toHoursAndMinutes(stats.totalTime)} Minutes</td>
+                            </tr>
+                            <tr>
+                                <th>Most Recent</th>
+                                <td>{new Date(stats.lastSession).toLocaleDateString()}</td>
+                            </tr>
+                            <tr>
+                                <th>Top Category</th>
+                                <td>{stats.topCategory.name}</td>
+                            </tr>
+                            <tr>
+                                <th>Top Activity</th>
+                                <td>{stats.topActivity.name}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <h5>Graph??</h5>
                 </div>}
             </section>
