@@ -149,7 +149,8 @@ public class StatsController : ControllerBase
                 TotalTime = TotalTime,
                 LastSession = LastSession,
                 TopCategory = TopCategory,
-                TopActivity = TopActivity
+                TopActivity = TopActivity,
+                UserSessions = UserSessions
             });
 
         }

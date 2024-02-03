@@ -16,7 +16,6 @@
     min-width: 330px;
     height: fit-content;
     display: block;
-    border: thin solid var(--lightBlue);
  }
 
  .react-calendar-heatmap text {

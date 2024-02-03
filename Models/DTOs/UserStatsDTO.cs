@@ -10,4 +10,5 @@ public class UserStatsDTO
     public DateTime? LastSession { get; set; }
     public Category? TopCategory { get; set; }
     public ActivityObj? TopActivity { get; set; }
+    public List<Session> UserSessions { get; set; }
 }
