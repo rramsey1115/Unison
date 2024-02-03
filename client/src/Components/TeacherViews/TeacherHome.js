@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { ScaleLoader } from "react-spinners";
-import { Card } from "reactstrap"
+import { Card, CardHeader } from "reactstrap";
+// import "../../images/"
 
 export const TeacherHome = () => {
 
@@ -25,21 +26,22 @@ export const TeacherHome = () => {
         <section className="home-container">
 
             <header className="home-header">
-                <h1>Teacher Dashboard</h1>
+                <h2>Teacher Dashboard</h2>
             </header>
             
             <section className="home-main">
 
                 <Card className="home-card" onClick={(e) => navigate('students')}>
-                    <h3>My Students</h3>
+                    <img alt="" />
+                    <h5>My Students</h5>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('browse/category')}>
-                    <h3>Browse</h3>
+                    <h5>Browse</h5>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('assignments/create')}>
-                    <h3>Assign</h3>
+                    <h5>Assign</h5>
                 </Card>
    
             </section>

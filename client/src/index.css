@@ -1,5 +1,6 @@
 :root{
   --blue1:#1c3a5b;
+  /* --blue1:#494f54; */
   --brightBlue:#58b7dd;
   --white:#ffff;
   --offWhite:#dae1eb;
@@ -18,7 +19,6 @@ body {
   min-width: 350px;
   margin: 30px auto;
 }
-
 
 /* ------ animated button matching color scheme ----- */
 .animated-btn {

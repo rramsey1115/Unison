@@ -197,4 +197,53 @@ public class UserProfileController : ControllerBase
             .ToList()
         }).Where(up => !up.Roles.Contains("Teacher")));
     }
+
+    [HttpPut("{id}")]
+    [Authorize]
+    public IActionResult UpdateProfile(int id, UserProfile obj)
+    {
+        try
+        {
+            if(id != obj.Id)
+            {
+                return BadRequest("Id's do not match");
+            }
+
+            // return error if there are any empty or null values given
+            if(string.IsNullOrWhiteSpace(obj.FirstName) || 
+                string.IsNullOrWhiteSpace(obj.LastName) || 
+                string.IsNullOrWhiteSpace(obj.Address) ||
+                string.IsNullOrWhiteSpace(obj.Email) ||
+                string.IsNullOrWhiteSpace(obj.UserName)
+            )
+            {
+                return BadRequest("All input fields are required");
+            }
+
+            var found = _dbContext.UserProfiles
+            .Include(up => up.IdentityUser)
+            .SingleOrDefault(up => up.Id == id);
+
+            if(found == null)
+            {
+                return BadRequest("No User found with given id");
+            }
+
+            found.FirstName = obj.FirstName;
+            found.LastName = obj.LastName;
+            found.Address = obj.Address;
+            found.IdentityUser.Email = obj.Email;
+            found.IdentityUser.UserName = obj.UserName;
+
+            _dbContext.SaveChanges();
+
+            return Ok();
+
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
+
 }

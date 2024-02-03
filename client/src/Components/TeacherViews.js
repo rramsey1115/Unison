@@ -9,6 +9,7 @@ import { StudentSessions } from "./TeacherViews/Sessions/StudentSessions";
 import { Students } from "./TeacherViews/MyStudents/Students";
 import { CreateAssignment } from "./TeacherViews/Assignments/CreateAssignment";
 import { Assignments } from "./MusicianViews/Assignments/Assignments";
+import { StudentProfile } from "./MusicianViews/Profile/StudentProfile";
 // import { FavoriteSessions } from "./MusicianViews/Sessions/MySessions/FavoriteSession";
 
 export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
@@ -46,6 +47,15 @@ export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
                 <Route path="create" element={
                     <AuthorizedRoute roles={["Teacher"]} loggedInUser={loggedInUser}>
                         <CreateAssignment loggedInUser={loggedInUser} />
+                    </AuthorizedRoute>}
+                />
+            </Route>
+
+
+            <Route path="profile">
+                <Route path=":id" loggedInUser={loggedInUser} element={
+                    <AuthorizedRoute loggedInUser={loggedInUser}>
+                        <StudentProfile loggedInUser={loggedInUser} />
                     </AuthorizedRoute>}
                 />
             </Route>

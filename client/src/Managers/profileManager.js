@@ -29,3 +29,12 @@ export const getUserById = (id) => {
 export const getAllMusicians = () => {
     return fetch(`/api/userprofile/musicians`).then(res => res.json());
 }
+
+// update user contact info
+export const updateUserProfile = (obj) => {
+    return fetch(`/api/userprofile/${obj.id*1}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(obj)
+    });
+}

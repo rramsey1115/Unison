@@ -1,54 +1,92 @@
 import { useParams } from "react-router-dom";
 import "./Profile.css";
 import { useEffect, useState } from "react";
-import { getUserById } from "../../../Managers/profileManager";
 import { ScaleLoader } from "react-spinners";
-import { Button } from "reactstrap";
+import { getStatsByUserId } from "../../../Managers/statsManager";
+import { EditProfileModal } from "./EditProfileModal";
+import { getUserById } from "../../../Managers/profileManager";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
-    const [student, setStudent] = useState({});
+    const [stats, setStats] = useState({});
+    const [user, setUser] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        getAndSetStudentById(studentId)
-    }, [studentId])
+        if(studentId > 0)
+        { 
+            getAndSetUser(studentId);
+            getandsetStats(studentId) 
+        }
 
-    const getAndSetStudentById = (id) => {
-        getUserById(id).then(setStudent);
+        setTimeout(() => {
+            setIsLoaded(true);
+        }, 1500);
+
+    }, [studentId]);
+
+    const getandsetStats = (id) => {
+        getStatsByUserId(id).then(setStats);
     }
 
-    return(
-    !student.firstName
+    const getAndSetUser = (id) => {
+        getUserById(id).then(setUser);
+    }
+
+    function toHoursAndMinutes(totalMinutes) {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
+    }
+
+    return (
+    !stats.user?.lastName || isLoaded === false || !user.firstName
     ?
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
         </div>
     :
         <div className="profile-container">
-            {console.log('student', student)}
             <header className="profile-header">
-                <h2>{`${student.firstName} ${student.lastName}`}</h2>
+                <h2>{`${user.firstName} ${user.lastName}`}</h2>
             </header>
 
             <section className="profile-body">
                 <div className="profile-about">
                     <div className="profile-about-header">
-                        <h5>About</h5>
-                        {student.id === loggedInUser.id || loggedInUser.id === student.teacherId
-                        ? <Button size="sm" color="info">Edit Profile</Button>
+                        <h3>About</h3>
+                        {user.id === loggedInUser.id || loggedInUser.id === user.teacherId
+                        ? <EditProfileModal loggedInUser={loggedInUser} user={user} getAndSetUser={getAndSetUser}/>
                         : null}
                     </div>
-                    <ul className="profile-ul">
-                        <li>Email: {student.email}</li>
-                        <li>UserName: {student.userName}</li>
-                        {loggedInUser.id === student.teacherId && <li>Address: {student.address}</li>}
-                        {student.teacher ? <li>Teacher: {`${student.teacher.firstName} ${student.teacher.lastName}`}</li> : null}
-                    </ul>
+                    <table className="about-table">
+                        <tbody className="about-table">
+                            <tr>
+                                <th>Email</th>
+                                <td>{user.email}</td>
+                            </tr>
+                            <tr>
+                                <th>Username</th>
+                                <td>{user.userName}</td>
+                            </tr>
+                            {loggedInUser.id === user.teacherId &&
+                            <tr>
+                                <th>Address</th>
+                                <td>{user.address}</td>
+                            </tr>}
+                            {user.teacher &&
+                            <tr>
+                                <th>Teacher</th>
+                                <td>{user.teacher.firstName} {user.teacher.lastName}</td>
+                            </tr>}
+
+                        </tbody>
+                    </table>
                 </div>
                 {/* visible if looking at a teacher's profile */}
-                {student.roles && student.roles[0] != "Musician"
+                {user.roles && user.roles[0] !== "Musician"
                 ?<div className="profile-teacher-div">
-                    <h5>Teacher Stats</h5>
+                    <h3>Teacher Stats</h3>
                         <ul>
                             <li>Total Students</li>
                             <li>???</li>
@@ -56,16 +94,36 @@ export const StudentProfile = ({ loggedInUser }) => {
                 </div>
                 // visible if viewing a student's profile
                 :<div className="profile-stats">
-                    <h5>Profile Stats</h5>
-                    <ul>
-                        <li>Total Practice Sessions</li>
-                        <li>Total Time Spent Practicing</li>
-                        <li>Most Recent Session</li>
-                        <li>Most Frequent Category</li>
-                        <li>Most Frequent Activity</li>
-                        <li>Total Assignments Completed</li>
-                        <li>Chart/Graph???</li>
-                    </ul>
+                    <h3>Practice Stats</h3>
+                    <table className="stats-table">
+                        <tbody>
+                            <tr>
+                                <th>Total Sessions</th>
+                                <td>{stats.completedSessions}</td>
+                            </tr>
+                            <tr>
+                                <th>Total Assignments</th>
+                                <td>{stats.completedAssignments}</td>
+                            </tr>
+                            <tr>
+                                <th>Total Time</th>
+                                <td>{toHoursAndMinutes(stats.totalTime)} Minutes</td>
+                            </tr>
+                            <tr>
+                                <th>Most Recent</th>
+                                <td>{new Date(stats.lastSession).toLocaleDateString()}</td>
+                            </tr>
+                            <tr>
+                                <th>Top Category</th>
+                                <td>{stats.topCategory.name}</td>
+                            </tr>
+                            <tr>
+                                <th>Top Activity</th>
+                                <td>{stats.topActivity.name}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5>Graph??</h5>
                 </div>}
             </section>
 
