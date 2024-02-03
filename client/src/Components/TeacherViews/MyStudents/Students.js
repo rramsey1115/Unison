@@ -30,7 +30,7 @@ export const Students = ({loggedInUser}) => {
             </div>
             <div className="students-body">
                 <Table className="student-table" id="student-table" hover responsive>
-                        <thead dark>
+                        <thead>
                             <tr className="table-secondary">
                                 <th>Name</th>
                                 <th>Email</th>

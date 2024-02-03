@@ -12,22 +12,40 @@ export const StudentProfile = ({ loggedInUser }) => {
     const [stats, setStats] = useState({});
     const [user, setUser] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
+    const [dates, setDates] = useState([]);
 
     useEffect(() => {
         if(studentId > 0)
         { 
             getAndSetUser(studentId);
-            getandsetStats(studentId) 
+            getandsetStats(studentId);
+            
         }
 
         setTimeout(() => {
             setIsLoaded(true);
         }, 1500);
 
+        getAndSetDates();
+
     }, [studentId]);
 
     const getandsetStats = (id) => {
         getStatsByUserId(id).then(setStats);
+    }
+
+    const getAndSetDates = () => {
+        var arr = [];
+        if(stats.userSessions?.lenth > 0)
+        {
+            stats.userSessions.map(s => {
+                if(s.dateCompleted !== null)
+                {
+                    arr.push(s.dateCompleted)
+                }
+            });
+            setDates(arr);
+        }
     }
 
     const getAndSetUser = (id) => {
@@ -39,6 +57,9 @@ export const StudentProfile = ({ loggedInUser }) => {
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     }
+
+   
+    console.log('stats', stats);
 
     return (
     !stats.user?.lastName || isLoaded === false || !user.firstName
@@ -127,6 +148,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                 </div>}
                 <div className="profile-div">
                     <h4>Practice Sessions</h4>
+                    {console.log('dates', dates)};
                     <HeatMap />
                 </div>
             </section>
