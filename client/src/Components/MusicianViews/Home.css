@@ -34,12 +34,13 @@
 .home-card {
     width: 20%;
     min-width: 150px;
-    height: 55px;
+    height: fit-content;
+    min-height: 60px;
     margin: 1em .5em;
-    background-color: var(--white);
+    background-color: var(--brightBlue);
     border: 1px solid var(--brightBlue);
     box-shadow: 1px 1px 1px var(--blueGray);
-    transition: ease-in-out .25s;
+    transition: ease-in-out .3s;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -51,13 +52,25 @@
 }
 
 .home-card:hover {
-    background-color: var(--brightBlue);
-    transition: ease-in-out .25s;
+    background-color: var(--white);
+    transition: ease-in-out .3s;
     cursor: pointer;
+}
+
+.home-card:hover > img {
+    width: 50px;
+    height: 50px;
+    transition:all ease-in-out .25s;
 }
 
 .home-card:active {
     transition: ease-in-out .2s;
     box-shadow: none;
     background-color: var(--blueGray);
+}
+
+.card-img {
+    width: 00px;
+    height: 0px;
+    transition: all ease-in-out .3s;
 }
