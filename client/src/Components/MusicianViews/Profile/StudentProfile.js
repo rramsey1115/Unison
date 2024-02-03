@@ -5,6 +5,7 @@ import { ScaleLoader } from "react-spinners";
 import { getStatsByUserId } from "../../../Managers/statsManager";
 import { EditProfileModal } from "./EditProfileModal";
 import { getUserById } from "../../../Managers/profileManager";
+import { HeatMap } from "./HeatMap";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
@@ -52,15 +53,15 @@ export const StudentProfile = ({ loggedInUser }) => {
             </header>
 
             <section className="profile-body">
-                <div className="profile-about">
-                    <div className="profile-about-header">
-                        <h3>About</h3>
+                <div className="profile-div">
+                    <div className="profile-div-header">
+                        <h4>About</h4>
                         {user.id === loggedInUser.id || loggedInUser.id === user.teacherId
                         ? <EditProfileModal loggedInUser={loggedInUser} user={user} getAndSetUser={getAndSetUser}/>
                         : null}
                     </div>
                     <table className="about-table">
-                        <tbody className="about-table">
+                        <tbody>
                             <tr>
                                 <th>Email</th>
                                 <td>{user.email}</td>
@@ -86,16 +87,16 @@ export const StudentProfile = ({ loggedInUser }) => {
                 {/* visible if looking at a teacher's profile */}
                 {user.roles && user.roles[0] !== "Musician"
                 ?<div className="profile-teacher-div">
-                    <h3>Teacher Stats</h3>
+                    <h4>Teacher Stats</h4>
                         <ul>
                             <li>Total Students</li>
                             <li>???</li>
                         </ul>
                 </div>
                 // visible if viewing a student's profile
-                :<div className="profile-stats">
-                    <h3>Practice Stats</h3>
-                    <table className="stats-table">
+                :<div className="profile-div">
+                    <h4>Practice Stats</h4>
+                    <table className="about-table">
                         <tbody>
                             <tr>
                                 <th>Total Sessions</th>
@@ -123,10 +124,12 @@ export const StudentProfile = ({ loggedInUser }) => {
                             </tr>
                         </tbody>
                     </table>
-                    <h5>Graph??</h5>
                 </div>}
+                <div className="profile-div">
+                    <h4>Practice Sessions</h4>
+                    <HeatMap />
+                </div>
             </section>
-
         </div>
     )
 }

@@ -21,8 +21,9 @@
     border: 2px solid var(--blueGray) !important;
 }
 
-.students-table-btn {
-    width: 95px;
+.student-table-btn {
+    width: 90px;
+    padding: 4px;
 }
 
 /*  add comment modal */
@@ -44,4 +45,12 @@
 
 .delete-comment-btn {
     margin-left: 6px;
+}
+
+#student-table {
+    font-size: 16px;
+}
+
+#student-table > tbody > tr > td {
+    font-size: 16px;
 }
