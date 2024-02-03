@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { ScaleLoader } from "react-spinners";
-import { Card, CardHeader } from "reactstrap";
+import { Card } from "reactstrap";
 import browseIcon from "../../images/browse.png";
 import studentsIcon from "../../images/students.png";
 import assignIcon from "../../images/assign.png";
