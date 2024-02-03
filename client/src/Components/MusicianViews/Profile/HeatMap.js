@@ -1,31 +1,53 @@
 import CalendarHeatmap from 'react-calendar-heatmap';
 import "./HeatMap.css";
+import { useEffect, useState } from 'react';
 
 const today = new Date();
 
-export const HeatMap = () => {
+export const HeatMap = ({ dates }) => {
+    const [dateValues, setDateValues] = useState([]);
 
-  const randomValues = getRange(200).map(index => {
+    useEffect(() => {
+        setDateValues(dates.map(d => formatDates(d)));
+    }, [dates])
+
+    console.log(dateValues);
+
+  const datesValues = getRange(200).map(index => {
+    let date = shiftDate(today, -index);
+    let count = dateValues.includes(date) ? 1 : 0;
     return {
-      date: shiftDate(today, -index),
-      count: getRandomInt(0, 1),
+      date: date,
+      count: count
     };
   });
 
+  const formatDates = (arr) => {
+    for(let a of arr)
+    {
+        return {
+            date: new Date(a),
+        }
+    }
+  }
+
+  
+
   return (
     <div className='heat-map-container'>
+        {console.log('dates', dates)}
+        {console.log('datesValues', datesValues)}
         <CalendarHeatmap
-            startDate={shiftDate(today, -180)}
+            gutterSize={2} //gap between boxes
+            startDate={shiftDate(today, -180)} //last 180 days
             endDate={today}
-            values={randomValues}
+            values={datesValues}
             classForValue={value => {
-            if (value.count === 0) {
-                return 'color-empty';
-            }
-            // return `color-${value.count}`;
-            return 'color-filled';
+                if (value.count === 0) {
+                    return 'color-empty';
+                }
+                return 'color-filled';
             }}
-            // showWeekdayLabels={true}
             onClick={value => alert(`Clicked on value with count: ${value.count}`)}
         />
     </div>

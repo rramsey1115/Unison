@@ -18,17 +18,15 @@ export const StudentProfile = ({ loggedInUser }) => {
         if(studentId > 0)
         { 
             getAndSetUser(studentId);
-            getandsetStats(studentId);
-            
+            getandsetStats(studentId); 
         }
 
         setTimeout(() => {
             setIsLoaded(true);
         }, 1500);
-
-        getAndSetDates();
-
     }, [studentId]);
+
+    useEffect(() => {getAndSetDates()}, [stats]);
 
     const getandsetStats = (id) => {
         getStatsByUserId(id).then(setStats);
@@ -36,7 +34,7 @@ export const StudentProfile = ({ loggedInUser }) => {
 
     const getAndSetDates = () => {
         var arr = [];
-        if(stats.userSessions?.lenth > 0)
+        if(stats.userSessions?.length > 0)
         {
             stats.userSessions.map(s => {
                 if(s.dateCompleted !== null)
@@ -59,7 +57,7 @@ export const StudentProfile = ({ loggedInUser }) => {
     }
 
    
-    console.log('stats', stats);
+
 
     return (
     !stats.user?.lastName || isLoaded === false || !user.firstName
@@ -148,8 +146,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                 </div>}
                 <div className="profile-div">
                     <h4>Practice Sessions</h4>
-                    {console.log('dates', dates)};
-                    <HeatMap />
+                    <HeatMap dates={dates}/>
                 </div>
             </section>
         </div>
