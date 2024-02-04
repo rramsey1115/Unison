@@ -1,70 +1,82 @@
 import CalendarHeatmap from 'react-calendar-heatmap';
 import "./HeatMap.css";
 import { useEffect, useState } from 'react';
+import { ScaleLoader } from 'react-spinners';
 
 const today = new Date();
 
 export const HeatMap = ({ dates }) => {
     const [dateValues, setDateValues] = useState([]);
+    const [values, setValues] = useState([]);
 
     useEffect(() => {
-        setDateValues(dates.map(d => formatDates(d)));
+        setDateValues(formatDates(dates))
     }, [dates])
 
-    console.log(dateValues);
+    useEffect(() => {
+        const arr = getRange(180).map(index => {
+            let date = shiftDate(today, -index);
+            
+            let count = dateValues.some(d => {
+                const dateWithoutTime = new Date(d.date);
+                dateWithoutTime.setHours(0, 0, 0, 0);
+            
+                const currentDateWithoutTime = new Date(date);
+                currentDateWithoutTime.setHours(0, 0, 0, 0);
+            
+                return dateWithoutTime.getTime() === currentDateWithoutTime.getTime();
+            }) ? 1 : 0;
+            
+            return {
+                date: date,
+                count: count
+            };
+        });
 
-  const datesValues = getRange(200).map(index => {
-    let date = shiftDate(today, -index);
-    let count = dateValues.includes(date) ? 1 : 0;
-    return {
-      date: date,
-      count: count
-    };
-  });
+        setValues(arr);
+    }, [dateValues])
 
-  const formatDates = (arr) => {
-    for(let a of arr)
-    {
-        return {
-            date: new Date(a),
-        }
+    return (
+    !values.length
+    ?
+        <div className="spinner-container">
+            <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+        </div>
+    :
+        <div className='heat-map-container'>
+            <CalendarHeatmap
+                gutterSize={2} //gap between boxes
+                startDate={shiftDate(today, -180)} //last 180 days
+                endDate={today}
+                values={values}
+                classForValue={value => {
+                    if (value.count === 0) {
+                        return 'color-empty';
+                    }
+                    return 'color-filled';
+                }}
+                onClick={value => alert(`Clicked on value with count: ${value.count}`)}
+            />
+        </div>
+    );
     }
-  }
 
-  
+    function shiftDate(date, numDays) {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() + numDays);
+    return newDate;
+    }
 
-  return (
-    <div className='heat-map-container'>
-        {console.log('dates', dates)}
-        {console.log('datesValues', datesValues)}
-        <CalendarHeatmap
-            gutterSize={2} //gap between boxes
-            startDate={shiftDate(today, -180)} //last 180 days
-            endDate={today}
-            values={datesValues}
-            classForValue={value => {
-                if (value.count === 0) {
-                    return 'color-empty';
-                }
-                return 'color-filled';
-            }}
-            onClick={value => alert(`Clicked on value with count: ${value.count}`)}
-        />
-    </div>
-  );
-}
+    function getRange(count) {
+    return Array.from({ length: count }, (_, i) => i);
+    }
 
-function shiftDate(date, numDays) {
-  const newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + numDays);
-  return newDate;
-}
-
-function getRange(count) {
-  return Array.from({ length: count }, (_, i) => i);
-}
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    const formatDates = (arr) => {
+        var res = [];
+        for(let a of arr)
+        {
+            res.push({date: new Date(a)}) 
+        }
+        return res;
+    }
 

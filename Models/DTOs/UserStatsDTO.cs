@@ -5,6 +5,8 @@ public class UserStatsDTO
     public int UserId { get; set; }
     public UserProfileDTO User { get; set; }
     public int CompletedAssignments { get; set; }
+    public int IncompleteAssignments { get; set; }
+    public int OverdueAssignments { get; set; }
     public int CompletedSessions { get; set; }
     public int TotalTime { get; set; }
     public DateTime? LastSession { get; set; }

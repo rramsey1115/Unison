@@ -35,20 +35,29 @@ public class StatsController : ControllerBase
                 return BadRequest("No User found with given UserId");
             }
 
-            // find list of User sessions
+            // find list of ALL User sessions
             List<Session> UserSessions = _dbContext.Sessions
             .Include(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(ac => ac.Category)
             .OrderByDescending(s => s.DateCompleted)
             .Where(s => s.MusicianId == User.Id).ToList();
 
-            // find list of User assignments 
-            List<Assignment> UserAssignments = _dbContext.Assignments.Include(a => a.Session).Where(a => a.MusicianId == User.Id).ToList();
+            // find list of ALL User assignments 
+            List<Assignment> UserAssignments = _dbContext.Assignments
+            .Include(a => a.Session)
+            .Where(a => a.MusicianId == User.Id)
+            .ToList();
 
             // int showing amount of total completed sessions
-            int CompletedSessions = UserSessions.Count();
+            int CompletedSessions = UserSessions.Where(us => us.DateCompleted != null).Count();
 
             // int showing amount of total completed assignments
-            int CompletedAssignments = UserAssignments.Count();
+            int CompletedAssignments = UserAssignments.Where(a => a.Session.DateCompleted != null).Count();
+
+            // int showing amount of INCOMPLETE assignments
+            int IncompleteAssignments = UserAssignments.Count - CompletedAssignments;
+
+            // int showing OVERDUE assignments
+            int OverdueAssignments = UserAssignments.Where(a => a.DueDate > DateTime.Now && a.Session.DateCompleted != null).Count();
 
             // int showing total amount of time spent practicing 
             var TotalTime = 0;
@@ -145,6 +154,8 @@ public class StatsController : ControllerBase
                 : null
                 },
                 CompletedAssignments = CompletedAssignments,
+                IncompleteAssignments = IncompleteAssignments,
+                OverdueAssignments = OverdueAssignments,
                 CompletedSessions = CompletedSessions,
                 TotalTime = TotalTime,
                 LastSession = LastSession,
