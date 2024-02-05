@@ -5,6 +5,9 @@ import { ScaleLoader } from "react-spinners";
 import { useEffect, useState } from "react";
 import assignIcon from "../../images/assign.png";
 import browseIcon from "../../images/browse.png";
+import userIcon from "../../images/user.png";
+import createIcon from "../../images/create.png";
+import notesIcon from "../../images/notes.png";
 
 export const Home = ({loggedInUser}) => {
     const navigate = useNavigate();
@@ -26,32 +29,45 @@ export const Home = ({loggedInUser}) => {
         <section className="home-container">
 
             <header className="home-header">
-                <h1>Home</h1>
+                {/* <h1>Home</h1> */}
             </header>
             
             <section className="home-main">
 
-                <Card className="home-card" onClick={(e) => navigate('session')}>
-                    <h4>Sessions</h4>
-                </Card>
+                <div className="card-div">
+                    <Card className="home-card" onClick={(e) => navigate('session')}>
+                        <img className="card-img" src={notesIcon} alt="music notes"/>
+                        <h4>Sessions</h4>
+                    </Card>
+                </div>
 
-                <Card className="home-card" onClick={(e) => navigate('session/create')}>
-                    <h4>New Session</h4>
-                </Card>
+                <div className="card-div">
+                    <Card className="home-card" onClick={(e) => navigate('session/create')}>
+                        <img className="card-img" src={createIcon} alt="music notes with plus icon"/>
+                        <h4>New Session</h4>
+                    </Card>
+                </div>
 
-                <Card className="home-card" onClick={(e) => navigate(`/profile/${loggedInUser.id}`)}>
-                    <h4>My Profile</h4>
-                </Card>
+                <div className="card-div">
+                    <Card className="home-card" onClick={(e) => navigate(`/profile/${loggedInUser.id}`)}>
+                        <img className="card-img" src={userIcon} alt="outline of person"/>  
+                        <h4>My Profile</h4>
+                    </Card>
+                </div>
 
-                <Card className="home-card" onClick={(e) => navigate(`/assignments/${loggedInUser.id}`)}>
-                    <img className="card-img" src={assignIcon} alt="paper with items and checkmarks"/>
-                    <h4>Assignments</h4>
-                </Card>
+                <div className="card-div">
+                    <Card className="home-card" onClick={(e) => navigate(`/assignments/${loggedInUser.id}`)}>
+                        <img className="card-img" src={assignIcon} alt="paper with items and checkmarks"/>
+                        <h4>Assignments</h4>
+                    </Card>
+                </div>
 
-                <Card className="home-card" onClick={(e) => navigate('browse/category')}>
-                    <img className="card-img" src={browseIcon} alt="microscope over browser"/>
-                    <h4>Browse</h4>
-                </Card>
+                <div className="card-div">
+                    <Card className="home-card" onClick={(e) => navigate('browse/category')}>
+                        <img className="card-img" src={browseIcon} alt="microscope over browser"/>
+                        <h4>Browse</h4>
+                    </Card>
+                </div>
    
             </section>
 
