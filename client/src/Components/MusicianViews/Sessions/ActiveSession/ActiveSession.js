@@ -44,7 +44,7 @@ export const ActiveSession = ({loggedInUser}) => {
 
             <section className="active-container-form">
                 <header className="active-container-header">
-                    <h1>Active Session</h1>
+                    <h2>Active Session</h2>
                     <h3>Musician: {session.musician?.firstName} {session.musician?.lastName}</h3>
                 </header>
 

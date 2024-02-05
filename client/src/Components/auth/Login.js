@@ -27,7 +27,7 @@ export default function Login({ setLoggedInUser }) {
   return (
     <div className="login-container">
       <div className="login-header">
-        <h1>Login</h1>
+        <h2>Login</h2>
       </div>
       <FormGroup>
         <InputGroup size="md">

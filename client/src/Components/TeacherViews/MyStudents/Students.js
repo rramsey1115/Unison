@@ -26,7 +26,7 @@ export const Students = ({loggedInUser}) => {
         :
         <div className="students-container">
             <div className="students-header">
-                <h1>My Students</h1>
+                <h2>My Students</h2>
             </div>
             <div className="students-body">
                 <Table className="student-table" id="student-table" responsive>

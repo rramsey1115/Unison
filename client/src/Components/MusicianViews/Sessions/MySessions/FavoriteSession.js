@@ -18,7 +18,7 @@ export const FavoriteSessions = () => {
         <div className="favorites-container">
 
             <header className="favorites-header">
-                <h1>FavoriteActivities</h1>
+                <h2>FavoriteActivities</h2>
             </header>
 
             <section className="favorites-main">

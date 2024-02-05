@@ -56,7 +56,7 @@ export const Assignments = ({ loggedInUser }) => {
         loggedInUser.id===studentId || loggedInUser.roles[0]==="Teacher" ?
         (<div className="assignments-container">
             <header className="assignments-header">
-                <h1>{`${student.firstName} ${student.lastName}'s Assignments`}</h1>
+                <h2>{`${student.firstName} ${student.lastName}'s Assignments`}</h2>
                 {loggedInUser.roles[0]==="Teacher" && 
                 <Button 
                     size="md" 

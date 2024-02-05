@@ -29,7 +29,7 @@ export const Home = ({loggedInUser}) => {
         <section className="home-container">
 
             <header className="home-header">
-                {/* <h1>Home</h1> */}
+             
             </header>
             
             <section className="home-main">
