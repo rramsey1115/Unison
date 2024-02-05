@@ -15,7 +15,7 @@ export const getTeacherStudents = (teacherId) => {
 
 // remove teacherId from student
 export const removeTeacherIdFromStudent = (studentId) => {
-    return fetch(`/api/userprofile/remove/${studentId}`, {
+    return fetch(`/api/userprofile/removeteacher/${studentId}`, {
         method: "POST"
     }).then(res => res.json)
 }

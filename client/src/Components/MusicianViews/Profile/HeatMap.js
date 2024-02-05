@@ -61,7 +61,7 @@ export const HeatMap = ({ dates }) => {
         </div>
     :
         <div className='heat-map-container'>
-            <Alert color={practiced===false ? "danger" : "success"} fade isOpen={alert} toggle={onDismiss}>
+            <Alert color={practiced===false ? "danger" : "info"} fade isOpen={alert} toggle={onDismiss}>
                 {selectedDate && practiced===true ? `Practiced on ${selectedDate.toLocaleDateString()}`
                 : selectedDate && `Did not practice on ${selectedDate.toLocaleDateString()}` }
             </Alert>

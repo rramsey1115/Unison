@@ -56,8 +56,6 @@ export const StudentProfile = ({ loggedInUser }) => {
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     }
 
-   
-
 
     return (
     !stats.user?.lastName || isLoaded === false || !user.firstName
@@ -143,11 +141,11 @@ export const StudentProfile = ({ loggedInUser }) => {
                             </tr>
                             <tr>
                                 <th>Top Category</th>
-                                <td>{stats.topCategory.name}</td>
+                                <td>{stats.topCategory?.name}</td>
                             </tr>
                             <tr>
                                 <th>Top Activity</th>
-                                <td>{stats.topActivity.name}</td>
+                                <td>{stats.topActivity?.name}</td>
                             </tr>
                         </tbody>
                     </table>
