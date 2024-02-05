@@ -28,7 +28,7 @@ export const TeacherHome = () => {
         <section className="home-container">
 
             <header className="home-header">
-                <h2>Teacher Dashboard</h2>
+                {/* <h2>Teacher Dashboard</h2> */}
             </header>
             
             <section className="home-main">

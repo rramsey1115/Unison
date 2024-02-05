@@ -63,7 +63,7 @@ export const StudentSessions = ({ loggedInUser }) => {
     :
         <section className="sessions-container">
             <header className="sessions-header">
-                <h1>{student.firstName}'s Sessions</h1>
+                <h2>{student.firstName}'s Sessions</h2>
             </header>
             <section className="sessions-cards">
                 {/* returns card for each session */}

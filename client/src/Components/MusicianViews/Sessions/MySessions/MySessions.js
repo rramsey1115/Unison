@@ -180,7 +180,7 @@ export const MySessions = ({ loggedInUser }) => {
         :
         <section className="sessions-container">
             <header className="sessions-header">
-                <h1>{loggedInUser.firstName}'s Sessions</h1>
+                <h2>{loggedInUser.firstName}'s Sessions</h2>
 
                 <div>
                     {/* filter sessions by favorites only button */}

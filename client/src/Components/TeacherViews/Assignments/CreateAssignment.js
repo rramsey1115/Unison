@@ -84,7 +84,7 @@ export const CreateAssignment = ({ loggedInUser }) => {
         :
         <div className="create-session-container">
             <header className="create-session-header">
-                <h1>Create Assignment</h1>
+                <h2>Create Assignment</h2>
             </header>
             <section className="create-session-form">
                 <header className="session-form-header">

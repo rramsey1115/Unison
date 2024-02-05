@@ -83,7 +83,7 @@ export default function Register({ setLoggedInUser }) {
   return (
     <div className="login-container">
       <div className="login-header">
-        <h1>Sign Up</h1>
+        <h2>Sign Up</h2>
       </div>
 
       <FormGroup>

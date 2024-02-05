@@ -1,13 +1,25 @@
 
 
 /* ----------- nav bar --------------- */
+.container-fluid {
+  background-image: linear-gradient(to right, var(--brightBlue), #3883a0);
+}
+
+
+.navbar {
+  padding: 0px;
+}
+
+#navbar-icon {
+  width: 40px;
+}
 
 #nav-title {
     display: flex;
     flex-direction: row;
     flex-wrap: none;
     align-items: center;
-  }
+}
   
   #nav-title > h3 {
     font-size: 1.25em;
@@ -17,32 +29,33 @@
     text-shadow: 1px 1px 1px #1c3a5b;
   }
   
-  .nav-btn {
+.nav-btn {
     background-color: var(--blue1);
     border: thin solid var(--blue1);
     color: var(--offWhite);
     width: 80px;
     height: 38px;
+    margin: 3px;
     border-radius: 10px;
-    box-shadow: 1px 1px 8px var(--blueGray);
+    box-shadow: 1px 1px 2px var(--blueGray);
+    transition: ease-in-out .3s;
+}
+  
+  .nav-btn:hover {
+    filter: brightness(.8);
+    box-shadow: 1px 1px 2px var(--offWhite);
     transition: ease-in-out .3s;
   }
   
-  .nav-btn:hover {
-    filter: brightness(.75);
-    box-shadow: 1px 1px 14px var(--offWhite);
-    transition: ease-in-out .2s;
-  }
-  
   .nav-btn:focus {
-    box-shadow:inset 2px 2px 4px var(--lightBlue);
-    transition: ease-in-out .2s;
+    box-shadow:inset 1px 1px 3px var(--lightBlue);
+    transition: ease-in-out .3s;
   }
   
-  /* flex navbar only if width over 400px  */
-  @media screen and (min-width: 400px) {
-    .collapse {
-      display: flex;
-      justify-content: space-between;
-    }
+/* flex navbar only if width over 400px  */
+@media screen and (min-width: 400px) {
+  .collapse {
+    display: flex;
+    justify-content: space-between;
   }
+}
