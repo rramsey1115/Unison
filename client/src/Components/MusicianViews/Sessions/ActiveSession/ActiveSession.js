@@ -40,7 +40,6 @@ export const ActiveSession = ({loggedInUser}) => {
         }
     }, [activityTimers]);
     
-    
     const getAndSetSessionById = (sessionId) => {
         getSessionById(sessionId).then(setSession);
     }
