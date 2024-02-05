@@ -118,12 +118,20 @@ export const StudentProfile = ({ loggedInUser }) => {
                     <table className="about-table">
                         <tbody>
                             <tr>
-                                <th>Total Sessions</th>
+                                <th>Completed Sessions</th>
                                 <td>{stats.completedSessions}</td>
                             </tr>
                             <tr>
-                                <th>Total Assignments</th>
+                                <th>Completed Assignments</th>
                                 <td>{stats.completedAssignments}</td>
+                            </tr>
+                            <tr>
+                                <th>Incomplete Assignments</th>
+                                <td>{stats.incompleteAssignments}</td>
+                            </tr>
+                            <tr>
+                                <th>Overdue Assignments</th>
+                                <td>{stats.overdueAssignments}</td>
                             </tr>
                             <tr>
                                 <th>Total Time</th>

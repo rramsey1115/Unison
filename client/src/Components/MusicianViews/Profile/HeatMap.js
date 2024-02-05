@@ -2,18 +2,25 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import "./HeatMap.css";
 import { useEffect, useState } from 'react';
 import { ScaleLoader } from 'react-spinners';
+import { Alert } from 'reactstrap';
 
 const today = new Date();
 
 export const HeatMap = ({ dates }) => {
     const [dateValues, setDateValues] = useState([]);
     const [values, setValues] = useState([]);
+    const [alert, setAlert] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [practiced, setPracticed] = useState(null);
+
+    const onDismiss = () => setAlert(false);
 
     useEffect(() => {
         setDateValues(formatDates(dates))
     }, [dates])
 
     useEffect(() => {
+        // compares existing practice dates to an array of 180 dates... matches heatMap length;
         const arr = getRange(180).map(index => {
             let date = shiftDate(today, -index);
             
@@ -32,9 +39,15 @@ export const HeatMap = ({ dates }) => {
                 count: count
             };
         });
-
         setValues(arr);
-    }, [dateValues])
+    }, [dateValues]);
+
+    const handleClick = (value) => {
+        setSelectedDate(value.date);
+        if(value.count === 0){setPracticed(false)}
+        if(value.count === 1){setPracticed(true)}
+        setAlert(true);
+      };
 
     return (
     !values.length
@@ -44,6 +57,10 @@ export const HeatMap = ({ dates }) => {
         </div>
     :
         <div className='heat-map-container'>
+            <Alert color={practiced===false ? "danger" : "success"} fade isOpen={alert} toggle={onDismiss}>
+                {selectedDate && practiced===true ? `Practiced on ${selectedDate.toLocaleDateString()}`
+                : selectedDate && `Did not practice on ${selectedDate.toLocaleDateString()}` }
+            </Alert>
             <CalendarHeatmap
                 gutterSize={2} //gap between boxes
                 startDate={shiftDate(today, -180)} //last 180 days
@@ -55,28 +72,27 @@ export const HeatMap = ({ dates }) => {
                     }
                     return 'color-filled';
                 }}
-                onClick={value => alert(`Clicked on value with count: ${value.count}`)}
+                onClick={(e) => handleClick(e)}
             />
         </div>
     );
-    }
+}
 
-    function shiftDate(date, numDays) {
+function shiftDate(date, numDays) {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + numDays);
     return newDate;
-    }
+}
 
-    function getRange(count) {
+function getRange(count) {
     return Array.from({ length: count }, (_, i) => i);
-    }
+}
 
-    const formatDates = (arr) => {
-        var res = [];
-        for(let a of arr)
-        {
-            res.push({date: new Date(a)}) 
-        }
-        return res;
+const formatDates = (arr) => {
+    var res = [];
+    for(let a of arr)
+    {
+        res.push({date: new Date(a)}) 
     }
-
+    return res;
+}
