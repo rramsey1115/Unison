@@ -40,7 +40,7 @@ export const Students = ({loggedInUser}) => {
                         <thead>
                             <tr className="table-secondary">
                                 <th>Name</th>
-                                {/* <th>Email</th> */}
+                                <th>Email</th>
                                 <th>Last Session</th>
                                 <th>Sessions</th>
                                 <th>Stats</th>
@@ -53,7 +53,7 @@ export const Students = ({loggedInUser}) => {
                                 return(
                                     <tr key={s.id} style={{padding:20}}>
                                         <td>{`${s.firstName} ${s.lastName}`}</td>
-                                        {/* <td>{s.email}</td> */}
+                                        <td>{s.email}</td>
                                         <td><LastSession studentId={s.id}/></td>
                                         <td>
                                             <Button 

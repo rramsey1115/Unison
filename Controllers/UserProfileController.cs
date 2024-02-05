@@ -37,7 +37,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("withroles")]
-    [Authorize(Roles = "Teacher")]
+    [Authorize]
     public IActionResult GetWithRoles()
     {
         return Ok(_dbContext.UserProfiles
@@ -167,7 +167,6 @@ public class UserProfileController : ControllerBase
         }
     }
 
-
     [HttpGet("musicians")]
     [Authorize(Roles = "Teacher")]
     public IActionResult GetMusicians()
@@ -234,6 +233,7 @@ public class UserProfileController : ControllerBase
             found.Address = obj.Address;
             found.IdentityUser.Email = obj.Email;
             found.IdentityUser.UserName = obj.UserName;
+            if (obj.TeacherId > 0) { found.TeacherId = obj.TeacherId; };
 
             _dbContext.SaveChanges();
 

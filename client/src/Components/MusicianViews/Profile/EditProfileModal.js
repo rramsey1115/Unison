@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import "./Profile.css";
-import { updateUserProfile } from '../../../Managers/profileManager';
+import { getUsersWithRoles, updateUserProfile } from '../../../Managers/profileManager';
 
 export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
     const [modal, setModal] = useState(false);
     const [updatedUser, setUpdatedUser] = useState({});
+    const [teachers, setTeachers] = useState([]);
 
     useEffect(() => {
         if(user.id)
@@ -17,10 +18,22 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                 lastName: user.lastName, 
                 address: user.address,
                 email: user.email,
-                userName: user.userName
+                userName: user.userName,
+                teacherId: user.teacherId
             })
         }
     }, [user])
+
+    useEffect(() => {
+        getAndSetTeachers();
+    }, [])
+
+    const getAndSetTeachers = () => {
+        getUsersWithRoles().then(data => {
+          var filteredArr = data.filter(d => d.roles[0] == "Teacher");
+          setTeachers(filteredArr);
+        });
+    }
 
     const toggleModal = () => {
         setModal(!modal)
@@ -114,6 +127,23 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                         }}
                     />
                 </label>
+
+                {user.teacherId === null ? 
+                <label className='modal-label'>Teacher
+                    <select 
+                        className='modal-select' 
+                        defaultValue={updatedUser.teacherId}
+                        onChange={(e) => {
+                            const copy = {...updatedUser}
+                            copy.teacherId = e.target.value * 1
+                            setUpdatedUser(copy);
+                        }}
+                    >
+                        <option>Select</option>
+                        {teachers.map(t => <option key={t.id} value={t.id}>{t.firstName} {t.lastName}</option>)}
+                    </select>
+                </label>
+                : null}
 
             </ModalBody>
             : 
