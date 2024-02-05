@@ -57,6 +57,7 @@ export const Assignments = ({ loggedInUser }) => {
         (<div className="assignments-container">
             <header className="assignments-header">
                 <h1>{`${student.firstName} ${student.lastName}'s Assignments`}</h1>
+                {loggedInUser.roles[0]==="Teacher" && 
                 <Button 
                     size="md" 
                     color="info" 
@@ -64,6 +65,7 @@ export const Assignments = ({ loggedInUser }) => {
                     onClick={(e) => navigate('/assignments/create')}
                 >New
                 </Button>
+                }
             </header>
             <section className="assignments-body">
                 {assignments.map(a => {

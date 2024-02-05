@@ -39,13 +39,13 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
         Edit Profile
       </Button>
       <Modal isOpen={modal} toggle={toggleModal} style={{color:'black'}} backdrop="static">
-        <ModalHeader color='secondary' toggle={toggleModal}>
+        <ModalHeader toggle={toggleModal}>
             Edit User Profile
         </ModalHeader>
         {loggedInUser?.roles[0] === "Teacher" || loggedInUser.id === user.id
         ?    <ModalBody className='modal-body'>
             
-                <label className='modal-label'>First Name
+                <label className='modal-label'>First
                     <input
                         required
                         id='first-name-input'
@@ -59,7 +59,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label className='modal-label'>Last Name
+                <label className='modal-label'>Last
                     <input
                         required
                         id='last-name-input'
@@ -129,7 +129,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                 updatedUser.userName &&
                 updatedUser.identityUserId
                 ?
-                    <Button color="secondary" onClick={(e) => handleSubmit(e)}>
+                    <Button color="info" size='md' onClick={(e) => handleSubmit(e)}>
                         Update Profile
                     </Button> 
                 : null}
