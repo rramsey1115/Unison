@@ -25,15 +25,16 @@ export const HeatMap = ({ dates }) => {
             let date = shiftDate(today, -index);
             
             let count = dateValues.some(d => {
+                // sets all dateTimes to base time, since we only care about the year, month, day
                 const dateWithoutTime = new Date(d.date);
                 dateWithoutTime.setHours(0, 0, 0, 0);
             
                 const currentDateWithoutTime = new Date(date);
                 currentDateWithoutTime.setHours(0, 0, 0, 0);
-            
+                // compares dates to see if a practice session occured on that date
                 return dateWithoutTime.getTime() === currentDateWithoutTime.getTime();
             }) ? 1 : 0;
-            
+            //object needed for HeatCalendarMap - has ability to show multiple values per date, but we only care about 1 or 0
             return {
                 date: date,
                 count: count
@@ -43,9 +44,12 @@ export const HeatMap = ({ dates }) => {
     }, [dateValues]);
 
     const handleClick = (value) => {
+        // sets the date for alert
         setSelectedDate(value.date);
+        // sets the color for alert
         if(value.count === 0){setPracticed(false)}
         if(value.count === 1){setPracticed(true)}
+        //opens alert
         setAlert(true);
       };
 
