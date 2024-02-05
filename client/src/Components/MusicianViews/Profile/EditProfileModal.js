@@ -39,13 +39,13 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
         Edit Profile
       </Button>
       <Modal isOpen={modal} toggle={toggleModal} style={{color:'black'}} backdrop="static">
-        <ModalHeader toggle={toggleModal}>
+        <ModalHeader color='secondary' toggle={toggleModal}>
             Edit User Profile
         </ModalHeader>
         {loggedInUser?.roles[0] === "Teacher" || loggedInUser.id === user.id
         ?    <ModalBody className='modal-body'>
             
-                <label>First Name
+                <label className='modal-label'>First Name
                     <input
                         required
                         id='first-name-input'
@@ -59,7 +59,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Last Name
+                <label className='modal-label'>Last Name
                     <input
                         required
                         id='last-name-input'
@@ -73,7 +73,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Address
+                <label className='modal-label'>Address
                     <input
                         required
                         id='address-input'
@@ -87,7 +87,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Email
+                <label className='modal-label'>Email
                     <input
                         required
                         id='email-input'
@@ -101,7 +101,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Username
+                <label className='modal-label'>Username
                     <input
                         required
                         id='username-input'

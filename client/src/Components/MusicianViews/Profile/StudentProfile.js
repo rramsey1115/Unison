@@ -153,7 +153,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                     </table>
                 </div>}
                 <div className="profile-div">
-                    <h4>Practice Sessions</h4>
+                    <h4>Past 90 Days</h4>
                     <HeatMap dates={dates}/>
                 </div>
             </section>

@@ -21,7 +21,7 @@ export const HeatMap = ({ dates }) => {
 
     useEffect(() => {
         // compares existing practice dates to an array of 180 dates... matches heatMap length;
-        const arr = getRange(180).map(index => {
+        const arr = getRange(90).map(index => {
             let date = shiftDate(today, -index);
             
             let count = dateValues.some(d => {
@@ -67,7 +67,7 @@ export const HeatMap = ({ dates }) => {
             </Alert>
             <CalendarHeatmap
                 gutterSize={2} //gap between boxes
-                startDate={shiftDate(today, -180)} //last 180 days
+                startDate={shiftDate(today, -90)} //last 180 days
                 endDate={today}
                 values={values}
                 classForValue={value => {

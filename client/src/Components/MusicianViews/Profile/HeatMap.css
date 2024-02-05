@@ -1,21 +1,18 @@
 .heat-map-container {
     width: inherit;
+    min-width: 360px;
     height: fit-content;
-    margin: 20px auto 20px 20px;
+    margin: 20px auto;
+    transition: all ease-in-out .3s;
 }
 
-/*
- * react-calendar-heatmap styles
- *
- * All of the styles in this file are optional and configurable!
- * The github and gitlab color scales are provided for reference.
- */
-
  .react-calendar-heatmap {
-    width: 60%;
-    min-width: 330px;
+    width: 50%;
+    min-width: 360px;
     height: fit-content;
     display: block;
+    margin: 5px auto;
+    transition: all ease-in-out .3s;
  }
 
  .react-calendar-heatmap text {
@@ -28,39 +25,18 @@
   }
   
   .react-calendar-heatmap rect:hover {
-    stroke: #656565;
+    stroke: white;
     stroke-width: 1px;
+    transition: all ease-in-out .2s;
   }
   
   /*
-   * Default color scale
+   * heatmap squares Fill colors
    */
-  
   .react-calendar-heatmap .color-empty {
-    fill: transparent;
+    fill: rgba(254, 254, 254, 0.11);
   }
   
   .react-calendar-heatmap .color-filled {
-    fill: var(--brightBlue);
-  }
-
-  
-  /*
-   * color scale
-   */
-  
-  .react-calendar-heatmap .color-0 {
-    fill: #ededed;
-  }
-  .react-calendar-heatmap .color-1 {
-    fill: #acd5f2;
-  }
-  .react-calendar-heatmap .color-2 {
-    fill: #7fa8d1;
-  }
-  .react-calendar-heatmap .color-3 {
-    fill: var(--brightBlue);
-  }
-  .react-calendar-heatmap .color-4 {
     fill: var(--brightBlue);
   }

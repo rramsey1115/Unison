@@ -148,9 +148,12 @@
 }
 
 /*  add a new activity modal/popup window */
+.modal-content {
+    box-shadow: 0px 0px 2px var(--lightBlue);
+}
 
 .modal-body {
-    background-color: var(--offWhite);
+    background-color: var(--white);
     border-bottom: thin solid var(--lightBlue);
     border-top: thin solid var(--lightBlue);
     display: flex;
@@ -160,13 +163,28 @@
     height: fit-content;
 }
 
-.modal-header {
-    background-color: var(--offWhite);
+.modal-label {
+    width: 80%;
+    min-width: 200px;
+    margin: 10px auto;
+    text-align: center;
 }
 
-.modal-footer {
-    background-color: var(--offWhite);
+.modal-label > input {
+    margin: 0px 6px;
 }
+
+.modal-label > #text {
+    width: 100px;
+}
+
+/* .modal-header {
+    background-color: whitesmoke;
+} */
+
+/* .modal-footer {
+    background-color: var(--white);
+} */
 
 #activity-name-input {
     width: 70%;
