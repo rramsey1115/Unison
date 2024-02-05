@@ -28,11 +28,11 @@
     width: 96%;
     padding: 4px;
     margin: 2px auto;
-    border-top: thin solid var(--lightBlue);
+    border-top: thin solid var(--brightBlue);
 }
 
 .active-activity:last-child {
-    border-bottom: thin solid var(--lightBlue);
+    border-bottom: thin solid var(--brightBlue);
 }
 
 .active-activity > p {
@@ -94,4 +94,10 @@
 #active-btn-exit:hover {
     transition: ease-in-out .2s;
     filter: brightness(.75);
+}
+
+
+.timer-div {
+    width: 95%;
+    margin: 20px auto;
 }
