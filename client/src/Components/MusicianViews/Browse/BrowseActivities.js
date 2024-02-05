@@ -20,7 +20,23 @@ export const BrowseActivities = ({loggedInUser}) => {
     }, [categoryId, filterText]);
 
     const getAndSetActivitiesByCategoryId = (id) => {
-        getActivityByCategoryId(id).then(setActivities);
+        getActivityByCategoryId(id).then(data => {
+            var arr = [];
+            if(filterText.length > 1)
+            {
+                for(let d of data)
+                {
+                    if(d.details.toLowerCase().includes(filterText.toLowerCase()) || d.name.toLowerCase().includes(filterText.toLowerCase()))
+                    {
+                        arr.push(d);
+                    }
+                }
+                setActivities(arr);
+            }
+            else{
+                setActivities(data);
+            } 
+        });
     }
 
     const getAndSetCategoryById = (id) => {

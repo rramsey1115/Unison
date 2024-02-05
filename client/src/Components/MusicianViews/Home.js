@@ -3,6 +3,8 @@ import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import { useEffect, useState } from "react";
+import assignIcon from "../../images/assign.png";
+import browseIcon from "../../images/browse.png";
 
 export const Home = ({loggedInUser}) => {
     const navigate = useNavigate();
@@ -38,14 +40,16 @@ export const Home = ({loggedInUser}) => {
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate(`/profile/${loggedInUser.id}`)}>
-                    <h4>Profile</h4>
+                    <h4>My Profile</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate(`/assignments/${loggedInUser.id}`)}>
+                    <img className="card-img" src={assignIcon} alt="paper with items and checkmarks"/>
                     <h4>Assignments</h4>
                 </Card>
 
                 <Card className="home-card" onClick={(e) => navigate('browse/category')}>
+                    <img className="card-img" src={browseIcon} alt="microscope over browser"/>
                     <h4>Browse</h4>
                 </Card>
    
