@@ -246,4 +246,27 @@ public class UserProfileController : ControllerBase
         }
     }
 
+
+    [HttpPost("removeteacher/{id}")]
+    [Authorize(Roles = "Teacher")]
+    public IActionResult RemoveTeacherIdFromStudent(int id)
+    {
+        try
+        {
+            var found = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);
+            if(found == null)
+            {
+                return NotFound("No user profile found with given id");
+            }
+
+            found.TeacherId = null;
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Bad data sent: {ex}");
+        }
+    }
 }

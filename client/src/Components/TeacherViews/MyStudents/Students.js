@@ -1,10 +1,11 @@
 import { Button, Table } from "reactstrap"
 import "./Students.css";
 import { useEffect, useState } from "react";
-import { getTeacherStudents } from "../../../Managers/profileManager";
+import { getTeacherStudents, removeTeacherIdFromStudent } from "../../../Managers/profileManager";
 import { LastSession } from "./LastSession";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
+import { ConfirmRemoveStudentModal } from "./ConfirmRemoveStudentModal";
 
 export const Students = ({loggedInUser}) => {
     const [students, setStudents] = useState([]);
@@ -13,6 +14,12 @@ export const Students = ({loggedInUser}) => {
 
     const getAndSetStudents = () => {
         getTeacherStudents(loggedInUser.id).then(setStudents);
+    }
+
+    const handleRemoveStudent = async (e) => {
+        e.preventDefault();
+        await removeTeacherIdFromStudent(e.target.value * 1);
+        await getAndSetStudents();
     }
 
     const navigate = useNavigate();
@@ -79,12 +86,7 @@ export const Students = ({loggedInUser}) => {
                                             </Button>
                                         </td>
                                         <td>
-                                            <Button 
-                                                color="secondary" 
-                                                size="sm" 
-                                                className="student-table-btn"
-                                            >Remove
-                                            </Button>
+                                            <ConfirmRemoveStudentModal handleRemoveStudent={handleRemoveStudent} studentId={s.id} />
                                         </td>
                                     </tr>
                                 )

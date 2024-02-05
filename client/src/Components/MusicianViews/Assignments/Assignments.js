@@ -48,9 +48,6 @@ export const Assignments = ({ loggedInUser }) => {
     ? 
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
-            {loggedInUser.id!==studentId || loggedInUser.roles[0]!=="Teacher" ?
-            <h5 style={{margin:"40px auto", textAlign:"center"}}>Not Authorized to View These Assignments</h5>
-        :null}
         </div>
     :
         loggedInUser.id===studentId || loggedInUser.roles[0]==="Teacher" ?
