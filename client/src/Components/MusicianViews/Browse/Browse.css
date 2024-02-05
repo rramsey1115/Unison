@@ -80,3 +80,33 @@
     margin: 10px auto;
     border-radius: 5px;
 }
+
+/*  boostrap accordion styling */
+.accordion {
+    border: 0;
+    box-shadow: 1px 1px 4px var(--brightBlue);
+    border-radius: 5px;
+    /* box-shadow: inset 1px 1px 1px var(--brightBlue); */
+}
+
+
+.accordion-item {
+    background-color: #0000001d;
+    color: white;
+    border: thin solid var(--lightBlue);
+    /* box-shadow: 2px 2px 2px 2px var(--brightBlue); */
+}
+
+.accordion-button {
+    background-color: #0000001d;
+    color: white;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--brightBlue);
+    color: white;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}

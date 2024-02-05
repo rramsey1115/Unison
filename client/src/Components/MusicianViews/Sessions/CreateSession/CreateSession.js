@@ -60,7 +60,7 @@ export const CreateSession = ({loggedInUser}) => {
         <div className="create-session-container">
 
             <header className="create-session-header">
-                <h1>Create Session</h1>
+                <h2>Create Session</h2>
             </header>
 
             <section className="create-session-form">
