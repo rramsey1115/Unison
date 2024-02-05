@@ -65,3 +65,20 @@ body {
   align-items: center;
   margin: 10vh auto;
 }
+
+
+/* ------- scroll bar styling --------- */
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  background-color: var(--blue1);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--brightBlue);
+  border-radius: 4px;
+}

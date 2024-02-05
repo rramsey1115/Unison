@@ -37,7 +37,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("withroles")]
-    [Authorize]
+    // [Authorize]
     public IActionResult GetWithRoles()
     {
         return Ok(_dbContext.UserProfiles
