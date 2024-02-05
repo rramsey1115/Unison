@@ -1,5 +1,7 @@
 UNISON
 ================
+UNISON empowers musicians to optimize practice sessions with features like session repetition, goal-setting, and personalized timelines. Unison also includes robust tools for teachers, streamlining student management, assignment creation, and progress tracking. The collaborative platform fosters communication between musicians and teachers, creating a supportive community within music education.
+
 This full-stack application was built as my Full-Stack Capstone project for Nashville Software School's Web Development Program.
 
 Built with React on the front-end, .NET framework on the back-end, and PostgreSQL for data management, UNISON represents a comprehensive project where I planned and implemented every aspect. This includes the wireframe, Entity Relationship Diagram (ERD), Project Board, User Stories, and GitHub branch management for each feature.
