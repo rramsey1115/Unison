@@ -29,11 +29,11 @@ export const Students = ({loggedInUser}) => {
                 <h1>My Students</h1>
             </div>
             <div className="students-body">
-                <Table className="student-table" id="student-table" hover responsive>
+                <Table className="student-table" id="student-table" responsive>
                         <thead>
                             <tr className="table-secondary">
                                 <th>Name</th>
-                                <th>Email</th>
+                                {/* <th>Email</th> */}
                                 <th>Last Session</th>
                                 <th>Sessions</th>
                                 <th>Stats</th>
@@ -46,7 +46,7 @@ export const Students = ({loggedInUser}) => {
                                 return(
                                     <tr key={s.id} style={{padding:20}}>
                                         <td>{`${s.firstName} ${s.lastName}`}</td>
-                                        <td>{s.email}</td>
+                                        {/* <td>{s.email}</td> */}
                                         <td><LastSession studentId={s.id}/></td>
                                         <td>
                                             <Button 

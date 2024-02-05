@@ -24,7 +24,7 @@ export const LastSession = ({studentId}) => {
         ? <p>{"--/--/----"}</p> 
             // if the last practice session was more than 7 days ago, make the text color red
         : (new Date(lastSession.dateCompleted).getTime() < (Date.now() - 7 * 24 * 60 * 60 * 1000)) ?
-            <p style={{color:"red"}}>{new Date(lastSession.dateCompleted).toLocaleDateString()}</p>
-        : <p>{new Date(lastSession.dateCompleted).toLocaleDateString()}</p>
+            <p style={{color:"red", margin:0}}>{new Date(lastSession.dateCompleted).toLocaleDateString()}</p>
+        : <p style={{margin:0}}>{new Date(lastSession.dateCompleted).toLocaleDateString()}</p>
     );
 }
