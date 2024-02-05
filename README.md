@@ -2,30 +2,26 @@ UNISON
 ================
 This full-stack application was built as my Full-Stack Capstone project for Nashville Software School's Web Development Program.
 
-This project was built using React on the front-end, .NET framework on the back-end, and data managed using PostgreSQL.
+Built with React on the front-end, .NET framework on the back-end, and PostgreSQL for data management, UNISON represents a comprehensive project where I planned and implemented every aspect. This includes the wireframe, Entity Relationship Diagram (ERD), Project Board, User Stories, and GitHub branch management for each feature.
 
-I planned and implemented all aspects of this project including the wireframe, ERD, Project Board, User-Stories, and GitHub branch management for each feature.
+I successfully achieved my Minimally Viable Product (MVP) by the end of week 1, providing ample time to surpass minimal requirements. Key accomplishments include implementing CRUD functionality in three different areas of the application and creating a "heatmap" to visualize users' practice frequency.
 
-I was able to create my Minimally Viable Product (MVP) at the end of week 1. Allowing me time to expand beyond the minimal requirements such as achieving CRUD functionality in 3 different areas of my application, and creating a "heatmap" to show user's pratice frequency.
-
-This was a great learning experience for me, and represents how much I was able to learn in 6 quick months. When I started this course, I was a beginner who had never written a line of code.
-
-I have just scratched the surface, and can't wait to build better and more powerful applications in the future.
+This was a great learning experience for me, and represents how much I was able to learn in 6 quick months. When I started this course, I was a beginner who had never written a line of code. I have just scratched the surface, and can't wait to build better and more powerful applications in the future.
 
 
 Features
 ============
-Only logged in users are able to view the application
+Only logged in users can access the application
 Anyone can create an account, with or without an assigned teacher
-Once logged in, Musicians and Teachers are routed differently based on Roles via ReactRouterDOM 
+Musicians and Teachers are routed differently based on Roles via ReactRouterDOM.
 
 Musicians are able to:
 - View all previous practice sessions
-- Filter all sessions by favorite
-- Keyword search all practice sessions
+- Filter sessions by favorites
+- Perform keyword searches on all practice sessions
 - Add comments to previous sessions
-- Create new practice sessions by building timeline of activities
-- Carry out a practice sessions with detailed goals and timelines
+- Create new practice sessions by building a timeline of activities
+- Execute a practice session with detailed goals and timelines
 - Repeat previous practice sessions
 - Favorite/Unfavorite pratice sessions
 - Delete previous practice sessions
