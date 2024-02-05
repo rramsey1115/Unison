@@ -34,7 +34,7 @@ export const EditActivityModal = ({activityId, categoryId, getAndSetActivitiesBy
 
     return (
     <div>
-      <Button id="edit-category-btn" className="create-btn" color='info' size='sm' onClick={toggleModal}>
+      <Button id="edit-category-btn" className="edit-activity-btn" color='info' size='sm' onClick={toggleModal}>
         Edit
       </Button>
       <Modal isOpen={modal} toggle={toggleModal} style={{color:'black'}} backdrop="static">
