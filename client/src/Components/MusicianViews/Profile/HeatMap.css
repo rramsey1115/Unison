@@ -1,0 +1,46 @@
+.heat-map-container {
+    width: inherit;
+    min-width: 360px;
+    height: fit-content;
+    margin: 20px auto;
+    transition: all ease-in-out .3s;
+}
+
+ .react-calendar-heatmap {
+    width: 50%;
+    min-width: 360px;
+    height: fit-content;
+    display: block;
+    margin: 5px auto;
+    transition: all ease-in-out .3s;
+ }
+
+ .react-calendar-heatmap text {
+    font-size: 8px;
+    fill: var(--white);
+  }
+  
+  .react-calendar-heatmap .react-calendar-heatmap-small-text {
+    font-size: 6px;
+  }
+  
+  .react-calendar-heatmap rect:hover {
+    stroke: white;
+    stroke-width: 1px;
+    transition: all ease-in-out .2s;
+  }
+  
+  /*
+   * heatmap squares Fill colors
+   */
+  .react-calendar-heatmap .color-empty {
+    fill: rgba(254, 254, 254, 0.11);
+  }
+  
+  .react-calendar-heatmap .color-filled {
+    fill: var(--brightBlue);
+  }
+
+  /*  alert div container styling */
+
+  

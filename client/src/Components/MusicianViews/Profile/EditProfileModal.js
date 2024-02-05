@@ -45,7 +45,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
         {loggedInUser?.roles[0] === "Teacher" || loggedInUser.id === user.id
         ?    <ModalBody className='modal-body'>
             
-                <label>First Name
+                <label className='modal-label'>First
                     <input
                         required
                         id='first-name-input'
@@ -59,7 +59,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Last Name
+                <label className='modal-label'>Last
                     <input
                         required
                         id='last-name-input'
@@ -73,7 +73,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Address
+                <label className='modal-label'>Address
                     <input
                         required
                         id='address-input'
@@ -87,7 +87,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Email
+                <label className='modal-label'>Email
                     <input
                         required
                         id='email-input'
@@ -101,7 +101,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                     />
                 </label>
 
-                <label>Username
+                <label className='modal-label'>Username
                     <input
                         required
                         id='username-input'
@@ -129,7 +129,7 @@ export const EditProfileModal = ({ user, loggedInUser, getAndSetUser}) => {
                 updatedUser.userName &&
                 updatedUser.identityUserId
                 ?
-                    <Button color="secondary" onClick={(e) => handleSubmit(e)}>
+                    <Button color="info" size='md' onClick={(e) => handleSubmit(e)}>
                         Update Profile
                     </Button> 
                 : null}

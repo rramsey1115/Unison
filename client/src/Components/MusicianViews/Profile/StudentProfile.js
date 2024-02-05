@@ -5,28 +5,45 @@ import { ScaleLoader } from "react-spinners";
 import { getStatsByUserId } from "../../../Managers/statsManager";
 import { EditProfileModal } from "./EditProfileModal";
 import { getUserById } from "../../../Managers/profileManager";
+import { HeatMap } from "./HeatMap";
 
 export const StudentProfile = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
     const [stats, setStats] = useState({});
     const [user, setUser] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
+    const [dates, setDates] = useState([]);
 
     useEffect(() => {
         if(studentId > 0)
         { 
             getAndSetUser(studentId);
-            getandsetStats(studentId) 
+            getandsetStats(studentId); 
         }
 
         setTimeout(() => {
             setIsLoaded(true);
         }, 1500);
-
     }, [studentId]);
+
+    useEffect(() => {getAndSetDates()}, [stats]);
 
     const getandsetStats = (id) => {
         getStatsByUserId(id).then(setStats);
+    }
+
+    const getAndSetDates = () => {
+        var arr = [];
+        if(stats.userSessions?.length > 0)
+        {
+            stats.userSessions.map(s => {
+                if(s.dateCompleted !== null)
+                {
+                    arr.push(s.dateCompleted)
+                }
+            });
+            setDates(arr);
+        }
     }
 
     const getAndSetUser = (id) => {
@@ -38,6 +55,9 @@ export const StudentProfile = ({ loggedInUser }) => {
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     }
+
+   
+
 
     return (
     !stats.user?.lastName || isLoaded === false || !user.firstName
@@ -52,15 +72,15 @@ export const StudentProfile = ({ loggedInUser }) => {
             </header>
 
             <section className="profile-body">
-                <div className="profile-about">
-                    <div className="profile-about-header">
-                        <h3>About</h3>
+                <div className="profile-div">
+                    <div className="profile-div-header">
+                        <h4>About</h4>
                         {user.id === loggedInUser.id || loggedInUser.id === user.teacherId
                         ? <EditProfileModal loggedInUser={loggedInUser} user={user} getAndSetUser={getAndSetUser}/>
                         : null}
                     </div>
                     <table className="about-table">
-                        <tbody className="about-table">
+                        <tbody>
                             <tr>
                                 <th>Email</th>
                                 <td>{user.email}</td>
@@ -86,24 +106,32 @@ export const StudentProfile = ({ loggedInUser }) => {
                 {/* visible if looking at a teacher's profile */}
                 {user.roles && user.roles[0] !== "Musician"
                 ?<div className="profile-teacher-div">
-                    <h3>Teacher Stats</h3>
+                    <h4>Teacher Stats</h4>
                         <ul>
                             <li>Total Students</li>
                             <li>???</li>
                         </ul>
                 </div>
                 // visible if viewing a student's profile
-                :<div className="profile-stats">
-                    <h3>Practice Stats</h3>
-                    <table className="stats-table">
+                :<div className="profile-div">
+                    <h4>Practice Stats</h4>
+                    <table className="about-table">
                         <tbody>
                             <tr>
-                                <th>Total Sessions</th>
+                                <th>Completed Sessions</th>
                                 <td>{stats.completedSessions}</td>
                             </tr>
                             <tr>
-                                <th>Total Assignments</th>
+                                <th>Completed Assignments</th>
                                 <td>{stats.completedAssignments}</td>
+                            </tr>
+                            <tr>
+                                <th>Incomplete Assignments</th>
+                                <td>{stats.incompleteAssignments}</td>
+                            </tr>
+                            <tr>
+                                <th>Overdue Assignments</th>
+                                <td>{stats.overdueAssignments}</td>
                             </tr>
                             <tr>
                                 <th>Total Time</th>
@@ -123,10 +151,12 @@ export const StudentProfile = ({ loggedInUser }) => {
                             </tr>
                         </tbody>
                     </table>
-                    <h5>Graph??</h5>
                 </div>}
+                <div className="profile-div">
+                    <h4>Past 90 Days</h4>
+                    <HeatMap dates={dates}/>
+                </div>
             </section>
-
         </div>
     )
 }

@@ -46,7 +46,7 @@ export const BrowseActivities = ({loggedInUser}) => {
     :
         <div className="browse-container">
             <header className="browse-header">
-                <h1>{category.name}</h1>
+                <h2>{category.name}</h2>
                 <h5>{category.details}</h5>
                 <div className="header-div">
                     <CreateActivityModal categoryId={categoryId} getAndSetActivities={getAndSetActivitiesByCategoryId} loggedInUser={loggedInUser}/>

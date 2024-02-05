@@ -44,16 +44,20 @@ export const Assignments = ({ loggedInUser }) => {
     }
 
     return (
-    !student.firstName || !assignments || !comments || !studentId || loggedInUser.id!==studentId
+    !student.firstName || !assignments || !comments || !studentId
     ? 
         <div className="spinner-container">
             <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
-            {loggedInUser.id!==studentId && <h5 style={{margin:"40px auto", textAlign:"center"}}>Not Authorized to View These Assignments</h5>}
+            {loggedInUser.id!==studentId || loggedInUser.roles[0]!=="Teacher" ?
+            <h5 style={{margin:"40px auto", textAlign:"center"}}>Not Authorized to View These Assignments</h5>
+        :null}
         </div>
     :
-    (<div className="assignments-container">
+        loggedInUser.id===studentId || loggedInUser.roles[0]==="Teacher" ?
+        (<div className="assignments-container">
             <header className="assignments-header">
                 <h1>{`${student.firstName} ${student.lastName}'s Assignments`}</h1>
+                {loggedInUser.roles[0]==="Teacher" && 
                 <Button 
                     size="md" 
                     color="info" 
@@ -61,6 +65,7 @@ export const Assignments = ({ loggedInUser }) => {
                     onClick={(e) => navigate('/assignments/create')}
                 >New
                 </Button>
+                }
             </header>
             <section className="assignments-body">
                 {assignments.map(a => {
@@ -144,5 +149,15 @@ export const Assignments = ({ loggedInUser }) => {
                 )} 
             </section>
         </div>)
+        :
+        <div className="spinner-container">
+            <ScaleLoader color="#58b7dd" height={50} margin={3} radius={2} width={5} />
+                
+            <h5 style={{margin:"40px auto", textAlign:"center"}}>Not Authorized to View These Assignments</h5>
+        </div>
+
+
+
+        
     );
 }

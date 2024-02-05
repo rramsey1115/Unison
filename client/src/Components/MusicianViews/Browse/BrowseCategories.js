@@ -55,7 +55,7 @@ export const BrowseCategories = ({loggedInUser}) => {
     return (
         <div className="browse-container">
             <div className="browse-header">
-                <h1>Categories</h1>
+                <h2>Categories</h2>
                 <div className="header-div">
                     {loggedInUser.roles[0]!=="Teacher" ? null
                     :<CreateCategoryModal loggedInUser={loggedInUser} getAndSetAllCategories={getAndSetAllCategories}/> }

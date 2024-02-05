@@ -29,8 +29,8 @@ export const Students = ({loggedInUser}) => {
                 <h1>My Students</h1>
             </div>
             <div className="students-body">
-                <Table className="table" id="student-table" hover responsive>
-                        <thead dark>
+                <Table className="student-table" id="student-table" hover responsive>
+                        <thead>
                             <tr className="table-secondary">
                                 <th>Name</th>
                                 <th>Email</th>
@@ -52,7 +52,7 @@ export const Students = ({loggedInUser}) => {
                                             <Button 
                                                 color="info" 
                                                 size="sm" 
-                                                className="students-table-btn"
+                                                className="student-table-btn"
                                                 value={s.id}
                                                 onClick={(e) => {navigate(`sessions/${e.target.value}`)}}
                                             >Sessions
@@ -62,7 +62,7 @@ export const Students = ({loggedInUser}) => {
                                             <Button 
                                                 color="info" 
                                                 size="sm" 
-                                                className="students-table-btn"
+                                                className="student-table-btn"
                                                 value={s.id}
                                                 onClick={(e) => {navigate(`/profile/${e.target.value}`)}}
                                             >Stats
@@ -72,7 +72,7 @@ export const Students = ({loggedInUser}) => {
                                             <Button 
                                                 color="info" 
                                                 size="sm" 
-                                                className="students-table-btn"
+                                                className="student-table-btn"
                                                 value={s.id}
                                                 onClick={(e) => navigate(`/assignments/${e.target.value*1}`)}
                                             >Assignments
@@ -82,7 +82,7 @@ export const Students = ({loggedInUser}) => {
                                             <Button 
                                                 color="secondary" 
                                                 size="sm" 
-                                                className="students-table-btn"
+                                                className="student-table-btn"
                                             >Remove
                                             </Button>
                                         </td>
