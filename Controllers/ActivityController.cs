@@ -124,7 +124,7 @@ public class ActivityController : ControllerBase
     }
 
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public IActionResult PostNewActivity(ActivityObj newActivity)
     {
         try
@@ -140,7 +140,7 @@ public class ActivityController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult DeleteActivity(int id)
     {
         try
@@ -164,7 +164,7 @@ public class ActivityController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult UpdateActivity(int id, ActivityObj activity)
     {
         try

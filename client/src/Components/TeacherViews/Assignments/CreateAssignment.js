@@ -110,7 +110,13 @@ export const CreateAssignment = ({ loggedInUser }) => {
                     </fieldset>
                     <fieldset id="session-number-select" className="session-form-fieldset">
                         <label><span style={{fontSize:20}}>Choose Days Unil Due</span>
-                            <Input className="create-session-dropdown" type="number" min={0} defaultValue={1} onChange={(e) => setDueDays(e.target.value)}/>
+                            <Input 
+                                className="create-session-dropdown" 
+                                type="number" 
+                                min={0} 
+                                defaultValue={1} 
+                                onChange={(e) => setDueDays(e.target.value)}
+                            />
                         </label>
                     </fieldset>
                 

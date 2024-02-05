@@ -159,7 +159,6 @@ public class AssignmentController : ControllerBase
         }
     }
 
-
     [HttpGet("musician/{id}")]
     [Authorize]
     public IActionResult GetByMusicianId(int id)
@@ -233,7 +232,6 @@ public class AssignmentController : ControllerBase
             return BadRequest($"{ex}");
         }
     }
-
 
     [HttpPost]
     [Authorize(Roles = "Teacher")]

@@ -19,7 +19,7 @@ public class StatsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetStatsByUserId(int id)
     {
         try
