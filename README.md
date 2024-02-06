@@ -84,9 +84,9 @@ Coming Feb. 8th
 
 Supplemental Materials
 ==================
-ERD: [https://dbdiagram.io/d/Guiseppe-Joes-ERD-659d7fdfac844320ae902b40](https://dbdiagram.io/d/Unison-ERD-65a82fbdac844320ae249c6f)
+ERD: https://dbdiagram.io/d/Unison-ERD-65a82fbdac844320ae249c6f
 
-Wireframe: [https://miro.com/app/board/uXjVN7tccuA=/?share_link_id=455510923836](https://miro.com/welcomeonboard/c2hYbEJqNWh6TlhSb1JnWDM3U0hSa1duek9mcktZazZ6bEZpQ2UwUXNuU0drTFFHcWo5NGxnMnFWOHhiTFJoV3wzNDU4NzY0NTY1MTc1NjcxMTY3fDI=?share_link_id=1905967109)
+Wireframe: https://miro.com/welcomeonboard/c2hYbEJqNWh6TlhSb1JnWDM3U0hSa1duek9mcktZazZ6bEZpQ2UwUXNuU0drTFFHcWo5NGxnMnFWOHhiTFJoV3wzNDU4NzY0NTY1MTc1NjcxMTY3fDI=?share_link_id=1905967109
 
 Code Samples
 ==========
