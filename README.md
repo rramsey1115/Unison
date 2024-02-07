@@ -148,29 +148,38 @@ Code Samples
 
 Endpoint Example - Role-based Authorization
 ------------------
-![Unison - Endpoints - Role Based Authorization](https://github.com/rramsey1115/Unison/assets/139381892/f9b3aa70-99fa-49fc-a2b4-cee1ebb46520)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/f9b3aa70-99fa-49fc-a2b4-cee1ebb46520" alt="Unison - Endpoints - Role Based Authorization" width="750">
 
 Endpoint Example - Generate User Stats
 ----------
-![Unison - Endpoint Example - Generate User Statistics](https://github.com/rramsey1115/Unison/assets/139381892/6cb6d8b1-9771-4ba0-aac0-880f92c9a5b6)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/6cb6d8b1-9771-4ba0-aac0-880f92c9a5b6" alt="Unison - Endpoint Example - Generate User Statistics" width="750">
+
+Popup Modal to Create New Activity 
+----------
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/37b666ac-2b63-49c5-8332-54d3394c6afc" alt="Unison - Example of popup Modal for creating activity" width="750">
+
+Example of Fetch Calls
+----------
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/15873449-175e-4523-b393-1cf221405cb6" alt="Unison - Example of fetch calls" width="750">
 
 React Router DOM - Role-based Authorization views
 --------
-![Unison - Authorized Routing - Teacher Views](https://github.com/rramsey1115/Unison/assets/139381892/93039ba7-efa4-4b62-beb4-bffe94d7d7a5)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/93039ba7-efa4-4b62-beb4-bffe94d7d7a5" alt="Unison - Authorized Routing - Teacher Views" width="750">
 
 Sample of endpoints used - Swagger
 ----------
-![Unison - Swagger Endpoint Examples 1](https://github.com/rramsey1115/Unison/assets/139381892/69893b3a-a4f0-4ff5-a23d-22978fd52f71)
-![Unison - Swagger Endpoint Examples 2](https://github.com/rramsey1115/Unison/assets/139381892/41f7d4b5-aae6-4a52-bdb9-553b409c4eab)
-![Unison - Swagger Endpoint Examples 3](https://github.com/rramsey1115/Unison/assets/139381892/a472ff46-334d-45cc-9bee-4af0fead6531)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/69893b3a-a4f0-4ff5-a23d-22978fd52f71" alt="Unison - Swagger Endpoint Examples 1" width="750">
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/41f7d4b5-aae6-4a52-bdb9-553b409c4eab" alt="Unison - Swagger Endpoint Examples 2" width="750">
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/a472ff46-334d-45cc-9bee-4af0fead6531" alt="Unison - Swagger Endpoint Examples 3" width="750">
 
 ERD
 -----------
-![Unison - ERD](https://github.com/rramsey1115/Unison/assets/139381892/62a1e7fe-fd8c-4986-888e-115bdfad9f08)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/62a1e7fe-fd8c-4986-888e-115bdfad9f08" alt="Unison - ERD" width="750">
 
 Wireframe
 ----------
-![Unison - Wireframe](https://github.com/rramsey1115/Unison/assets/139381892/5feaeeaa-0e4e-461c-a968-f5844ae898d3)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/5feaeeaa-0e4e-461c-a968-f5844ae898d3" alt="Unison - Wireframe" width="750">
+
 
 
 
