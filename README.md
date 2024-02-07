@@ -93,31 +93,32 @@ Screenshots of Application on Desktop
 
 Login
 --------
-![Unison - Desktop - Login](https://github.com/rramsey1115/Unison/assets/139381892/85869a6b-ba63-46a1-821a-1f89eade60e4)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/85869a6b-ba63-46a1-821a-1f89eade60e4" alt="Unison - Desktop - Login" width="750">
 
 Student Sessions
 ----------
-![Unison - Desktop - Student Sessions](https://github.com/rramsey1115/Unison/assets/139381892/d882cc77-1e2f-4a6b-8882-7da4f9be10aa)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/d882cc77-1e2f-4a6b-8882-7da4f9be10aa" alt="Unison - Desktop - Student Sessions" width="750">
 
 Student - Browse Practice Categories
 ----------
-![Unison - Desktop - Browse Student](https://github.com/rramsey1115/Unison/assets/139381892/5c03a4a0-79a5-4ac9-86ce-179e309eecdb)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/5c03a4a0-79a5-4ac9-86ce-179e309eecdb" alt="Unison - Desktop - Browse Student" width="750">
 
 Student Profile with Stats
 ---------
-![Unison - Desktop - Student Profile](https://github.com/rramsey1115/Unison/assets/139381892/2c9fc078-14a9-4ea6-abaf-90db2e8eb773)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/2c9fc078-14a9-4ea6-abaf-90db2e8eb773" alt="Unison - Desktop - Student Profile" width="750">
 
 Teacher - Browse Categories
 -------------
-![Unison - Desktop - Teacher View - Browse](https://github.com/rramsey1115/Unison/assets/139381892/bf0632fc-25fd-4add-a843-04d602a96ff6)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/bf0632fc-25fd-4add-a843-04d602a96ff6" alt="Unison - Desktop - Teacher View - Browse" width="750">
 
 Teacher - Create Assignment
 -------
-![Unison - Desktop - Create Assignment](https://github.com/rramsey1115/Unison/assets/139381892/6244e328-cfe1-47d5-8485-bfac981b3ede)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/6244e328-cfe1-47d5-8485-bfac981b3ede" alt="Unison - Desktop - Create Assignment" width="750">
 
 Teacher - View Students
 ---------
-![Unison - Desktop - Teacher View - Students](https://github.com/rramsey1115/Unison/assets/139381892/1bc19ca4-028e-4038-a374-0a936eb839a9)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/1bc19ca4-028e-4038-a374-0a936eb839a9" alt="Unison - Desktop - Teacher View - Students" width="750">
+
 
 
 
@@ -126,20 +127,19 @@ Screenshots of Application on Mobile
 
 Register New User
 -----------
-![Unison - Mobile - Register](https://github.com/rramsey1115/Unison/assets/139381892/3d235786-c8c7-43e4-bd59-6224b3a7d799)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/3d235786-c8c7-43e4-bd59-6224b3a7d799" alt="Unison - Mobile - Register" width="200">
 
 Create New Practice Session
 ----------
-![Unison - Mobile - Create Session](https://github.com/rramsey1115/Unison/assets/139381892/61c16269-590e-43af-9eaa-a84188e139c2)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/61c16269-590e-43af-9eaa-a84188e139c2" alt="Unison - Mobile - Create Session" width="200">
 
 Active Practice Session
 -----------
-![Unison - Mobile - Active Session](https://github.com/rramsey1115/Unison/assets/139381892/432029b6-8f50-4b0a-ad1d-6c5bb9e1898c)
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/432029b6-8f50-4b0a-ad1d-6c5bb9e1898c" alt="Unison - Mobile - Active Session" width="200">
 
 Student Profile with Stats
 ---------
-![Unison - Mobile - Student Profile](https://github.com/rramsey1115/Unison/assets/139381892/61b6c0f8-1314-4204-95bd-1c93afa09714)
-
+<img src="https://github.com/rramsey1115/Unison/assets/139381892/61b6c0f8-1314-4204-95bd-1c93afa09714" alt="Unison - Mobile - Student Profile" width="200">
 
 
 
@@ -163,8 +163,6 @@ Sample of endpoints used - Swagger
 ![Unison - Swagger Endpoint Examples 1](https://github.com/rramsey1115/Unison/assets/139381892/69893b3a-a4f0-4ff5-a23d-22978fd52f71)
 ![Unison - Swagger Endpoint Examples 2](https://github.com/rramsey1115/Unison/assets/139381892/41f7d4b5-aae6-4a52-bdb9-553b409c4eab)
 ![Unison - Swagger Endpoint Examples 3](https://github.com/rramsey1115/Unison/assets/139381892/a472ff46-334d-45cc-9bee-4af0fead6531)
-
-
 
 ERD
 -----------
