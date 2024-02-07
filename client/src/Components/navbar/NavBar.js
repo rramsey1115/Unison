@@ -12,10 +12,12 @@ const navigate = useNavigate();
 
 const toggleNavbar = () => setOpen(!open);
 
+const closeNavbar = () => setOpen(false);
+
     return (
         <Navbar color="info" fixed="true" expand="md">
             
-            <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
+            <NavbarBrand className="mr-auto" tag={RRNavLink} to="/" onClick={closeNavbar}>
                 <div id="nav-title">
                     <img id="navbar-icon" src={icon} alt="icon" style={{height:42, marginRight:12, padding:0}}/>
                     <h3>UNISON</h3>
@@ -30,19 +32,13 @@ const toggleNavbar = () => setOpen(!open);
                     <Collapse isOpen={open} navbar>
                         <Nav navbar>
                             <NavItem>
-                                <NavLink tag={RRNavLink} to="/students">
+                                <NavLink tag={RRNavLink} to="/students" onClick={closeNavbar}>
                                     My Students
                                 </NavLink>
                             </NavItem>
             
-                            {/* <NavItem>
-                                <NavLink tag={RRNavLink} to="assignments">
-                                    Assignments
-                                </NavLink>
-                            </NavItem> */}
-            
                             <NavItem>
-                                <NavLink tag={RRNavLink} to="/browse/category">
+                                <NavLink tag={RRNavLink} to="/browse/category" onClick={closeNavbar}>
                                     Browse
                                 </NavLink>
                             </NavItem>
@@ -69,22 +65,22 @@ const toggleNavbar = () => setOpen(!open);
                         <Collapse isOpen={open} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/session">
+                                    <NavLink tag={RRNavLink} to="/session" onClick={closeNavbar}>
                                         Sessions
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to={`profile/${loggedInUser.id}`}>
+                                    <NavLink tag={RRNavLink} to={`profile/${loggedInUser.id}`} onClick={closeNavbar}>
                                         Profile
                                     </NavLink>
                                 </NavItem> 
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to={`assignments/${loggedInUser.id}`}>
+                                    <NavLink tag={RRNavLink} to={`assignments/${loggedInUser.id}`} onClick={closeNavbar}>
                                         Assignments
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/browse/category">
+                                    <NavLink tag={RRNavLink} to="/browse/category" onClick={closeNavbar}>
                                         Browse
                                     </NavLink>
                                 </NavItem>
@@ -110,7 +106,7 @@ const toggleNavbar = () => setOpen(!open);
                 :
                 <Nav navbar>
                     <NavItem>
-                        <NavLink tag={RRNavLink} to="/login">
+                        <NavLink tag={RRNavLink} to="/login" onClick={closeNavbar}>
                             <button className="nav-btn" size="md" color="secondary">Login</button>
                         </NavLink>
                     </NavItem>
