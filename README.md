@@ -82,7 +82,8 @@ YouTube Demo
 ============
 [Demo](https://youtu.be/1AbxZEqZqJI)
 
-<iframe width="650" height="365" src="https://www.youtube.com/embed/1AbxZEqZqJI" frameborder="0" allowfullscreen></iframe>
+[![Video](https://img.youtube.com/vi/1AbxZEqZqJI/0.jpg)](https://www.youtube.com/watch?v=1AbxZEqZqJI)
+
 
 
 Supplemental Materials
