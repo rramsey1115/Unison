@@ -102,7 +102,7 @@ export const StudentProfile = ({ loggedInUser }) => {
                     </table>
                 </div>
                 {/* visible if looking at a teacher's profile */}
-                {user.roles && user.roles[0] !== "Musician"
+                {user.roles && user.roles[0] === "Teacher"
                 ?<div className="profile-teacher-div">
                     <h4>Teacher Stats</h4>
                         <ul>
@@ -137,7 +137,9 @@ export const StudentProfile = ({ loggedInUser }) => {
                             </tr>
                             <tr>
                                 <th>Most Recent</th>
-                                <td>{new Date(stats.lastSession).toLocaleDateString()}</td>
+                                {stats.lastSession !== null 
+                                ? <td>{new Date(stats.lastSession).toLocaleDateString()}</td> 
+                                : "--/--/----" }
                             </tr>
                             <tr>
                                 <th>Top Category</th>

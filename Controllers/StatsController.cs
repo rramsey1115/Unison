@@ -39,6 +39,7 @@ public class StatsController : ControllerBase
             List<Session> UserSessions = _dbContext.Sessions
             .Include(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(ac => ac.Category)
             .OrderByDescending(s => s.DateCompleted)
+            .Where(s => s.DateCompleted != null)
             .Where(s => s.MusicianId == User.Id).ToList();
 
             // find list of ALL User assignments 
