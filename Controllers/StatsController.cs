@@ -57,7 +57,7 @@ public class StatsController : ControllerBase
             int IncompleteAssignments = UserAssignments.Count - CompletedAssignments;
 
             // int showing OVERDUE assignments
-            int OverdueAssignments = UserAssignments.Where(a => a.DueDate > DateTime.Now && a.Session.DateCompleted != null).Count();
+            int OverdueAssignments = UserAssignments.Where(a => a.DueDate < DateTime.Now && a.Session.DateCompleted == null).Count();
 
             // int showing total amount of time spent practicing 
             var TotalTime = 0;

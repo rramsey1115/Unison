@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Unison.Data;
-using Unison.Models.DTOs;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 namespace Unison.Controllers;
 

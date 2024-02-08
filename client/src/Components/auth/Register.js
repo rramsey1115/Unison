@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { register } from "../../Managers/authManger";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, FormFeedback, FormGroup, Input, InputGroup, InputGroupText, Label } from "reactstrap";
+import { FormFeedback, FormGroup, Input, InputGroup, InputGroupText } from "reactstrap";
 import { getUsersWithRoles } from "../../Managers/profileManager";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { FaGlobe } from "react-icons/fa";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { RiLockPasswordFill } from "react-icons/ri";
-
-
 
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState("");
@@ -78,8 +76,6 @@ export default function Register({ setLoggedInUser }) {
     }
   };
 
-
-  
   return (
     <div className="login-container">
       <div className="login-header">

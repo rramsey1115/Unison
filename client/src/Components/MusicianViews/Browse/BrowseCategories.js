@@ -8,7 +8,6 @@ import { CreateCategoryModal } from "./CreateCategoryModal";
 import { ConfirmDeleteCatModal } from "./ConfirmDeleteCatModal";
 import { ScaleLoader } from "react-spinners";
 
-
 export const BrowseCategories = ({loggedInUser}) => {
     const [categories, setCategories] = useState([]);
     const [open, setOpen] = useState('0');

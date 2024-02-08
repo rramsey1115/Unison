@@ -1,10 +1,7 @@
-
-
 /* ----------- nav bar --------------- */
 .container-fluid {
   background-image: linear-gradient(to right, var(--brightBlue), #3883a0);
 }
-
 
 .navbar {
   padding: 0px;

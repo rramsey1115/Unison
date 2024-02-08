@@ -169,7 +169,7 @@ public class AssignmentController : ControllerBase
             .Include(a => a.Session).ThenInclude(s => s.SessionActivities).ThenInclude(sa => sa.Activity).ThenInclude(ac => ac.Category)
             .Include(a => a.Teacher)
             .Include(a => a.Musician)
-            .OrderBy(a => a.Session.DateCompleted != null)
+            .OrderBy(a => a.Session.DateCompleted != null).ThenBy(a => a.DueDate)
             .Where(a => a.MusicianId == id).ToList();
 
             if (array == null)

@@ -8,7 +8,7 @@ import { getAssignmentByMusicianId, removeAssignmentById } from "../../../Manage
 import { getAllComments } from "../../../Managers/commentManager";
 import startIcon from "../../../images/start.png";
 import removeIcon from "../../../images/delete.png";
-import { Button, Spinner } from "reactstrap";
+import { Button } from "reactstrap";
 
 export const Assignments = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
@@ -36,6 +36,7 @@ export const Assignments = ({ loggedInUser }) => {
         await removeAssignmentById(assignmentId);
         getAndSetAssignments(studentId);
         getAndSetComments();
+        setIsLoading(false);
     }
 
     const handleCompleteAssignment = (sessionId) => {
@@ -110,17 +111,13 @@ export const Assignments = ({ loggedInUser }) => {
                             value={a.sessionId}
                             onClick={(e) => handleCompleteAssignment(e.currentTarget.value * 1)}
                         >
-                             {isLoading ? (
-                                <Spinner />
-                                ) : (
-                                <img 
-                                    id="repeat-icon" 
-                                    className="repeat-icon" 
-                                    alt="repeat icon" 
-                                    src={startIcon}
-                                />
-                                )}
-                            </button>
+                            <img 
+                                id="repeat-icon" 
+                                className="repeat-icon" 
+                                alt="repeat icon" 
+                                src={startIcon}
+                            />
+                        </button>
                         : null}
                         {loggedInUser.roles.includes("Teacher") && !a.session.dateCompleted ? (
                             <button
@@ -129,16 +126,12 @@ export const Assignments = ({ loggedInUser }) => {
                                 onClick={(e) => handleRemoveAssignment(e.currentTarget.value * 1)}
                                 disabled={isLoading}
                             >
-                                {isLoading ? (
-                                <Spinner />
-                                ) : (
                                 <img
                                     id="remove-icon"
                                     className="remove-icon"
                                     alt="remove icon"
                                     src={removeIcon}
                                 />
-                                )}
                             </button>
                             ) : null}
                         </div>
@@ -152,9 +145,6 @@ export const Assignments = ({ loggedInUser }) => {
                 
             <h5 style={{margin:"40px auto", textAlign:"center"}}>Not Authorized to View These Assignments</h5>
         </div>
-
-
-
         
     );
 }

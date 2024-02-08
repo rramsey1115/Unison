@@ -92,18 +92,6 @@ export const CreateSession = ({loggedInUser}) => {
                                         />
                                     </button>
 
-                                    {/* <button
-                                        className="session-activities-btn"
-                                        value={sa.activityId}
-                                    >
-                                        <img 
-                                            id="edit-activity-icon" 
-                                            className="edit-icon" 
-                                            src={editIcon} 
-                                            alt="edit icon" 
-                                        />
-                                    </button> */}
-
                                 </div>
                             </fieldset>
                         )

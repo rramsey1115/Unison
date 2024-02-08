@@ -22,20 +22,20 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
 
     const getAndSetCategory = (categoryId) => {
         getcategoryById(categoryId).then(setCategory);
-    }
+    };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        await postNewActivity(newActivity)
-        await getAndSetActivities(categoryId)
-        setNewActivity({
-          name:"",
-          details: "",
-          categoryId: categoryId,
-          creatorId: loggedInUser?.id
-        })
-        toggleModal();
-    }
+      e.preventDefault();
+      await postNewActivity(newActivity)
+      await getAndSetActivities(categoryId)
+      setNewActivity({
+        name:"",
+        details: "",
+        categoryId: categoryId,
+        creatorId: loggedInUser?.id
+      })
+      toggleModal();
+    };
 
     return (
     !category
@@ -53,28 +53,28 @@ export const CreateActivityModal = ({categoryId, getAndSetActivities, loggedInUs
             Add to category:{" "}{category.name}
         </ModalHeader>
         <ModalBody className='modal-body'>
-            <input
-                id='activity-name-input'
-                value={newActivity.name}
-                type='text'
-                placeholder='Activity Name'
-                onChange={(e) => {
-                    const copy = {...newActivity};
-                    copy.name = e.target.value;
-                    setNewActivity(copy);
-                }}
-            />
-            <textarea
-                id='activity-details-input'
-                value={newActivity.details}
-                type='text'
-                placeholder='Activity Description'
-                onChange={(e) => {
-                    const copy = {...newActivity};
-                    copy.details = e.target.value;
-                    setNewActivity(copy);
-                }}
-            />
+          <input
+              id='activity-name-input'
+              value={newActivity.name}
+              type='text'
+              placeholder='Activity Name'
+              onChange={(e) => {
+                  const copy = {...newActivity};
+                  copy.name = e.target.value;
+                  setNewActivity(copy);
+              }}
+          />
+          <textarea
+              id='activity-details-input'
+              value={newActivity.details}
+              type='text'
+              placeholder='Activity Description'
+              onChange={(e) => {
+                  const copy = {...newActivity};
+                  copy.details = e.target.value;
+                  setNewActivity(copy);
+              }}
+          />
         </ModalBody>
         <ModalFooter>
           {newActivity.name && newActivity.details ? 
