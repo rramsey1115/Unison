@@ -8,7 +8,7 @@ import { getAssignmentByMusicianId, removeAssignmentById } from "../../../Manage
 import { getAllComments } from "../../../Managers/commentManager";
 import startIcon from "../../../images/start.png";
 import removeIcon from "../../../images/delete.png";
-import { Button, Spinner } from "reactstrap";
+import { Button } from "reactstrap";
 
 export const Assignments = ({ loggedInUser }) => {
     const studentId = useParams().id * 1;
@@ -145,9 +145,6 @@ export const Assignments = ({ loggedInUser }) => {
                 
             <h5 style={{margin:"40px auto", textAlign:"center"}}>Not Authorized to View These Assignments</h5>
         </div>
-
-
-
         
     );
 }

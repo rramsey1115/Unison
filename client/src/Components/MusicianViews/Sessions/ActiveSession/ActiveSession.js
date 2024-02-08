@@ -77,8 +77,6 @@ export const ActiveSession = ({loggedInUser}) => {
         return timer;
     };
 
-
-
     return (
         !session.sessionActivities || loggedInUser.id !== session.musicianId || session.dateCompleted!==null
         ? 

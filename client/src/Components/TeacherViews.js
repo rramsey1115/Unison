@@ -10,7 +10,6 @@ import { Students } from "./TeacherViews/MyStudents/Students";
 import { CreateAssignment } from "./TeacherViews/Assignments/CreateAssignment";
 import { Assignments } from "./MusicianViews/Assignments/Assignments";
 import { StudentProfile } from "./MusicianViews/Profile/StudentProfile";
-// import { FavoriteSessions } from "./MusicianViews/Sessions/MySessions/FavoriteSession";
 
 export const TeacherViews = ({ loggedInUser, setLoggedInUser }) => {
   return (
