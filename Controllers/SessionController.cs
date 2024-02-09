@@ -141,7 +141,7 @@ public class SessionController : ControllerBase
     {
         try
         {
-            int newId = _dbContext.Sessions.Count() + 1;
+            int newId = _dbContext.Sessions.Any() ? _dbContext.Sessions.Max(s => s.Id) + 1 : 1;
             session.Id = newId;
             session.SessionActivities.Select(sa => sa.SessionId = newId);
             _dbContext.Sessions.Add(session);
